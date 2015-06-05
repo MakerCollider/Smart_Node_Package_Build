@@ -28,3 +28,4 @@ echo "log saved to $LOG"
 npm config set registry http://registry.cnpmjs.org
 npm install -g node-gyp
 
+opkg install upm
