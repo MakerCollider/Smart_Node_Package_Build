@@ -8,6 +8,10 @@ echo "installing io-js..."
 tar -xzvf io-js.tgz &> $LOG
 echo "done"
 
+echo "updating upm..."
+opkg install upm_0.2.0_i586.ipk
+echo "done"
+
 echo "cd /usr"
 cd /usr
 
