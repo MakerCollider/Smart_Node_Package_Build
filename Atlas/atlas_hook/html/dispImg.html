@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>hihi</title>
+</head>
+
+<body>  
+  <div class='atlasHide'>
+  <script src="./scripts/jquery.min.js"></script>
+  <script src="./scripts/jquery.blockUI.js"></script>
+  <link href="./scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="./scripts/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./scripts/bootbox.min.js"></script>
+  <script src="./scripts/socket.io.js"></script>
+  <script src="./scripts/atlas.js"></script>
+  </div>
+
+  <canvas id="cvs" width="600" height="250" style="border-radius: 15px">[No canvas support]</canvas> 
+
+
+  <script type="text/javascript">
+  
+  var cvs = $('#cvs')[0];
+  var context = cvs.getContext('2d');
+
+  context.fillText('disconnect', 20, 20);  
+  
+  var img = new Image();
+
+  function clearCanvas() {
+    context.fillStyle = '#FFffFF';
+    context.fillRect(0, 0, 600, 250); 
+  }
+
+  function loadDataUrl(data) {
+    img.src = data;
+    context.drawImage(img, 0, 0);
+  }
+
+  atlas.on('connect', function() {
+    context.fillText('connected', 20, 20);    
+    clearCanvas();
+  });
+
+  atlas.on('dispImg', function(data) {
+    loadDataUrl(data);
+  });
+
+  </script>
+
+ </body>
+</html>

@@ -1,0 +1,48 @@
+
+<!-- tempHumi -->
+<script type="text/javascript">
+  RED.nodes.registerType('tempHumi',{
+    category: "indoor",
+    color: '#c7e9c0',
+    defaults: {
+      name:     {value: 'tempHumi'},
+            
+      interval : {value : 500},
+      temperatureThreshold : {value : 30},
+      humidityThreshold : {value : 30}
+    },
+    inputs: 1,
+    outputs: 6, // how many callbacks of cameraInit
+    icon: "function.png",
+    label: function() {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="tempHumi">
+  <div class="form-row">
+<label for="node-input-name"><i class="icon-tag"></i> </label>
+<input type="text" id="node-input-name" placeholder="Name">
+</div>
+
+<div class="form-row">
+<label for="node-input-interval"><i class="icon-tag"></i> interval</label>
+<input type="text" id="node-input-interval">
+</div>
+
+<div class="form-row">
+<label for="node-input-temperatureThreshold"><i class="icon-tag"></i> temperatureThreshold</label>
+<input type="text" id="node-input-temperatureThreshold">
+</div>
+
+<div class="form-row">
+<label for="node-input-humidityThreshold"><i class="icon-tag"></i> humidityThreshold</label>
+<input type="text" id="node-input-humidityThreshold">
+</div>
+
+</script>
+
+<script type="text/x-red" data-help-name="tempHumi">
+  0
+</script>

@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    RED.nodes.registerType('change-type', {
+        category: 'logic',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "", required: false},
+            operation: {value: "", required: true}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Change Type";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="change-type">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-operation"><i class="fa fa-circle"></i> Operation</label>
+        <select type="text" id="node-input-operation">
+            <option value="TO_STRING">to string</option>
+            <option value="TO_NUMBER">to number</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="change-type">
+    <p>A Node-RED node for a user to change the type of a msg.payload</p>
+</script>

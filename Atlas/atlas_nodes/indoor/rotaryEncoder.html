@@ -1,0 +1,54 @@
+
+<!-- rotaryEncoder -->
+<script type="text/javascript">
+  RED.nodes.registerType('rotaryEncoder',{
+    category: "indoor",
+    color: '#c7e9c0',
+    defaults: {
+      name:     {value: 'rotaryEncoder'},
+            
+      pinA : {value : 2},
+      pinB : {value : 3},
+      interval : {value : 300},
+      threshold : {value : 150}
+    },
+    inputs: 1,
+    outputs: 2, // how many callbacks of cameraInit
+    icon: "function.png",
+    label: function() {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="rotaryEncoder">
+  <div class="form-row">
+<label for="node-input-name"><i class="icon-tag"></i> </label>
+<input type="text" id="node-input-name" placeholder="Name">
+</div>
+
+<div class="form-row">
+<label for="node-input-pinA"><i class="icon-tag"></i> pinA</label>
+<input type="text" id="node-input-pinA">
+</div>
+
+<div class="form-row">
+<label for="node-input-pinB"><i class="icon-tag"></i> pinB</label>
+<input type="text" id="node-input-pinB">
+</div>
+
+<div class="form-row">
+<label for="node-input-interval"><i class="icon-tag"></i> interval</label>
+<input type="text" id="node-input-interval">
+</div>
+
+<div class="form-row">
+<label for="node-input-threshold"><i class="icon-tag"></i> threshold</label>
+<input type="text" id="node-input-threshold">
+</div>
+
+</script>
+
+<script type="text/x-red" data-help-name="rotaryEncoder">
+  0
+</script>

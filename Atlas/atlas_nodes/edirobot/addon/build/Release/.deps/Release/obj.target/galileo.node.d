@@ -1,0 +1,1 @@
+cmd_Release/obj.target/galileo.node := g++ -shared -pthread -rdynamic -m32  -Wl,-soname=galileo.node -o Release/obj.target/galileo.node -Wl,--start-group Release/obj.target/galileo/src/edi_robot_addon.o Release/obj.target/galileo/src/main.o Release/obj.target/galileo/src/_globalvar.o -Wl,--end-group ../../../../cpp/edirobot/bin/libedirobot.a /usr/lib/libmraa.so

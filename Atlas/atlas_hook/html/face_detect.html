@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>face detection</title>
+  <link href="./scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="./scripts/jquery.min.js"></script>
+  <script src="./scripts/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./scripts/bootbox.min.js"></script>
+  <script src="./scripts/socket.io.js"></script>
+</head>
+<body>
+
+<div class="panel panel-default ">
+
+  <div class="panel-heading">
+    <h3 class="panel-title" id="servInfo">Server(unkown) Status</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="alert alert-success" role="alert" id="servStat">disconnected</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Face Detection</h3>
+  </div>
+
+  <div class="panel-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="btn-group">
+            <button class="btn btn-success" type="button" id="toggle">toggle</button>
+        </div><!-- /input-group -->
+      </div>    
+    </div>
+    
+    <p/>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">faces</span>
+         <input type="text" class="form-control" placeholder="event for face number" aria-describedby="basic-addon1", id="faceNum" value=0>
+        </div>
+      </div>
+
+    </div> 
+
+    <div class="row">
+      <div class="col-md-3">
+        <canvas id="cvs" width="600" height="250" style="border-radius: 15px">[No canvas support]</canvas> 
+      </div>  
+    </div>       
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+
+    servConfig = {'port': 1880};
+
+    var stat = 1;
+
+    $('button').attr('disabled', true);
+
+    function connServ() {
+
+        var socket = io(servConfig.ip);
+
+        socket.on('connect', function() {
+
+            $('button').attr('disabled', false);
+
+            $('#toggle').click(function() {
+
+                if(stat) {
+                    stat = 0                    
+                    $('#toggle').removeClass('btn-success').addClass('btn-danger').text('off');             
+                } else {
+                    stat = 1;
+                    $('#toggle').removeClass('btn-danger').addClass('btn-success').text('on');
+                }
+
+                socket.emit('toggle', stat);              
+            });
+
+            var cvs = $('#cvs')[0];
+            var context = cvs.getContext('2d');
+            var img = new Image();
+
+            function clearCanvas() {
+                context.fillStyle = '#FFffFF';
+                context.fillRect(0, 0, 600, 250);
+            }
+
+            clearCanvas();
+
+            function loadDataUrl(data) {
+                img.src = data;
+                context.drawImage(img, 0, 0);
+            }
+
+            $('#servStat').text('connected');
+
+            socket.on('dispImg', function(data) {
+                loadDataUrl(data);
+            });
+
+            socket.on('faceNum', function(data) {
+                $('#faceNum').val(data)
+            })
+            
+        });
+
+        socket.on('disconnect', function(){
+            $('#servStat').text('disconnected');    
+            $('#faceNum').val('unkown');
+        });
+    }
+    
+
+    if(document.location.origin == 'file://') {
+      bootbox.prompt("Input server ip and default is localhost",function(data) {    
+
+        servConfig.ip = 'http://' + ((data != "")?data:'localhost') + servConfig.port;
+        $('#servInfo').text('Server ( ' + servConfig.ip + ' ) Status');
+
+        connServ();
+      });      
+    } else {
+      servConfig.ip = document.location.origin;
+      connServ();
+    }
+      
+</script>
+</body>

@@ -1,0 +1,32 @@
+{
+  "author" : "Smart things innovation team of Intel Labs China",
+
+  "name"   : "iot-io",
+
+  "description" : "Javascript IOT IO library",
+
+  "version" : "0.5.0",
+
+  "main"   : "target/index.js",
+
+  "repository": {
+    "type": "git",
+    "url": "git@172.16.125.42:pia-js/io-js.git"
+  },
+
+  "dependencies" : {
+    "bindings": "*"
+  },
+
+  "bin" : {
+    "iot-io-server" : "./bin/iotio-server.sh"
+  },
+
+  "scripts" : {
+    "preinstall" : "(make configure || true)",
+    "install" : "(make rebuild || true)",
+    "test" : "sh test_autogen.sh"
+  }
+}
+
+

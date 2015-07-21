@@ -1,0 +1,48 @@
+
+<!-- uvSensor -->
+<script type="text/javascript">
+  RED.nodes.registerType('uvSensor',{
+    category: "indoor",
+    color: '#c7e9c0',
+    defaults: {
+      name:     {value: 'uvSensor'},
+            
+      aioPin : {value : 0},
+      interval : {value : 500},
+      threshold : {value : 10}
+    },
+    inputs: 1,
+    outputs: 2, // how many callbacks of cameraInit
+    icon: "function.png",
+    label: function() {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="uvSensor">
+  <div class="form-row">
+<label for="node-input-name"><i class="icon-tag"></i> </label>
+<input type="text" id="node-input-name" placeholder="Name">
+</div>
+
+<div class="form-row">
+<label for="node-input-aioPin"><i class="icon-tag"></i> aioPin</label>
+<input type="text" id="node-input-aioPin">
+</div>
+
+<div class="form-row">
+<label for="node-input-interval"><i class="icon-tag"></i> interval</label>
+<input type="text" id="node-input-interval">
+</div>
+
+<div class="form-row">
+<label for="node-input-threshold"><i class="icon-tag"></i> threshold</label>
+<input type="text" id="node-input-threshold">
+</div>
+
+</script>
+
+<script type="text/x-red" data-help-name="uvSensor">
+  0
+</script>

@@ -1,15 +1,12 @@
 CURR=`pwd`
 LOG=$CURR/install.log
-echo "installing atlas..."
-tar -xzvf  atlas_Linux_* &> $LOG
-echo "done"
 
-echo "installing io-js..."
-tar -xzvf io-js.tgz &> $LOG
+echo "updating mraa..."
+opkg install libmraa0_0.7.3_i586.ipk
 echo "done"
 
 echo "updating upm..."
-opkg install upm_0.2.0_i586.ipk
+opkg install upm_0.3.1_i586.ipk
 echo "done"
 
 echo "cd /usr"
@@ -32,4 +29,3 @@ echo "log saved to $LOG"
 npm config set registry http://registry.cnpmjs.org
 npm install -g node-gyp
 
-opkg install upm

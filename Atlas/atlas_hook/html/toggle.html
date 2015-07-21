@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>toggle</title>
+</head>
+
+<body>  
+
+  <div class='atlasHide'>
+  <script src="./scripts/jquery.min.js"></script>
+  <script src="./scripts/jquery.blockUI.js"></script>
+  <link href="./scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="./scripts/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./scripts/bootbox.min.js"></script>
+  <script src="./scripts/socket.io.js"></script>
+  <script src="./scripts/atlas.js"></script>
+  </div>
+
+  <img src='./pic/power_button_gray.png' id='powerImg'></img>
+
+  <script type="text/javascript">
+
+  atlas.on('connect', function() {
+    $('#powerImg').attr('src', './pic/power_button_gray.png');
+    atlas.emit('toggleQuery');
+  });
+  
+  atlas.on('toggleQuery', function(data) {
+    $('#powerImg').attr('src', './pic/power_button_' + (data ? 'green' : 'red') + '.png');
+  });
+
+  $('#powerImg').click(function() {
+    $('#powerImg').attr('src', './pic/power_button_gray.png');
+    console.log('query');
+    atlas.emit('toggle');
+  });
+
+  </script>
+ </body>
+</html>

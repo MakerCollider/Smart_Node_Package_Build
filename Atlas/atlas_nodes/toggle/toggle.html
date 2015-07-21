@@ -1,0 +1,40 @@
+<script type="text/javascript">
+  RED.nodes.registerType('toggle',{
+    category: 'atlas',
+    color: '#c7e9c0',
+    defaults: {
+      name:  {value:"toggle"},
+      initVal:  {value: 1}   
+    },
+    inputs:0,
+    outputs:1, // how many callbacks of cameraInit
+    icon: "function.png",
+    label: function() {
+      return this.name + ' ' + this.initVal;
+    },
+    button: {
+
+      onclick: function(){
+
+        d3.xhr("inject/"+this.id).post(function(err,resp) {
+        });
+      }
+    }
+
+  });
+
+</script>
+
+<script type="text/x-red" data-template-name="toggle">
+ 
+  <div class="form-row">
+  <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+  <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+
+  <div class="form-row">
+  <label for="node-input-initVal"><i class="icon-tag"></i>initVal</label>
+  <input type="text" id="node-input-initVal" placeholder="Name">
+  </div>
+
+</script>

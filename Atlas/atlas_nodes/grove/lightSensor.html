@@ -1,0 +1,48 @@
+
+<!-- lightSensor -->
+<script type="text/javascript">
+  RED.nodes.registerType('lightSensor',{
+    category: "grove",
+    color: '#c7e9c0',
+    defaults: {
+      name:     {value: 'lightSensor'},
+            
+      pin : {value : 0},
+      interval : {value : 500},
+      threshold : {value : 400}
+    },
+    inputs: 1,
+    outputs: 2, // how many callbacks of cameraInit
+    icon: "function.png",
+    label: function() {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="lightSensor">
+  <div class="form-row">
+<label for="node-input-name"><i class="icon-tag"></i> </label>
+<input type="text" id="node-input-name" placeholder="Name">
+</div>
+
+<div class="form-row">
+<label for="node-input-pin"><i class="icon-tag"></i> pin</label>
+<input type="text" id="node-input-pin">
+</div>
+
+<div class="form-row">
+<label for="node-input-interval"><i class="icon-tag"></i> interval</label>
+<input type="text" id="node-input-interval">
+</div>
+
+<div class="form-row">
+<label for="node-input-threshold"><i class="icon-tag"></i> threshold</label>
+<input type="text" id="node-input-threshold">
+</div>
+
+</script>
+
+<script type="text/x-red" data-help-name="lightSensor">
+  0
+</script>

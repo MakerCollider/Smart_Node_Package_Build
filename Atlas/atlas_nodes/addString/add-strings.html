@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('add-strings', {
+        category: 'logic',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "", required: false},
+            prepend: {value: "", required: false},
+            append: {value: "", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Add Strings";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="add-strings">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-prepend"><i class="fa fa-tag"></i> Prepend</label>
+        <input type="text" id="node-input-prepend">
+    </div>
+    <div class="form-row">
+        <label for="node-input-append"><i class="fa fa-tag"></i> Append</label>
+        <input type="text" id="node-input-append">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="add-strings">
+    <p>A Node-RED node for a user to add strings to either end of a msg.payload</p>
+</script>

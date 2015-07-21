@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/LCDDisplay.dir/run.cpp.o  -o LCDDisplay  -L/home/root/NR/Atlas/cpp/grove/test/../bin -rdynamic -luv -lgrove -Wl,-rpath,/home/root/NR/Atlas/cpp/grove/test/../bin 

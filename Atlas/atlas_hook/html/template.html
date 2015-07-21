@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Atlas Client</title>
+</head>
+
+<body>
+
+  <script src="./scripts/jquery.min.js"></script>
+  <script src="./scripts/jquery.blockUI.js"></script>
+  <link href="./scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="./scripts/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./scripts/bootbox.min.js"></script>
+  <script src="./scripts/socket.io.js"></script>
+  <script src="./scripts/atlas.js"></script>
+
+<div id="atlasInput"></div>
+<script type="text/javascript">
+
+  atlas.on('connect', function() {
+  	alert('ok');
+  })
+
+</script>
+
+<div id='atlasBody'>
+</div>
+</body>
+</html>

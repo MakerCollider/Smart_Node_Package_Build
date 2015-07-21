@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../bin/libatlas_cv.a  CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o CMakeFiles/atlas_cv.dir/cv_tool.cpp.o CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o
+/usr/bin/ranlib ../bin/libatlas_cv.a

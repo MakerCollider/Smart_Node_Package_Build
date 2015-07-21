@@ -1,0 +1,48 @@
+
+<!-- buzzerLoop -->
+<script type="text/javascript">
+  RED.nodes.registerType('buzzerLoop',{
+    category: "grove",
+    color: '#c7e9c0',
+    defaults: {
+      name:     {value: 'buzzerLoop'},
+            
+      pin : {value : 0},
+      tone : {value : 0},
+      interval : {value : 500}
+    },
+    inputs: 1,
+    outputs: 1, // how many callbacks of cameraInit
+    icon: "function.png",
+    label: function() {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="buzzerLoop">
+  <div class="form-row">
+<label for="node-input-name"><i class="icon-tag"></i> </label>
+<input type="text" id="node-input-name" placeholder="Name">
+</div>
+
+<div class="form-row">
+<label for="node-input-pin"><i class="icon-tag"></i> pin</label>
+<input type="text" id="node-input-pin">
+</div>
+
+<div class="form-row">
+<label for="node-input-tone"><i class="icon-tag"></i> tone</label>
+<input type="text" id="node-input-tone">
+</div>
+
+<div class="form-row">
+<label for="node-input-interval"><i class="icon-tag"></i> interval</label>
+<input type="text" id="node-input-interval">
+</div>
+
+</script>
+
+<script type="text/x-red" data-help-name="buzzerLoop">
+  0
+</script>

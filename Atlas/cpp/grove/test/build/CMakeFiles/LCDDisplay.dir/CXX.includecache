@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../grove.h
+
+/home/root/NR/Atlas/cpp/grove/test/run.cpp
+grove.h
+-
+uv.h
+-
+stdio.h
+-
+upm/jhd1313m1.h
+/home/root/NR/Atlas/cpp/grove/test/upm/jhd1313m1.h
+

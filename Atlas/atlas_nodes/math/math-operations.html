@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Math', {
+        category: 'logic',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "", required: false},
+            operation: {value: "", required: false},
+            value: {value: "0", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Math Operation";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Math">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-operation"><i class="fa fa-circle"></i> Operation</label>
+        <select type="text" id="node-input-operation">
+            <option value="ADD">Add</option>
+            <option value="SUBTRACT">Subtract</option>
+            <option value="MULTIPLY">Multiply</option>
+            <option value="DIVIDE">Divide</option>
+        </select>
+    </div>
+    <div class="form-row" id="user_input">
+        <label for="node-input-value"><i class="fa fa-clock-o"></i> Value</label>
+        <input type="number" id="node-input-value">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Math">
+    <p>A Node-RED node for a user to perform basic math operations</p>
+</script>

@@ -1,0 +1,9 @@
+{
+  "name": "atlas-hook",
+  "dependencies": {
+    "multer": "*",
+    "serve-index": "*",
+    "cheerio": "*",
+    "socket.io": "*"
+  }
+}

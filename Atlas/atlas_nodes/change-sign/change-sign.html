@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('change-sign', {
+        category: 'logic',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "", required: false},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Change Sign";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="change-sign">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="change-sign">
+    <p>A Node-RED node for a user to change the sign of a number</p>
+</script>

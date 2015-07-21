@@ -1,0 +1,7 @@
+{
+  "name": "atlas-hook",
+  "dependencies": {
+    "bindings": "*",
+    "ejs": "*"
+  }
+}

@@ -1,0 +1,42 @@
+
+<!-- mic -->
+<script type="text/javascript">
+  RED.nodes.registerType('mic',{
+    category: "grove",
+    color: '#c7e9c0',
+    defaults: {
+      name:     {value: 'mic'},
+            
+      aioPin : {value : 0},
+      threshold : {value : 400}
+    },
+    inputs: 1,
+    outputs: 2, // how many callbacks of cameraInit
+    icon: "function.png",
+    label: function() {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="mic">
+  <div class="form-row">
+<label for="node-input-name"><i class="icon-tag"></i> </label>
+<input type="text" id="node-input-name" placeholder="Name">
+</div>
+
+<div class="form-row">
+<label for="node-input-aioPin"><i class="icon-tag"></i> aioPin</label>
+<input type="text" id="node-input-aioPin">
+</div>
+
+<div class="form-row">
+<label for="node-input-threshold"><i class="icon-tag"></i> threshold</label>
+<input type="text" id="node-input-threshold">
+</div>
+
+</script>
+
+<script type="text/x-red" data-help-name="mic">
+  0
+</script>

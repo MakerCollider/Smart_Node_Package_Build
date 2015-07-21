@@ -1,0 +1,54 @@
+
+<!-- camera -->
+<script type="text/javascript">
+  RED.nodes.registerType('camera',{
+    category: "CV",
+    color: '#c7e9c0',
+    defaults: {
+      name:     {value: 'camera'},
+            
+      interval : {value : 500},
+      camId : {value : -1},
+      width : {value : 160},
+      height : {value : 120}
+    },
+    inputs: 1,
+    outputs: 1, // how many callbacks of cameraInit
+    icon: "function.png",
+    label: function() {
+      return this.name;
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="camera">
+  <div class="form-row">
+<label for="node-input-name"><i class="icon-tag"></i> </label>
+<input type="text" id="node-input-name" placeholder="Name">
+</div>
+
+<div class="form-row">
+<label for="node-input-interval"><i class="icon-tag"></i> interval</label>
+<input type="text" id="node-input-interval">
+</div>
+
+<div class="form-row">
+<label for="node-input-camId"><i class="icon-tag"></i> camId</label>
+<input type="text" id="node-input-camId">
+</div>
+
+<div class="form-row">
+<label for="node-input-width"><i class="icon-tag"></i> width</label>
+<input type="text" id="node-input-width">
+</div>
+
+<div class="form-row">
+<label for="node-input-height"><i class="icon-tag"></i> height</label>
+<input type="text" id="node-input-height">
+</div>
+
+</script>
+
+<script type="text/x-red" data-help-name="camera">
+  0
+</script>

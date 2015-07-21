@@ -1,12 +1,5 @@
 CURR=`pwd`
 LOG=$CURR/install.log
-echo "installing atlas..."
-tar -xzvf  atlas_Linux_* &> $LOG
-echo "done"
-
-echo "installing io-js..."
-tar -xzvf io-js.tgz &> $LOG
-echo "done"
 
 echo "cd /usr"
 cd /usr

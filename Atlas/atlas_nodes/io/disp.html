@@ -1,0 +1,91 @@
+<!-- IOT output node -->
+<script type="text/javascript">
+    RED.nodes.registerType('dispImg',{
+        category: 'atlas',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:"dispImg"},
+        },
+        inputs:1,
+        outputs:0,
+        icon: "file.png",
+        label: function() {
+            return this.name;
+        },
+        oneditsave: function() {
+            window.open("/atlas/dispImg.html", "newwindow", "toolbar=no,location=no,scrollbars=yes, width=320,height=240,z-look=yes");
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="dispImg">
+    <div class="form-row">
+     <p>click OK to open preview window</p>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="dispImg">
+    <p>help of dispImg</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('dispGauge',{
+        category: 'atlas',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:"dispGauge"},
+            min: {value:0},
+            max: {value:100},
+            title: {value: 'dispGauge'},
+            unit: {value: ''}
+        },
+        inputs:1,
+        outputs:0,
+        icon: "file.png",
+        label: function() {
+            return this.name;
+        },
+        oneditsave: function() {
+            var cmd = "";
+            for(idx in this) {
+                if(typeof this[idx] != 'object')
+                  cmd += idx + "=" + this[idx] + "&";
+            }
+            cmd += "alta=1";
+
+            console.log(cmd);
+
+            window.open("/atlas/dispGauge.html?" + cmd, "newwindow", "toolbar=no,location=no,scrollbars=yes, width=320,height=240,z-look=yes");
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="dispGauge">
+    <div class="form-row">
+     <p>click OK to open preview window</p>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-min"><i class="icon-tag"></i> min</label>
+      <input type="text" id="node-input-min">
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-max"><i class="icon-tag"></i> max</label>
+      <input type="text" id="node-input-max">
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-unit"><i class="icon-tag"></i> unit</label>
+      <input type="text" id="node-input-unit">
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-title"><i class="icon-tag"></i> title</label>
+      <input type="text" id="node-input-title">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="dispGauge">
+    <p>disp gauge/p>
+</script>
