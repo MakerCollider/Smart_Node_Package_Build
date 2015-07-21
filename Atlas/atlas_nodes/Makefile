@@ -6,6 +6,6 @@ install:
 	ln -sf ../../Atlas/atlas_nodes  $(RED_DIR)/nodes/
 	npm install
 clean:
-	rm -f $(TARGET)
+	rm -rf $(TARGET)
 	
 .PHONY: all install clean
