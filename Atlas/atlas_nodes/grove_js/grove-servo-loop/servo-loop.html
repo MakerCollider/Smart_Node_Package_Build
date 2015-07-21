@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ServoLoop', {
+        category: 'Grove',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "ServoLoop", required: false},
+            pwmPin: {value: "3", required: true},
+            maxAngle: {value: "140", required: true},
+            minAngle: {value: "0", required: true}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "ServoLoop";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ServoLoop">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pwmPin"><i class="fa fa-tag"></i> PwmPin</label>
+        <input type="number" id="node-input-pwmPin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxAngle"><i class="fa fa-tag"></i> Max Angle</label>
+        <input type="number" id="node-input-maxAngle">
+    </div>
+    <div class="form-row">
+        <label for="node-input-minAngle"><i class="fa fa-tag"></i> Min Angle</label>
+        <input type="number" id="node-input-minAngle">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ServoLoop">
+    <p>A Node-RED node for servo, it will scan from min angle to max angle (0~140 is safety), and must use pwm,3,5,6,9,10,11</p>
+</script>

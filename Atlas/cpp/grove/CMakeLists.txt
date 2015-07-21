@@ -20,11 +20,9 @@ add_library(grove STATIC
             led.cpp
             lightSensor.cpp
             temperature.cpp
-            button.cpp
             rotary.cpp
             relay.cpp
             buzzer.cpp
-            touch.cpp
             mic.cpp)
 
 set_target_properties(                         
