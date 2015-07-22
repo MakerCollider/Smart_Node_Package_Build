@@ -5,12 +5,12 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/root/NR/Atlas/cpp/cv/lib/libb64/src/cencode.c" "/home/root/NR/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o"
+  "/home/root/Smart_node/Atlas/cpp/cv/lib/libb64/src/cencode.c" "/home/root/Smart_node/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/root/NR/Atlas/cpp/cv/cv_atlas.cpp" "/home/root/NR/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o"
-  "/home/root/NR/Atlas/cpp/cv/cv_tool.cpp" "/home/root/NR/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir/cv_tool.cpp.o"
+  "/home/root/Smart_node/Atlas/cpp/cv/cv_atlas.cpp" "/home/root/Smart_node/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o"
+  "/home/root/Smart_node/Atlas/cpp/cv/cv_tool.cpp" "/home/root/Smart_node/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir/cv_tool.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

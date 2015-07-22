@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/NR/Atlas/cpp/indoor
+CMAKE_SOURCE_DIR = /home/root/Smart_node/Atlas/cpp/indoor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/NR/Atlas/cpp/indoor/build
+CMAKE_BINARY_DIR = /home/root/Smart_node/Atlas/cpp/indoor/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/indoor.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/indoor.dir/flags.make
 
 CMakeFiles/indoor.dir/uv_sensor.cpp.o: CMakeFiles/indoor.dir/flags.make
 CMakeFiles/indoor.dir/uv_sensor.cpp.o: ../uv_sensor.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/indoor.dir/uv_sensor.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/uv_sensor.cpp.o -c /home/root/NR/Atlas/cpp/indoor/uv_sensor.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/uv_sensor.cpp.o -c /home/root/Smart_node/Atlas/cpp/indoor/uv_sensor.cpp
 
 CMakeFiles/indoor.dir/uv_sensor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor.dir/uv_sensor.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/NR/Atlas/cpp/indoor/uv_sensor.cpp > CMakeFiles/indoor.dir/uv_sensor.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/indoor/uv_sensor.cpp > CMakeFiles/indoor.dir/uv_sensor.cpp.i
 
 CMakeFiles/indoor.dir/uv_sensor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor.dir/uv_sensor.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/NR/Atlas/cpp/indoor/uv_sensor.cpp -o CMakeFiles/indoor.dir/uv_sensor.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/indoor/uv_sensor.cpp -o CMakeFiles/indoor.dir/uv_sensor.cpp.s
 
 CMakeFiles/indoor.dir/uv_sensor.cpp.o.requires:
 .PHONY : CMakeFiles/indoor.dir/uv_sensor.cpp.o.requires
@@ -74,17 +74,17 @@ CMakeFiles/indoor.dir/uv_sensor.cpp.o.provides.build: CMakeFiles/indoor.dir/uv_s
 
 CMakeFiles/indoor.dir/encoder.cpp.o: CMakeFiles/indoor.dir/flags.make
 CMakeFiles/indoor.dir/encoder.cpp.o: ../encoder.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/indoor.dir/encoder.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/encoder.cpp.o -c /home/root/NR/Atlas/cpp/indoor/encoder.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/encoder.cpp.o -c /home/root/Smart_node/Atlas/cpp/indoor/encoder.cpp
 
 CMakeFiles/indoor.dir/encoder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor.dir/encoder.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/NR/Atlas/cpp/indoor/encoder.cpp > CMakeFiles/indoor.dir/encoder.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/indoor/encoder.cpp > CMakeFiles/indoor.dir/encoder.cpp.i
 
 CMakeFiles/indoor.dir/encoder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor.dir/encoder.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/NR/Atlas/cpp/indoor/encoder.cpp -o CMakeFiles/indoor.dir/encoder.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/indoor/encoder.cpp -o CMakeFiles/indoor.dir/encoder.cpp.s
 
 CMakeFiles/indoor.dir/encoder.cpp.o.requires:
 .PHONY : CMakeFiles/indoor.dir/encoder.cpp.o.requires
@@ -97,17 +97,17 @@ CMakeFiles/indoor.dir/encoder.cpp.o.provides.build: CMakeFiles/indoor.dir/encode
 
 CMakeFiles/indoor.dir/moisture.cpp.o: CMakeFiles/indoor.dir/flags.make
 CMakeFiles/indoor.dir/moisture.cpp.o: ../moisture.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/indoor.dir/moisture.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/moisture.cpp.o -c /home/root/NR/Atlas/cpp/indoor/moisture.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/moisture.cpp.o -c /home/root/Smart_node/Atlas/cpp/indoor/moisture.cpp
 
 CMakeFiles/indoor.dir/moisture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor.dir/moisture.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/NR/Atlas/cpp/indoor/moisture.cpp > CMakeFiles/indoor.dir/moisture.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/indoor/moisture.cpp > CMakeFiles/indoor.dir/moisture.cpp.i
 
 CMakeFiles/indoor.dir/moisture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor.dir/moisture.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/NR/Atlas/cpp/indoor/moisture.cpp -o CMakeFiles/indoor.dir/moisture.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/indoor/moisture.cpp -o CMakeFiles/indoor.dir/moisture.cpp.s
 
 CMakeFiles/indoor.dir/moisture.cpp.o.requires:
 .PHONY : CMakeFiles/indoor.dir/moisture.cpp.o.requires
@@ -120,17 +120,17 @@ CMakeFiles/indoor.dir/moisture.cpp.o.provides.build: CMakeFiles/indoor.dir/moist
 
 CMakeFiles/indoor.dir/temp_humi.cpp.o: CMakeFiles/indoor.dir/flags.make
 CMakeFiles/indoor.dir/temp_humi.cpp.o: ../temp_humi.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/indoor.dir/temp_humi.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/temp_humi.cpp.o -c /home/root/NR/Atlas/cpp/indoor/temp_humi.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/temp_humi.cpp.o -c /home/root/Smart_node/Atlas/cpp/indoor/temp_humi.cpp
 
 CMakeFiles/indoor.dir/temp_humi.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor.dir/temp_humi.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/NR/Atlas/cpp/indoor/temp_humi.cpp > CMakeFiles/indoor.dir/temp_humi.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/indoor/temp_humi.cpp > CMakeFiles/indoor.dir/temp_humi.cpp.i
 
 CMakeFiles/indoor.dir/temp_humi.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor.dir/temp_humi.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/NR/Atlas/cpp/indoor/temp_humi.cpp -o CMakeFiles/indoor.dir/temp_humi.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/indoor/temp_humi.cpp -o CMakeFiles/indoor.dir/temp_humi.cpp.s
 
 CMakeFiles/indoor.dir/temp_humi.cpp.o.requires:
 .PHONY : CMakeFiles/indoor.dir/temp_humi.cpp.o.requires
@@ -143,17 +143,17 @@ CMakeFiles/indoor.dir/temp_humi.cpp.o.provides.build: CMakeFiles/indoor.dir/temp
 
 CMakeFiles/indoor.dir/motion.cpp.o: CMakeFiles/indoor.dir/flags.make
 CMakeFiles/indoor.dir/motion.cpp.o: ../motion.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/indoor.dir/motion.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/motion.cpp.o -c /home/root/NR/Atlas/cpp/indoor/motion.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/indoor.dir/motion.cpp.o -c /home/root/Smart_node/Atlas/cpp/indoor/motion.cpp
 
 CMakeFiles/indoor.dir/motion.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor.dir/motion.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/NR/Atlas/cpp/indoor/motion.cpp > CMakeFiles/indoor.dir/motion.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/indoor/motion.cpp > CMakeFiles/indoor.dir/motion.cpp.i
 
 CMakeFiles/indoor.dir/motion.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor.dir/motion.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/NR/Atlas/cpp/indoor/motion.cpp -o CMakeFiles/indoor.dir/motion.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/indoor/motion.cpp -o CMakeFiles/indoor.dir/motion.cpp.s
 
 CMakeFiles/indoor.dir/motion.cpp.o.requires:
 .PHONY : CMakeFiles/indoor.dir/motion.cpp.o.requires
@@ -202,6 +202,6 @@ CMakeFiles/indoor.dir/clean:
 .PHONY : CMakeFiles/indoor.dir/clean
 
 CMakeFiles/indoor.dir/depend:
-	cd /home/root/NR/Atlas/cpp/indoor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/root/NR/Atlas/cpp/indoor /home/root/NR/Atlas/cpp/indoor /home/root/NR/Atlas/cpp/indoor/build /home/root/NR/Atlas/cpp/indoor/build /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/root/Smart_node/Atlas/cpp/indoor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/root/Smart_node/Atlas/cpp/indoor /home/root/Smart_node/Atlas/cpp/indoor /home/root/Smart_node/Atlas/cpp/indoor/build /home/root/Smart_node/Atlas/cpp/indoor/build /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/indoor.dir/depend
 

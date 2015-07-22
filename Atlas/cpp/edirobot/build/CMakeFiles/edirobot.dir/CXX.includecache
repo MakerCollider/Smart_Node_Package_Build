@@ -6,47 +6,47 @@
 
 #IncludeRegexTransform: 
 
-/home/root/NR/Atlas/cpp/edirobot/edi_robot.h
+/home/root/Smart_node/Atlas/cpp/edirobot/edi_robot.h
 
-/home/root/NR/Atlas/cpp/edirobot/motor.cpp
+/home/root/Smart_node/Atlas/cpp/edirobot/motor.cpp
 iostream
 -
 stdlib.h
-/home/root/NR/Atlas/cpp/edirobot/stdlib.h
+/home/root/Smart_node/Atlas/cpp/edirobot/stdlib.h
 mraa.hpp
-/home/root/NR/Atlas/cpp/edirobot/mraa.hpp
+/home/root/Smart_node/Atlas/cpp/edirobot/mraa.hpp
 stdio.h
-/home/root/NR/Atlas/cpp/edirobot/stdio.h
+/home/root/Smart_node/Atlas/cpp/edirobot/stdio.h
 uv.h
-/home/root/NR/Atlas/cpp/edirobot/uv.h
+/home/root/Smart_node/Atlas/cpp/edirobot/uv.h
 edi_robot.h
-/home/root/NR/Atlas/cpp/edirobot/edi_robot.h
+/home/root/Smart_node/Atlas/cpp/edirobot/edi_robot.h
 
-/home/root/NR/Atlas/cpp/edirobot/screen.cpp
+/home/root/Smart_node/Atlas/cpp/edirobot/screen.cpp
 iostream
 -
 stdlib.h
-/home/root/NR/Atlas/cpp/edirobot/stdlib.h
+/home/root/Smart_node/Atlas/cpp/edirobot/stdlib.h
 mraa.hpp
-/home/root/NR/Atlas/cpp/edirobot/mraa.hpp
+/home/root/Smart_node/Atlas/cpp/edirobot/mraa.hpp
 stdio.h
-/home/root/NR/Atlas/cpp/edirobot/stdio.h
+/home/root/Smart_node/Atlas/cpp/edirobot/stdio.h
 uv.h
-/home/root/NR/Atlas/cpp/edirobot/uv.h
+/home/root/Smart_node/Atlas/cpp/edirobot/uv.h
 edi_robot.h
-/home/root/NR/Atlas/cpp/edirobot/edi_robot.h
+/home/root/Smart_node/Atlas/cpp/edirobot/edi_robot.h
 
-/home/root/NR/Atlas/cpp/edirobot/servo.cpp
+/home/root/Smart_node/Atlas/cpp/edirobot/servo.cpp
 iostream
 -
 stdlib.h
-/home/root/NR/Atlas/cpp/edirobot/stdlib.h
+/home/root/Smart_node/Atlas/cpp/edirobot/stdlib.h
 mraa.hpp
-/home/root/NR/Atlas/cpp/edirobot/mraa.hpp
+/home/root/Smart_node/Atlas/cpp/edirobot/mraa.hpp
 stdio.h
-/home/root/NR/Atlas/cpp/edirobot/stdio.h
+/home/root/Smart_node/Atlas/cpp/edirobot/stdio.h
 uv.h
-/home/root/NR/Atlas/cpp/edirobot/uv.h
+/home/root/Smart_node/Atlas/cpp/edirobot/uv.h
 edi_robot.h
-/home/root/NR/Atlas/cpp/edirobot/edi_robot.h
+/home/root/Smart_node/Atlas/cpp/edirobot/edi_robot.h
 

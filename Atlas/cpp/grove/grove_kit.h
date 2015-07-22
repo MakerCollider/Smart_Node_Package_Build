@@ -91,25 +91,6 @@ extern int temperatureInit(temperatureConfig config, temperatureCb cb, temperatu
 extern int temperatureRelease();
 extern int temperatureOnData(int toggle);
 
-/************************************************
- button
- ************************************************/
-
-#define buttonClass "grove"
-struct buttonConfig {
-    int pin;
-    int impulse;
-};
-
-#define buttonConfig_pin           0
-#define buttonConfig_impulse      1000
-
-typedef void(*buttonCb)(int);
-
-extern int buttonInit(buttonConfig config, buttonCb cb);
-extern int buttonRelease();
-extern int buttonOnData();
-
 /************************************************ 
  rotary                               
  ************************************************/
@@ -189,25 +170,6 @@ extern int buzzerLoopInit(buzzerLoopConfig config, buzzerLoopCb cb);
 extern int buzzerLoopRelease();                       
 extern int buzzerLoopOnData(int toggle);
   
-/************************************************                      
- touch                                                               
- ************************************************/                     
-  
-#define touchClass "grove"                                                                     
-struct touchConfig {                                                  
-    int pin;                                                           
-    int impulse;                                                        
-};                                                                     
-                                                  
-#define touchConfig_pin           0              
-#define touchConfig_impulse      1000             
-                                                  
-typedef void(*touchCb)(int);                     
-                                                  
-extern int touchInit(touchConfig config, touchCb cb);
-extern int touchRelease();                             
-extern int touchOnData();           
- 
 /************************************************
  Mic
  ************************************************/

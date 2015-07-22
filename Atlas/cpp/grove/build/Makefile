@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/NR/Atlas/cpp/grove
+CMAKE_SOURCE_DIR = /home/root/Smart_node/Atlas/cpp/grove
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/NR/Atlas/cpp/grove/build
+CMAKE_BINARY_DIR = /home/root/Smart_node/Atlas/cpp/grove/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/NR/Atlas/cpp/grove/build/CMakeFiles /home/root/NR/Atlas/cpp/grove/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/NR/Atlas/cpp/grove/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -110,30 +110,6 @@ grove: cmake_check_build_system
 grove/fast:
 	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/build
 .PHONY : grove/fast
-
-button.o: button.cpp.o
-.PHONY : button.o
-
-# target to build an object file
-button.cpp.o:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/button.cpp.o
-.PHONY : button.cpp.o
-
-button.i: button.cpp.i
-.PHONY : button.i
-
-# target to preprocess a source file
-button.cpp.i:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/button.cpp.i
-.PHONY : button.cpp.i
-
-button.s: button.cpp.s
-.PHONY : button.s
-
-# target to generate assembly for a file
-button.cpp.s:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/button.cpp.s
-.PHONY : button.cpp.s
 
 buzzer.o: buzzer.cpp.o
 .PHONY : buzzer.o
@@ -327,30 +303,6 @@ temperature.cpp.s:
 	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/temperature.cpp.s
 .PHONY : temperature.cpp.s
 
-touch.o: touch.cpp.o
-.PHONY : touch.o
-
-# target to build an object file
-touch.cpp.o:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/touch.cpp.o
-.PHONY : touch.cpp.o
-
-touch.i: touch.cpp.i
-.PHONY : touch.i
-
-# target to preprocess a source file
-touch.cpp.i:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/touch.cpp.i
-.PHONY : touch.cpp.i
-
-touch.s: touch.cpp.s
-.PHONY : touch.s
-
-# target to generate assembly for a file
-touch.cpp.s:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/touch.cpp.s
-.PHONY : touch.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -360,9 +312,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... grove"
 	@echo "... rebuild_cache"
-	@echo "... button.o"
-	@echo "... button.i"
-	@echo "... button.s"
 	@echo "... buzzer.o"
 	@echo "... buzzer.i"
 	@echo "... buzzer.s"
@@ -387,9 +336,6 @@ help:
 	@echo "... temperature.o"
 	@echo "... temperature.i"
 	@echo "... temperature.s"
-	@echo "... touch.o"
-	@echo "... touch.i"
-	@echo "... touch.s"
 .PHONY : help
 
 

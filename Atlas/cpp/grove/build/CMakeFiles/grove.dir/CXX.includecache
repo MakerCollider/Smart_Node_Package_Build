@@ -6,23 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/root/NR/Atlas/cpp/grove/button.cpp
-iostream
--
-stdlib.h
--
-unistd.h
--
-string
--
-uv.h
--
-upm/grove.h
-/home/root/NR/Atlas/cpp/grove/upm/grove.h
-grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
-
-/home/root/NR/Atlas/cpp/grove/buzzer.cpp
+/home/root/Smart_node/Atlas/cpp/grove/buzzer.cpp
 stdio.h
 -
 string.h
@@ -30,35 +14,35 @@ string.h
 uv.h
 -
 upm/buzzer.h
-/home/root/NR/Atlas/cpp/grove/upm/buzzer.h
+/home/root/Smart_node/Atlas/cpp/grove/upm/buzzer.h
 grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 
-/home/root/NR/Atlas/cpp/grove/lcd.cpp
+/home/root/Smart_node/Atlas/cpp/grove/lcd.cpp
 stdio.h
 -
 string.h
 -
 upm/jhd1313m1.h
-/home/root/NR/Atlas/cpp/grove/upm/jhd1313m1.h
+/home/root/Smart_node/Atlas/cpp/grove/upm/jhd1313m1.h
 uv.h
-/home/root/NR/Atlas/cpp/grove/uv.h
+/home/root/Smart_node/Atlas/cpp/grove/uv.h
 grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 
-/home/root/NR/Atlas/cpp/grove/led.cpp
+/home/root/Smart_node/Atlas/cpp/grove/led.cpp
 stdio.h
 -
 string.h
 -
 upm/grove.h
-/home/root/NR/Atlas/cpp/grove/upm/grove.h
+/home/root/Smart_node/Atlas/cpp/grove/upm/grove.h
 grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 
-/home/root/NR/Atlas/cpp/grove/lightSensor.cpp
+/home/root/Smart_node/Atlas/cpp/grove/lightSensor.cpp
 iostream
 -
 stdlib.h
@@ -70,11 +54,11 @@ string
 uv.h
 -
 mraa/aio.h
-/home/root/NR/Atlas/cpp/grove/mraa/aio.h
+/home/root/Smart_node/Atlas/cpp/grove/mraa/aio.h
 grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 
-/home/root/NR/Atlas/cpp/grove/mic.cpp
+/home/root/Smart_node/Atlas/cpp/grove/mic.cpp
 iostream
 -
 stdlib.h
@@ -86,21 +70,21 @@ string
 uv.h
 -
 mraa/aio.h
-/home/root/NR/Atlas/cpp/grove/mraa/aio.h
+/home/root/Smart_node/Atlas/cpp/grove/mraa/aio.h
 grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 
-/home/root/NR/Atlas/cpp/grove/relay.cpp
+/home/root/Smart_node/Atlas/cpp/grove/relay.cpp
 stdio.h
 -
 string.h
 -
 upm/grove.h
-/home/root/NR/Atlas/cpp/grove/upm/grove.h
+/home/root/Smart_node/Atlas/cpp/grove/upm/grove.h
 grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 
-/home/root/NR/Atlas/cpp/grove/rotary.cpp
+/home/root/Smart_node/Atlas/cpp/grove/rotary.cpp
 iostream
 -
 stdlib.h
@@ -112,11 +96,11 @@ string
 uv.h
 -
 upm/grove.h
-/home/root/NR/Atlas/cpp/grove/upm/grove.h
+/home/root/Smart_node/Atlas/cpp/grove/upm/grove.h
 grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 
-/home/root/NR/Atlas/cpp/grove/temperature.cpp
+/home/root/Smart_node/Atlas/cpp/grove/temperature.cpp
 iostream
 -
 stdlib.h
@@ -128,23 +112,7 @@ string
 uv.h
 -
 upm/grove.h
-/home/root/NR/Atlas/cpp/grove/upm/grove.h
+/home/root/Smart_node/Atlas/cpp/grove/upm/grove.h
 grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
-
-/home/root/NR/Atlas/cpp/grove/touch.cpp
-iostream
--
-stdlib.h
--
-unistd.h
--
-string
--
-uv.h
--
-upm/ttp223.h
-/home/root/NR/Atlas/cpp/grove/upm/ttp223.h
-grove_kit.h
-/home/root/NR/Atlas/cpp/grove/grove_kit.h
+/home/root/Smart_node/Atlas/cpp/grove/grove_kit.h
 

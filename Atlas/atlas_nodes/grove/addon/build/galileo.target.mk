@@ -29,9 +29,9 @@ CFLAGS_CC_Debug := \
 	-fno-exceptions
 
 INCS_Debug := \
-	-I/home/root/.node-gyp/0.10.35/src \
-	-I/home/root/.node-gyp/0.10.35/deps/uv/include \
-	-I/home/root/.node-gyp/0.10.35/deps/v8/include \
+	-I/home/root/.node-gyp/0.10.38/src \
+	-I/home/root/.node-gyp/0.10.38/deps/uv/include \
+	-I/home/root/.node-gyp/0.10.38/deps/v8/include \
 	-I$(srcdir)/src \
 	-I$(srcdir)/../../../cpp/grove
 
@@ -62,9 +62,9 @@ CFLAGS_CC_Release := \
 	-fno-exceptions
 
 INCS_Release := \
-	-I/home/root/.node-gyp/0.10.35/src \
-	-I/home/root/.node-gyp/0.10.35/deps/uv/include \
-	-I/home/root/.node-gyp/0.10.35/deps/v8/include \
+	-I/home/root/.node-gyp/0.10.38/src \
+	-I/home/root/.node-gyp/0.10.38/deps/uv/include \
+	-I/home/root/.node-gyp/0.10.38/deps/v8/include \
 	-I$(srcdir)/src \
 	-I$(srcdir)/../../../cpp/grove
 

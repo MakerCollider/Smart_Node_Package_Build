@@ -35,9 +35,6 @@
       "temperatureConfig_aioPin": 0,
       "temperatureConfig_interval": 500,
       "temperatureConfig_threshold": 25,
-      "buttonClass": "grove",
-      "buttonConfig_pin": 0,
-      "buttonConfig_impulse": 1000,
       "rotaryClass": "grove",
       "rotaryConfig_aioPin": 0,
       "rotaryConfig_interval": 300,
@@ -51,9 +48,6 @@
       "buzzerLoopConfig_pin": 0,
       "buzzerLoopConfig_tone": 0,
       "buzzerLoopConfig_interval": 500,
-      "touchClass": "grove",
-      "touchConfig_pin": 0,
-      "touchConfig_impulse": 1000,
       "micClass": "grove",
       "micConfig_aioPin": 0,
       "micConfig_threshold": 400
@@ -205,33 +199,6 @@
         "return": ["extern int"]
       },
       
-      "buttonInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "buttonConfig"
-          },
-          {
-            "name": "cb",
-            "type": "buttonCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "buttonRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "buttonOnData": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
       "rotaryInit": {
         "override" : false,
         "parameters": [
@@ -361,33 +328,6 @@
             "type": "int"
           }
         ],
-        "return": ["extern int"]
-      },
-      
-      "touchInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "touchConfig"
-          },
-          {
-            "name": "cb",
-            "type": "touchCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "touchRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "touchOnData": {
-        "override" : false,
-        "parameters": [],
         "return": ["extern int"]
       },
       

@@ -367,74 +367,7 @@ Handle<Value> temperatureOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 109: extern int buttonInit ( buttonConfig config , buttonCb cb ) ;
-Handle<Value> buttonInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_pin = args[0]->ToObject()->Get(String::New("pin"));
-    V8_ASSERT(!args0_pin->IsNull() && args0_pin->IsInt32(), "arg0.pin parameter error");
-    int arg0_pin = (int)args0_pin->IntegerValue();
-    
-    Local<Value> args0_impulse = args[0]->ToObject()->Get(String::New("impulse"));
-    V8_ASSERT(!args0_impulse->IsNull() && args0_impulse->IsInt32(), "arg0.impulse parameter error");
-    int arg0_impulse = (int)args0_impulse->IntegerValue();
-    
-    buttonConfig arg0;
-    arg0.pin = arg0_pin;
-    arg0.impulse = arg0_impulse;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[6] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    buttonCb arg1;;
-    arg1 = cbFunc6;
-    
-        
-    // Call C++ function
-    int ret = (int)buttonInit(arg0, arg1);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 110: extern int buttonRelease ( ) ;
-Handle<Value> buttonReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)buttonRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 111: extern int buttonOnData ( ) ;
-Handle<Value> buttonOnDataV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)buttonOnData();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 131: extern int rotaryInit ( rotaryConfig config , rotaryDegreeCb degCb , rotaryThreCb threCb ) ;
+// 112: extern int rotaryInit ( rotaryConfig config , rotaryDegreeCb degCb , rotaryThreCb threCb ) ;
 Handle<Value> rotaryInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -460,15 +393,15 @@ Handle<Value> rotaryInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[7] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[6] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     rotaryDegreeCb arg1;;
-    arg1 = cbFunc7;
+    arg1 = cbFunc6;
     
     
     V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[8] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
+    cbArray[7] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
     rotaryThreCb arg2;;
-    arg2 = cbFunc8;
+    arg2 = cbFunc7;
     
         
     // Call C++ function
@@ -482,7 +415,7 @@ Handle<Value> rotaryInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 132: extern int rotaryRelease ( ) ;
+// 113: extern int rotaryRelease ( ) ;
 Handle<Value> rotaryReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -497,7 +430,7 @@ Handle<Value> rotaryReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 133: extern int rotaryOnData ( int toggle ) ;
+// 114: extern int rotaryOnData ( int toggle ) ;
 Handle<Value> rotaryOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -518,7 +451,7 @@ Handle<Value> rotaryOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 148: extern int relayInit ( relayConfig config , relayCb cb ) ;
+// 129: extern int relayInit ( relayConfig config , relayCb cb ) ;
 Handle<Value> relayInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -534,9 +467,9 @@ Handle<Value> relayInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[9] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[8] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     relayCb arg1;;
-    arg1 = cbFunc9;
+    arg1 = cbFunc8;
     
         
     // Call C++ function
@@ -550,7 +483,7 @@ Handle<Value> relayInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 149: extern int relayRelease ( ) ;
+// 130: extern int relayRelease ( ) ;
 Handle<Value> relayReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -565,7 +498,7 @@ Handle<Value> relayReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 150: extern int relayOnData ( int toggle ) ;
+// 131: extern int relayOnData ( int toggle ) ;
 Handle<Value> relayOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -586,7 +519,7 @@ Handle<Value> relayOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 167: extern int buzzerInit ( buzzerConfig config , buzzerCb cb ) ;
+// 148: extern int buzzerInit ( buzzerConfig config , buzzerCb cb ) ;
 Handle<Value> buzzerInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -607,9 +540,9 @@ Handle<Value> buzzerInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[10] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[9] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     buzzerCb arg1;;
-    arg1 = cbFunc10;
+    arg1 = cbFunc9;
     
         
     // Call C++ function
@@ -623,7 +556,7 @@ Handle<Value> buzzerInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 168: extern int buzzerRelease ( ) ;
+// 149: extern int buzzerRelease ( ) ;
 Handle<Value> buzzerReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -638,7 +571,7 @@ Handle<Value> buzzerReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 169: extern int buzzerOnData ( int toggle ) ;
+// 150: extern int buzzerOnData ( int toggle ) ;
 Handle<Value> buzzerOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -659,7 +592,7 @@ Handle<Value> buzzerOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 188: extern int buzzerLoopInit ( buzzerLoopConfig config , buzzerLoopCb cb ) ;
+// 169: extern int buzzerLoopInit ( buzzerLoopConfig config , buzzerLoopCb cb ) ;
 Handle<Value> buzzerLoopInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -685,9 +618,9 @@ Handle<Value> buzzerLoopInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[11] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[10] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     buzzerLoopCb arg1;;
-    arg1 = cbFunc11;
+    arg1 = cbFunc10;
     
         
     // Call C++ function
@@ -701,7 +634,7 @@ Handle<Value> buzzerLoopInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 189: extern int buzzerLoopRelease ( ) ;
+// 170: extern int buzzerLoopRelease ( ) ;
 Handle<Value> buzzerLoopReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -716,7 +649,7 @@ Handle<Value> buzzerLoopReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 190: extern int buzzerLoopOnData ( int toggle ) ;
+// 171: extern int buzzerLoopOnData ( int toggle ) ;
 Handle<Value> buzzerLoopOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -737,74 +670,7 @@ Handle<Value> buzzerLoopOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 207: extern int touchInit ( touchConfig config , touchCb cb ) ;
-Handle<Value> touchInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_pin = args[0]->ToObject()->Get(String::New("pin"));
-    V8_ASSERT(!args0_pin->IsNull() && args0_pin->IsInt32(), "arg0.pin parameter error");
-    int arg0_pin = (int)args0_pin->IntegerValue();
-    
-    Local<Value> args0_impulse = args[0]->ToObject()->Get(String::New("impulse"));
-    V8_ASSERT(!args0_impulse->IsNull() && args0_impulse->IsInt32(), "arg0.impulse parameter error");
-    int arg0_impulse = (int)args0_impulse->IntegerValue();
-    
-    touchConfig arg0;
-    arg0.pin = arg0_pin;
-    arg0.impulse = arg0_impulse;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[12] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    touchCb arg1;;
-    arg1 = cbFunc12;
-    
-        
-    // Call C++ function
-    int ret = (int)touchInit(arg0, arg1);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 208: extern int touchRelease ( ) ;
-Handle<Value> touchReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)touchRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 209: extern int touchOnData ( ) ;
-Handle<Value> touchOnDataV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)touchOnData();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 227: extern int micInit ( micConfig config , micValCb valCb , micThreCb threCb ) ;
+// 189: extern int micInit ( micConfig config , micValCb valCb , micThreCb threCb ) ;
 Handle<Value> micInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -825,15 +691,15 @@ Handle<Value> micInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[13] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[11] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     micValCb arg1;;
-    arg1 = cbFunc13;
+    arg1 = cbFunc11;
     
     
     V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[14] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
+    cbArray[12] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
     micThreCb arg2;;
-    arg2 = cbFunc14;
+    arg2 = cbFunc12;
     
         
     // Call C++ function
@@ -847,7 +713,7 @@ Handle<Value> micInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 228: extern int micRelease ( ) ;
+// 190: extern int micRelease ( ) ;
 Handle<Value> micReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -862,7 +728,7 @@ Handle<Value> micReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 229: extern int micOnData ( int toggle ) ;
+// 191: extern int micOnData ( int toggle ) ;
 Handle<Value> micOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -920,15 +786,6 @@ static void SetMemberFunc(Handle<Object> obj) {
     obj->Set(v8::String::NewSymbol("temperatureOnData"),
            FunctionTemplate::New(temperatureOnDataV8)->GetFunction());
 
-    obj->Set(v8::String::NewSymbol("buttonInit"),
-           FunctionTemplate::New(buttonInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("buttonRelease"),
-           FunctionTemplate::New(buttonReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("buttonOnData"),
-           FunctionTemplate::New(buttonOnDataV8)->GetFunction());
-
     obj->Set(v8::String::NewSymbol("rotaryInit"),
            FunctionTemplate::New(rotaryInitV8)->GetFunction());
 
@@ -964,15 +821,6 @@ static void SetMemberFunc(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("buzzerLoopOnData"),
            FunctionTemplate::New(buzzerLoopOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("touchInit"),
-           FunctionTemplate::New(touchInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("touchRelease"),
-           FunctionTemplate::New(touchReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("touchOnData"),
-           FunctionTemplate::New(touchOnDataV8)->GetFunction());
 
     obj->Set(v8::String::NewSymbol("micInit"),
            FunctionTemplate::New(micInitV8)->GetFunction());
@@ -1044,15 +892,6 @@ static void SetConst(Handle<Object> obj) {
     obj->Set(v8::String::NewSymbol("temperatureConfig_threshold"),
              Int32::New(25));
 
-    obj->Set(v8::String::NewSymbol("buttonClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("buttonConfig_pin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("buttonConfig_impulse"),
-             Int32::New(1000));
-
     obj->Set(v8::String::NewSymbol("rotaryClass"),
              v8::String::New("grove"));
 
@@ -1091,15 +930,6 @@ static void SetConst(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("buzzerLoopConfig_interval"),
              Int32::New(500));
-
-    obj->Set(v8::String::NewSymbol("touchClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("touchConfig_pin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("touchConfig_impulse"),
-             Int32::New(1000));
 
     obj->Set(v8::String::NewSymbol("micClass"),
              v8::String::New("grove"));

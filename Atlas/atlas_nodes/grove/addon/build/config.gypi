@@ -9,7 +9,7 @@
   },
   "variables": {
     "clang": 0,
-    "gcc_version": 48,
+    "gcc_version": 49,
     "host_arch": "ia32",
     "node_install_npm": "true",
     "node_prefix": "/usr",
@@ -33,7 +33,7 @@
     "v8_no_strict_aliasing": 1,
     "v8_use_snapshot": "false",
     "want_separate_host_toolset": 0,
-    "nodedir": "/home/root/.node-gyp/0.10.35",
+    "nodedir": "/home/root/.node-gyp/0.10.38",
     "copy_dev_lib": "true",
     "standalone_static_library": 1
   }

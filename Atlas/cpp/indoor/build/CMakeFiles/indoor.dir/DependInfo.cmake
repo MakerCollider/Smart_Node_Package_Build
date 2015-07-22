@@ -4,11 +4,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/root/NR/Atlas/cpp/indoor/encoder.cpp" "/home/root/NR/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/encoder.cpp.o"
-  "/home/root/NR/Atlas/cpp/indoor/moisture.cpp" "/home/root/NR/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/moisture.cpp.o"
-  "/home/root/NR/Atlas/cpp/indoor/motion.cpp" "/home/root/NR/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/motion.cpp.o"
-  "/home/root/NR/Atlas/cpp/indoor/temp_humi.cpp" "/home/root/NR/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/temp_humi.cpp.o"
-  "/home/root/NR/Atlas/cpp/indoor/uv_sensor.cpp" "/home/root/NR/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/uv_sensor.cpp.o"
+  "/home/root/Smart_node/Atlas/cpp/indoor/encoder.cpp" "/home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/encoder.cpp.o"
+  "/home/root/Smart_node/Atlas/cpp/indoor/moisture.cpp" "/home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/moisture.cpp.o"
+  "/home/root/Smart_node/Atlas/cpp/indoor/motion.cpp" "/home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/motion.cpp.o"
+  "/home/root/Smart_node/Atlas/cpp/indoor/temp_humi.cpp" "/home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/temp_humi.cpp.o"
+  "/home/root/Smart_node/Atlas/cpp/indoor/uv_sensor.cpp" "/home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir/uv_sensor.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

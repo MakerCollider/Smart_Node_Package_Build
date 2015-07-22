@@ -47,10 +47,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/NR/Atlas/cpp/edirobot
+CMAKE_SOURCE_DIR = /home/root/Smart_node/Atlas/cpp/edirobot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/NR/Atlas/cpp/edirobot/build
+CMAKE_BINARY_DIR = /home/root/Smart_node/Atlas/cpp/edirobot/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/edirobot.dir
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/root/NR/Atlas/cpp/edirobot/build
 CMakeFiles/edirobot.dir/all:
 	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/depend
 	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/NR/Atlas/cpp/edirobot/build/CMakeFiles  1 2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles  1 2 3
 	@echo "Built target edirobot"
 .PHONY : CMakeFiles/edirobot.dir/all
 
@@ -69,9 +69,9 @@ all: CMakeFiles/edirobot.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/edirobot.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/NR/Atlas/cpp/edirobot/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/edirobot.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/NR/Atlas/cpp/edirobot/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles 0
 .PHONY : CMakeFiles/edirobot.dir/rule
 
 # Convenience name for target.

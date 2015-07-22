@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/NR/Atlas/cpp/indoor
+CMAKE_SOURCE_DIR = /home/root/Smart_node/Atlas/cpp/indoor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/NR/Atlas/cpp/indoor/build
+CMAKE_BINARY_DIR = /home/root/Smart_node/Atlas/cpp/indoor/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/NR/Atlas/cpp/indoor/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

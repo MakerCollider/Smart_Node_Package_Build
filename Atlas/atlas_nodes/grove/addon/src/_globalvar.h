@@ -30,7 +30,7 @@ using namespace v8;
     }
 #endif
 
-extern Persistent<Function> cbArray[15];
+extern Persistent<Function> cbArray[13];
 
 extern std::map <void *, Persistent<Object> > CClassToJsObjMap;
 extern std::map <void *, Persistent<Object> >::iterator iter;
@@ -42,14 +42,12 @@ extern void cbFunc2(char * arg0);
 extern void cbFunc3(int arg0);
 extern void cbFunc4(int arg0);
 extern void cbFunc5(int arg0);
-extern void cbFunc6(int arg0);
-extern void cbFunc7(float arg0);
+extern void cbFunc6(float arg0);
+extern void cbFunc7(int arg0);
 extern void cbFunc8(int arg0);
 extern void cbFunc9(int arg0);
 extern void cbFunc10(int arg0);
 extern void cbFunc11(int arg0);
 extern void cbFunc12(int arg0);
-extern void cbFunc13(int arg0);
-extern void cbFunc14(int arg0);
 
 #endif
