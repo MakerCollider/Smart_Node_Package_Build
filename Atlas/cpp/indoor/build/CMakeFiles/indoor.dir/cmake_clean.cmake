@@ -3,7 +3,6 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/indoor.dir/encoder.cpp.o"
   "CMakeFiles/indoor.dir/moisture.cpp.o"
   "CMakeFiles/indoor.dir/temp_humi.cpp.o"
-  "CMakeFiles/indoor.dir/motion.cpp.o"
   "../bin/libindoor.pdb"
   "../bin/libindoor.a"
 )

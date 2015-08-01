@@ -15,10 +15,6 @@
     "constants" : {
       "ERR_NONE": 0,
       "ERR_UNKOWN": -1,
-      "lightSensorClass": "grove",
-      "lightSensorConfig_pin": 0,
-      "lightSensorConfig_interval": 500,
-      "lightSensorConfig_threshold": 400,
       "lcdHelp": "this is the node for RGB Lcd in Grove starter kit plus. \
        input: string to display. \
        output: \
@@ -31,26 +27,12 @@
       "lcdConfig_colorb": 254,
       "ledClass": "grove",
       "ledConfig_pin": 0,
-      "temperatureClass": "grove",
-      "temperatureConfig_aioPin": 0,
-      "temperatureConfig_interval": 500,
-      "temperatureConfig_threshold": 25,
       "rotaryClass": "grove",
       "rotaryConfig_aioPin": 0,
       "rotaryConfig_interval": 300,
       "rotaryConfig_threshold": 150,
       "relayClass": "grove",
-      "relayConfig_pin": 0,
-      "buzzerClass": "grove",
-      "buzzerConfig_pin": 0,
-      "buzzerConfig_tone": 0,
-      "buzzerLoopClass": "grove",
-      "buzzerLoopConfig_pin": 0,
-      "buzzerLoopConfig_tone": 0,
-      "buzzerLoopConfig_interval": 500,
-      "micClass": "grove",
-      "micConfig_aioPin": 0,
-      "micConfig_threshold": 400
+      "relayConfig_pin": 0
     },
   
     "enums" : {
@@ -62,42 +44,6 @@
     },
   
     "functions" : {
-      
-      "lightSensorInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "lightSensorConfig"
-          },
-          {
-            "name": "cb",
-            "type": "lightSensorCb"
-          },
-          {
-            "name": "threCb",
-            "type": "lightSensorThreCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "lightSensorRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "lightSensorOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
       
       "lcdInit": {
         "override" : false,
@@ -163,42 +109,6 @@
         "return": ["extern int"]
       },
       
-      "temperatureInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "temperatureConfig"
-          },
-          {
-            "name": "cb",
-            "type": "temperatureCb"
-          },
-          {
-            "name": "threCb",
-            "type": "temperatureThreCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "temperatureRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "temperatureOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
       "rotaryInit": {
         "override" : false,
         "parameters": [
@@ -257,106 +167,6 @@
       },
       
       "relayOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "buzzerInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "buzzerConfig"
-          },
-          {
-            "name": "cb",
-            "type": "buzzerCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "buzzerRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "buzzerOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "buzzerLoopInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "buzzerLoopConfig"
-          },
-          {
-            "name": "cb",
-            "type": "buzzerLoopCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "buzzerLoopRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "buzzerLoopOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "micInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "micConfig"
-          },
-          {
-            "name": "valCb",
-            "type": "micValCb"
-          },
-          {
-            "name": "threCb",
-            "type": "micThreCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "micRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "micOnData": {
         "override" : false,
         "parameters": [
           {

@@ -8,7 +8,7 @@
 #include <map>
 #include "stdlib.h"
 
-Persistent<Function> cbArray[13];
+Persistent<Function> cbArray[12];
 
 std::map <void *, Persistent<Object> > CClassToJsObjMap;
 std::map <void *, Persistent<Object> >::iterator iter;
@@ -178,20 +178,6 @@ void cbFunc11(int arg0) {
     argv[0] = Int32::New(arg0);
     
     cbArray[11]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc12(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[12]->Call(Context::GetCurrent()->Global(), argc, argv);
     
     
 

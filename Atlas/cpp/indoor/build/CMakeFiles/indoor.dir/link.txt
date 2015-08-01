@@ -1,2 +1,2 @@
-/usr/bin/ar cr ../bin/libindoor.a  CMakeFiles/indoor.dir/uv_sensor.cpp.o CMakeFiles/indoor.dir/encoder.cpp.o CMakeFiles/indoor.dir/moisture.cpp.o CMakeFiles/indoor.dir/temp_humi.cpp.o CMakeFiles/indoor.dir/motion.cpp.o
+/usr/bin/ar cr ../bin/libindoor.a  CMakeFiles/indoor.dir/uv_sensor.cpp.o CMakeFiles/indoor.dir/encoder.cpp.o CMakeFiles/indoor.dir/moisture.cpp.o CMakeFiles/indoor.dir/temp_humi.cpp.o
 /usr/bin/ranlib ../bin/libindoor.a

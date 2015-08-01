@@ -8,49 +8,21 @@
 #include <map>
 #include "stdlib.h"
 
-Persistent<Function> cbArray[13];
+Persistent<Function> cbArray[5];
 
 std::map <void *, Persistent<Object> > CClassToJsObjMap;
 std::map <void *, Persistent<Object> >::iterator iter;
 Persistent<Object> JSObj;
 
 
-void cbFunc0(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[0]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc1(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[1]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc2(char * arg0) {
+void cbFunc0(char * arg0) {
     HandleScope scope;
     const unsigned argc = 1;
     Local<Value> argv[argc];
 
     argv[0] = v8::String::New((char*)arg0);
     
-    cbArray[2]->Call(Context::GetCurrent()->Global(), argc, argv);
+    cbArray[0]->Call(Context::GetCurrent()->Global(), argc, argv);
     
     
     int idx0;
@@ -70,6 +42,34 @@ void cbFunc2(char * arg0) {
         }
         arg0[idx0] = 0;
     }
+    
+
+    return;
+}
+
+void cbFunc1(int arg0) {
+    HandleScope scope;
+    const unsigned argc = 1;
+    Local<Value> argv[argc];
+
+    argv[0] = Int32::New(arg0);
+    
+    cbArray[1]->Call(Context::GetCurrent()->Global(), argc, argv);
+    
+    
+
+    return;
+}
+
+void cbFunc2(float arg0) {
+    HandleScope scope;
+    const unsigned argc = 1;
+    Local<Value> argv[argc];
+
+    argv[0] = Number::New(arg0);
+    
+    cbArray[2]->Call(Context::GetCurrent()->Global(), argc, argv);
+    
     
 
     return;
@@ -97,118 +97,6 @@ void cbFunc4(int arg0) {
     argv[0] = Int32::New(arg0);
     
     cbArray[4]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc5(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[5]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc6(float arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Number::New(arg0);
-    
-    cbArray[6]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc7(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[7]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc8(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[8]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc9(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[9]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc10(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[10]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc11(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[11]->Call(Context::GetCurrent()->Global(), argc, argv);
-    
-    
-
-    return;
-}
-
-void cbFunc12(int arg0) {
-    HandleScope scope;
-    const unsigned argc = 1;
-    Local<Value> argv[argc];
-
-    argv[0] = Int32::New(arg0);
-    
-    cbArray[12]->Call(Context::GetCurrent()->Global(), argc, argv);
     
     
 

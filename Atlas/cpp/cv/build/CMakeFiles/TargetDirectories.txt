@@ -1,1 +1,1 @@
-/home/root/Smart_node/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir
+/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir

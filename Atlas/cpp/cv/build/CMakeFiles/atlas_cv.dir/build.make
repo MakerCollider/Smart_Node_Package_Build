@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/Smart_node/Atlas/cpp/cv
+CMAKE_SOURCE_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/cv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/Smart_node/Atlas/cpp/cv/build
+CMAKE_BINARY_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/atlas_cv.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/atlas_cv.dir/flags.make
 
 CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o: CMakeFiles/atlas_cv.dir/flags.make
 CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o: ../cv_atlas.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/cv/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o -c /home/root/Smart_node/Atlas/cpp/cv/cv_atlas.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.cpp
 
 CMakeFiles/atlas_cv.dir/cv_atlas.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/atlas_cv.dir/cv_atlas.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/cv/cv_atlas.cpp > CMakeFiles/atlas_cv.dir/cv_atlas.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.cpp > CMakeFiles/atlas_cv.dir/cv_atlas.cpp.i
 
 CMakeFiles/atlas_cv.dir/cv_atlas.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/atlas_cv.dir/cv_atlas.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/cv/cv_atlas.cpp -o CMakeFiles/atlas_cv.dir/cv_atlas.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.cpp -o CMakeFiles/atlas_cv.dir/cv_atlas.cpp.s
 
 CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o.requires:
 .PHONY : CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o.requires
@@ -74,17 +74,17 @@ CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o.provides.build: CMakeFiles/atlas_cv.dir/c
 
 CMakeFiles/atlas_cv.dir/cv_tool.cpp.o: CMakeFiles/atlas_cv.dir/flags.make
 CMakeFiles/atlas_cv.dir/cv_tool.cpp.o: ../cv_tool.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/cv/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/atlas_cv.dir/cv_tool.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/atlas_cv.dir/cv_tool.cpp.o -c /home/root/Smart_node/Atlas/cpp/cv/cv_tool.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/atlas_cv.dir/cv_tool.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_tool.cpp
 
 CMakeFiles/atlas_cv.dir/cv_tool.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/atlas_cv.dir/cv_tool.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/cv/cv_tool.cpp > CMakeFiles/atlas_cv.dir/cv_tool.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_tool.cpp > CMakeFiles/atlas_cv.dir/cv_tool.cpp.i
 
 CMakeFiles/atlas_cv.dir/cv_tool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/atlas_cv.dir/cv_tool.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/cv/cv_tool.cpp -o CMakeFiles/atlas_cv.dir/cv_tool.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_tool.cpp -o CMakeFiles/atlas_cv.dir/cv_tool.cpp.s
 
 CMakeFiles/atlas_cv.dir/cv_tool.cpp.o.requires:
 .PHONY : CMakeFiles/atlas_cv.dir/cv_tool.cpp.o.requires
@@ -97,17 +97,17 @@ CMakeFiles/atlas_cv.dir/cv_tool.cpp.o.provides.build: CMakeFiles/atlas_cv.dir/cv
 
 CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o: CMakeFiles/atlas_cv.dir/flags.make
 CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o: ../lib/libb64/src/cencode.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/cv/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o   -c /home/root/Smart_node/Atlas/cpp/cv/lib/libb64/src/cencode.c
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o   -c /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/lib/libb64/src/cencode.c
 
 CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/root/Smart_node/Atlas/cpp/cv/lib/libb64/src/cencode.c > CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/lib/libb64/src/cencode.c > CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.i
 
 CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/root/Smart_node/Atlas/cpp/cv/lib/libb64/src/cencode.c -o CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/lib/libb64/src/cencode.c -o CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.s
 
 CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o.requires:
 .PHONY : CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o.requires
@@ -150,6 +150,6 @@ CMakeFiles/atlas_cv.dir/clean:
 .PHONY : CMakeFiles/atlas_cv.dir/clean
 
 CMakeFiles/atlas_cv.dir/depend:
-	cd /home/root/Smart_node/Atlas/cpp/cv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/root/Smart_node/Atlas/cpp/cv /home/root/Smart_node/Atlas/cpp/cv /home/root/Smart_node/Atlas/cpp/cv/build /home/root/Smart_node/Atlas/cpp/cv/build /home/root/Smart_node/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/root/Node_red_on_edison_Release/Atlas/cpp/cv /home/root/Node_red_on_edison_Release/Atlas/cpp/cv /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/build/CMakeFiles/atlas_cv.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/atlas_cv.dir/depend
 

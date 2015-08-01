@@ -23,6 +23,7 @@ var servoModule =require("jsupm_servo");
             angle = angle>>>0;
             
             servo.setAngle(angle);
+            node.status({fill: "red", shape: "dot", text: "Servo move to " + angle});
             console.log("Set Angle to " + angle);
 
             //send the result

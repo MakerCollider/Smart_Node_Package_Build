@@ -1,1 +1,1 @@
-/home/root/Smart_node/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/build/CMakeFiles/indoor.dir
