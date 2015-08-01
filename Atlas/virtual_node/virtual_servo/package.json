@@ -1,0 +1,13 @@
+{
+	"name"		:	"Servo",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove servo， need PWM pin",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Servo"	:	"virtual_servo.js"
+		}
+	}
+}

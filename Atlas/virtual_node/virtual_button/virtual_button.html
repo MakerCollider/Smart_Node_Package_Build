@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Button', {
+        category: 'Grove',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Button", required: false},
+            digitalPin: {value: "2", required: false},
+            impulse: {value: "5000", required: false},
+            mode: {value: "CYCLE", required: false}
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Button";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Button">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-digitalPin"><i class="fa fa-tag"></i> Digital Pin</label>
+        <input type="number" id="node-input-digitalPin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-impulse"><i class="fa fa-tag"></i> Impulse</label>
+        <input type="number" id="node-input-impulse">
+    </div>
+    <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-area-chart"></i> Type</label>
+        <select id="node-input-mode">
+            <option value="CYCLE">Cycle</option>
+            <option value="RANDOM">Random</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Button">
+    <p>A Node-RED node for button,need digital pin</p>
+</script>
