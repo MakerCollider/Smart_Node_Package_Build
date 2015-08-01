@@ -24,7 +24,7 @@ struct fakeCameraConfig {
 typedef void(*fakeCameraCb)(unsigned long);
 
 extern int fakeCameraInit(fakeCameraConfig config, fakeCameraCb cb);
-extern int fakeCameraRelease();
+//extern int fakeCameraRelease();
 extern int fakeCameraOnData(int toggle);
 
 #endif
