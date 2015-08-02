@@ -377,74 +377,6 @@ Handle<Value> tempHumiOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 112: extern int motionInit ( motionConfig config , motionCb cb ) ;
-Handle<Value> motionInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_pin = args[0]->ToObject()->Get(String::New("pin"));
-    V8_ASSERT(!args0_pin->IsNull() && args0_pin->IsInt32(), "arg0.pin parameter error");
-    int arg0_pin = (int)args0_pin->IntegerValue();
-    
-    motionConfig arg0;
-    arg0.pin = arg0_pin;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[12] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    motionCb arg1;;
-    arg1 = cbFunc12;
-    
-        
-    // Call C++ function
-    int ret = (int)motionInit(arg0, arg1);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 113: extern int motionRelease ( ) ;
-Handle<Value> motionReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)motionRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 114: extern int motionOnData ( int toggle ) ;
-Handle<Value> motionOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)motionOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
 static void SetMemberFunc(Handle<Object> obj) {
     obj->Set(v8::String::NewSymbol("uvSensorInit"),
            FunctionTemplate::New(uvSensorInitV8)->GetFunction());
@@ -481,15 +413,6 @@ static void SetMemberFunc(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("tempHumiOnData"),
            FunctionTemplate::New(tempHumiOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("motionInit"),
-           FunctionTemplate::New(motionInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("motionRelease"),
-           FunctionTemplate::New(motionReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("motionOnData"),
-           FunctionTemplate::New(motionOnDataV8)->GetFunction());
 }
 
 
@@ -558,12 +481,6 @@ static void SetConst(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("tempHumiConfig_humidityThreshold"),
              Int32::New(30));
-
-    obj->Set(v8::String::NewSymbol("motionClass"),
-             v8::String::New("indoor"));
-
-    obj->Set(v8::String::NewSymbol("motionConfig_pin"),
-             Int32::New(2));
 
 }
 

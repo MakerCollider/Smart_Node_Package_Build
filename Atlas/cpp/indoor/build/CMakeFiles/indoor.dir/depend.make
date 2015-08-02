@@ -7,9 +7,6 @@ CMakeFiles/indoor.dir/encoder.cpp.o: ../indoor_kit.h
 CMakeFiles/indoor.dir/moisture.cpp.o: ../indoor_kit.h
 CMakeFiles/indoor.dir/moisture.cpp.o: ../moisture.cpp
 
-CMakeFiles/indoor.dir/motion.cpp.o: ../indoor_kit.h
-CMakeFiles/indoor.dir/motion.cpp.o: ../motion.cpp
-
 CMakeFiles/indoor.dir/temp_humi.cpp.o: ../indoor_kit.h
 CMakeFiles/indoor.dir/temp_humi.cpp.o: ../temp_humi.cpp
 

@@ -1,1 +1,1 @@
-/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/edirobot.dir
+/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/edirobot.dir

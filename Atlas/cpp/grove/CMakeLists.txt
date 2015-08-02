@@ -18,12 +18,8 @@ link_directories(${UPM_LIB})
 add_library(grove STATIC
             lcd.cpp
             led.cpp
-            lightSensor.cpp
-            temperature.cpp
             rotary.cpp
-            relay.cpp
-            buzzer.cpp
-            mic.cpp)
+            relay.cpp)
 
 set_target_properties(                         
   grove                                     

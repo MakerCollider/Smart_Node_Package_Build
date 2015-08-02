@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Buzzer', {
+        category: 'Grove',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Buzzer", required: false},
+            pwmPin: {value: "3", required: false},
+            tone: {value:"1",required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Buzzer";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Buzzer">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pwmPin"><i class="fa fa-tag"></i> PWM Pin</label>
+        <input type="number" id="node-input-pwmPin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-tone"><i class="fa fa-tag"></i> Tone(1~7)</label>
+        <input type="number" id="node-input-tone">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Buzzer">
+    <p>A Node-RED node for buzzer  sensor, need  pwm  pin</p>
+</script>

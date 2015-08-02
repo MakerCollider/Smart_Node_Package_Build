@@ -2,12 +2,12 @@ module.exports = function(RED) {
     var groveSensor = require("jsupm_grove");
     function GroveButton(config) {
         RED.nodes.createNode(this, config);
-        this.dPin = config.dPin;
+        this.digitalPin = config.digitalPin;
         this.impulse = config.impulse;
         var node = this;
         var buttonValue = null;
-        node.dPin = node.dPin>>>0;
-        var button = new groveSensor.GroveButton(node.dPin);                 
+        node.digitalPin = node.digitalPin>>>0;
+        var button = new groveSensor.GroveButton(node.digitalPin);                 
 	var myinterval = setInterval(readButtonValue,100);
         this.on('close', function() {
                 clearInterval(myinterval);
@@ -23,7 +23,8 @@ module.exports = function(RED) {
             if(lastStatus != 0)
             {                  
                 var msg = { payload:0 };            
-                //send the result                   
+                //send the result  
+                node.status({fill: "red", shape: "ring", text: "turn off"});                 
                 node.send(msg);                        
                 lastStatus = 0;
             }
@@ -33,7 +34,8 @@ module.exports = function(RED) {
             if(lastStatus != 1)
             {
                 var msg = { payload:1 };            
-                //send the result                   
+                //send the result  
+                node.status({fill: "red", shape: "dot", text: "turn on"}); 
                 node.send(msg);                     
                 lastStatus = 1;
             }

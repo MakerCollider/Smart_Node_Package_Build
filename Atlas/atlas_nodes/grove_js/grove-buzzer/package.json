@@ -1,0 +1,13 @@
+{
+	"name"		:	"Buzzer",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove buzzer sensor， need PWM pin",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Buzzer"		:	"buzzer.js"
+		}
+	}
+}

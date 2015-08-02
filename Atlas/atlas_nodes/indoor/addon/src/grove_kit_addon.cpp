@@ -12,91 +12,7 @@
 using namespace v8;
 
 
-// 25: extern int lightSensorInit ( lightSensorConfig config , lightSensorCb cb , lightSensorThreCb threCb ) ;
-Handle<Value> lightSensorInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_pin = args[0]->ToObject()->Get(String::New("pin"));
-    V8_ASSERT(!args0_pin->IsNull() && args0_pin->IsInt32(), "arg0.pin parameter error");
-    int arg0_pin = (int)args0_pin->IntegerValue();
-    
-    Local<Value> args0_interval = args[0]->ToObject()->Get(String::New("interval"));
-    V8_ASSERT(!args0_interval->IsNull() && args0_interval->IsInt32(), "arg0.interval parameter error");
-    int arg0_interval = (int)args0_interval->IntegerValue();
-    
-    Local<Value> args0_threshold = args[0]->ToObject()->Get(String::New("threshold"));
-    V8_ASSERT(!args0_threshold->IsNull() && args0_threshold->IsInt32(), "arg0.threshold parameter error");
-    int arg0_threshold = (int)args0_threshold->IntegerValue();
-    
-    lightSensorConfig arg0;
-    arg0.pin = arg0_pin;
-    arg0.interval = arg0_interval;
-    arg0.threshold = arg0_threshold;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[0] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    lightSensorCb arg1;;
-    arg1 = cbFunc0;
-    
-    
-    V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[1] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
-    lightSensorThreCb arg2;;
-    arg2 = cbFunc1;
-    
-        
-    // Call C++ function
-    int ret = (int)lightSensorInit(arg0, arg1, arg2);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 26: extern int lightSensorRelease ( ) ;
-Handle<Value> lightSensorReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)lightSensorRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 27: extern int lightSensorOnData ( int toggle ) ;
-Handle<Value> lightSensorOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)lightSensorOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 51: extern int lcdInit ( lcdConfig config , lcdCb cb ) ;
+// 29: extern int lcdInit ( lcdConfig config , lcdCb cb ) ;
 Handle<Value> lcdInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -122,9 +38,9 @@ Handle<Value> lcdInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[2] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[0] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     lcdCb arg1;;
-    arg1 = cbFunc2;
+    arg1 = cbFunc0;
     
         
     // Call C++ function
@@ -138,7 +54,7 @@ Handle<Value> lcdInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 52: extern int lcdRelease ( ) ;
+// 30: extern int lcdRelease ( ) ;
 Handle<Value> lcdReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -153,7 +69,7 @@ Handle<Value> lcdReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 53: extern int lcdOnData ( char * str ) ;
+// 31: extern int lcdOnData ( char * str ) ;
 Handle<Value> lcdOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -215,7 +131,7 @@ Handle<Value> lcdOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 68: extern int ledInit ( ledConfig config , ledCb cb ) ;
+// 46: extern int ledInit ( ledConfig config , ledCb cb ) ;
 Handle<Value> ledInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -231,9 +147,9 @@ Handle<Value> ledInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[3] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[1] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     ledCb arg1;;
-    arg1 = cbFunc3;
+    arg1 = cbFunc1;
     
         
     // Call C++ function
@@ -247,7 +163,7 @@ Handle<Value> ledInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 69: extern int ledRelease ( ) ;
+// 47: extern int ledRelease ( ) ;
 Handle<Value> ledReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -262,7 +178,7 @@ Handle<Value> ledReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 70: extern int ledOnData ( int val ) ;
+// 48: extern int ledOnData ( int val ) ;
 Handle<Value> ledOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -283,91 +199,7 @@ Handle<Value> ledOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 90: extern int temperatureInit ( temperatureConfig config , temperatureCb cb , temperatureThreCb threCb ) ;
-Handle<Value> temperatureInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_aioPin = args[0]->ToObject()->Get(String::New("aioPin"));
-    V8_ASSERT(!args0_aioPin->IsNull() && args0_aioPin->IsInt32(), "arg0.aioPin parameter error");
-    int arg0_aioPin = (int)args0_aioPin->IntegerValue();
-    
-    Local<Value> args0_interval = args[0]->ToObject()->Get(String::New("interval"));
-    V8_ASSERT(!args0_interval->IsNull() && args0_interval->IsInt32(), "arg0.interval parameter error");
-    int arg0_interval = (int)args0_interval->IntegerValue();
-    
-    Local<Value> args0_threshold = args[0]->ToObject()->Get(String::New("threshold"));
-    V8_ASSERT(!args0_threshold->IsNull() && args0_threshold->IsInt32(), "arg0.threshold parameter error");
-    int arg0_threshold = (int)args0_threshold->IntegerValue();
-    
-    temperatureConfig arg0;
-    arg0.aioPin = arg0_aioPin;
-    arg0.interval = arg0_interval;
-    arg0.threshold = arg0_threshold;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[4] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    temperatureCb arg1;;
-    arg1 = cbFunc4;
-    
-    
-    V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[5] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
-    temperatureThreCb arg2;;
-    arg2 = cbFunc5;
-    
-        
-    // Call C++ function
-    int ret = (int)temperatureInit(arg0, arg1, arg2);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 91: extern int temperatureRelease ( ) ;
-Handle<Value> temperatureReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)temperatureRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 92: extern int temperatureOnData ( int toggle ) ;
-Handle<Value> temperatureOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)temperatureOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 112: extern int rotaryInit ( rotaryConfig config , rotaryDegreeCb degCb , rotaryThreCb threCb ) ;
+// 68: extern int rotaryInit ( rotaryConfig config , rotaryDegreeCb degCb , rotaryThreCb threCb ) ;
 Handle<Value> rotaryInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -393,15 +225,15 @@ Handle<Value> rotaryInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[6] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[2] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     rotaryDegreeCb arg1;;
-    arg1 = cbFunc6;
+    arg1 = cbFunc2;
     
     
     V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[7] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
+    cbArray[3] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
     rotaryThreCb arg2;;
-    arg2 = cbFunc7;
+    arg2 = cbFunc3;
     
         
     // Call C++ function
@@ -415,7 +247,7 @@ Handle<Value> rotaryInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 113: extern int rotaryRelease ( ) ;
+// 69: extern int rotaryRelease ( ) ;
 Handle<Value> rotaryReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -430,7 +262,7 @@ Handle<Value> rotaryReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 114: extern int rotaryOnData ( int toggle ) ;
+// 70: extern int rotaryOnData ( int toggle ) ;
 Handle<Value> rotaryOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -451,7 +283,7 @@ Handle<Value> rotaryOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 129: extern int relayInit ( relayConfig config , relayCb cb ) ;
+// 85: extern int relayInit ( relayConfig config , relayCb cb ) ;
 Handle<Value> relayInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -467,9 +299,9 @@ Handle<Value> relayInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[8] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[4] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     relayCb arg1;;
-    arg1 = cbFunc8;
+    arg1 = cbFunc4;
     
         
     // Call C++ function
@@ -483,7 +315,7 @@ Handle<Value> relayInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 130: extern int relayRelease ( ) ;
+// 86: extern int relayRelease ( ) ;
 Handle<Value> relayReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -498,7 +330,7 @@ Handle<Value> relayReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 131: extern int relayOnData ( int toggle ) ;
+// 87: extern int relayOnData ( int toggle ) ;
 Handle<Value> relayOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -519,246 +351,7 @@ Handle<Value> relayOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 148: extern int buzzerInit ( buzzerConfig config , buzzerCb cb ) ;
-Handle<Value> buzzerInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_pin = args[0]->ToObject()->Get(String::New("pin"));
-    V8_ASSERT(!args0_pin->IsNull() && args0_pin->IsInt32(), "arg0.pin parameter error");
-    int arg0_pin = (int)args0_pin->IntegerValue();
-    
-    Local<Value> args0_tone = args[0]->ToObject()->Get(String::New("tone"));
-    V8_ASSERT(!args0_tone->IsNull() && args0_tone->IsInt32(), "arg0.tone parameter error");
-    int arg0_tone = (int)args0_tone->IntegerValue();
-    
-    buzzerConfig arg0;
-    arg0.pin = arg0_pin;
-    arg0.tone = arg0_tone;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[9] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    buzzerCb arg1;;
-    arg1 = cbFunc9;
-    
-        
-    // Call C++ function
-    int ret = (int)buzzerInit(arg0, arg1);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 149: extern int buzzerRelease ( ) ;
-Handle<Value> buzzerReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)buzzerRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 150: extern int buzzerOnData ( int toggle ) ;
-Handle<Value> buzzerOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)buzzerOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 169: extern int buzzerLoopInit ( buzzerLoopConfig config , buzzerLoopCb cb ) ;
-Handle<Value> buzzerLoopInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_pin = args[0]->ToObject()->Get(String::New("pin"));
-    V8_ASSERT(!args0_pin->IsNull() && args0_pin->IsInt32(), "arg0.pin parameter error");
-    int arg0_pin = (int)args0_pin->IntegerValue();
-    
-    Local<Value> args0_tone = args[0]->ToObject()->Get(String::New("tone"));
-    V8_ASSERT(!args0_tone->IsNull() && args0_tone->IsInt32(), "arg0.tone parameter error");
-    int arg0_tone = (int)args0_tone->IntegerValue();
-    
-    Local<Value> args0_interval = args[0]->ToObject()->Get(String::New("interval"));
-    V8_ASSERT(!args0_interval->IsNull() && args0_interval->IsInt32(), "arg0.interval parameter error");
-    int arg0_interval = (int)args0_interval->IntegerValue();
-    
-    buzzerLoopConfig arg0;
-    arg0.pin = arg0_pin;
-    arg0.tone = arg0_tone;
-    arg0.interval = arg0_interval;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[10] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    buzzerLoopCb arg1;;
-    arg1 = cbFunc10;
-    
-        
-    // Call C++ function
-    int ret = (int)buzzerLoopInit(arg0, arg1);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 170: extern int buzzerLoopRelease ( ) ;
-Handle<Value> buzzerLoopReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)buzzerLoopRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 171: extern int buzzerLoopOnData ( int toggle ) ;
-Handle<Value> buzzerLoopOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)buzzerLoopOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 189: extern int micInit ( micConfig config , micValCb valCb , micThreCb threCb ) ;
-Handle<Value> micInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_aioPin = args[0]->ToObject()->Get(String::New("aioPin"));
-    V8_ASSERT(!args0_aioPin->IsNull() && args0_aioPin->IsInt32(), "arg0.aioPin parameter error");
-    int arg0_aioPin = (int)args0_aioPin->IntegerValue();
-    
-    Local<Value> args0_threshold = args[0]->ToObject()->Get(String::New("threshold"));
-    V8_ASSERT(!args0_threshold->IsNull() && args0_threshold->IsInt32(), "arg0.threshold parameter error");
-    int arg0_threshold = (int)args0_threshold->IntegerValue();
-    
-    micConfig arg0;
-    arg0.aioPin = arg0_aioPin;
-    arg0.threshold = arg0_threshold;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[11] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    micValCb arg1;;
-    arg1 = cbFunc11;
-    
-    
-    V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[12] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
-    micThreCb arg2;;
-    arg2 = cbFunc12;
-    
-        
-    // Call C++ function
-    int ret = (int)micInit(arg0, arg1, arg2);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 190: extern int micRelease ( ) ;
-Handle<Value> micReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)micRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 191: extern int micOnData ( int toggle ) ;
-Handle<Value> micOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)micOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
 static void SetMemberFunc(Handle<Object> obj) {
-    obj->Set(v8::String::NewSymbol("lightSensorInit"),
-           FunctionTemplate::New(lightSensorInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("lightSensorRelease"),
-           FunctionTemplate::New(lightSensorReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("lightSensorOnData"),
-           FunctionTemplate::New(lightSensorOnDataV8)->GetFunction());
-
     obj->Set(v8::String::NewSymbol("lcdInit"),
            FunctionTemplate::New(lcdInitV8)->GetFunction());
 
@@ -777,15 +370,6 @@ static void SetMemberFunc(Handle<Object> obj) {
     obj->Set(v8::String::NewSymbol("ledOnData"),
            FunctionTemplate::New(ledOnDataV8)->GetFunction());
 
-    obj->Set(v8::String::NewSymbol("temperatureInit"),
-           FunctionTemplate::New(temperatureInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("temperatureRelease"),
-           FunctionTemplate::New(temperatureReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("temperatureOnData"),
-           FunctionTemplate::New(temperatureOnDataV8)->GetFunction());
-
     obj->Set(v8::String::NewSymbol("rotaryInit"),
            FunctionTemplate::New(rotaryInitV8)->GetFunction());
 
@@ -803,33 +387,6 @@ static void SetMemberFunc(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("relayOnData"),
            FunctionTemplate::New(relayOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("buzzerInit"),
-           FunctionTemplate::New(buzzerInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("buzzerRelease"),
-           FunctionTemplate::New(buzzerReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("buzzerOnData"),
-           FunctionTemplate::New(buzzerOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("buzzerLoopInit"),
-           FunctionTemplate::New(buzzerLoopInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("buzzerLoopRelease"),
-           FunctionTemplate::New(buzzerLoopReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("buzzerLoopOnData"),
-           FunctionTemplate::New(buzzerLoopOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("micInit"),
-           FunctionTemplate::New(micInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("micRelease"),
-           FunctionTemplate::New(micReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("micOnData"),
-           FunctionTemplate::New(micOnDataV8)->GetFunction());
 }
 
 
@@ -841,18 +398,6 @@ static void SetConst(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("ERR_UNKOWN"),
              Int32::New(-1));
-
-    obj->Set(v8::String::NewSymbol("lightSensorClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("lightSensorConfig_pin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("lightSensorConfig_interval"),
-             Int32::New(500));
-
-    obj->Set(v8::String::NewSymbol("lightSensorConfig_threshold"),
-             Int32::New(400));
 
     obj->Set(v8::String::NewSymbol("lcdHelp"),
              v8::String::New("this is the node for RGB Lcd in Grove starter kit plus. \
@@ -880,18 +425,6 @@ static void SetConst(Handle<Object> obj) {
     obj->Set(v8::String::NewSymbol("ledConfig_pin"),
              Int32::New(0));
 
-    obj->Set(v8::String::NewSymbol("temperatureClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("temperatureConfig_aioPin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("temperatureConfig_interval"),
-             Int32::New(500));
-
-    obj->Set(v8::String::NewSymbol("temperatureConfig_threshold"),
-             Int32::New(25));
-
     obj->Set(v8::String::NewSymbol("rotaryClass"),
              v8::String::New("grove"));
 
@@ -909,36 +442,6 @@ static void SetConst(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("relayConfig_pin"),
              Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("buzzerClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("buzzerConfig_pin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("buzzerConfig_tone"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("buzzerLoopClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("buzzerLoopConfig_pin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("buzzerLoopConfig_tone"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("buzzerLoopConfig_interval"),
-             Int32::New(500));
-
-    obj->Set(v8::String::NewSymbol("micClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("micConfig_aioPin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("micConfig_threshold"),
-             Int32::New(400));
 
 }
 

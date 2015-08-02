@@ -19,8 +19,7 @@ add_library(indoor STATIC
             uv_sensor.cpp
             encoder.cpp
             moisture.cpp
-            temp_humi.cpp
-            motion.cpp)
+            temp_humi.cpp)
 
 set_target_properties(                         
   indoor                                    

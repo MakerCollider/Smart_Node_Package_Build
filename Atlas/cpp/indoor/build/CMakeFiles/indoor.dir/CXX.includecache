@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/root/Smart_node/Atlas/cpp/indoor/encoder.cpp
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/encoder.cpp
 iostream
 -
 stdlib.h
@@ -18,13 +18,13 @@ string
 uv.h
 -
 upm/rotaryencoder.h
-/home/root/Smart_node/Atlas/cpp/indoor/upm/rotaryencoder.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/upm/rotaryencoder.h
 indoor_kit.h
-/home/root/Smart_node/Atlas/cpp/indoor/indoor_kit.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/indoor_kit.h
 
-/home/root/Smart_node/Atlas/cpp/indoor/indoor_kit.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/indoor_kit.h
 
-/home/root/Smart_node/Atlas/cpp/indoor/moisture.cpp
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/moisture.cpp
 iostream
 -
 stdlib.h
@@ -36,27 +36,11 @@ string
 uv.h
 -
 upm/grovemoisture.h
-/home/root/Smart_node/Atlas/cpp/indoor/upm/grovemoisture.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/upm/grovemoisture.h
 indoor_kit.h
-/home/root/Smart_node/Atlas/cpp/indoor/indoor_kit.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/indoor_kit.h
 
-/home/root/Smart_node/Atlas/cpp/indoor/motion.cpp
-iostream
--
-stdlib.h
--
-unistd.h
--
-string
--
-uv.h
--
-upm/biss0001.h
-/home/root/Smart_node/Atlas/cpp/indoor/upm/biss0001.h
-indoor_kit.h
-/home/root/Smart_node/Atlas/cpp/indoor/indoor_kit.h
-
-/home/root/Smart_node/Atlas/cpp/indoor/temp_humi.cpp
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/temp_humi.cpp
 iostream
 -
 stdlib.h
@@ -68,11 +52,11 @@ string
 uv.h
 -
 upm/th02.h
-/home/root/Smart_node/Atlas/cpp/indoor/upm/th02.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/upm/th02.h
 indoor_kit.h
-/home/root/Smart_node/Atlas/cpp/indoor/indoor_kit.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/indoor_kit.h
 
-/home/root/Smart_node/Atlas/cpp/indoor/uv_sensor.cpp
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/uv_sensor.cpp
 iostream
 -
 stdlib.h
@@ -84,7 +68,7 @@ string
 uv.h
 -
 upm/guvas12d.h
-/home/root/Smart_node/Atlas/cpp/indoor/upm/guvas12d.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/upm/guvas12d.h
 indoor_kit.h
-/home/root/Smart_node/Atlas/cpp/indoor/indoor_kit.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/indoor/indoor_kit.h
 

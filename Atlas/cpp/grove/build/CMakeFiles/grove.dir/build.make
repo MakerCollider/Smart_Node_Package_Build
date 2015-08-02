@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/Smart_node/Atlas/cpp/grove
+CMAKE_SOURCE_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/grove
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/Smart_node/Atlas/cpp/grove/build
+CMAKE_BINARY_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/grove.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/grove.dir/flags.make
 
 CMakeFiles/grove.dir/lcd.cpp.o: CMakeFiles/grove.dir/flags.make
 CMakeFiles/grove.dir/lcd.cpp.o: ../lcd.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/lcd.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/lcd.cpp.o -c /home/root/Smart_node/Atlas/cpp/grove/lcd.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/lcd.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/lcd.cpp
 
 CMakeFiles/grove.dir/lcd.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/lcd.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/grove/lcd.cpp > CMakeFiles/grove.dir/lcd.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/lcd.cpp > CMakeFiles/grove.dir/lcd.cpp.i
 
 CMakeFiles/grove.dir/lcd.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/lcd.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/grove/lcd.cpp -o CMakeFiles/grove.dir/lcd.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/lcd.cpp -o CMakeFiles/grove.dir/lcd.cpp.s
 
 CMakeFiles/grove.dir/lcd.cpp.o.requires:
 .PHONY : CMakeFiles/grove.dir/lcd.cpp.o.requires
@@ -74,17 +74,17 @@ CMakeFiles/grove.dir/lcd.cpp.o.provides.build: CMakeFiles/grove.dir/lcd.cpp.o
 
 CMakeFiles/grove.dir/led.cpp.o: CMakeFiles/grove.dir/flags.make
 CMakeFiles/grove.dir/led.cpp.o: ../led.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/led.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/led.cpp.o -c /home/root/Smart_node/Atlas/cpp/grove/led.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/led.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/led.cpp
 
 CMakeFiles/grove.dir/led.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/led.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/grove/led.cpp > CMakeFiles/grove.dir/led.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/led.cpp > CMakeFiles/grove.dir/led.cpp.i
 
 CMakeFiles/grove.dir/led.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/led.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/grove/led.cpp -o CMakeFiles/grove.dir/led.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/led.cpp -o CMakeFiles/grove.dir/led.cpp.s
 
 CMakeFiles/grove.dir/led.cpp.o.requires:
 .PHONY : CMakeFiles/grove.dir/led.cpp.o.requires
@@ -95,65 +95,19 @@ CMakeFiles/grove.dir/led.cpp.o.provides: CMakeFiles/grove.dir/led.cpp.o.requires
 
 CMakeFiles/grove.dir/led.cpp.o.provides.build: CMakeFiles/grove.dir/led.cpp.o
 
-CMakeFiles/grove.dir/lightSensor.cpp.o: CMakeFiles/grove.dir/flags.make
-CMakeFiles/grove.dir/lightSensor.cpp.o: ../lightSensor.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/lightSensor.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/lightSensor.cpp.o -c /home/root/Smart_node/Atlas/cpp/grove/lightSensor.cpp
-
-CMakeFiles/grove.dir/lightSensor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/lightSensor.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/grove/lightSensor.cpp > CMakeFiles/grove.dir/lightSensor.cpp.i
-
-CMakeFiles/grove.dir/lightSensor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/lightSensor.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/grove/lightSensor.cpp -o CMakeFiles/grove.dir/lightSensor.cpp.s
-
-CMakeFiles/grove.dir/lightSensor.cpp.o.requires:
-.PHONY : CMakeFiles/grove.dir/lightSensor.cpp.o.requires
-
-CMakeFiles/grove.dir/lightSensor.cpp.o.provides: CMakeFiles/grove.dir/lightSensor.cpp.o.requires
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/lightSensor.cpp.o.provides.build
-.PHONY : CMakeFiles/grove.dir/lightSensor.cpp.o.provides
-
-CMakeFiles/grove.dir/lightSensor.cpp.o.provides.build: CMakeFiles/grove.dir/lightSensor.cpp.o
-
-CMakeFiles/grove.dir/temperature.cpp.o: CMakeFiles/grove.dir/flags.make
-CMakeFiles/grove.dir/temperature.cpp.o: ../temperature.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/temperature.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/temperature.cpp.o -c /home/root/Smart_node/Atlas/cpp/grove/temperature.cpp
-
-CMakeFiles/grove.dir/temperature.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/temperature.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/grove/temperature.cpp > CMakeFiles/grove.dir/temperature.cpp.i
-
-CMakeFiles/grove.dir/temperature.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/temperature.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/grove/temperature.cpp -o CMakeFiles/grove.dir/temperature.cpp.s
-
-CMakeFiles/grove.dir/temperature.cpp.o.requires:
-.PHONY : CMakeFiles/grove.dir/temperature.cpp.o.requires
-
-CMakeFiles/grove.dir/temperature.cpp.o.provides: CMakeFiles/grove.dir/temperature.cpp.o.requires
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/temperature.cpp.o.provides.build
-.PHONY : CMakeFiles/grove.dir/temperature.cpp.o.provides
-
-CMakeFiles/grove.dir/temperature.cpp.o.provides.build: CMakeFiles/grove.dir/temperature.cpp.o
-
 CMakeFiles/grove.dir/rotary.cpp.o: CMakeFiles/grove.dir/flags.make
 CMakeFiles/grove.dir/rotary.cpp.o: ../rotary.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/rotary.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/rotary.cpp.o -c /home/root/Smart_node/Atlas/cpp/grove/rotary.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/rotary.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/rotary.cpp
 
 CMakeFiles/grove.dir/rotary.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/rotary.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/grove/rotary.cpp > CMakeFiles/grove.dir/rotary.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/rotary.cpp > CMakeFiles/grove.dir/rotary.cpp.i
 
 CMakeFiles/grove.dir/rotary.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/rotary.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/grove/rotary.cpp -o CMakeFiles/grove.dir/rotary.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/rotary.cpp -o CMakeFiles/grove.dir/rotary.cpp.s
 
 CMakeFiles/grove.dir/rotary.cpp.o.requires:
 .PHONY : CMakeFiles/grove.dir/rotary.cpp.o.requires
@@ -166,17 +120,17 @@ CMakeFiles/grove.dir/rotary.cpp.o.provides.build: CMakeFiles/grove.dir/rotary.cp
 
 CMakeFiles/grove.dir/relay.cpp.o: CMakeFiles/grove.dir/flags.make
 CMakeFiles/grove.dir/relay.cpp.o: ../relay.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/relay.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/relay.cpp.o -c /home/root/Smart_node/Atlas/cpp/grove/relay.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/relay.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/relay.cpp
 
 CMakeFiles/grove.dir/relay.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/relay.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/grove/relay.cpp > CMakeFiles/grove.dir/relay.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/relay.cpp > CMakeFiles/grove.dir/relay.cpp.i
 
 CMakeFiles/grove.dir/relay.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/relay.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/grove/relay.cpp -o CMakeFiles/grove.dir/relay.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/relay.cpp -o CMakeFiles/grove.dir/relay.cpp.s
 
 CMakeFiles/grove.dir/relay.cpp.o.requires:
 .PHONY : CMakeFiles/grove.dir/relay.cpp.o.requires
@@ -187,74 +141,20 @@ CMakeFiles/grove.dir/relay.cpp.o.provides: CMakeFiles/grove.dir/relay.cpp.o.requ
 
 CMakeFiles/grove.dir/relay.cpp.o.provides.build: CMakeFiles/grove.dir/relay.cpp.o
 
-CMakeFiles/grove.dir/buzzer.cpp.o: CMakeFiles/grove.dir/flags.make
-CMakeFiles/grove.dir/buzzer.cpp.o: ../buzzer.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_7)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/buzzer.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/buzzer.cpp.o -c /home/root/Smart_node/Atlas/cpp/grove/buzzer.cpp
-
-CMakeFiles/grove.dir/buzzer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/buzzer.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/grove/buzzer.cpp > CMakeFiles/grove.dir/buzzer.cpp.i
-
-CMakeFiles/grove.dir/buzzer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/buzzer.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/grove/buzzer.cpp -o CMakeFiles/grove.dir/buzzer.cpp.s
-
-CMakeFiles/grove.dir/buzzer.cpp.o.requires:
-.PHONY : CMakeFiles/grove.dir/buzzer.cpp.o.requires
-
-CMakeFiles/grove.dir/buzzer.cpp.o.provides: CMakeFiles/grove.dir/buzzer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/buzzer.cpp.o.provides.build
-.PHONY : CMakeFiles/grove.dir/buzzer.cpp.o.provides
-
-CMakeFiles/grove.dir/buzzer.cpp.o.provides.build: CMakeFiles/grove.dir/buzzer.cpp.o
-
-CMakeFiles/grove.dir/mic.cpp.o: CMakeFiles/grove.dir/flags.make
-CMakeFiles/grove.dir/mic.cpp.o: ../mic.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_8)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/mic.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/mic.cpp.o -c /home/root/Smart_node/Atlas/cpp/grove/mic.cpp
-
-CMakeFiles/grove.dir/mic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/mic.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Smart_node/Atlas/cpp/grove/mic.cpp > CMakeFiles/grove.dir/mic.cpp.i
-
-CMakeFiles/grove.dir/mic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/mic.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Smart_node/Atlas/cpp/grove/mic.cpp -o CMakeFiles/grove.dir/mic.cpp.s
-
-CMakeFiles/grove.dir/mic.cpp.o.requires:
-.PHONY : CMakeFiles/grove.dir/mic.cpp.o.requires
-
-CMakeFiles/grove.dir/mic.cpp.o.provides: CMakeFiles/grove.dir/mic.cpp.o.requires
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/mic.cpp.o.provides.build
-.PHONY : CMakeFiles/grove.dir/mic.cpp.o.provides
-
-CMakeFiles/grove.dir/mic.cpp.o.provides.build: CMakeFiles/grove.dir/mic.cpp.o
-
 # Object files for target grove
 grove_OBJECTS = \
 "CMakeFiles/grove.dir/lcd.cpp.o" \
 "CMakeFiles/grove.dir/led.cpp.o" \
-"CMakeFiles/grove.dir/lightSensor.cpp.o" \
-"CMakeFiles/grove.dir/temperature.cpp.o" \
 "CMakeFiles/grove.dir/rotary.cpp.o" \
-"CMakeFiles/grove.dir/relay.cpp.o" \
-"CMakeFiles/grove.dir/buzzer.cpp.o" \
-"CMakeFiles/grove.dir/mic.cpp.o"
+"CMakeFiles/grove.dir/relay.cpp.o"
 
 # External object files for target grove
 grove_EXTERNAL_OBJECTS =
 
 ../bin/libgrove.a: CMakeFiles/grove.dir/lcd.cpp.o
 ../bin/libgrove.a: CMakeFiles/grove.dir/led.cpp.o
-../bin/libgrove.a: CMakeFiles/grove.dir/lightSensor.cpp.o
-../bin/libgrove.a: CMakeFiles/grove.dir/temperature.cpp.o
 ../bin/libgrove.a: CMakeFiles/grove.dir/rotary.cpp.o
 ../bin/libgrove.a: CMakeFiles/grove.dir/relay.cpp.o
-../bin/libgrove.a: CMakeFiles/grove.dir/buzzer.cpp.o
-../bin/libgrove.a: CMakeFiles/grove.dir/mic.cpp.o
 ../bin/libgrove.a: CMakeFiles/grove.dir/build.make
 ../bin/libgrove.a: CMakeFiles/grove.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library ../bin/libgrove.a"
@@ -267,12 +167,8 @@ CMakeFiles/grove.dir/build: ../bin/libgrove.a
 
 CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/lcd.cpp.o.requires
 CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/led.cpp.o.requires
-CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/lightSensor.cpp.o.requires
-CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/temperature.cpp.o.requires
 CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/rotary.cpp.o.requires
 CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/relay.cpp.o.requires
-CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/buzzer.cpp.o.requires
-CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/mic.cpp.o.requires
 .PHONY : CMakeFiles/grove.dir/requires
 
 CMakeFiles/grove.dir/clean:
@@ -280,6 +176,6 @@ CMakeFiles/grove.dir/clean:
 .PHONY : CMakeFiles/grove.dir/clean
 
 CMakeFiles/grove.dir/depend:
-	cd /home/root/Smart_node/Atlas/cpp/grove/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/root/Smart_node/Atlas/cpp/grove /home/root/Smart_node/Atlas/cpp/grove /home/root/Smart_node/Atlas/cpp/grove/build /home/root/Smart_node/Atlas/cpp/grove/build /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/root/Node_red_on_edison_Release/Atlas/cpp/grove /home/root/Node_red_on_edison_Release/Atlas/cpp/grove /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/grove.dir/depend
 

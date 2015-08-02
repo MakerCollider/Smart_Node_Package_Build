@@ -3,13 +3,13 @@
 
 CMakeFiles/atlas_cv.dir/lib/libb64/src/cencode.c.o
  ../lib/libb64/include/b64/cencode.h
- /home/root/Smart_node/Atlas/cpp/cv/lib/libb64/src/cencode.c
+ /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/lib/libb64/src/cencode.c
 CMakeFiles/atlas_cv.dir/cv_atlas.cpp.o
  ../lib/libb64/include/b64/cencode.h
- /home/root/Smart_node/Atlas/cpp/cv/cv_atlas.cpp
- /home/root/Smart_node/Atlas/cpp/cv/cv_atlas.h
+ /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.cpp
+ /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.h
 CMakeFiles/atlas_cv.dir/cv_tool.cpp.o
  ../lib/libb64/include/b64/cencode.h
- /home/root/Smart_node/Atlas/cpp/cv/cv_atlas.h
- /home/root/Smart_node/Atlas/cpp/cv/cv_tool.cpp
- /home/root/Smart_node/Atlas/cpp/cv/cv_tool.h
+ /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.h
+ /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_tool.cpp
+ /home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_tool.h

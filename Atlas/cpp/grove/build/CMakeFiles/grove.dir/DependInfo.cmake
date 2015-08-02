@@ -4,14 +4,10 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/root/Smart_node/Atlas/cpp/grove/buzzer.cpp" "/home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/buzzer.cpp.o"
-  "/home/root/Smart_node/Atlas/cpp/grove/lcd.cpp" "/home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/lcd.cpp.o"
-  "/home/root/Smart_node/Atlas/cpp/grove/led.cpp" "/home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/led.cpp.o"
-  "/home/root/Smart_node/Atlas/cpp/grove/lightSensor.cpp" "/home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/lightSensor.cpp.o"
-  "/home/root/Smart_node/Atlas/cpp/grove/mic.cpp" "/home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/mic.cpp.o"
-  "/home/root/Smart_node/Atlas/cpp/grove/relay.cpp" "/home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/relay.cpp.o"
-  "/home/root/Smart_node/Atlas/cpp/grove/rotary.cpp" "/home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/rotary.cpp.o"
-  "/home/root/Smart_node/Atlas/cpp/grove/temperature.cpp" "/home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/grove.dir/temperature.cpp.o"
+  "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/lcd.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/lcd.cpp.o"
+  "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/led.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/led.cpp.o"
+  "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/relay.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/relay.cpp.o"
+  "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/rotary.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/rotary.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

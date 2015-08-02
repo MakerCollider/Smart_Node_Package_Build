@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/Smart_node/Atlas/cpp/grove
+CMAKE_SOURCE_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/grove
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/Smart_node/Atlas/cpp/grove/build
+CMAKE_BINARY_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/grove/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -110,30 +110,6 @@ grove: cmake_check_build_system
 grove/fast:
 	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/build
 .PHONY : grove/fast
-
-buzzer.o: buzzer.cpp.o
-.PHONY : buzzer.o
-
-# target to build an object file
-buzzer.cpp.o:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/buzzer.cpp.o
-.PHONY : buzzer.cpp.o
-
-buzzer.i: buzzer.cpp.i
-.PHONY : buzzer.i
-
-# target to preprocess a source file
-buzzer.cpp.i:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/buzzer.cpp.i
-.PHONY : buzzer.cpp.i
-
-buzzer.s: buzzer.cpp.s
-.PHONY : buzzer.s
-
-# target to generate assembly for a file
-buzzer.cpp.s:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/buzzer.cpp.s
-.PHONY : buzzer.cpp.s
 
 lcd.o: lcd.cpp.o
 .PHONY : lcd.o
@@ -183,54 +159,6 @@ led.cpp.s:
 	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/led.cpp.s
 .PHONY : led.cpp.s
 
-lightSensor.o: lightSensor.cpp.o
-.PHONY : lightSensor.o
-
-# target to build an object file
-lightSensor.cpp.o:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/lightSensor.cpp.o
-.PHONY : lightSensor.cpp.o
-
-lightSensor.i: lightSensor.cpp.i
-.PHONY : lightSensor.i
-
-# target to preprocess a source file
-lightSensor.cpp.i:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/lightSensor.cpp.i
-.PHONY : lightSensor.cpp.i
-
-lightSensor.s: lightSensor.cpp.s
-.PHONY : lightSensor.s
-
-# target to generate assembly for a file
-lightSensor.cpp.s:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/lightSensor.cpp.s
-.PHONY : lightSensor.cpp.s
-
-mic.o: mic.cpp.o
-.PHONY : mic.o
-
-# target to build an object file
-mic.cpp.o:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/mic.cpp.o
-.PHONY : mic.cpp.o
-
-mic.i: mic.cpp.i
-.PHONY : mic.i
-
-# target to preprocess a source file
-mic.cpp.i:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/mic.cpp.i
-.PHONY : mic.cpp.i
-
-mic.s: mic.cpp.s
-.PHONY : mic.s
-
-# target to generate assembly for a file
-mic.cpp.s:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/mic.cpp.s
-.PHONY : mic.cpp.s
-
 relay.o: relay.cpp.o
 .PHONY : relay.o
 
@@ -279,30 +207,6 @@ rotary.cpp.s:
 	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/rotary.cpp.s
 .PHONY : rotary.cpp.s
 
-temperature.o: temperature.cpp.o
-.PHONY : temperature.o
-
-# target to build an object file
-temperature.cpp.o:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/temperature.cpp.o
-.PHONY : temperature.cpp.o
-
-temperature.i: temperature.cpp.i
-.PHONY : temperature.i
-
-# target to preprocess a source file
-temperature.cpp.i:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/temperature.cpp.i
-.PHONY : temperature.cpp.i
-
-temperature.s: temperature.cpp.s
-.PHONY : temperature.s
-
-# target to generate assembly for a file
-temperature.cpp.s:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/temperature.cpp.s
-.PHONY : temperature.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -312,30 +216,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... grove"
 	@echo "... rebuild_cache"
-	@echo "... buzzer.o"
-	@echo "... buzzer.i"
-	@echo "... buzzer.s"
 	@echo "... lcd.o"
 	@echo "... lcd.i"
 	@echo "... lcd.s"
 	@echo "... led.o"
 	@echo "... led.i"
 	@echo "... led.s"
-	@echo "... lightSensor.o"
-	@echo "... lightSensor.i"
-	@echo "... lightSensor.s"
-	@echo "... mic.o"
-	@echo "... mic.i"
-	@echo "... mic.s"
 	@echo "... relay.o"
 	@echo "... relay.i"
 	@echo "... relay.s"
 	@echo "... rotary.o"
 	@echo "... rotary.i"
 	@echo "... rotary.s"
-	@echo "... temperature.o"
-	@echo "... temperature.i"
-	@echo "... temperature.s"
 .PHONY : help
 
 

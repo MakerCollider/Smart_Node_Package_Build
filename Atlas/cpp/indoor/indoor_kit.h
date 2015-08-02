@@ -97,21 +97,5 @@ extern int tempHumiInit(tempHumiConfig config, tempCb cb1, humiCb cb2, tempHumiC
 extern int tempHumiRelease();         
 extern int tempHumiOnData(int toggle);
 
-/************************************************
- motion
- ************************************************/
-#define motionClass "indoor"
-struct motionConfig {
-    int pin;
-};
-
-#define motionConfig_pin           2
-
-typedef void(*motionCb)(int);
-
-extern int motionInit(motionConfig config, motionCb cb);
-extern int motionRelease();
-extern int motionOnData(int toggle);
-
 #endif
 

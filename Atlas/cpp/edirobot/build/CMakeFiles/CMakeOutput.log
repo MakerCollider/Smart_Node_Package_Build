@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/2.8.12.2/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/2.8.12.2/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,38 +23,38 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/2.8.12.2/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/2.8.12.2/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp
+Change Dir: /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec4121497568/fast"
-make[2]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec4121497568.dir/build.make CMakeFiles/cmTryCompileExec4121497568.dir/build
-make[3]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec4121497568.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec4121497568.dir/testCCompiler.c.o   -c /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTryCompileExec4121497568
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4121497568.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec4121497568.dir/testCCompiler.c.o  -o cmTryCompileExec4121497568 -rdynamic 
-make[3]: Leaving directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-make[2]: Leaving directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/make "cmTryCompileExec4145478862/fast"
+make[2]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec4145478862.dir/build.make CMakeFiles/cmTryCompileExec4145478862.dir/build
+make[3]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4145478862.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec4145478862.dir/testCCompiler.c.o   -c /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec4145478862
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4145478862.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec4145478862.dir/testCCompiler.c.o  -o cmTryCompileExec4145478862 -rdynamic 
+make[3]: Leaving directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp
+Change Dir: /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec3385165241/fast"
-make[2]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3385165241.dir/build.make CMakeFiles/cmTryCompileExec3385165241.dir/build
-make[3]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
-Linking C executable cmTryCompileExec3385165241
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3385165241.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3385165241 -rdynamic  
+Run Build Command:/usr/bin/make "cmTryCompileExec2188063573/fast"
+make[2]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2188063573.dir/build.make CMakeFiles/cmTryCompileExec2188063573.dir/build
+make[3]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec2188063573
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2188063573.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2188063573 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper
@@ -64,26 +64,26 @@ Thread model: posix
 gcc version 4.9.1 (GCC) 
 COMPILER_PATH=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/gcc/i586-poky-linux/:/usr/lib/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../../i586-poky-linux/bin/
 LIBRARY_PATH=/usr/lib/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../:/lib/:/usr/lib/i586-poky-linux/4.9.1/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3385165241' '-rdynamic' '-mtune=pentium' '-march=pentium'
- /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2 -plugin /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cchSQxje.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu -m elf_i386 -export-dynamic -dynamic-linker /lib/ld-linux.so.2 -o cmTryCompileExec3385165241 /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o -L/usr/lib/gcc/i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../.. -L/usr/lib/i586-poky-linux/4.9.1 CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtend.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crtn.o
-make[3]: Leaving directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-make[2]: Leaving directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2188063573' '-rdynamic' '-mtune=pentium' '-march=pentium'
+ /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2 -plugin /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8T2tzL.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu -m elf_i386 -export-dynamic -dynamic-linker /lib/ld-linux.so.2 -o cmTryCompileExec2188063573 /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o -L/usr/lib/gcc/i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../.. -L/usr/lib/i586-poky-linux/4.9.1 CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtend.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crtn.o
+make[3]: Leaving directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec3385165241/fast"]
-  ignore line: [make[2]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3385165241.dir/build.make CMakeFiles/cmTryCompileExec3385165241.dir/build]
-  ignore line: [make[3]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building C object CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTryCompileExec3385165241]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3385165241.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3385165241 -rdynamic  ]
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec2188063573/fast"]
+  ignore line: [make[2]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec2188063573.dir/build.make CMakeFiles/cmTryCompileExec2188063573.dir/build]
+  ignore line: [make[3]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec2188063573]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2188063573.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2188063573 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper]
@@ -93,13 +93,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.9.1 (GCC) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/gcc/i586-poky-linux/:/usr/lib/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../../i586-poky-linux/bin/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../:/lib/:/usr/lib/i586-poky-linux/4.9.1/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3385165241' '-rdynamic' '-mtune=pentium' '-march=pentium']
-  link line: [ /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2 -plugin /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cchSQxje.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu -m elf_i386 -export-dynamic -dynamic-linker /lib/ld-linux.so.2 -o cmTryCompileExec3385165241 /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o -L/usr/lib/gcc/i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../.. -L/usr/lib/i586-poky-linux/4.9.1 CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtend.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2188063573' '-rdynamic' '-mtune=pentium' '-march=pentium']
+  link line: [ /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2 -plugin /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8T2tzL.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu -m elf_i386 -export-dynamic -dynamic-linker /lib/ld-linux.so.2 -o cmTryCompileExec2188063573 /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o -L/usr/lib/gcc/i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../.. -L/usr/lib/i586-poky-linux/4.9.1 CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtend.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crtn.o]
     arg [/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cchSQxje.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc8T2tzL.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -115,7 +115,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib/ld-linux.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec3385165241] ==> ignore
+    arg [cmTryCompileExec2188063573] ==> ignore
     arg [/usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o] ==> ignore
     arg [/usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o] ==> ignore
     arg [/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o] ==> ignore
@@ -123,7 +123,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1] ==> dir [/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1]
     arg [-L/usr/lib/gcc/i586-poky-linux/4.9.1/../../..] ==> dir [/usr/lib/gcc/i586-poky-linux/4.9.1/../../..]
     arg [-L/usr/lib/i586-poky-linux/4.9.1] ==> dir [/usr/lib/i586-poky-linux/4.9.1]
-    arg [CMakeFiles/cmTryCompileExec3385165241.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec2188063573.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -149,35 +149,35 @@ Parsed C implicit link information from above output:
 
 
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp
+Change Dir: /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec3736351019/fast"
-make[2]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3736351019.dir/build.make CMakeFiles/cmTryCompileExec3736351019.dir/build
-make[3]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3736351019.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3736351019.dir/testCXXCompiler.cxx.o -c /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTryCompileExec3736351019
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3736351019.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec3736351019.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec3736351019 -rdynamic 
-make[3]: Leaving directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-make[2]: Leaving directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/make "cmTryCompileExec872874421/fast"
+make[2]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec872874421.dir/build.make CMakeFiles/cmTryCompileExec872874421.dir/build
+make[3]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec872874421.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec872874421.dir/testCXXCompiler.cxx.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec872874421
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec872874421.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec872874421.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec872874421 -rdynamic 
+make[3]: Leaving directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp
+Change Dir: /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec3892588511/fast"
-make[2]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3892588511.dir/build.make CMakeFiles/cmTryCompileExec3892588511.dir/build
-make[3]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTryCompileExec3892588511
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3892588511.dir/link.txt --verbose=1
-/usr/bin/c++      -v CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3892588511 -rdynamic  
+Run Build Command:/usr/bin/make "cmTryCompileExec1133948720/fast"
+make[2]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1133948720.dir/build.make CMakeFiles/cmTryCompileExec1133948720.dir/build
+make[3]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec1133948720
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1133948720.dir/link.txt --verbose=1
+/usr/bin/c++      -v CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1133948720 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper
@@ -187,26 +187,26 @@ Thread model: posix
 gcc version 4.9.1 (GCC) 
 COMPILER_PATH=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/gcc/i586-poky-linux/:/usr/lib/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../../i586-poky-linux/bin/
 LIBRARY_PATH=/usr/lib/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../:/lib/:/usr/lib/i586-poky-linux/4.9.1/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3892588511' '-rdynamic' '-shared-libgcc' '-mtune=pentium' '-march=pentium'
- /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2 -plugin /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4qEBZK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu -m elf_i386 -export-dynamic -dynamic-linker /lib/ld-linux.so.2 -o cmTryCompileExec3892588511 /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o -L/usr/lib/gcc/i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../.. -L/usr/lib/i586-poky-linux/4.9.1 CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtend.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crtn.o
-make[3]: Leaving directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
-make[2]: Leaving directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1133948720' '-rdynamic' '-shared-libgcc' '-mtune=pentium' '-march=pentium'
+ /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2 -plugin /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccb7EdMh.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu -m elf_i386 -export-dynamic -dynamic-linker /lib/ld-linux.so.2 -o cmTryCompileExec1133948720 /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o -L/usr/lib/gcc/i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../.. -L/usr/lib/i586-poky-linux/4.9.1 CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtend.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crtn.o
+make[3]: Leaving directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
+make[2]: Leaving directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec3892588511/fast"]
-  ignore line: [make[2]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3892588511.dir/build.make CMakeFiles/cmTryCompileExec3892588511.dir/build]
-  ignore line: [make[3]: Entering directory '/home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTryCompileExec3892588511]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3892588511.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3892588511 -rdynamic  ]
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec1133948720/fast"]
+  ignore line: [make[2]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1133948720.dir/build.make CMakeFiles/cmTryCompileExec1133948720.dir/build]
+  ignore line: [make[3]: Entering directory '/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec1133948720]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1133948720.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1133948720 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper]
@@ -216,13 +216,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.9.1 (GCC) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/gcc/i586-poky-linux/:/usr/lib/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../../i586-poky-linux/bin/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/:/usr/lib/gcc/i586-poky-linux/4.9.1/../../../:/lib/:/usr/lib/i586-poky-linux/4.9.1/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3892588511' '-rdynamic' '-shared-libgcc' '-mtune=pentium' '-march=pentium']
-  link line: [ /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2 -plugin /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4qEBZK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu -m elf_i386 -export-dynamic -dynamic-linker /lib/ld-linux.so.2 -o cmTryCompileExec3892588511 /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o -L/usr/lib/gcc/i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../.. -L/usr/lib/i586-poky-linux/4.9.1 CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtend.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1133948720' '-rdynamic' '-shared-libgcc' '-mtune=pentium' '-march=pentium']
+  link line: [ /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2 -plugin /usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccb7EdMh.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu -m elf_i386 -export-dynamic -dynamic-linker /lib/ld-linux.so.2 -o cmTryCompileExec1133948720 /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o -L/usr/lib/gcc/i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1 -L/usr/lib/gcc/i586-poky-linux/4.9.1/../../.. -L/usr/lib/i586-poky-linux/4.9.1 CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtend.o /usr/lib/gcc/i586-poky-linux/4.9.1/../../../crtn.o]
     arg [/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/gcc/i586-poky-linux/4.9.1/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc4qEBZK.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccb7EdMh.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -238,7 +238,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib/ld-linux.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec3892588511] ==> ignore
+    arg [cmTryCompileExec1133948720] ==> ignore
     arg [/usr/lib/gcc/i586-poky-linux/4.9.1/../../../crt1.o] ==> ignore
     arg [/usr/lib/gcc/i586-poky-linux/4.9.1/../../../crti.o] ==> ignore
     arg [/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1/crtbegin.o] ==> ignore
@@ -246,7 +246,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1] ==> dir [/usr/lib/gcc/i586-poky-linux/4.9.1/../../../i586-poky-linux/4.9.1]
     arg [-L/usr/lib/gcc/i586-poky-linux/4.9.1/../../..] ==> dir [/usr/lib/gcc/i586-poky-linux/4.9.1/../../..]
     arg [-L/usr/lib/i586-poky-linux/4.9.1] ==> dir [/usr/lib/i586-poky-linux/4.9.1]
-    arg [CMakeFiles/cmTryCompileExec3892588511.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec1133948720.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]

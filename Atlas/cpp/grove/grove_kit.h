@@ -5,28 +5,6 @@
 #define ERR_UNKOWN -1
 
 /************************************************
- Light sensor
- ************************************************/
-#define lightSensorClass "grove"
-
-struct lightSensorConfig {
-    int pin;
-    int interval;
-    int threshold;
-};
-
-#define lightSensorConfig_pin           0
-#define lightSensorConfig_interval      500
-#define lightSensorConfig_threshold     400
-
-typedef void(*lightSensorCb)(int);
-typedef void(*lightSensorThreCb)(int);
-
-extern int lightSensorInit(lightSensorConfig config, lightSensorCb cb, lightSensorThreCb threCb);
-extern int lightSensorRelease();
-extern int lightSensorOnData(int toggle);
-
-/************************************************
  LCD
  ************************************************/
 #define lcdHelp "this is the node for RGB Lcd in Grove starter kit plus.	\
@@ -69,28 +47,6 @@ extern int ledInit(ledConfig config, ledCb cb);
 extern int ledRelease();
 extern int ledOnData(int val);
 
-/************************************************
- temperature
- ************************************************/
-
-#define temperatureClass "grove"
-struct temperatureConfig {
-    int aioPin;
-    int interval;
-    int threshold;
-};
-
-#define temperatureConfig_aioPin           0
-#define temperatureConfig_interval      500
-#define temperatureConfig_threshold      25
-
-typedef void(*temperatureCb)(int);
-typedef void(*temperatureThreCb)(int);
-
-extern int temperatureInit(temperatureConfig config, temperatureCb cb, temperatureThreCb threCb);
-extern int temperatureRelease();
-extern int temperatureOnData(int toggle);
-
 /************************************************ 
  rotary                               
  ************************************************/
@@ -130,66 +86,5 @@ extern int relayInit(relayConfig config, relayCb cb);
 extern int relayRelease();                                               
 extern int relayOnData(int toggle);   
 
-/************************************************    
- buzzer                 
- ************************************************/   
-
-#define buzzerClass "grove"
-struct buzzerConfig {                                 
-    int pin; 
-    int tone;  //from 0 to 6                                       
-};                                                   
-                                                     
-#define buzzerConfig_pin           0
-#define buzzerConfig_tone	   0                  
-                                                     
-typedef void(*buzzerCb)(int);                         
-                                                     
-extern int buzzerInit(buzzerConfig config, buzzerCb cb);
-extern int buzzerRelease();                                                              
-extern int buzzerOnData(int toggle); 
-
-/************************************************ 
- buzzer Loop                                           
- ************************************************/
-
-#define buzzerLoopClass "grove"
-struct buzzerLoopConfig {                                   
-    int pin;                                            
-    int tone;  //from 0 to 6
-    int interval;                            
-};                                                      
-                                                        
-#define buzzerLoopConfig_pin           0                    
-#define buzzerLoopConfig_tone          0    
-#define buzzerLoopConfig_interval      500                
-                                                        
-typedef void(*buzzerLoopCb)(int);                           
-                                                        
-extern int buzzerLoopInit(buzzerLoopConfig config, buzzerLoopCb cb);
-extern int buzzerLoopRelease();                       
-extern int buzzerLoopOnData(int toggle);
-  
-/************************************************
- Mic
- ************************************************/
-
-#define micClass "grove"
-struct micConfig {
-    int aioPin;
-    int threshold;            
-};
-
-#define micConfig_aioPin           0
-#define micConfig_threshold        400
-
-typedef void(*micValCb)(int);
-typedef void(*micThreCb)(int);
-
-extern int micInit(micConfig config, micValCb valCb, micThreCb threCb);
-extern int micRelease();
-extern int micOnData(int toggle);
-
-                                
 #endif
 

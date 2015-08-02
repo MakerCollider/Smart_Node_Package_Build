@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Temprature', {
+        category: 'Grove',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Temprature", required: false},
+            analogPin: {value: "0", required: false},
+            interval: {value: "1000", required: false},
+            signal: {value: "CYCLE", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Temprature";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Temprature">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-analogPin"><i class="fa fa-tag"></i> Analog Pin</label>
+        <input type="number" id="node-input-analogPin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+    <div class="form-row">
+        <label for="node-input-signal"><i class="fa fa-area-chart"></i> Signal Type</label>
+        <select id="node-input-signal">
+            <option value="CYCLE">Cycle</option>
+            <option value="RANDOM">Random</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Temprature">
+    <p>A Node-RED node for temperature sensor, need Analog pin</p>
+</script>

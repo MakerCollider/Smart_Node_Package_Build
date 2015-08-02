@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/Smart_node/Atlas/cpp/edirobot
+CMAKE_SOURCE_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/Smart_node/Atlas/cpp/edirobot/build
+CMAKE_BINARY_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Smart_node/Atlas/cpp/edirobot/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

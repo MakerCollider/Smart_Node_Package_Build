@@ -33,9 +33,7 @@
       "tempHumiClass": "indoor",
       "tempHumiConfig_interval": 500,
       "tempHumiConfig_temperatureThreshold": 30,
-      "tempHumiConfig_humidityThreshold": 30,
-      "motionClass": "indoor",
-      "motionConfig_pin": 2
+      "tempHumiConfig_humidityThreshold": 30
     },
   
     "enums" : {
@@ -198,38 +196,6 @@
       },
       
       "tempHumiOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "motionInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "motionConfig"
-          },
-          {
-            "name": "cb",
-            "type": "motionCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "motionRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "motionOnData": {
         "override" : false,
         "parameters": [
           {
