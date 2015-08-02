@@ -47,7 +47,7 @@ module.exports = function(RED) {
         });
 
         node.on('close', function() {
-            io.fakeCameraRelease();
+            io.cleanFakeCamera();
         })
 
     }

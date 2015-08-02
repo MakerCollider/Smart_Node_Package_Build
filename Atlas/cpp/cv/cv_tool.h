@@ -25,6 +25,7 @@ typedef void(*fakeCameraCb)(unsigned long);
 
 extern int fakeCameraInit(fakeCameraConfig config, fakeCameraCb cb);
 //extern int fakeCameraRelease();
+extern int cleanFakeCamera();
 extern int fakeCameraOnData(int toggle);
 
 #endif

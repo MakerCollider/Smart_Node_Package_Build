@@ -34,6 +34,8 @@ void fake_cam_run_uv_timer(uv_timer_t *req)
 
 int fakeCameraInit(fakeCameraConfig config, fakeCameraCb cb)
 {
+    printf("%s\n", __FUNCTION__);
+
     if(cb != NULL)
         fakeCamCb = cb;
     
@@ -65,7 +67,7 @@ int fakeCameraInit(fakeCameraConfig config, fakeCameraCb cb)
     return ERR_NONE;
 }
 
-int fakeCameraRelease()
+int cleanFakeCamera()
 {
     CV_PRINT("turn off fakeCamera(%s)\n", fakeCamConfig.imgFile);
     uv_timer_stop(&fakeCamTimer);
@@ -78,7 +80,7 @@ int fakeCameraOnData(int toggle)
     if(toggle) {
         fakeCameraInit(fakeCamConfig, NULL);
     } else {
-        fakeCameraRelease();
+        cleanFakeCamera();
     }
     
     return ERR_NONE;
