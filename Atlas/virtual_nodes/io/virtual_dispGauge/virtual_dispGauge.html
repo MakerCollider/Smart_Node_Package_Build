@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('DispGauge', {
+        category: 'atlas',
+        color: '#A6BBCF',
+        defaults: {
+            min: {value: "0", required: false},
+            max: {value: "100", required: false},
+            unit: {value: "degree", required: false},
+            title: {value: "Sensor1", required: false}
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "function.png",
+        label: function() {
+            return this.name || "Sensor1";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="DispGauge">
+    <div class="form-row">
+        <label for="node-input-min"><i class="fa fa-tag"></i> Min</label>
+        <input type="text" id="node-input-min">
+    </div>
+    <div class="form-row">
+        <label for="node-input-max"><i class="fa fa-tag"></i> Max</label>
+        <input type="text" id="node-input-max">
+    </div>
+    <div class="form-row">
+        <label for="node-input-unit"><i class="fa fa-tag"></i> Unit</label>
+        <input type="text" id="node-input-unit">
+    </div>
+    <div class="form-row">
+        <label for="node-input-title"><i class="fa fa-tag"></i> Title</label>
+        <input type="text" id="node-input-title" placeholder="DispGauge">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="DispGauge">
+    <p>A SmartNode node for display gauge</p>
+</script>

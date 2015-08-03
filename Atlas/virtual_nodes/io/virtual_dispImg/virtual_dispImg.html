@@ -1,0 +1,21 @@
+<script type="text/javascript">
+    RED.nodes.registerType('DispImg', {
+        category: 'atlas',
+        color: '#A6BBCF',
+        defaults: {
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "function.png",
+        label: function() {
+            return this.name || "DispImg";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="DispImg">
+</script>
+
+<script type="text/x-red" data-help-name="DispImg">
+    <p>A SmartNode for display a image on the page, which is captured by the camera</p>
+</script>

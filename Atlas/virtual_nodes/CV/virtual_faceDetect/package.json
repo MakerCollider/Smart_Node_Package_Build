@@ -1,0 +1,13 @@
+{
+	"name"		:	"FaceDetect",
+	"version"	:	"0.0.1",
+	"description"	:	"A SmartNode for Opencv FaceDetect",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"FaceDetect"	:	"virtual_faceDetect.js"
+		}
+	}
+}

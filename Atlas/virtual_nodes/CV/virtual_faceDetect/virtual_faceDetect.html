@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('FaceDetect', {
+        category: 'CV',
+        color: '#FDD0A2',
+        defaults: {
+            name: {value: "FaceDetect", required: false},
+        },
+        inputs: 1,
+        outputs: 3,
+        icon: "light.png",
+        label: function() {
+            return this.name || "FaceDetect";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="FaceDetect">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="FaceDetect">
+    <p>A SmartNode node for FaceDetect, need following the Camera node, and need insert USB camera to USB host port on Edison</p>
+</script>

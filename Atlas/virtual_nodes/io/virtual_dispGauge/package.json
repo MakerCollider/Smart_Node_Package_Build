@@ -1,0 +1,13 @@
+{
+	"name"		:	"DispGauge",
+	"version"	:	"0.0.1",
+	"description"	:	"A SmartNode for display a gauge on the page",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"DispGauge"	:	"virtual_dispGauge.js"
+		}
+	}
+}

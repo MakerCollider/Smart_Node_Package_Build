@@ -1,0 +1,13 @@
+{
+	"name"		:	"Img2Base64",
+	"version"	:	"0.0.1",
+	"description"	:	"A SmartNode for Base64 Encoder",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Img2Base64"	:	"virtual_img2Base64.js"
+		}
+	}
+}

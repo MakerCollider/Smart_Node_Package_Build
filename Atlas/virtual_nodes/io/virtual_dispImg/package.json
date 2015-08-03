@@ -1,0 +1,13 @@
+{
+	"name"		:	"DispImg",
+	"version"	:	"0.0.1",
+	"description"	:	"A SmartNode for display a image on the page, which is captured by the camera",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"DispImg"	:	"virtual_dispImg.js"
+		}
+	}
+}

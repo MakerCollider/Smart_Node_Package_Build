@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Camera', {
+        category: 'CV',
+        color: '#FDD0A2',
+        defaults: {
+            name: {value: "Camera", required: false},
+            interval: {value: "500", required: false},
+            camId: {value: "-1", required: false},
+            width: {value: "160", required: false},
+            height: {value: "120", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Camera";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Camera">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+    <div class="form-row">
+        <label for="node-input-camId"><i class="fa fa-tag"></i> Camera Id</label>
+        <input type="number" id="node-input-camId">
+    </div>
+    <div class="form-row">
+        <label for="node-input-width"><i class="fa fa-tag"></i> Width</label>
+        <input type="number" id="node-input-width">
+    </div>
+    <div class="form-row">
+        <label for="node-input-height"><i class="fa fa-tag"></i> Height</label>
+        <input type="number" id="node-input-height">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Camera">
+    <p>A SmartNode node for Camera,need insert USB camera to USB host port on Edison</p>
+</script>

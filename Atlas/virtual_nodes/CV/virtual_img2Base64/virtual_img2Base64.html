@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Img2Base64', {
+        category: 'CV',
+        color: '#FDD0A2',
+        defaults: {
+            name: {value: "Img2Base64", required: false},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Img2Base64";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Img2Base64">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Img2Base64">
+    <p>A SmartNode node for Base64 Encoder, you had better add this node after the node which will output a image, since the picture will be encoded by this node to save bindwidth</p>
+</script>
