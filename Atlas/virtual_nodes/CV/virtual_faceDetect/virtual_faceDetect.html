@@ -4,6 +4,10 @@
         color: '#FDD0A2',
         defaults: {
             name: {value: "FaceDetect", required: false},
+            imgWidth: {value: "128", required: false},
+            imgHeight: {value: "96", required: false},
+            faceWidth: {value: "30", required: false},
+            faceHeight: {value: "30", required: false},
         },
         inputs: 1,
         outputs: 3,
@@ -18,6 +22,22 @@
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-imgWidth"><i class="fa fa-tag"></i> Img Width</label>
+        <input type="text" id="node-input-imgWidth">
+    </div>
+    <div class="form-row">
+        <label for="node-input-imgHeight"><i class="fa fa-tag"></i> Img Height</label>
+        <input type="text" id="node-input-imgHeight">
+    </div>
+    <div class="form-row">
+        <label for="node-input-faceWidth"><i class="fa fa-tag"></i> Face Width</label>
+        <input type="text" id="node-input-faceWidth">
+    </div>
+    <div class="form-row">
+        <label for="node-input-faceHeight"><i class="fa fa-tag"></i> Face Height</label>
+        <input type="text" id="node-input-faceHeight">
     </div>
 </script>
 
