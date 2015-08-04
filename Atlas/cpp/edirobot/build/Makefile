@@ -111,30 +111,6 @@ edirobot/fast:
 	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/build
 .PHONY : edirobot/fast
 
-motor.o: motor.cpp.o
-.PHONY : motor.o
-
-# target to build an object file
-motor.cpp.o:
-	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/motor.cpp.o
-.PHONY : motor.cpp.o
-
-motor.i: motor.cpp.i
-.PHONY : motor.i
-
-# target to preprocess a source file
-motor.cpp.i:
-	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/motor.cpp.i
-.PHONY : motor.cpp.i
-
-motor.s: motor.cpp.s
-.PHONY : motor.s
-
-# target to generate assembly for a file
-motor.cpp.s:
-	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/motor.cpp.s
-.PHONY : motor.cpp.s
-
 screen.o: screen.cpp.o
 .PHONY : screen.o
 
@@ -159,30 +135,6 @@ screen.cpp.s:
 	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/screen.cpp.s
 .PHONY : screen.cpp.s
 
-servo.o: servo.cpp.o
-.PHONY : servo.o
-
-# target to build an object file
-servo.cpp.o:
-	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/servo.cpp.o
-.PHONY : servo.cpp.o
-
-servo.i: servo.cpp.i
-.PHONY : servo.i
-
-# target to preprocess a source file
-servo.cpp.i:
-	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/servo.cpp.i
-.PHONY : servo.cpp.i
-
-servo.s: servo.cpp.s
-.PHONY : servo.s
-
-# target to generate assembly for a file
-servo.cpp.s:
-	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/servo.cpp.s
-.PHONY : servo.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,15 +144,9 @@ help:
 	@echo "... edirobot"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... motor.o"
-	@echo "... motor.i"
-	@echo "... motor.s"
 	@echo "... screen.o"
 	@echo "... screen.i"
 	@echo "... screen.s"
-	@echo "... servo.o"
-	@echo "... servo.i"
-	@echo "... servo.s"
 .PHONY : help
 
 

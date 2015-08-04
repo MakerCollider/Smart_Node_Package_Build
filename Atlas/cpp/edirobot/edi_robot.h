@@ -13,20 +13,6 @@
 #define ERR_UNKOWN -1
 
 /************************************************
- motor
- ************************************************/
-#define motorClass "edi_robot"
-struct motorConfig {
-    int motorId;
-};
-
-#define motorConfig_motorId           0
-
-extern int motorInit(motorConfig config);
-extern int motorRelease();
-extern int motorOnData(int dirAndTime);
-
-/************************************************
  SPI screen
  ************************************************/
 #define screenClass "edi_robot"
@@ -39,23 +25,5 @@ struct screenConfig {
 extern int screenInit(screenConfig config);
 extern int screenRelease();
 extern int screenOnData(int faceId);
-
-/************************************************
- servo Loop
- ************************************************/
-#define servoLoopClass "edi_robot"
-struct servoLoopConfig {
-    int maxAngle;
-    int minAngle;
-};
-
-#define servoLoopConfig_maxAngle           160
-#define servoLoopConfig_minAngle           20
-
-typedef void(*servoLoopCb)(int);
-
-extern int servoLoopInit(servoLoopConfig config, servoLoopCb cb);
-extern int servoLoopRelease();
-extern int servoLoopOnData(int toggle);
 
 #endif /* defined(__motor_node__motor__) */

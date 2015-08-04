@@ -15,13 +15,8 @@
     "constants" : {
       "ERR_NONE": 0,
       "ERR_UNKOWN": -1,
-      "motorClass": "edi_robot",
-      "motorConfig_motorId": 0,
       "screenClass": "edi_robot",
-      "screenConfig_refreshFreq": 10,
-      "servoLoopClass": "edi_robot",
-      "servoLoopConfig_maxAngle": 160,
-      "servoLoopConfig_minAngle": 20
+      "screenConfig_refreshFreq": 10
     },
   
     "enums" : {
@@ -33,34 +28,6 @@
     },
   
     "functions" : {
-      
-      "motorInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "motorConfig"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "motorRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "motorOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "dirAndTime",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
       
       "screenInit": {
         "override" : false,
@@ -84,38 +51,6 @@
         "parameters": [
           {
             "name": "faceId",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "servoLoopInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "servoLoopConfig"
-          },
-          {
-            "name": "cb",
-            "type": "servoLoopCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "servoLoopRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "servoLoopOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
             "type": "int"
           }
         ],

@@ -12,8 +12,6 @@ include_directories(${Root})
 link_directories(${MRAA_LIB})
 
 add_library(edirobot STATIC
-            servo.cpp
-            motor.cpp
             screen.cpp)
 
 set_target_properties(                         

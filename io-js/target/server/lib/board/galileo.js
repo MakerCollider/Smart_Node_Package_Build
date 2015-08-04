@@ -17,18 +17,6 @@ var methods = function(options) {
              edi_robot
   ****************************************/
 
-  map['motorInit'] = function() {
-    self.handle.funcReq(self.io.motorInit, arguments, 'motorInit');
-  };
-
-  map['motorRelease'] = function() {
-    self.handle.funcReq(self.io.motorRelease, arguments, 'motorRelease');
-  };
-
-  map['motorOnData'] = function() {
-    self.handle.funcReq(self.io.motorOnData, arguments, 'motorOnData');
-  };
-
   map['screenInit'] = function() {
     self.handle.funcReq(self.io.screenInit, arguments, 'screenInit');
   };
@@ -39,18 +27,6 @@ var methods = function(options) {
 
   map['screenOnData'] = function() {
     self.handle.funcReq(self.io.screenOnData, arguments, 'screenOnData');
-  };
-
-  map['servoLoopInit'] = function() {
-    self.handle.funcReq(self.io.servoLoopInit, arguments, 'servoLoopInit');
-  };
-
-  map['servoLoopRelease'] = function() {
-    self.handle.funcReq(self.io.servoLoopRelease, arguments, 'servoLoopRelease');
-  };
-
-  map['servoLoopOnData'] = function() {
-    self.handle.funcReq(self.io.servoLoopOnData, arguments, 'servoLoopOnData');
   };
 
   self.map = map;

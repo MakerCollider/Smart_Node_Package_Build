@@ -45,6 +45,12 @@
         "return": ["extern int"]
       },
       
+      "cleanFakeCamera": {
+        "override" : false,
+        "parameters": [],
+        "return": ["extern int"]
+      },
+      
       "fakeCameraOnData": {
         "override" : false,
         "parameters": [

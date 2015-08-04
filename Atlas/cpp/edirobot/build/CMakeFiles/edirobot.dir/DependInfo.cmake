@@ -4,9 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/motor.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/edirobot.dir/motor.cpp.o"
   "/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/screen.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/edirobot.dir/screen.cpp.o"
-  "/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/servo.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/edirobot.dir/servo.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

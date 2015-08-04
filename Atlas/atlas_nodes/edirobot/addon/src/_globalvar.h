@@ -12,7 +12,6 @@
 #include <node.h>
 #include <v8.h>
 
-#include "edi_robot.h"
 using namespace v8;
 
 #ifndef V8_EXCEPTION
@@ -30,12 +29,11 @@ using namespace v8;
     }
 #endif
 
-extern Persistent<Function> cbArray[1];
+extern Persistent<Function> cbArray[0];
 
 extern std::map <void *, Persistent<Object> > CClassToJsObjMap;
 extern std::map <void *, Persistent<Object> >::iterator iter;
 extern Persistent<Object> JSObj;
 
-extern void cbFunc0(int arg0);
 
 #endif

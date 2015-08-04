@@ -79,7 +79,22 @@ Handle<Value> fakeCameraInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 28: extern int fakeCameraOnData ( int toggle ) ;
+// 28: extern int cleanFakeCamera ( ) ;
+Handle<Value> cleanFakeCameraV8(const Arguments &args) {
+    HandleScope scope;
+        
+    // Call C++ function
+    int ret = (int)cleanFakeCamera();
+    
+    
+    
+    // Convert C++ return value to V8
+    Handle<Value> retV8 = Int32::New(ret);
+    
+    return scope.Close(retV8);
+    
+}
+// 29: extern int fakeCameraOnData ( int toggle ) ;
 Handle<Value> fakeCameraOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -103,6 +118,9 @@ Handle<Value> fakeCameraOnDataV8(const Arguments &args) {
 static void SetMemberFunc(Handle<Object> obj) {
     obj->Set(v8::String::NewSymbol("fakeCameraInit"),
            FunctionTemplate::New(fakeCameraInitV8)->GetFunction());
+
+    obj->Set(v8::String::NewSymbol("cleanFakeCamera"),
+           FunctionTemplate::New(cleanFakeCameraV8)->GetFunction());
 
     obj->Set(v8::String::NewSymbol("fakeCameraOnData"),
            FunctionTemplate::New(fakeCameraOnDataV8)->GetFunction());

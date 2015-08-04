@@ -12,69 +12,7 @@
 using namespace v8;
 
 
-// 25: extern int motorInit ( motorConfig config ) ;
-Handle<Value> motorInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_motorId = args[0]->ToObject()->Get(String::New("motorId"));
-    V8_ASSERT(!args0_motorId->IsNull() && args0_motorId->IsInt32(), "arg0.motorId parameter error");
-    int arg0_motorId = (int)args0_motorId->IntegerValue();
-    
-    motorConfig arg0;
-    arg0.motorId = arg0_motorId;
-    
-        
-    // Call C++ function
-    int ret = (int)motorInit(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 26: extern int motorRelease ( ) ;
-Handle<Value> motorReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)motorRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 27: extern int motorOnData ( int dirAndTime ) ;
-Handle<Value> motorOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)motorOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 39: extern int screenInit ( screenConfig config ) ;
+// 25: extern int screenInit ( screenConfig config ) ;
 Handle<Value> screenInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -100,7 +38,7 @@ Handle<Value> screenInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 40: extern int screenRelease ( ) ;
+// 26: extern int screenRelease ( ) ;
 Handle<Value> screenReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -115,7 +53,7 @@ Handle<Value> screenReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 41: extern int screenOnData ( int faceId ) ;
+// 27: extern int screenOnData ( int faceId ) ;
 Handle<Value> screenOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -136,89 +74,7 @@ Handle<Value> screenOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 57: extern int servoLoopInit ( servoLoopConfig config , servoLoopCb cb ) ;
-Handle<Value> servoLoopInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_maxAngle = args[0]->ToObject()->Get(String::New("maxAngle"));
-    V8_ASSERT(!args0_maxAngle->IsNull() && args0_maxAngle->IsInt32(), "arg0.maxAngle parameter error");
-    int arg0_maxAngle = (int)args0_maxAngle->IntegerValue();
-    
-    Local<Value> args0_minAngle = args[0]->ToObject()->Get(String::New("minAngle"));
-    V8_ASSERT(!args0_minAngle->IsNull() && args0_minAngle->IsInt32(), "arg0.minAngle parameter error");
-    int arg0_minAngle = (int)args0_minAngle->IntegerValue();
-    
-    servoLoopConfig arg0;
-    arg0.maxAngle = arg0_maxAngle;
-    arg0.minAngle = arg0_minAngle;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[0] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    servoLoopCb arg1;;
-    arg1 = cbFunc0;
-    
-        
-    // Call C++ function
-    int ret = (int)servoLoopInit(arg0, arg1);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 58: extern int servoLoopRelease ( ) ;
-Handle<Value> servoLoopReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)servoLoopRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 59: extern int servoLoopOnData ( int toggle ) ;
-Handle<Value> servoLoopOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)servoLoopOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
 static void SetMemberFunc(Handle<Object> obj) {
-    obj->Set(v8::String::NewSymbol("motorInit"),
-           FunctionTemplate::New(motorInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("motorRelease"),
-           FunctionTemplate::New(motorReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("motorOnData"),
-           FunctionTemplate::New(motorOnDataV8)->GetFunction());
-
     obj->Set(v8::String::NewSymbol("screenInit"),
            FunctionTemplate::New(screenInitV8)->GetFunction());
 
@@ -227,15 +83,6 @@ static void SetMemberFunc(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("screenOnData"),
            FunctionTemplate::New(screenOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("servoLoopInit"),
-           FunctionTemplate::New(servoLoopInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("servoLoopRelease"),
-           FunctionTemplate::New(servoLoopReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("servoLoopOnData"),
-           FunctionTemplate::New(servoLoopOnDataV8)->GetFunction());
 }
 
 
@@ -248,26 +95,11 @@ static void SetConst(Handle<Object> obj) {
     obj->Set(v8::String::NewSymbol("ERR_UNKOWN"),
              Int32::New(-1));
 
-    obj->Set(v8::String::NewSymbol("motorClass"),
-             v8::String::New("edi_robot"));
-
-    obj->Set(v8::String::NewSymbol("motorConfig_motorId"),
-             Int32::New(0));
-
     obj->Set(v8::String::NewSymbol("screenClass"),
              v8::String::New("edi_robot"));
 
     obj->Set(v8::String::NewSymbol("screenConfig_refreshFreq"),
              Int32::New(10));
-
-    obj->Set(v8::String::NewSymbol("servoLoopClass"),
-             v8::String::New("edi_robot"));
-
-    obj->Set(v8::String::NewSymbol("servoLoopConfig_maxAngle"),
-             Int32::New(160));
-
-    obj->Set(v8::String::NewSymbol("servoLoopConfig_minAngle"),
-             Int32::New(20));
 
 }
 

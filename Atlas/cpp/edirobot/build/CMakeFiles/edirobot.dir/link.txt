@@ -1,2 +1,2 @@
-/usr/bin/ar cr ../bin/libedirobot.a  CMakeFiles/edirobot.dir/servo.cpp.o CMakeFiles/edirobot.dir/motor.cpp.o CMakeFiles/edirobot.dir/screen.cpp.o
+/usr/bin/ar cr ../bin/libedirobot.a  CMakeFiles/edirobot.dir/screen.cpp.o
 /usr/bin/ranlib ../bin/libedirobot.a

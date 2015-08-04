@@ -2,7 +2,7 @@
 <head>
   <title>Atlas Client</title>
 
-	<title>toggle</title>
+	<title>hihi</title>
 </head>
 
 <body>
@@ -26,29 +26,41 @@
 
 <div id="atlasBody">
   
-
   <div class="atlasHide"></div>
 
-  <img src="./pic/power_button_gray.png" id="powerImg">
+  <canvas id="cvs" width="600" height="250" style="border-radius: 15px">[No canvas support]</canvas> 
+
 
   <script type="text/javascript">
+  
+  var cvs = $('#cvs')[0];
+  var context = cvs.getContext('2d');
+
+  context.fillText('disconnect', 20, 20);  
+  
+  var img = new Image();
+
+  function clearCanvas() {
+    context.fillStyle = '#FFffFF';
+    context.fillRect(0, 0, 600, 250); 
+  }
+
+  function loadDataUrl(data) {
+    img.src = data;
+    context.drawImage(img, 0, 0);
+  }
 
   atlas.on('connect', function() {
-    $('#powerImg').attr('src', './pic/power_button_gray.png');
-    atlas.emit('toggleQuery');
-  });
-  
-  atlas.on('toggleQuery', function(data) {
-    $('#powerImg').attr('src', './pic/power_button_' + (data ? 'green' : 'red') + '.png');
+    context.fillText('connected', 20, 20);    
+    clearCanvas();
   });
 
-  $('#powerImg').click(function() {
-    $('#powerImg').attr('src', './pic/power_button_gray.png');
-    console.log('query');
-    atlas.emit('toggle');
+  atlas.on('dispImg', function(data) {
+    loadDataUrl(data);
   });
 
   </script>
+
  </div>
 </body>
 </html>

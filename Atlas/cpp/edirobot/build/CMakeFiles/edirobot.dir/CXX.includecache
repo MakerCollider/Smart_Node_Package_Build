@@ -8,35 +8,7 @@
 
 /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/edi_robot.h
 
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/motor.cpp
-iostream
--
-stdlib.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/stdlib.h
-mraa.hpp
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/mraa.hpp
-stdio.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/stdio.h
-uv.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/uv.h
-edi_robot.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/edi_robot.h
-
 /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/screen.cpp
-iostream
--
-stdlib.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/stdlib.h
-mraa.hpp
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/mraa.hpp
-stdio.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/stdio.h
-uv.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/uv.h
-edi_robot.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/edi_robot.h
-
-/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/servo.cpp
 iostream
 -
 stdlib.h
