@@ -1,0 +1,45 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Motor', {
+        category: 'edirobot',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Motor", required: false},
+            pinset: {value: "1", required: true}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Motor";
+        }
+    });
+</script>
+
+<script type="text/xred" data-template-name="Motor">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pinset"><i class="fa fa-tag"></i> Pin Set</label>
+        <select type="number" id="node-input-pinset">
+            <option value="1"> Pins 1 and 2 </option>
+            <option value="2"> Pins 3 and 4 </option>
+        </select>
+    </div>
+</script>
+
+<script type="text/xred" data-help-name="Motor">
+    <h3>Control a reversible DC motor.</h3>
+    <h4>msg.speed</h4>
+    <p>Accepts a number from 0-255 as input. This determines the speed of the motor.</p>
+    <h4>msg.direction</h4>
+    <p>STOP: The motor will stop moving, even if a speed is set.</p>
+    <p>CLOCKWISE: The motor will spin clockwise at the input speed.</p>
+    <p>COUNTER: The motor will spin counter-clockwise at the input speed.</p>
+    <h4>msg.timer</h4>
+    <p>Accepts a number of milliseconds. You must also provide msg.speed and msg.direction. The motor will spin for x milliseconds at the given speed and direction.</p>
+    <h4>Pin Set</h4>
+    <p>There are two configurations for the EdiRobot motor pins. Consult the guide for more details.</p>
+</script>
+

@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Driving', {
+        category: 'edirobot',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Driving", required: false},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Driving";
+        }
+    });
+</script>
+
+<script type="text/xred" data-template-name="Driving">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/xred" data-help-name="Driving">
+    <h3>Control the two-wheeled Education Robot.</h3>
+    <h4>msg.speed</h4>
+    <p>Accepts a number from 0-255.</p>
+    <h4>msg.direction</h4>
+    <p>FORWARD</p>
+    <p>REVERSE</p>
+    <p>STOP</p>
+    <p>LEFT</p>
+    <p>RIGHT<p>
+    <h4>msg.timer</h4>
+    <p>Accepts a number of milliseconds. If you want to use msg.timer, you must also pass msg.direction and msg.speed. The robot will drive for x milliseconds at the given direction and speed.</p>
+</script>
+

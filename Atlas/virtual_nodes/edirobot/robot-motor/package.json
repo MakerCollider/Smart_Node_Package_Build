@@ -1,0 +1,13 @@
+{
+	"name"	:	"robot-motor",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node that you can use to control a DC motor.",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	:	{
+			"robot-motor"	:	"robot-motor.js"
+		}
+	}
+}
