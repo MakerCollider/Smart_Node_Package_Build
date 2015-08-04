@@ -1,0 +1,15 @@
+{
+	"name"	:	"driving",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for driving an education robot.",
+	"dependencies"	:	{
+		"johnny-five"	:	"*",
+		"galileo-io"	:	"*"
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	:	{
+			"driving"	:	"driving.js"
+		}
+	}
+}
