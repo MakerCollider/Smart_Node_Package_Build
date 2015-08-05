@@ -41,11 +41,13 @@ module.exports = function(RED) {
         var buf = fs.readFileSync(__dirname + '/dispGauge.ejs').toString();
 
         var bufHtml = ejs.render(buf, {'config': config});
-        fs.writeFileSync(atlas.htmlDir + '/dispGauge.html', bufHtml);
+        fs.writeFileSync(atlas.htmlDir + '/' + name + '.html', bufHtml);
 
         atlas.genHtml.save({
-            'name': 'dispGauge',
-            'html': 'dispGauge.html'
+            'name': name,
+            'html': name + '.html',
+            'width': 320,
+            'height': 180
         });
     }
 

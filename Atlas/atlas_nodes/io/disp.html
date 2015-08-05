@@ -55,7 +55,7 @@
 
             console.log(cmd);
 
-            window.open("/atlas/dispGauge.html?" + cmd, "newwindow", "toolbar=no,location=no,scrollbars=yes, width=320,height=240,z-look=yes");
+            window.open("/atlas/client.html?" + cmd, "newwindow", "toolbar=no,location=no,scrollbars=yes, width=320, height=180, z-look=yes");
         }
     });
 </script>
@@ -63,6 +63,11 @@
 <script type="text/x-red" data-template-name="dispGauge">
     <div class="form-row">
      <p>click OK to open preview window</p>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-name"><i class="icon-tag"></i> name</label>
+      <input type="text" id="node-input-name">
     </div>
 
     <div class="form-row">

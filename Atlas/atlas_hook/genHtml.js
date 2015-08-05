@@ -47,11 +47,37 @@ var mergeAll = function(config, srcs) {
   fs.writeFileSync(htmlDir + config.output, dst.html());
 }
 
+var mergeAllAsIframe = function(config, srcs) {
+  var data = fs.readFileSync(htmlDir + config.template).toString();
+  var dst = cheerio.load(data);
+  var str = " ";
+  for(idx in srcs) {
+    var info = srcs[idx];
+    var h = info['html'];
+    str += h + ", ";
+  
+    var content = '<iframe src="' + h + '"';
+    if(info['width']) 
+      content += ' width=' + info['width'];
+
+    if(info['height'])
+      content += ' height=' + info['height']
+    
+    content += ' ></iframe></p>\n'
+
+    dst('#atlasBody').append(content);
+    
+  }
+
+  console.log("merged " + str + " ==> " + config.output);
+  fs.writeFileSync(htmlDir + config.output, dst.html());  
+}
+
 module.exports.save = function(info) {
   clientInfo[info.name] = info;
 
-  mergeAll({
-    'template': 'template.html',
+  mergeAllAsIframe({
+    'template': 'iframe_template.html',
     'output' : 'client.html'
   }, clientInfo);
 } 
