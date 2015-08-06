@@ -1,2 +1,2 @@
-/usr/bin/ar cr ../bin/libgrove.a  CMakeFiles/grove.dir/lcd.cpp.o CMakeFiles/grove.dir/led.cpp.o CMakeFiles/grove.dir/rotary.cpp.o CMakeFiles/grove.dir/relay.cpp.o
+/usr/bin/ar cr ../bin/libgrove.a  CMakeFiles/grove.dir/rotary.cpp.o CMakeFiles/grove.dir/relay.cpp.o
 /usr/bin/ranlib ../bin/libgrove.a

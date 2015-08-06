@@ -16,8 +16,6 @@ link_directories(${MRAA_LIB})
 link_directories(${UPM_LIB})
 
 add_library(grove STATIC
-            lcd.cpp
-            led.cpp
             rotary.cpp
             relay.cpp)
 

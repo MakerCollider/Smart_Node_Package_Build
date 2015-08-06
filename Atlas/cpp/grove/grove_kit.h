@@ -4,49 +4,6 @@
 #define ERR_NONE  0
 #define ERR_UNKOWN -1
 
-/************************************************
- LCD
- ************************************************/
-#define lcdHelp "this is the node for RGB Lcd in Grove starter kit plus.	\
-                 input: string to display. 	\
-                 output: 	\
-                 1. LCD color red.	\
-                 2. LCD color green.	\
-                 3. LCD color blue."	
-#define lcdClass "grove"
-struct lcdConfig {
-    int colorr;
-    int colorg;
-    int colorb;
-};
-
-#define lcdConfig_colorr	254
-#define lcdConfig_colorg	254
-#define lcdConfig_colorb	254
-
-typedef void(*lcdCb)(char*);
-
-extern int lcdInit(lcdConfig config, lcdCb cb);
-extern int lcdRelease();
-extern int lcdOnData(char* str);
-
-/************************************************
- LED
- ************************************************/
-#define ledClass "grove"
-
-struct ledConfig {
-    int pin;
-};
-
-#define ledConfig_pin  		0
-
-typedef void(*ledCb)(int);
-
-extern int ledInit(ledConfig config, ledCb cb);
-extern int ledRelease();
-extern int ledOnData(int val);
-
 /************************************************ 
  rotary                               
  ************************************************/

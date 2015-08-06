@@ -4,8 +4,6 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/lcd.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/lcd.cpp.o"
-  "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/led.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/led.cpp.o"
   "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/relay.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/relay.cpp.o"
   "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/rotary.cpp" "/home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles/grove.dir/rotary.cpp.o"
   )

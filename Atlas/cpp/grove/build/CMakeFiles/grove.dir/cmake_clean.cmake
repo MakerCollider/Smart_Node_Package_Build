@@ -1,6 +1,4 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/grove.dir/lcd.cpp.o"
-  "CMakeFiles/grove.dir/led.cpp.o"
   "CMakeFiles/grove.dir/rotary.cpp.o"
   "CMakeFiles/grove.dir/relay.cpp.o"
   "../bin/libgrove.pdb"

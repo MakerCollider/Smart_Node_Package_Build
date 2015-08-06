@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('LedBlink', {
+        category: 'Grove',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "LedBlink", required: false},
+            digitalPin: {value: "2", required: false},
+            interval: {value: "1000", required: false},
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "light.png",
+        label: function() {
+            return this.name || "LedBlink";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="LedBlink">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-digitalPin"><i class="fa fa-tag"></i> Digital Pin</label>
+        <input type="number" id="node-input-digitalPin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="LedBlink">
+    <p>A Node-RED node for Grove LED socket kit,need digital pin,need a switch</p>
+</script>

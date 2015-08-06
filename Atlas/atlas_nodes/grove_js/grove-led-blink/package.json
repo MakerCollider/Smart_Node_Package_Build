@@ -1,0 +1,13 @@
+{
+	"name"		:	"Led_Blink",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove LED socket kit",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Led_Blink"	:	"led_blink.js"
+		}
+	}
+}

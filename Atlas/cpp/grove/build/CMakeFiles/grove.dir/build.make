@@ -49,55 +49,9 @@ include CMakeFiles/grove.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/grove.dir/flags.make
 
-CMakeFiles/grove.dir/lcd.cpp.o: CMakeFiles/grove.dir/flags.make
-CMakeFiles/grove.dir/lcd.cpp.o: ../lcd.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/lcd.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/lcd.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/lcd.cpp
-
-CMakeFiles/grove.dir/lcd.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/lcd.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/lcd.cpp > CMakeFiles/grove.dir/lcd.cpp.i
-
-CMakeFiles/grove.dir/lcd.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/lcd.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/lcd.cpp -o CMakeFiles/grove.dir/lcd.cpp.s
-
-CMakeFiles/grove.dir/lcd.cpp.o.requires:
-.PHONY : CMakeFiles/grove.dir/lcd.cpp.o.requires
-
-CMakeFiles/grove.dir/lcd.cpp.o.provides: CMakeFiles/grove.dir/lcd.cpp.o.requires
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/lcd.cpp.o.provides.build
-.PHONY : CMakeFiles/grove.dir/lcd.cpp.o.provides
-
-CMakeFiles/grove.dir/lcd.cpp.o.provides.build: CMakeFiles/grove.dir/lcd.cpp.o
-
-CMakeFiles/grove.dir/led.cpp.o: CMakeFiles/grove.dir/flags.make
-CMakeFiles/grove.dir/led.cpp.o: ../led.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/led.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/led.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/led.cpp
-
-CMakeFiles/grove.dir/led.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grove.dir/led.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/led.cpp > CMakeFiles/grove.dir/led.cpp.i
-
-CMakeFiles/grove.dir/led.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grove.dir/led.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/led.cpp -o CMakeFiles/grove.dir/led.cpp.s
-
-CMakeFiles/grove.dir/led.cpp.o.requires:
-.PHONY : CMakeFiles/grove.dir/led.cpp.o.requires
-
-CMakeFiles/grove.dir/led.cpp.o.provides: CMakeFiles/grove.dir/led.cpp.o.requires
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/led.cpp.o.provides.build
-.PHONY : CMakeFiles/grove.dir/led.cpp.o.provides
-
-CMakeFiles/grove.dir/led.cpp.o.provides.build: CMakeFiles/grove.dir/led.cpp.o
-
 CMakeFiles/grove.dir/rotary.cpp.o: CMakeFiles/grove.dir/flags.make
 CMakeFiles/grove.dir/rotary.cpp.o: ../rotary.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/rotary.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/rotary.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/rotary.cpp
 
@@ -120,7 +74,7 @@ CMakeFiles/grove.dir/rotary.cpp.o.provides.build: CMakeFiles/grove.dir/rotary.cp
 
 CMakeFiles/grove.dir/relay.cpp.o: CMakeFiles/grove.dir/flags.make
 CMakeFiles/grove.dir/relay.cpp.o: ../relay.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grove.dir/relay.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grove.dir/relay.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/relay.cpp
 
@@ -143,16 +97,12 @@ CMakeFiles/grove.dir/relay.cpp.o.provides.build: CMakeFiles/grove.dir/relay.cpp.
 
 # Object files for target grove
 grove_OBJECTS = \
-"CMakeFiles/grove.dir/lcd.cpp.o" \
-"CMakeFiles/grove.dir/led.cpp.o" \
 "CMakeFiles/grove.dir/rotary.cpp.o" \
 "CMakeFiles/grove.dir/relay.cpp.o"
 
 # External object files for target grove
 grove_EXTERNAL_OBJECTS =
 
-../bin/libgrove.a: CMakeFiles/grove.dir/lcd.cpp.o
-../bin/libgrove.a: CMakeFiles/grove.dir/led.cpp.o
 ../bin/libgrove.a: CMakeFiles/grove.dir/rotary.cpp.o
 ../bin/libgrove.a: CMakeFiles/grove.dir/relay.cpp.o
 ../bin/libgrove.a: CMakeFiles/grove.dir/build.make
@@ -165,8 +115,6 @@ grove_EXTERNAL_OBJECTS =
 CMakeFiles/grove.dir/build: ../bin/libgrove.a
 .PHONY : CMakeFiles/grove.dir/build
 
-CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/lcd.cpp.o.requires
-CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/led.cpp.o.requires
 CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/rotary.cpp.o.requires
 CMakeFiles/grove.dir/requires: CMakeFiles/grove.dir/relay.cpp.o.requires
 .PHONY : CMakeFiles/grove.dir/requires

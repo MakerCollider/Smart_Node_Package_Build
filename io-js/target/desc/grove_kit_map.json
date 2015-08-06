@@ -15,18 +15,6 @@
     "constants" : {
       "ERR_NONE": 0,
       "ERR_UNKOWN": -1,
-      "lcdHelp": "this is the node for RGB Lcd in Grove starter kit plus. \
-       input: string to display. \
-       output: \
-       1. LCD color red. \
-       2. LCD color green. \
-       3. LCD color blue.",
-      "lcdClass": "grove",
-      "lcdConfig_colorr": 254,
-      "lcdConfig_colorg": 254,
-      "lcdConfig_colorb": 254,
-      "ledClass": "grove",
-      "ledConfig_pin": 0,
       "rotaryClass": "grove",
       "rotaryConfig_aioPin": 0,
       "rotaryConfig_interval": 300,
@@ -44,70 +32,6 @@
     },
   
     "functions" : {
-      
-      "lcdInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "lcdConfig"
-          },
-          {
-            "name": "cb",
-            "type": "lcdCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "lcdRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "lcdOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "str",
-            "type": "char *"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "ledInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "ledConfig"
-          },
-          {
-            "name": "cb",
-            "type": "ledCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "ledRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "ledOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "val",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
       
       "rotaryInit": {
         "override" : false,

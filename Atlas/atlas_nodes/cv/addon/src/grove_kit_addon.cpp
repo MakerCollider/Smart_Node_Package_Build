@@ -12,194 +12,7 @@
 using namespace v8;
 
 
-// 29: extern int lcdInit ( lcdConfig config , lcdCb cb ) ;
-Handle<Value> lcdInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_colorr = args[0]->ToObject()->Get(String::New("colorr"));
-    V8_ASSERT(!args0_colorr->IsNull() && args0_colorr->IsInt32(), "arg0.colorr parameter error");
-    int arg0_colorr = (int)args0_colorr->IntegerValue();
-    
-    Local<Value> args0_colorg = args[0]->ToObject()->Get(String::New("colorg"));
-    V8_ASSERT(!args0_colorg->IsNull() && args0_colorg->IsInt32(), "arg0.colorg parameter error");
-    int arg0_colorg = (int)args0_colorg->IntegerValue();
-    
-    Local<Value> args0_colorb = args[0]->ToObject()->Get(String::New("colorb"));
-    V8_ASSERT(!args0_colorb->IsNull() && args0_colorb->IsInt32(), "arg0.colorb parameter error");
-    int arg0_colorb = (int)args0_colorb->IntegerValue();
-    
-    lcdConfig arg0;
-    arg0.colorr = arg0_colorr;
-    arg0.colorg = arg0_colorg;
-    arg0.colorb = arg0_colorb;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[0] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    lcdCb arg1;;
-    arg1 = cbFunc0;
-    
-        
-    // Call C++ function
-    int ret = (int)lcdInit(arg0, arg1);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 30: extern int lcdRelease ( ) ;
-Handle<Value> lcdReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)lcdRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 31: extern int lcdOnData ( char * str ) ;
-Handle<Value> lcdOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT((args[0]->IsString() || args[0]->IsObject()), "args[0] parameters error!");
-    char *arg0;
-    int idx0;
-    int len0;
-    if (args[0]->IsString()) {
-        v8::String::AsciiValue args0_at(args[0]->ToString());
-        len0 = strlen(*args0_at) + 1;
-        arg0 = new char[len0];
-        strcpy(arg0, *args0_at);
-    } else {
-        Local<Array> args0_at = Local<Array>::Cast(args[0]);
-        len0 = args0_at->Length() + 1;
-        arg0 = new char[len0];
-        for (idx0 = 0; idx0 < len0 - 1; idx0++) {
-            Local<Value> args0_a = args0_at->Get(idx0);
-            V8_ASSERT(!args0_a->IsNull() && args0_a->IsInt32(), "arg0[%d] parameter error", idx0);
-            arg0[idx0] = (char)args0_a->IntegerValue();
-        }
-        arg0[idx0] = 0;
-    }
-    
-        
-    // Call C++ function
-    int ret = (int)lcdOnData(arg0);
-    
-    // Convert C++ parameters passed by pointer to V8
-    
-    int idx0_r;
-    int len0_r;
-    if (args[0]->IsString()) {
-        v8::String::AsciiValue args0_ar(args[0]->ToString());
-        const char *oldStr = *args0_ar;
-        len0_r = strlen(*args0_ar) + 1;
-    
-        for (idx0_r = 0; idx0_r < len0_r; idx0_r++) {
-            if (oldStr[idx0_r] != arg0[idx0_r])
-                V8_ASSERT(false, "String arg0 is Changed in C function, \
-                          Please Use Buffer or Integer Array to map 'char *' in JS");
-        }
-    } else {
-        Local<Array> args0_ar = Local<Array>::Cast(args[0]);
-        len0_r = args0_ar->Length() + 1;
-        for (idx0_r = 0; idx0_r < len0_r; idx0_r++) {
-            args0_ar->Set(idx0_r, Int32::New(arg0[idx0_r]));
-        }
-    }
-    
-    if (arg0) delete [] arg0;
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 46: extern int ledInit ( ledConfig config , ledCb cb ) ;
-Handle<Value> ledInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_pin = args[0]->ToObject()->Get(String::New("pin"));
-    V8_ASSERT(!args0_pin->IsNull() && args0_pin->IsInt32(), "arg0.pin parameter error");
-    int arg0_pin = (int)args0_pin->IntegerValue();
-    
-    ledConfig arg0;
-    arg0.pin = arg0_pin;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[1] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    ledCb arg1;;
-    arg1 = cbFunc1;
-    
-        
-    // Call C++ function
-    int ret = (int)ledInit(arg0, arg1);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 47: extern int ledRelease ( ) ;
-Handle<Value> ledReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)ledRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 48: extern int ledOnData ( int val ) ;
-Handle<Value> ledOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)ledOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 68: extern int rotaryInit ( rotaryConfig config , rotaryDegreeCb degCb , rotaryThreCb threCb ) ;
+// 25: extern int rotaryInit ( rotaryConfig config , rotaryDegreeCb degCb , rotaryThreCb threCb ) ;
 Handle<Value> rotaryInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -225,15 +38,15 @@ Handle<Value> rotaryInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[2] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[0] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     rotaryDegreeCb arg1;;
-    arg1 = cbFunc2;
+    arg1 = cbFunc0;
     
     
     V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[3] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
+    cbArray[1] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
     rotaryThreCb arg2;;
-    arg2 = cbFunc3;
+    arg2 = cbFunc1;
     
         
     // Call C++ function
@@ -247,7 +60,7 @@ Handle<Value> rotaryInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 69: extern int rotaryRelease ( ) ;
+// 26: extern int rotaryRelease ( ) ;
 Handle<Value> rotaryReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -262,7 +75,7 @@ Handle<Value> rotaryReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 70: extern int rotaryOnData ( int toggle ) ;
+// 27: extern int rotaryOnData ( int toggle ) ;
 Handle<Value> rotaryOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -283,7 +96,7 @@ Handle<Value> rotaryOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 85: extern int relayInit ( relayConfig config , relayCb cb ) ;
+// 42: extern int relayInit ( relayConfig config , relayCb cb ) ;
 Handle<Value> relayInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -299,9 +112,9 @@ Handle<Value> relayInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[4] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[2] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     relayCb arg1;;
-    arg1 = cbFunc4;
+    arg1 = cbFunc2;
     
         
     // Call C++ function
@@ -315,7 +128,7 @@ Handle<Value> relayInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 86: extern int relayRelease ( ) ;
+// 43: extern int relayRelease ( ) ;
 Handle<Value> relayReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -330,7 +143,7 @@ Handle<Value> relayReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 87: extern int relayOnData ( int toggle ) ;
+// 44: extern int relayOnData ( int toggle ) ;
 Handle<Value> relayOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -352,24 +165,6 @@ Handle<Value> relayOnDataV8(const Arguments &args) {
     
 }
 static void SetMemberFunc(Handle<Object> obj) {
-    obj->Set(v8::String::NewSymbol("lcdInit"),
-           FunctionTemplate::New(lcdInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("lcdRelease"),
-           FunctionTemplate::New(lcdReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("lcdOnData"),
-           FunctionTemplate::New(lcdOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("ledInit"),
-           FunctionTemplate::New(ledInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("ledRelease"),
-           FunctionTemplate::New(ledReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("ledOnData"),
-           FunctionTemplate::New(ledOnDataV8)->GetFunction());
-
     obj->Set(v8::String::NewSymbol("rotaryInit"),
            FunctionTemplate::New(rotaryInitV8)->GetFunction());
 
@@ -398,32 +193,6 @@ static void SetConst(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("ERR_UNKOWN"),
              Int32::New(-1));
-
-    obj->Set(v8::String::NewSymbol("lcdHelp"),
-             v8::String::New("this is the node for RGB Lcd in Grove starter kit plus. \
- input: string to display. \
- output: \
- 1. LCD color red. \
- 2. LCD color green. \
- 3. LCD color blue."));
-
-    obj->Set(v8::String::NewSymbol("lcdClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("lcdConfig_colorr"),
-             Int32::New(254));
-
-    obj->Set(v8::String::NewSymbol("lcdConfig_colorg"),
-             Int32::New(254));
-
-    obj->Set(v8::String::NewSymbol("lcdConfig_colorb"),
-             Int32::New(254));
-
-    obj->Set(v8::String::NewSymbol("ledClass"),
-             v8::String::New("grove"));
-
-    obj->Set(v8::String::NewSymbol("ledConfig_pin"),
-             Int32::New(0));
 
     obj->Set(v8::String::NewSymbol("rotaryClass"),
              v8::String::New("grove"));

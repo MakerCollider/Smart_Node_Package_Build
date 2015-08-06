@@ -11,6 +11,11 @@ module.exports = function(RED) {
 	var myinterval = setInterval(readButtonValue,100);
         this.on('close', function() {
                 clearInterval(myinterval);
+            onOffStatus = 0;                                          
+                var msg = { payload:0 };                                  
+                //send the result                                         
+                node.status({fill: "red", shape: "ring", text: "turn off"});
+                node.send(msg);
         });	
     var count;
     var lastStatus = 0;

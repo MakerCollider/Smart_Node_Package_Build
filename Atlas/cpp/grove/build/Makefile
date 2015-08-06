@@ -111,54 +111,6 @@ grove/fast:
 	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/build
 .PHONY : grove/fast
 
-lcd.o: lcd.cpp.o
-.PHONY : lcd.o
-
-# target to build an object file
-lcd.cpp.o:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/lcd.cpp.o
-.PHONY : lcd.cpp.o
-
-lcd.i: lcd.cpp.i
-.PHONY : lcd.i
-
-# target to preprocess a source file
-lcd.cpp.i:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/lcd.cpp.i
-.PHONY : lcd.cpp.i
-
-lcd.s: lcd.cpp.s
-.PHONY : lcd.s
-
-# target to generate assembly for a file
-lcd.cpp.s:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/lcd.cpp.s
-.PHONY : lcd.cpp.s
-
-led.o: led.cpp.o
-.PHONY : led.o
-
-# target to build an object file
-led.cpp.o:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/led.cpp.o
-.PHONY : led.cpp.o
-
-led.i: led.cpp.i
-.PHONY : led.i
-
-# target to preprocess a source file
-led.cpp.i:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/led.cpp.i
-.PHONY : led.cpp.i
-
-led.s: led.cpp.s
-.PHONY : led.s
-
-# target to generate assembly for a file
-led.cpp.s:
-	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/led.cpp.s
-.PHONY : led.cpp.s
-
 relay.o: relay.cpp.o
 .PHONY : relay.o
 
@@ -216,12 +168,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... grove"
 	@echo "... rebuild_cache"
-	@echo "... lcd.o"
-	@echo "... lcd.i"
-	@echo "... lcd.s"
-	@echo "... led.o"
-	@echo "... led.i"
-	@echo "... led.s"
 	@echo "... relay.o"
 	@echo "... relay.i"
 	@echo "... relay.s"

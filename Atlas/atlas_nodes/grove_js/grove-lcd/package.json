@@ -1,0 +1,13 @@
+{
+	"name"		:	"Grove-LCD",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for Grove-LCD(Jhd1313m1)",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Grove-LCD"	:	"lcd.js"
+		}
+	}
+}

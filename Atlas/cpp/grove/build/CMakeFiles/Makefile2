@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build
 CMakeFiles/grove.dir/all:
 	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/depend
 	$(MAKE) -f CMakeFiles/grove.dir/build.make CMakeFiles/grove.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles  1 2 3 4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles  1 2
 	@echo "Built target grove"
 .PHONY : CMakeFiles/grove.dir/all
 
@@ -69,7 +69,7 @@ all: CMakeFiles/grove.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/grove.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/grove.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/root/Node_red_on_edison_Release/Atlas/cpp/grove/build/CMakeFiles 0
 .PHONY : CMakeFiles/grove.dir/rule
