@@ -15,25 +15,11 @@
     "constants" : {
       "ERR_NONE": 0,
       "ERR_UNKOWN": -1,
-      "uvSensorClass": "indoor",
-      "uvSensorConfig_aioPin": 0,
-      "uvSensorConfig_interval": 500,
-      "uvSensorConfig_threshold": 10,
-      "GUVAS12D_AREF": 5.0,
-      "SAMPLES_PER_QUERY": 32,
       "rotaryEncoderClass": "indoor",
       "rotaryEncoderConfig_pinA": 2,
       "rotaryEncoderConfig_pinB": 3,
       "rotaryEncoderConfig_interval": 300,
-      "rotaryEncoderConfig_threshold": 150,
-      "moistureClass": "indoor",
-      "moistureConfig_aioPin": 0,
-      "moistureConfig_interval": 500,
-      "moistureConfig_threshold": 500,
-      "tempHumiClass": "indoor",
-      "tempHumiConfig_interval": 500,
-      "tempHumiConfig_temperatureThreshold": 30,
-      "tempHumiConfig_humidityThreshold": 30
+      "rotaryEncoderConfig_threshold": 150
     },
   
     "enums" : {
@@ -45,42 +31,6 @@
     },
   
     "functions" : {
-      
-      "uvSensorInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "uvSensorConfig"
-          },
-          {
-            "name": "cb",
-            "type": "uvSensorCb"
-          },
-          {
-            "name": "threCb",
-            "type": "uvSensorThreCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "uvSensorRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "uvSensorOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
       
       "rotaryEncoderInit": {
         "override" : false,
@@ -108,94 +58,6 @@
       },
       
       "rotaryEncoderOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "moistureInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "moistureConfig"
-          },
-          {
-            "name": "cb",
-            "type": "moistureCb"
-          },
-          {
-            "name": "threCb",
-            "type": "moistureThreCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "moistureRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "moistureOnData": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "toggle",
-            "type": "int"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "tempHumiInit": {
-        "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "tempHumiConfig"
-          },
-          {
-            "name": "cb1",
-            "type": "tempCb"
-          },
-          {
-            "name": "cb2",
-            "type": "humiCb"
-          },
-          {
-            "name": "cb3",
-            "type": "tempHumiCb"
-          },
-          {
-            "name": "cb4",
-            "type": "tempThreCb"
-          },
-          {
-            "name": "cb5",
-            "type": "humiThreCb"
-          },
-          {
-            "name": "cb6",
-            "type": "tempHumiThreCb"
-          }
-        ],
-        "return": ["extern int"]
-      },
-      
-      "tempHumiRelease": {
-        "override" : false,
-        "parameters": [],
-        "return": ["extern int"]
-      },
-      
-      "tempHumiOnData": {
         "override" : false,
         "parameters": [
           {

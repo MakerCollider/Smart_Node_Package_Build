@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Encoder', {
+        category: 'Indoor',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Encoder", required: false},
+            digitalPinA: {value: "2", required: false},
+            digitalPinB: {value: "3", required: false},
+            interval: {value: "500", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Encoder";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Encoder">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-digitalPinA"><i class="fa fa-tag"></i> Digital PinA</label>
+        <input type="number" id="node-input-digitalPinA">
+    </div>
+    <div class="form-row">                                                              
+        <label for="node-input-digitalPinB"><i class="fa fa-tag"></i> Digital PinB</label>
+        <input type="number" id="node-input-digitalPinB">
+    </div> 
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Encoder">
+    <p>A Node-RED node for encoder sensor, need digital pin</p>
+</script>

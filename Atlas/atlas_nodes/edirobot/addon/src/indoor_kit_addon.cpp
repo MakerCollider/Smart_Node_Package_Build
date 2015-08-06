@@ -12,91 +12,7 @@
 using namespace v8;
 
 
-// 27: extern int uvSensorInit ( uvSensorConfig config , uvSensorCb cb , uvSensorThreCb threCb ) ;
-Handle<Value> uvSensorInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_aioPin = args[0]->ToObject()->Get(String::New("aioPin"));
-    V8_ASSERT(!args0_aioPin->IsNull() && args0_aioPin->IsInt32(), "arg0.aioPin parameter error");
-    int arg0_aioPin = (int)args0_aioPin->IntegerValue();
-    
-    Local<Value> args0_interval = args[0]->ToObject()->Get(String::New("interval"));
-    V8_ASSERT(!args0_interval->IsNull() && args0_interval->IsInt32(), "arg0.interval parameter error");
-    int arg0_interval = (int)args0_interval->IntegerValue();
-    
-    Local<Value> args0_threshold = args[0]->ToObject()->Get(String::New("threshold"));
-    V8_ASSERT(!args0_threshold->IsNull() && args0_threshold->IsInt32(), "arg0.threshold parameter error");
-    int arg0_threshold = (int)args0_threshold->IntegerValue();
-    
-    uvSensorConfig arg0;
-    arg0.aioPin = arg0_aioPin;
-    arg0.interval = arg0_interval;
-    arg0.threshold = arg0_threshold;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[0] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    uvSensorCb arg1;;
-    arg1 = cbFunc0;
-    
-    
-    V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[1] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
-    uvSensorThreCb arg2;;
-    arg2 = cbFunc1;
-    
-        
-    // Call C++ function
-    int ret = (int)uvSensorInit(arg0, arg1, arg2);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 28: extern int uvSensorRelease ( ) ;
-Handle<Value> uvSensorReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)uvSensorRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 29: extern int uvSensorOnData ( int toggle ) ;
-Handle<Value> uvSensorOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)uvSensorOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 50: extern int rotaryEncoderInit ( rotaryEncoderConfig config , rotaryEncoderDegreeCb degCb , rotaryEncoderThreCb threCb ) ;
+// 26: extern int rotaryEncoderInit ( rotaryEncoderConfig config , rotaryEncoderDegreeCb degCb , rotaryEncoderThreCb threCb ) ;
 Handle<Value> rotaryEncoderInitV8(const Arguments &args) {
     HandleScope scope;
     
@@ -127,15 +43,15 @@ Handle<Value> rotaryEncoderInitV8(const Arguments &args) {
     
     
     V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[2] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
+    cbArray[0] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
     rotaryEncoderDegreeCb arg1;;
-    arg1 = cbFunc2;
+    arg1 = cbFunc0;
     
     
     V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[3] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
+    cbArray[1] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
     rotaryEncoderThreCb arg2;;
-    arg2 = cbFunc3;
+    arg2 = cbFunc1;
     
         
     // Call C++ function
@@ -149,7 +65,7 @@ Handle<Value> rotaryEncoderInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 51: extern int rotaryEncoderRelease ( ) ;
+// 27: extern int rotaryEncoderRelease ( ) ;
 Handle<Value> rotaryEncoderReleaseV8(const Arguments &args) {
     HandleScope scope;
         
@@ -164,7 +80,7 @@ Handle<Value> rotaryEncoderReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 52: extern int rotaryEncoderOnData ( int toggle ) ;
+// 28: extern int rotaryEncoderOnData ( int toggle ) ;
 Handle<Value> rotaryEncoderOnDataV8(const Arguments &args) {
     HandleScope scope;
     
@@ -185,208 +101,7 @@ Handle<Value> rotaryEncoderOnDataV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 71: extern int moistureInit ( moistureConfig config , moistureCb cb , moistureThreCb threCb ) ;
-Handle<Value> moistureInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_aioPin = args[0]->ToObject()->Get(String::New("aioPin"));
-    V8_ASSERT(!args0_aioPin->IsNull() && args0_aioPin->IsInt32(), "arg0.aioPin parameter error");
-    int arg0_aioPin = (int)args0_aioPin->IntegerValue();
-    
-    Local<Value> args0_interval = args[0]->ToObject()->Get(String::New("interval"));
-    V8_ASSERT(!args0_interval->IsNull() && args0_interval->IsInt32(), "arg0.interval parameter error");
-    int arg0_interval = (int)args0_interval->IntegerValue();
-    
-    Local<Value> args0_threshold = args[0]->ToObject()->Get(String::New("threshold"));
-    V8_ASSERT(!args0_threshold->IsNull() && args0_threshold->IsInt32(), "arg0.threshold parameter error");
-    int arg0_threshold = (int)args0_threshold->IntegerValue();
-    
-    moistureConfig arg0;
-    arg0.aioPin = arg0_aioPin;
-    arg0.interval = arg0_interval;
-    arg0.threshold = arg0_threshold;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[4] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    moistureCb arg1;;
-    arg1 = cbFunc4;
-    
-    
-    V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[5] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
-    moistureThreCb arg2;;
-    arg2 = cbFunc5;
-    
-        
-    // Call C++ function
-    int ret = (int)moistureInit(arg0, arg1, arg2);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 72: extern int moistureRelease ( ) ;
-Handle<Value> moistureReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)moistureRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 73: extern int moistureOnData ( int toggle ) ;
-Handle<Value> moistureOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)moistureOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 96: extern int tempHumiInit ( tempHumiConfig config , tempCb cb1 , humiCb cb2 , tempHumiCb cb3 , tempThreCb cb4 , humiThreCb cb5 , tempHumiThreCb cb6 ) ;
-Handle<Value> tempHumiInitV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_interval = args[0]->ToObject()->Get(String::New("interval"));
-    V8_ASSERT(!args0_interval->IsNull() && args0_interval->IsInt32(), "arg0.interval parameter error");
-    int arg0_interval = (int)args0_interval->IntegerValue();
-    
-    Local<Value> args0_temperatureThreshold = args[0]->ToObject()->Get(String::New("temperatureThreshold"));
-    V8_ASSERT(!args0_temperatureThreshold->IsNull() && args0_temperatureThreshold->IsInt32(), "arg0.temperatureThreshold parameter error");
-    int arg0_temperatureThreshold = (int)args0_temperatureThreshold->IntegerValue();
-    
-    Local<Value> args0_humidityThreshold = args[0]->ToObject()->Get(String::New("humidityThreshold"));
-    V8_ASSERT(!args0_humidityThreshold->IsNull() && args0_humidityThreshold->IsInt32(), "arg0.humidityThreshold parameter error");
-    int arg0_humidityThreshold = (int)args0_humidityThreshold->IntegerValue();
-    
-    tempHumiConfig arg0;
-    arg0.interval = arg0_interval;
-    arg0.temperatureThreshold = arg0_temperatureThreshold;
-    arg0.humidityThreshold = arg0_humidityThreshold;
-    
-    
-    V8_ASSERT(args[1]->IsFunction(), "args[1] parameters error!");
-    cbArray[6] = Persistent<Function>::New(Local<Function>::Cast(args[1]));
-    tempCb arg1;;
-    arg1 = cbFunc6;
-    
-    
-    V8_ASSERT(args[2]->IsFunction(), "args[2] parameters error!");
-    cbArray[7] = Persistent<Function>::New(Local<Function>::Cast(args[2]));
-    humiCb arg2;;
-    arg2 = cbFunc7;
-    
-    
-    V8_ASSERT(args[3]->IsFunction(), "args[3] parameters error!");
-    cbArray[8] = Persistent<Function>::New(Local<Function>::Cast(args[3]));
-    tempHumiCb arg3;;
-    arg3 = cbFunc8;
-    
-    
-    V8_ASSERT(args[4]->IsFunction(), "args[4] parameters error!");
-    cbArray[9] = Persistent<Function>::New(Local<Function>::Cast(args[4]));
-    tempThreCb arg4;;
-    arg4 = cbFunc9;
-    
-    
-    V8_ASSERT(args[5]->IsFunction(), "args[5] parameters error!");
-    cbArray[10] = Persistent<Function>::New(Local<Function>::Cast(args[5]));
-    humiThreCb arg5;;
-    arg5 = cbFunc10;
-    
-    
-    V8_ASSERT(args[6]->IsFunction(), "args[6] parameters error!");
-    cbArray[11] = Persistent<Function>::New(Local<Function>::Cast(args[6]));
-    tempHumiThreCb arg6;;
-    arg6 = cbFunc11;
-    
-        
-    // Call C++ function
-    int ret = (int)tempHumiInit(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 97: extern int tempHumiRelease ( ) ;
-Handle<Value> tempHumiReleaseV8(const Arguments &args) {
-    HandleScope scope;
-        
-    // Call C++ function
-    int ret = (int)tempHumiRelease();
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
-// 98: extern int tempHumiOnData ( int toggle ) ;
-Handle<Value> tempHumiOnDataV8(const Arguments &args) {
-    HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
-    int arg0 = (int)args[0]->IntegerValue();
-    
-        
-    // Call C++ function
-    int ret = (int)tempHumiOnData(arg0);
-    
-    
-    
-    // Convert C++ return value to V8
-    Handle<Value> retV8 = Int32::New(ret);
-    
-    return scope.Close(retV8);
-    
-}
 static void SetMemberFunc(Handle<Object> obj) {
-    obj->Set(v8::String::NewSymbol("uvSensorInit"),
-           FunctionTemplate::New(uvSensorInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("uvSensorRelease"),
-           FunctionTemplate::New(uvSensorReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("uvSensorOnData"),
-           FunctionTemplate::New(uvSensorOnDataV8)->GetFunction());
-
     obj->Set(v8::String::NewSymbol("rotaryEncoderInit"),
            FunctionTemplate::New(rotaryEncoderInitV8)->GetFunction());
 
@@ -395,24 +110,6 @@ static void SetMemberFunc(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("rotaryEncoderOnData"),
            FunctionTemplate::New(rotaryEncoderOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("moistureInit"),
-           FunctionTemplate::New(moistureInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("moistureRelease"),
-           FunctionTemplate::New(moistureReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("moistureOnData"),
-           FunctionTemplate::New(moistureOnDataV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("tempHumiInit"),
-           FunctionTemplate::New(tempHumiInitV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("tempHumiRelease"),
-           FunctionTemplate::New(tempHumiReleaseV8)->GetFunction());
-
-    obj->Set(v8::String::NewSymbol("tempHumiOnData"),
-           FunctionTemplate::New(tempHumiOnDataV8)->GetFunction());
 }
 
 
@@ -424,24 +121,6 @@ static void SetConst(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("ERR_UNKOWN"),
              Int32::New(-1));
-
-    obj->Set(v8::String::NewSymbol("uvSensorClass"),
-             v8::String::New("indoor"));
-
-    obj->Set(v8::String::NewSymbol("uvSensorConfig_aioPin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("uvSensorConfig_interval"),
-             Int32::New(500));
-
-    obj->Set(v8::String::NewSymbol("uvSensorConfig_threshold"),
-             Int32::New(10));
-
-    obj->Set(v8::String::NewSymbol("GUVAS12D_AREF"),
-             Number::New(5.0));
-
-    obj->Set(v8::String::NewSymbol("SAMPLES_PER_QUERY"),
-             Int32::New(32));
 
     obj->Set(v8::String::NewSymbol("rotaryEncoderClass"),
              v8::String::New("indoor"));
@@ -457,30 +136,6 @@ static void SetConst(Handle<Object> obj) {
 
     obj->Set(v8::String::NewSymbol("rotaryEncoderConfig_threshold"),
              Int32::New(150));
-
-    obj->Set(v8::String::NewSymbol("moistureClass"),
-             v8::String::New("indoor"));
-
-    obj->Set(v8::String::NewSymbol("moistureConfig_aioPin"),
-             Int32::New(0));
-
-    obj->Set(v8::String::NewSymbol("moistureConfig_interval"),
-             Int32::New(500));
-
-    obj->Set(v8::String::NewSymbol("moistureConfig_threshold"),
-             Int32::New(500));
-
-    obj->Set(v8::String::NewSymbol("tempHumiClass"),
-             v8::String::New("indoor"));
-
-    obj->Set(v8::String::NewSymbol("tempHumiConfig_interval"),
-             Int32::New(500));
-
-    obj->Set(v8::String::NewSymbol("tempHumiConfig_temperatureThreshold"),
-             Int32::New(30));
-
-    obj->Set(v8::String::NewSymbol("tempHumiConfig_humidityThreshold"),
-             Int32::New(30));
 
 }
 
