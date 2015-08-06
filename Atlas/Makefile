@@ -2,7 +2,6 @@ all:
 	make -C atlas_hook
 	make -C atlas_nodes
 	make -C cpp/cv
-	make -C cpp/grove
 	make -C cpp/indoor
 	make -C cpp/edirobot
 

@@ -1,22 +1,22 @@
 <script type="text/javascript">
-    RED.nodes.registerType('Moisture', {
-        category: 'Indoor',
+    RED.nodes.registerType('Rotary', {
+        category: 'Grove',
         color: '#E2D96E',
         defaults: {
-            name: {value: "Moisture", required: false},
+            name: {value: "Rotary", required: false},
             analogPin: {value: "0", required: false},
-            interval: {value: "1000", required: false}
+            interval: {value: "500", required: false}
         },
         inputs: 1,
         outputs: 1,
         icon: "light.png",
         label: function() {
-            return this.name || "Moisture";
+            return this.name || "Rotary";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="Moisture">
+<script type="text/x-red" data-template-name="Rotary">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -31,6 +31,6 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="Moisture">
-    <p>A Node-RED node for moisture sensor,need analog pin.</p>
+<script type="text/x-red" data-help-name="Rotary">
+    <p>A Node-RED node for rotary sensor, need  analog pin</p>
 </script>
