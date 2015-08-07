@@ -1,0 +1,13 @@
+{
+	"name"		:	"Say",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for Text to Sound -- say",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Say"	:	"virtual_say.js"
+		}
+	}
+}

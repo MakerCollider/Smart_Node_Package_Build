@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Say', {
+        category: 'Sound',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Say">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Text</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Say">
+    <p>A Node-RED node for Text to Sound</p>
+</script>
