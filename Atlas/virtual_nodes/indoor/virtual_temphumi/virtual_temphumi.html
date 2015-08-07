@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('TempHumi', {
+        category: 'Indoor',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Temperature & Humidity", required: false},
+            interval: {value: "500", required: false}
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: "light.png",
+        label: function() {
+            return this.name || "TempHumi";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="TempHumi">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="TempHumi">
+    <p>A Node-RED node for Temperature and Humidity sensor, need digital pin</p>
+</script>
