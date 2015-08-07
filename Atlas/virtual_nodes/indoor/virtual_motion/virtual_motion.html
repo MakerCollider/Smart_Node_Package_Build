@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    RED.nodes.registerType('MotionSensor', {
+        category: 'Indoor',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "MotionSensor", required: false},
+            digitalPin: {value: "2", required: false},
+            interval: {value: "1000", required: false},
+            signal: {value: "CYCLE", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "MotionSensor";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="MotionSensor">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-digitalPin"><i class="fa fa-tag"></i> Digital Pin</label>
+        <input type="number" id="node-input-digitalPin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+    <div class="form-row">
+        <label for="node-input-signal"><i class="fa fa-area-chart"></i> Signal Type</label>
+        <select id="node-input-signal">
+            <option value="CYCLE">Cycle</option>
+            <option value="RANDOM">Random</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="MotionSensor">
+    <p>A Node-RED node for Motion sensor, need  digital pin</p>
+</script>

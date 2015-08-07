@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Lcd', {
+        category: 'Grove',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Lcd", required: false},
+			R:{value:"255",required:true},
+			G:{value:"255",required:true},
+			B:{value:"255",required:true},
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Lcd";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Lcd">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+        <label for="node-input-R"><i class="fa fa-tag"></i> R</label>
+        <input type="number" id="node-input-R">
+    </div>
+	<div class="form-row">
+        <label for="node-input-G"><i class="fa fa-tag"></i> G</label>
+        <input type="number" id="node-input-G">
+    </div>
+	<div class="form-row">
+        <label for="node-input-B"><i class="fa fa-tag"></i> B</label>
+        <input type="number" id="node-input-B">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Lcd">
+    <p>A Node-RED node for I2C Grove-LCD(jhd1313m1), default RGB_ADDRESS is 0x62 and default LCD_ADDRESS is 0x3E, need i2c pin</p>
+</script>

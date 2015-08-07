@@ -1,0 +1,36 @@
+	<script type="text/javascript">
+    RED.nodes.registerType('UV', {
+        category: 'Indoor',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "UV", required: false},
+            analogPin: {value: "0", required: false},
+            interval: {value: "1000", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "UV";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="UV">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-analogPin"><i class="fa fa-tag"></i> Analog Pin</label>
+        <input type="number" id="node-input-analogPin">
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="UV">
+    <p>A Node-RED node for UV sensor, need analog pin.</p>
+</script>

@@ -1,0 +1,13 @@
+{
+	"name"		:	"Relay",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove relay",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Relay"		:	"virtual_relay.js"
+		}
+	}
+}
