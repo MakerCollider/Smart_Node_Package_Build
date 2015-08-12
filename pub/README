@@ -1,0 +1,4 @@
+this folder provide a auto tar tools for the release package.
+when you run the make_release_package.sh, it will generate a self-unzip tar ball
+in this folder automaticlly.
+And you can redistribute it as you wish.
