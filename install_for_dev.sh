@@ -24,6 +24,17 @@ echo "install libv4l..."
 tar -xzvf $CURR/lib/libv4l.tgz &>> $LOG
 echo "done"
 
+echo "cd /opt"
+cd /opt
+
+echo "install festival..."
+tar -xzvf $CURR/lib/festival_prebuild.tar.gz &>> $LOG
+cd /opt/festival/festival/bin
+cp festival /usr/bin
+echo "done"
+
+cd $CURR
+
 echo "log saved to $LOG"
 
 npm config set registry http://registry.cnpmjs.org
