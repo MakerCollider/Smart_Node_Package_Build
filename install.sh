@@ -40,7 +40,7 @@ echo "[Unit]" > $SERVICE
 echo "Description=Node-RED" >> $SERVICE              
 echo "" >> $SERVICE                                  
 echo "[Service]" >> $SERVICE                         
-echo "Type=forking" >> $SERVICE                      
+echo "Type=simple" >> $SERVICE                      
 echo "Environment=\"NODE_PATH=/usr/lib/node_modules\"" >> $SERVICE
 echo "ExecStart=/usr/bin/node $CURR/node-red/red.js --userDir $CURR/node-red -v" >> $SERVICE
 echo "Restart=always" >> $SERVICE                                                           
