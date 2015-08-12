@@ -58,7 +58,7 @@ systemctl enable nodered
 
 sleep 2                                                                                     
 echo "Start Smart Node Service"                                                             
-systemctl restart nodered >> $LOG 
+systemctl restart nodered > /dev/null 2>&1
 
 echo "log saved to $LOG"
 
