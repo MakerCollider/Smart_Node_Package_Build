@@ -34,5 +34,26 @@ cp festival /usr/bin
 echo "done"
 
 cd $CURR
+SERVICE=/etc/systemd/system/nodered.service          
+rm -rf $SERVICE                                      
+echo "[Unit]" > $SERVICE                             
+echo "Description=Node-RED" >> $SERVICE              
+echo "" >> $SERVICE                                  
+echo "[Service]" >> $SERVICE                         
+echo "Type=forking" >> $SERVICE                      
+echo "Environment=\"NODE_PATH=/usr/lib/node_modules\"" >> $SERVICE
+echo "ExecStart=/usr/bin/node $CURR/node-red/red.js --userDir $CURR/node-red -v" >> $SERVICE
+echo "Restart=always" >> $SERVICE                                                           
+echo "RestartSec=1" >> $SERVICE                                                             
+echo "[Install]" >> $SERVICE                                      
+echo "WantedBy=multi-user.target" >> $SERVICE                                               
+                                                                                            
+sleep 2                                                                                     
+echo "Disable Smart Node Service"                                                           
+systemctl disable nodered                                                                   
+                                                                                            
+sleep 2                                                                                     
+echo "Enable Smart Node Service"                                                            
+systemctl enable nodered
 
 echo "log saved to $LOG"
