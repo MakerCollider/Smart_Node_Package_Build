@@ -111,6 +111,30 @@ edirobot/fast:
 	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/build
 .PHONY : edirobot/fast
 
+LED_16_16.o: LED_16_16.cpp.o
+.PHONY : LED_16_16.o
+
+# target to build an object file
+LED_16_16.cpp.o:
+	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/LED_16_16.cpp.o
+.PHONY : LED_16_16.cpp.o
+
+LED_16_16.i: LED_16_16.cpp.i
+.PHONY : LED_16_16.i
+
+# target to preprocess a source file
+LED_16_16.cpp.i:
+	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/LED_16_16.cpp.i
+.PHONY : LED_16_16.cpp.i
+
+LED_16_16.s: LED_16_16.cpp.s
+.PHONY : LED_16_16.s
+
+# target to generate assembly for a file
+LED_16_16.cpp.s:
+	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/LED_16_16.cpp.s
+.PHONY : LED_16_16.cpp.s
+
 screen.o: screen.cpp.o
 .PHONY : screen.o
 
@@ -144,6 +168,9 @@ help:
 	@echo "... edirobot"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... LED_16_16.o"
+	@echo "... LED_16_16.i"
+	@echo "... LED_16_16.s"
 	@echo "... screen.o"
 	@echo "... screen.i"
 	@echo "... screen.s"

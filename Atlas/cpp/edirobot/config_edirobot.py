@@ -2,7 +2,7 @@ import os
 
 INPUT_DIR = './'
 INPUT_DECL_PATHS  = [
-   INPUT_DIR + "/edi_robot.h"
+   INPUT_DIR + "/edi_robot.h",
 ]
 
 INPUT_LIB_PATH = INPUT_DIR + '/bin/libedirobot.a'

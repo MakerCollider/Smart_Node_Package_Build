@@ -72,14 +72,39 @@ CMakeFiles/edirobot.dir/screen.cpp.o.provides: CMakeFiles/edirobot.dir/screen.cp
 
 CMakeFiles/edirobot.dir/screen.cpp.o.provides.build: CMakeFiles/edirobot.dir/screen.cpp.o
 
+CMakeFiles/edirobot.dir/LED_16_16.cpp.o: CMakeFiles/edirobot.dir/flags.make
+CMakeFiles/edirobot.dir/LED_16_16.cpp.o: ../LED_16_16.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/edirobot.dir/LED_16_16.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/edirobot.dir/LED_16_16.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.cpp
+
+CMakeFiles/edirobot.dir/LED_16_16.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edirobot.dir/LED_16_16.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.cpp > CMakeFiles/edirobot.dir/LED_16_16.cpp.i
+
+CMakeFiles/edirobot.dir/LED_16_16.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edirobot.dir/LED_16_16.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.cpp -o CMakeFiles/edirobot.dir/LED_16_16.cpp.s
+
+CMakeFiles/edirobot.dir/LED_16_16.cpp.o.requires:
+.PHONY : CMakeFiles/edirobot.dir/LED_16_16.cpp.o.requires
+
+CMakeFiles/edirobot.dir/LED_16_16.cpp.o.provides: CMakeFiles/edirobot.dir/LED_16_16.cpp.o.requires
+	$(MAKE) -f CMakeFiles/edirobot.dir/build.make CMakeFiles/edirobot.dir/LED_16_16.cpp.o.provides.build
+.PHONY : CMakeFiles/edirobot.dir/LED_16_16.cpp.o.provides
+
+CMakeFiles/edirobot.dir/LED_16_16.cpp.o.provides.build: CMakeFiles/edirobot.dir/LED_16_16.cpp.o
+
 # Object files for target edirobot
 edirobot_OBJECTS = \
-"CMakeFiles/edirobot.dir/screen.cpp.o"
+"CMakeFiles/edirobot.dir/screen.cpp.o" \
+"CMakeFiles/edirobot.dir/LED_16_16.cpp.o"
 
 # External object files for target edirobot
 edirobot_EXTERNAL_OBJECTS =
 
 ../bin/libedirobot.a: CMakeFiles/edirobot.dir/screen.cpp.o
+../bin/libedirobot.a: CMakeFiles/edirobot.dir/LED_16_16.cpp.o
 ../bin/libedirobot.a: CMakeFiles/edirobot.dir/build.make
 ../bin/libedirobot.a: CMakeFiles/edirobot.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library ../bin/libedirobot.a"
@@ -91,6 +116,7 @@ CMakeFiles/edirobot.dir/build: ../bin/libedirobot.a
 .PHONY : CMakeFiles/edirobot.dir/build
 
 CMakeFiles/edirobot.dir/requires: CMakeFiles/edirobot.dir/screen.cpp.o.requires
+CMakeFiles/edirobot.dir/requires: CMakeFiles/edirobot.dir/LED_16_16.cpp.o.requires
 .PHONY : CMakeFiles/edirobot.dir/requires
 
 CMakeFiles/edirobot.dir/clean:

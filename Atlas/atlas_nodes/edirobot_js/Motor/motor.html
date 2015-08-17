@@ -1,0 +1,57 @@
+<script type="text/javascript">
+	RED.nodes.registerType('Motor', {
+		category: 'EdiRobot',
+		color: '#E2D96E',
+		defaults: {
+			name:      {value: "Motor", required: false},
+			pwm:       {value: 6,       required: true},
+			dir:       {value: 7,       required: true},
+			speed:     {value: 80,      required: true},
+			timeout:   {value: 3,       required: true},
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: "light.png",
+		label: function() {
+			return this.name || "Motor";
+		}
+	});
+</script>
+
+<script type="text/xred" data-template-name="Motor">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
+
+	<div class="form-row">
+		<label for="node-input-pwm"><i class="fa fa-tag"></i> PWM Pin</label>
+		<input type="number" id="node-input-pwm" placeholder="Pin number">
+	</div>
+
+	<div class="form-row">
+		<label for="node-input-dir"><i class="fa fa-tag"></i> Direction</label>
+		<input type="number" id="node-input-dir" placeholder="Direction">
+	</div>
+
+	<div class="form-row">
+		<label for="node-input-speed"><i class="fa fa-tag"></i> Speed</label>
+		<input type="number" id="node-input-speed" placeholder="Default Speed">
+	</div>
+
+	<div class="form-row">
+		<label for="node-input-timeout"><i class="fa fa-tag"></i> Timeout </label>
+		<input type="number" id="node-input-timeout" placeholder="Default Timeout">
+	</div>
+</script>
+
+<script type="text/xred" data-help-name="Motor">
+	<h3 id="control-a-reversible-dc-motor"><a name="control-a-reversible-dc-motor" href="#control-a-reversible-dc-motor"></a>Control a reversible DC motor</h3>
+	<h4 id="description"><a name="description" href="#description"></a>Description</h4>
+	<p>This node can control OpenJumper L298 Shield. Except for Direciton, this node can also set speed and timeout.</p>
+	<h4 id="config"><a name="config" href="#config"></a>Config</h4>
+	<p>This node has five values, Name, PWM, Direction, Speed and Timeout, Except Name, other value is required.<br><strong>PWM,Direcion:</strong> These two values depend on the OpenJumper L298 Shield pins.<br><strong>Speed:</strong> Default Speed.<br><strong>Timeout:</strong> When the time is out, The Motor will stop.</p>
+	<h4 id="input"><a name="input" href="#input"></a>Input</h4>
+	<p>This node has three inputs, <strong>msg.speed</strong>, <strong>msg.direction</strong>, <strong>msg.timeout</strong>. if the value(except msg.direction) is not receive, the node will use default value to set Motor.</p>
+</script>
+

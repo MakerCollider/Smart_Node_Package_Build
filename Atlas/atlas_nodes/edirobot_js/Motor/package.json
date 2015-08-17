@@ -1,15 +1,13 @@
 {
 	"name"	:	"Motor",
 	"version"	:	"0.0.1",
-	"description"	:	"A Node-RED node that you can use to control a DC motor.",
+	"description"	:	"A Node-RED node for driving an education robot.",
 	"dependencies"	:	{
-		"johnny-five"	:	"*",
-		"galileo-io"	:	"*"
 	},
 	"keywords"	:	[ "node-red" ],
 	"node-red"	:	{
 		"nodes"	:	{
-			"Motor"	:	"robot-motor.js"
+			"Motor"	:	"motor.js"
 		}
 	}
 }

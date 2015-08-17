@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.cpp
+stdlib.h
+-
+unistd.h
+-
+iostream
+-
+sys/time.h
+-
+LED_16_16.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.h
+
+/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.h
+mraa.hpp
+/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/mraa.hpp
+
 /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/edi_robot.h
 
 /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/screen.cpp
@@ -21,4 +37,6 @@ uv.h
 /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/uv.h
 edi_robot.h
 /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/edi_robot.h
+LED_16_16.h
+/home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.h
 

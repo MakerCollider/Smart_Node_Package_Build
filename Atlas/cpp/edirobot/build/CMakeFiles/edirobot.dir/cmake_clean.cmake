@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/edirobot.dir/screen.cpp.o"
+  "CMakeFiles/edirobot.dir/LED_16_16.cpp.o"
   "../bin/libedirobot.pdb"
   "../bin/libedirobot.a"
 )

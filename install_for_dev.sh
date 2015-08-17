@@ -24,6 +24,10 @@ echo "install libv4l..."
 tar -xzvf $CURR/lib/libv4l.tgz &>> $LOG
 echo "done"
 
+echo "hacking upm library..."
+tar -xzvf $CURR/lib/ojl298.tgz &>> $LOG
+echo "done"
+
 echo "cd /opt"
 cd /opt
 

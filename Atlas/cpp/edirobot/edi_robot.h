@@ -15,7 +15,7 @@
 /************************************************
  SPI screen
  ************************************************/
-#define screenClass "edi_robot"
+#define screenClass "EdiRobot"
 struct screenConfig {
     int refreshFreq;
 };
