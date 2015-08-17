@@ -15,7 +15,7 @@
     "constants" : {
       "ERR_NONE": 0,
       "ERR_UNKOWN": -1,
-      "screenClass": "edi_robot",
+      "screenClass": "EdiRobot",
       "screenConfig_refreshFreq": 10
     },
   

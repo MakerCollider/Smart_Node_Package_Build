@@ -96,7 +96,7 @@ static void SetConst(Handle<Object> obj) {
              Int32::New(-1));
 
     obj->Set(v8::String::NewSymbol("screenClass"),
-             v8::String::New("edi_robot"));
+             v8::String::New("EdiRobot"));
 
     obj->Set(v8::String::NewSymbol("screenConfig_refreshFreq"),
              Int32::New(10));

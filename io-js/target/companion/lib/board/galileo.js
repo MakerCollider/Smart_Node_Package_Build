@@ -39,9 +39,9 @@ var Board = function(options) {
 
   /**
    * @constant IO#screenClass
-   * @desc "edi_robot"
+   * @desc "EdiRobot"
    */
-  self.screenClass = "edi_robot";
+  self.screenClass = "EdiRobot";
 
   /**
    * @constant IO#screenConfig_refreshFreq
