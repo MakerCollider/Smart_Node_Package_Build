@@ -32,6 +32,10 @@ echo "install mqtt package..."
 opkg install $CURR/lib/mqtt_1.4/*.ipk
 echo "done"
 
+echo "config mqtt..."
+cp $CURR/lib/mqtt_1.4/mosquitto.conf /etc/mosquitto/
+echo "done"
+
 echo "cd /opt"
 cd /opt
 
