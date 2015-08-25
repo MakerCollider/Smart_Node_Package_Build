@@ -28,6 +28,10 @@ echo "hacking upm library..."
 tar -xzvf $CURR/lib/ojl298.tgz &>> $LOG
 echo "done"
 
+echo "install mqtt package..."
+opkg install $CURR/lib/mqtt_1.4/*.ipk
+echo "done" 
+
 echo "cd /opt"
 cd /opt
 
@@ -35,6 +39,10 @@ echo "install festival..."
 tar -xzvf $CURR/lib/festival_prebuild.tar.gz &>> $LOG
 cd /opt/festival/festival/bin
 cp festival /usr/bin
+echo "done"
+
+echo "import asound.conf..."                         
+echo "pcm.!default sysdefault:Set" > /etc/asound.conf
 echo "done"
 
 cd $CURR
