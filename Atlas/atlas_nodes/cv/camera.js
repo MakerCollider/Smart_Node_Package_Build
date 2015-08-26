@@ -61,13 +61,12 @@ module.exports = function(RED) {
       
       // extract arguments from msg
       var args = redUtil.msgToArgs(msg);
-      var arg0 = config;
       
-      //if (!args.hasOwnProperty("1"))
-        //throw Error("Input string should have '1' properties as the 2nd parameter of function 'cameraOnData'.");
-      var arg1 = redUtil.jsonIntegerParse(args[0]);
+      //if (!args.hasOwnProperty("0"))
+        //throw Error("Input string should have '0' properties as the 1st parameter of function 'cameraOnData'.");
+      var arg0 = redUtil.jsonIntegerParse(args[0]);
         
-      var res = io.cameraOnData(arg0, arg1);
+      var res = io.cameraOnData(arg0);
     });
         
     // call release function

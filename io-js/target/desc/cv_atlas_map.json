@@ -63,22 +63,13 @@
       
       "cameraRelease": {
         "override" : false,
-        "parameters": [
-          {
-            "name": "config",
-            "type": "cameraConfig"
-          }
-        ],
+        "parameters": [],
         "return": ["extern int"]
       },
       
       "cameraOnData": {
         "override" : false,
         "parameters": [
-          {
-            "name": "config",
-            "type": "cameraConfig"
-          },
           {
             "name": "toggle",
             "type": "int"

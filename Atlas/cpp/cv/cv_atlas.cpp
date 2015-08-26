@@ -13,119 +13,89 @@
 using namespace std;
 using namespace cv;
 
-#define FACE_CASCADE "haarcascade_frontalface_alt.xml"
-
-struct context{
-    cameraConfig config;
-    VideoCapture *cap;
-    uv_timer_t   timer;
-    cameraCb     capCb;
-};
-
-map<int, context*> id2context;
+#define FACE_CASCADE "/usr/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml"
 
 /************************************************
  Camera
  ************************************************/
-
 void *camLoop = NULL;
+uv_timer_t camTimer;
 
-//VideoCapture cap;
+VideoCapture cap;
 Mat frame;
 CascadeClassifier faceCascade;
 
+static cameraCb capCb = NULL;
+
 void run_uv_timer(uv_timer_t *req)
 {
-    context *ctx = (context*)(req->data);
-
-    (*(ctx->cap)) >> frame;
-    
-    (ctx->capCb)((unsigned long)&frame);
+    cap >> frame;
+    capCb((unsigned long)&frame);
 
     //waitKey(1);
 }
+cameraConfig camConfig;
 
 int cameraInit(cameraConfig config, cameraCb cb)
-{   
-    struct context *ctx = new struct context;
+{
+    if(cb != NULL)
+        capCb = cb;
 
-    if(id2context.find(config.camId) != id2context.end()) {
-        CV_PRINT("has already initialized camera %d\n", config.camId);
-        return ERR_SINGLE_INSTANCE;
-    }
-    // init camera
-    VideoCapture *cap = new VideoCapture();
-    cap->open(config.camId);
-    
-    if(!cap->isOpened()) {
+    camConfig = config;
+
+    cap.open(config.camId);
+
+    if(!cap.isOpened()) {
         CV_PRINT("can not init camera %d\n", config.camId);
         return ERR_NO_CAMERA;
     }
-    
-    
-    cap->set(CAP_PROP_FRAME_WIDTH,  config.width);
-    cap->set(CAP_PROP_FRAME_HEIGHT, config.height);
-    
+
+
+    cap.set(CAP_PROP_FRAME_WIDTH,  config.width);
+    cap.set(CAP_PROP_FRAME_HEIGHT, config.height);
+
     CV_PRINT("initialized camera %d with res %d x %d\n", config.camId, config.width, config.height);
-    
+
     // Initialize uv loop and timer
-    
+    uv_timer_stop(&camTimer);
+
     if(camLoop == NULL) {
         camLoop = uv_default_loop();
     }
-    
-    uv_timer_init((uv_loop_t*)camLoop, &(ctx->timer));
-    ctx->timer.data = (void*)ctx;
 
-    ctx->cap    = cap;
-    ctx->config = config;
-    ctx->capCb  = cb;
-
-    id2context[config.camId] = ctx;
-
-    uv_timer_start(&(ctx->timer), run_uv_timer, 0, config.interval);
+    uv_timer_init((uv_loop_t*)camLoop, &camTimer);
+    camTimer.data = NULL;
+    uv_timer_start(&camTimer, run_uv_timer, 0, config.interval);
     CV_PRINT("start timer with interval %d ms\n", config.interval);
 
-    return ERR_NONE;
-}
-
-int cameraRelease(cameraConfig config)
-{
-    CV_PRINT("turn off camera(%d)\n", config.camId);
-    if(id2context.find(config.camId) == id2context.end()) {
-        CV_PRINT("camera %d has been released, stop here\n", config.camId);
-        return ERR_NONE;
-    }
-
-    context *ctx = id2context[config.camId];
-
-    ctx->cap->release();
-    uv_timer_stop(&(ctx->timer));
-    
-    delete(ctx);
-    id2context.erase(config.camId);
 
     return ERR_NONE;
 }
 
-int cameraOnData(cameraConfig config, int toggle)
+int cameraRelease()
 {
-    printf("onData with camID: %d\n", config.camId); 
-    context *ctx = id2context[config.camId];
+    CV_PRINT("turn off camera(%d)\n", camConfig.camId);
+    cap.release();
+    uv_timer_stop(&camTimer);
+
+    return ERR_NONE;
+}
+
+int cameraOnData(int toggle)
+{
 
     if(toggle) {
-        if(!(ctx->cap->isOpened())) {
-            cameraInit(config, NULL);
+        if(!cap.isOpened()) {
+            cameraInit(camConfig, NULL);
         }
     } else {
-        if(ctx->cap->isOpened()) {
-            cameraRelease(config);
+        if(cap.isOpened()) {
+            cameraRelease();
         }
     }
-    
+
     return ERR_NONE;
 }
-
 /************************************************
  Face Detection
  ************************************************/
@@ -147,7 +117,6 @@ int faceDetectInit(faceDetectConfig config, faceDetectNumCb ncb, faceDetectImgCb
     }
 
     fdInit = !fdInit;
-
     if(!faceCascade.load(FACE_CASCADE)) {
         CV_PRINT("can not find face cascade file: %s\n", FACE_CASCADE);
         return ERR_NO_FACE_CASCADE;

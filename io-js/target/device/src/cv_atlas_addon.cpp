@@ -59,38 +59,12 @@ Handle<Value> cameraInitV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 34: extern int cameraRelease ( cameraConfig config ) ;
+// 34: extern int cameraRelease ( ) ;
 Handle<Value> cameraReleaseV8(const Arguments &args) {
     HandleScope scope;
-    
-    // Convert V8 parameters to C++
-    
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_interval = args[0]->ToObject()->Get(String::New("interval"));
-    V8_ASSERT(!args0_interval->IsNull() && args0_interval->IsInt32(), "arg0.interval parameter error");
-    int arg0_interval = (int)args0_interval->IntegerValue();
-    
-    Local<Value> args0_camId = args[0]->ToObject()->Get(String::New("camId"));
-    V8_ASSERT(!args0_camId->IsNull() && args0_camId->IsInt32(), "arg0.camId parameter error");
-    int arg0_camId = (int)args0_camId->IntegerValue();
-    
-    Local<Value> args0_width = args[0]->ToObject()->Get(String::New("width"));
-    V8_ASSERT(!args0_width->IsNull() && args0_width->IsInt32(), "arg0.width parameter error");
-    int arg0_width = (int)args0_width->IntegerValue();
-    
-    Local<Value> args0_height = args[0]->ToObject()->Get(String::New("height"));
-    V8_ASSERT(!args0_height->IsNull() && args0_height->IsInt32(), "arg0.height parameter error");
-    int arg0_height = (int)args0_height->IntegerValue();
-    
-    cameraConfig arg0;
-    arg0.interval = arg0_interval;
-    arg0.camId = arg0_camId;
-    arg0.width = arg0_width;
-    arg0.height = arg0_height;
-    
         
     // Call C++ function
-    int ret = (int)cameraRelease(arg0);
+    int ret = (int)cameraRelease();
     
     
     
@@ -100,42 +74,18 @@ Handle<Value> cameraReleaseV8(const Arguments &args) {
     return scope.Close(retV8);
     
 }
-// 35: extern int cameraOnData ( cameraConfig config , int toggle ) ;
+// 35: extern int cameraOnData ( int toggle ) ;
 Handle<Value> cameraOnDataV8(const Arguments &args) {
     HandleScope scope;
     
     // Convert V8 parameters to C++
     
-    V8_ASSERT(args[0]->IsObject(), "args[0] parameters error!");
-    Local<Value> args0_interval = args[0]->ToObject()->Get(String::New("interval"));
-    V8_ASSERT(!args0_interval->IsNull() && args0_interval->IsInt32(), "arg0.interval parameter error");
-    int arg0_interval = (int)args0_interval->IntegerValue();
-    
-    Local<Value> args0_camId = args[0]->ToObject()->Get(String::New("camId"));
-    V8_ASSERT(!args0_camId->IsNull() && args0_camId->IsInt32(), "arg0.camId parameter error");
-    int arg0_camId = (int)args0_camId->IntegerValue();
-    
-    Local<Value> args0_width = args[0]->ToObject()->Get(String::New("width"));
-    V8_ASSERT(!args0_width->IsNull() && args0_width->IsInt32(), "arg0.width parameter error");
-    int arg0_width = (int)args0_width->IntegerValue();
-    
-    Local<Value> args0_height = args[0]->ToObject()->Get(String::New("height"));
-    V8_ASSERT(!args0_height->IsNull() && args0_height->IsInt32(), "arg0.height parameter error");
-    int arg0_height = (int)args0_height->IntegerValue();
-    
-    cameraConfig arg0;
-    arg0.interval = arg0_interval;
-    arg0.camId = arg0_camId;
-    arg0.width = arg0_width;
-    arg0.height = arg0_height;
-    
-    
-    V8_ASSERT(args[1]->IsInt32(), "args[1] parameters error!");
-    int arg1 = (int)args[1]->IntegerValue();
+    V8_ASSERT(args[0]->IsInt32(), "args[0] parameters error!");
+    int arg0 = (int)args[0]->IntegerValue();
     
         
     // Call C++ function
-    int ret = (int)cameraOnData(arg0, arg1);
+    int ret = (int)cameraOnData(arg0);
     
     
     

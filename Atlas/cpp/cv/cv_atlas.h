@@ -31,8 +31,8 @@ struct cameraConfig {
 typedef void(*cameraCb)(unsigned long);
 
 extern int cameraInit(cameraConfig config, cameraCb cb);
-extern int cameraRelease(cameraConfig config);
-extern int cameraOnData(cameraConfig config, int toggle);
+extern int cameraRelease();
+extern int cameraOnData(int toggle);
 
 
 
