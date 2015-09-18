@@ -11,7 +11,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/addString/add-strings.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/addString/add-strings.js"
     },
     "change-sign": {
      "name": "change-sign",
@@ -20,7 +20,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/change-sign/change-sign.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/change-sign/change-sign.js"
     },
     "change-type": {
      "name": "change-type",
@@ -29,7 +29,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/change_type/change-type.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/change_type/change-type.js"
     },
     "camera": {
      "name": "camera",
@@ -38,7 +38,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/cv/camera.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/cv/camera.js"
     },
     "faceDetect": {
      "name": "faceDetect",
@@ -47,7 +47,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/cv/faceDetect.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/cv/faceDetect.js"
     },
     "img2Base64": {
      "name": "img2Base64",
@@ -56,16 +56,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/cv/img2Base64.js"
-    },
-    "screen": {
-     "name": "screen",
-     "types": [
-      "screen"
-     ],
-     "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/edirobot/screen.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/cv/img2Base64.js"
     },
     "fakeCamera": {
      "name": "fakeCamera",
@@ -74,7 +65,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/fakeCamera/fakeCamera.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/fakeCamera/fakeCamera.js"
     },
     "button": {
      "name": "button",
@@ -83,7 +74,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-button/button.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-button/button.js"
     },
     "buzzer": {
      "name": "buzzer",
@@ -92,7 +83,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-buzzer/buzzer.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-buzzer/buzzer.js"
     },
     "lcd": {
      "name": "lcd",
@@ -101,7 +92,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-lcd/lcd.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-lcd/lcd.js"
     },
     "led": {
      "name": "led",
@@ -110,7 +101,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-led/led.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-led/led.js"
     },
     "led_blink": {
      "name": "led_blink",
@@ -119,7 +110,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-led-blink/led_blink.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-led-blink/led_blink.js"
     },
     "light": {
      "name": "light",
@@ -128,7 +119,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-light/light.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-light/light.js"
     },
     "relay": {
      "name": "relay",
@@ -137,7 +128,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-relay/relay.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-relay/relay.js"
     },
     "rotary": {
      "name": "rotary",
@@ -146,7 +137,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-rotary/rotary.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-rotary/rotary.js"
     },
     "servo": {
      "name": "servo",
@@ -155,7 +146,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-servo/servo.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-servo/servo.js"
     },
     "sound": {
      "name": "sound",
@@ -164,7 +155,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-sound/sound.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-sound/sound.js"
     },
     "temp": {
      "name": "temp",
@@ -173,7 +164,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-temp/temp.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-temp/temp.js"
     },
     "touch": {
      "name": "touch",
@@ -182,7 +173,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/grove/grove-touch/touch.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/grove/grove-touch/touch.js"
     },
     "encoder": {
      "name": "encoder",
@@ -191,7 +182,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/indoor/indoor-encoder/encoder.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/indoor/indoor-encoder/encoder.js"
     },
     "moisture": {
      "name": "moisture",
@@ -200,7 +191,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/indoor/indoor-moisture/moisture.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/indoor/indoor-moisture/moisture.js"
     },
     "motion": {
      "name": "motion",
@@ -209,7 +200,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/indoor/indoor-motion/motion.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/indoor/indoor-motion/motion.js"
     },
     "temp-humi": {
      "name": "temp-humi",
@@ -218,7 +209,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/indoor/indoor-temp-humi/temp-humi.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/indoor/indoor-temp-humi/temp-humi.js"
     },
     "UV": {
      "name": "UV",
@@ -227,7 +218,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/indoor/indoor-uvSensor/UV.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/indoor/indoor-uvSensor/UV.js"
     },
     "disp": {
      "name": "disp",
@@ -237,7 +228,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/io/disp.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/io/disp.js"
     },
     "iot": {
      "name": "iot",
@@ -247,7 +238,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/io/iot.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/io/iot.js"
     },
     "math-operations": {
      "name": "math-operations",
@@ -256,7 +247,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/math/math-operations.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/math/math-operations.js"
     },
     "toggle": {
      "name": "toggle",
@@ -265,7 +256,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/toggle/toggle.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/toggle/toggle.js"
     },
     "sentiment": {
      "name": "sentiment",
@@ -274,7 +265,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/analysis/72-sentiment.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/analysis/72-sentiment.js"
     },
     "inject": {
      "name": "inject",
@@ -283,7 +274,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/20-inject.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/20-inject.js"
     },
     "catch": {
      "name": "catch",
@@ -292,7 +283,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/25-catch.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/25-catch.js"
     },
     "debug": {
      "name": "debug",
@@ -301,7 +292,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/58-debug.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/58-debug.js"
     },
     "exec": {
      "name": "exec",
@@ -310,7 +301,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/75-exec.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/75-exec.js"
     },
     "function": {
      "name": "function",
@@ -319,7 +310,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/80-function.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/80-function.js"
     },
     "template": {
      "name": "template",
@@ -328,7 +319,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/80-template.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/80-template.js"
     },
     "delay": {
      "name": "delay",
@@ -337,7 +328,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/89-delay.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/89-delay.js"
     },
     "trigger": {
      "name": "trigger",
@@ -346,7 +337,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/89-trigger.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/89-trigger.js"
     },
     "comment": {
      "name": "comment",
@@ -355,7 +346,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/90-comment.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/90-comment.js"
     },
     "unknown": {
      "name": "unknown",
@@ -364,7 +355,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/core/98-unknown.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/98-unknown.js"
     },
     "arduino": {
      "name": "arduino",
@@ -375,7 +366,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/hardware/35-arduino.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/hardware/35-arduino.js"
     },
     "rpi-gpio": {
      "name": "rpi-gpio",
@@ -386,7 +377,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/hardware/36-rpi-gpio.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/hardware/36-rpi-gpio.js"
     },
     "mqtt": {
      "name": "mqtt",
@@ -397,7 +388,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/io/10-mqtt.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/io/10-mqtt.js"
     },
     "httpin": {
      "name": "httpin",
@@ -408,7 +399,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/io/21-httpin.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/io/21-httpin.js"
     },
     "websocket": {
      "name": "websocket",
@@ -420,7 +411,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/io/22-websocket.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/io/22-websocket.js"
     },
     "watch": {
      "name": "watch",
@@ -429,7 +420,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/io/23-watch.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/io/23-watch.js"
     },
     "serial": {
      "name": "serial",
@@ -440,7 +431,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/io/25-serial.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/io/25-serial.js"
     },
     "tcpin": {
      "name": "tcpin",
@@ -451,7 +442,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/io/31-tcpin.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/io/31-tcpin.js"
     },
     "udp": {
      "name": "udp",
@@ -461,7 +452,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/io/32-udp.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/io/32-udp.js"
     },
     "switch": {
      "name": "switch",
@@ -470,7 +461,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/logic/10-switch.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/logic/10-switch.js"
     },
     "change": {
      "name": "change",
@@ -479,7 +470,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/logic/15-change.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/logic/15-change.js"
     },
     "range": {
      "name": "range",
@@ -488,7 +479,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/logic/16-range.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/logic/16-range.js"
     },
     "CSV": {
      "name": "CSV",
@@ -497,7 +488,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/parsers/70-CSV.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/parsers/70-CSV.js"
     },
     "HTML": {
      "name": "HTML",
@@ -506,7 +497,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/parsers/70-HTML.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/parsers/70-HTML.js"
     },
     "JSON": {
      "name": "JSON",
@@ -515,7 +506,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/parsers/70-JSON.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/parsers/70-JSON.js"
     },
     "XML": {
      "name": "XML",
@@ -524,7 +515,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/parsers/70-XML.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/parsers/70-XML.js"
     },
     "twitter": {
      "name": "twitter",
@@ -535,7 +526,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/social/27-twitter.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/social/27-twitter.js"
     },
     "feedparse": {
      "name": "feedparse",
@@ -544,7 +535,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/social/32-feedparse.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/social/32-feedparse.js"
     },
     "email": {
      "name": "email",
@@ -554,7 +545,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/social/61-email.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/social/61-email.js"
     },
     "irc": {
      "name": "irc",
@@ -565,7 +556,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/social/91-irc.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/social/91-irc.js"
     },
     "tail": {
      "name": "tail",
@@ -574,7 +565,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/storage/28-tail.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/storage/28-tail.js"
     },
     "file": {
      "name": "file",
@@ -584,7 +575,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/storage/50-file.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/storage/50-file.js"
     },
     "redisout": {
      "name": "redisout",
@@ -593,7 +584,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/storage/65-redisout.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/storage/65-redisout.js"
     },
     "mongodb": {
      "name": "mongodb",
@@ -604,7 +595,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/core/storage/66-mongodb.js"
+     "file": "/home/root/SmartNode/node-red/nodes/core/storage/66-mongodb.js"
     },
     "driving": {
      "name": "driving",
@@ -613,7 +604,7 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/edirobot_js/Driving/driving.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot_js/Driving/driving.js"
     },
     "motor": {
      "name": "motor",
@@ -622,7 +613,16 @@
      ],
      "enabled": true,
      "module": "node-red",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/nodes/atlas_nodes/edirobot_js/Motor/motor.js"
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot_js/Motor/motor.js"
+    },
+    "screen": {
+     "name": "screen",
+     "types": [
+      "screen"
+     ],
+     "enabled": true,
+     "module": "node-red",
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot/screen.js"
     }
    }
   },
@@ -637,7 +637,7 @@
      ],
      "enabled": true,
      "module": "node-red-contrib-say",
-     "file": "/home/root/Node_red_on_edison_Release/node-red/node_modules/node-red-contrib-say/say.js"
+     "file": "/home/root/SmartNode/node-red/node_modules/node-red-contrib-say/say.js"
     }
    }
   }

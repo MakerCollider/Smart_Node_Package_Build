@@ -308,7 +308,7 @@ ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = cd $(srcdir); /usr/lib/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "--toplevel-dir=." -I/home/root/Node_red_on_edison_Release/Atlas/atlas_nodes/edirobot/addon/build/config.gypi -I/usr/lib/node_modules/node-gyp/addon.gypi -I/home/root/.node-gyp/0.10.38/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/home/root/.node-gyp/0.10.38" "-Dnode_gyp_dir=/usr/lib/node_modules/node-gyp" "-Dmodule_root_dir=/home/root/Node_red_on_edison_Release/Atlas/atlas_nodes/edirobot/addon" binding.gyp
+cmd_regen_makefile = cd $(srcdir); /usr/lib/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "--toplevel-dir=." -I/home/root/SmartNode/Atlas/atlas_nodes/edirobot/addon/build/config.gypi -I/usr/lib/node_modules/node-gyp/addon.gypi -I/home/root/.node-gyp/0.10.38/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/home/root/.node-gyp/0.10.38" "-Dnode_gyp_dir=/usr/lib/node_modules/node-gyp" "-Dmodule_root_dir=/home/root/SmartNode/Atlas/atlas_nodes/edirobot/addon" binding.gyp
 Makefile: $(srcdir)/../../../../../../../usr/lib/node_modules/node-gyp/addon.gypi $(srcdir)/../../../../../.node-gyp/0.10.38/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp
 	$(call do_cmd,regen_makefile)
 

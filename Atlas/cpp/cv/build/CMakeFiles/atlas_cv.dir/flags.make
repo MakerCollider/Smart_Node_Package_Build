@@ -3,11 +3,11 @@
 
 # compile C with /usr/bin/cc
 # compile CXX with /usr/bin/c++
-C_FLAGS = -I/usr/include/opencv -I/home/root/Node_red_on_edison_Release/Atlas/cpp/cv -I/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/lib/libb64/include   
+C_FLAGS = -I/usr/include/opencv -I/home/root/SmartNode/Atlas/cpp/cv -I/home/root/SmartNode/Atlas/cpp/cv/lib/libb64/include   
 
 C_DEFINES = 
 
-CXX_FLAGS = -I/usr/include/opencv -I/home/root/Node_red_on_edison_Release/Atlas/cpp/cv -I/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/lib/libb64/include   
+CXX_FLAGS = -I/usr/include/opencv -I/home/root/SmartNode/Atlas/cpp/cv -I/home/root/SmartNode/Atlas/cpp/cv/lib/libb64/include   
 
 CXX_DEFINES = 
 

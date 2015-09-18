@@ -8,7 +8,7 @@
 
 ../lib/libb64/include/b64/cencode.h
 
-/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.cpp
+/home/root/SmartNode/Atlas/cpp/cv/cv_atlas.cpp
 iostream
 -
 stdlib.h
@@ -26,13 +26,13 @@ b64/cencode.h
 uv.h
 -
 cv_atlas.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.h
+/home/root/SmartNode/Atlas/cpp/cv/cv_atlas.h
 map
 -
 
-/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.h
+/home/root/SmartNode/Atlas/cpp/cv/cv_atlas.h
 
-/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_tool.cpp
+/home/root/SmartNode/Atlas/cpp/cv/cv_tool.cpp
 iostream
 -
 stdlib.h
@@ -50,9 +50,9 @@ b64/cencode.h
 uv.h
 -
 cv_tool.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_tool.h
+/home/root/SmartNode/Atlas/cpp/cv/cv_tool.h
 
-/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_tool.h
+/home/root/SmartNode/Atlas/cpp/cv/cv_tool.h
 cv_atlas.h
-/home/root/Node_red_on_edison_Release/Atlas/cpp/cv/cv_atlas.h
+/home/root/SmartNode/Atlas/cpp/cv/cv_atlas.h
 

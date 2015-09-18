@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot
+CMAKE_SOURCE_DIR = /home/root/SmartNode/Atlas/cpp/edirobot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build
+CMAKE_BINARY_DIR = /home/root/SmartNode/Atlas/cpp/edirobot/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/edirobot.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/edirobot.dir/flags.make
 
 CMakeFiles/edirobot.dir/screen.cpp.o: CMakeFiles/edirobot.dir/flags.make
 CMakeFiles/edirobot.dir/screen.cpp.o: ../screen.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/SmartNode/Atlas/cpp/edirobot/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/edirobot.dir/screen.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/edirobot.dir/screen.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/screen.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/edirobot.dir/screen.cpp.o -c /home/root/SmartNode/Atlas/cpp/edirobot/screen.cpp
 
 CMakeFiles/edirobot.dir/screen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edirobot.dir/screen.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/screen.cpp > CMakeFiles/edirobot.dir/screen.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/SmartNode/Atlas/cpp/edirobot/screen.cpp > CMakeFiles/edirobot.dir/screen.cpp.i
 
 CMakeFiles/edirobot.dir/screen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edirobot.dir/screen.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/screen.cpp -o CMakeFiles/edirobot.dir/screen.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/SmartNode/Atlas/cpp/edirobot/screen.cpp -o CMakeFiles/edirobot.dir/screen.cpp.s
 
 CMakeFiles/edirobot.dir/screen.cpp.o.requires:
 .PHONY : CMakeFiles/edirobot.dir/screen.cpp.o.requires
@@ -74,17 +74,17 @@ CMakeFiles/edirobot.dir/screen.cpp.o.provides.build: CMakeFiles/edirobot.dir/scr
 
 CMakeFiles/edirobot.dir/LED_16_16.cpp.o: CMakeFiles/edirobot.dir/flags.make
 CMakeFiles/edirobot.dir/LED_16_16.cpp.o: ../LED_16_16.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/root/SmartNode/Atlas/cpp/edirobot/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/edirobot.dir/LED_16_16.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/edirobot.dir/LED_16_16.cpp.o -c /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/edirobot.dir/LED_16_16.cpp.o -c /home/root/SmartNode/Atlas/cpp/edirobot/LED_16_16.cpp
 
 CMakeFiles/edirobot.dir/LED_16_16.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edirobot.dir/LED_16_16.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.cpp > CMakeFiles/edirobot.dir/LED_16_16.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/root/SmartNode/Atlas/cpp/edirobot/LED_16_16.cpp > CMakeFiles/edirobot.dir/LED_16_16.cpp.i
 
 CMakeFiles/edirobot.dir/LED_16_16.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edirobot.dir/LED_16_16.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/LED_16_16.cpp -o CMakeFiles/edirobot.dir/LED_16_16.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/root/SmartNode/Atlas/cpp/edirobot/LED_16_16.cpp -o CMakeFiles/edirobot.dir/LED_16_16.cpp.s
 
 CMakeFiles/edirobot.dir/LED_16_16.cpp.o.requires:
 .PHONY : CMakeFiles/edirobot.dir/LED_16_16.cpp.o.requires
@@ -124,6 +124,6 @@ CMakeFiles/edirobot.dir/clean:
 .PHONY : CMakeFiles/edirobot.dir/clean
 
 CMakeFiles/edirobot.dir/depend:
-	cd /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build /home/root/Node_red_on_edison_Release/Atlas/cpp/edirobot/build/CMakeFiles/edirobot.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/root/SmartNode/Atlas/cpp/edirobot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/root/SmartNode/Atlas/cpp/edirobot /home/root/SmartNode/Atlas/cpp/edirobot /home/root/SmartNode/Atlas/cpp/edirobot/build /home/root/SmartNode/Atlas/cpp/edirobot/build /home/root/SmartNode/Atlas/cpp/edirobot/build/CMakeFiles/edirobot.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/edirobot.dir/depend
 

@@ -34,6 +34,7 @@ module.exports = function(RED) {
                         {
                             is_on = false;
 				clearInterval(myinterval);
+                                led.off(); 
                         }
 			}
 		});	
