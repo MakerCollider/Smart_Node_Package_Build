@@ -17,6 +17,7 @@ var registry = require("./registry");
 var credentials = require("./credentials");
 var flows = require("./flows");
 var Node = require("./Node");
+var log = require("../log");
 
 /**
  * Registers a node constructor
@@ -47,19 +48,21 @@ function createNode(node,def) {
     if (creds) {
         //console.log("Attaching credentials to ",node.id);
         node.credentials = creds;
+    } else if (credentials.getDefinition(node.type)) {
+        node.credentials = {};
     }
 }
 
 function init(_settings,storage,app) {
     credentials.init(storage,app);
-    flows.init(storage);
+    flows.init(_settings,storage);
     registry.init(_settings);
 }
 
 function checkTypeInUse(id) {
     var nodeInfo = registry.getNodeInfo(id);
     if (!nodeInfo) {
-        throw new Error("Unrecognised id: "+id);
+        throw new Error(log._("nodes.index.unrecognised-id", {id:id}));
     } else {
         var inUse = {};
         var config = flows.getFlows();
@@ -74,7 +77,7 @@ function checkTypeInUse(id) {
         });
         if (nodesInUse.length > 0) {
             var msg = nodesInUse.join(", ");
-            var err = new Error("Type in use: "+msg);
+            var err = new Error(log._("nodes.index.type-in-use", {msg:msg}));
             err.code = "type_in_use";
             throw err;
         }
@@ -89,7 +92,7 @@ function removeNode(id) {
 function removeModule(module) {
     var info = registry.getModuleInfo(module);
     if (!info) {
-        throw new Error("Unrecognised module: "+module);
+        throw new Error(log._("nodes.index.unrecognised-module", {module:module}));
     } else {
         for (var i=0;i<info.nodes.length;i++) {
             checkTypeInUse(module+"/"+info.nodes[i].name);
@@ -113,6 +116,7 @@ module.exports = {
     getNode: flows.get,
     eachNode: flows.eachNode,
 
+    addFile: registry.addFile,
     addModule: registry.addModule,
     removeModule: removeModule,
 
@@ -127,7 +131,6 @@ module.exports = {
     getNodeList: registry.getNodeList,
 
     getModuleInfo: registry.getModuleInfo,
-    getModuleList: registry.getModuleList,
 
     getNodeConfigs: registry.getNodeConfigs,
     getNodeConfig: registry.getNodeConfig,

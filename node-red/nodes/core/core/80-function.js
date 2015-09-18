@@ -19,7 +19,6 @@ module.exports = function(RED) {
     var util = require("util");
     var vm = require("vm");
 
-    
     function sendResults(node,_msgid,msgs) {
         if (msgs == null) {
             return;
@@ -43,9 +42,8 @@ module.exports = function(RED) {
         if (msgCount>0) {
             node.send(msgs);
         }
-                            
     }
-    
+
     function FunctionNode(n) {
         RED.nodes.createNode(this,n);
         var node = this;
@@ -88,7 +86,8 @@ module.exports = function(RED) {
             context: {
                 global:RED.settings.functionGlobalContext || {}
             },
-            setTimeout: setTimeout
+            setTimeout: setTimeout,
+            clearTimeout: clearTimeout
         };
         var context = vm.createContext(sandbox);
         try {
@@ -99,7 +98,7 @@ module.exports = function(RED) {
                     context.msg = msg;
                     this.script.runInContext(context);
                     sendResults(this,msg._msgid,context.results);
-                    
+
                     var duration = process.hrtime(start);
                     var converted = Math.floor((duration[0]* 1e9 +  duration[1])/10000)/100;
                     this.metric("duration", msg, converted);
@@ -107,15 +106,27 @@ module.exports = function(RED) {
                         this.status({fill:"yellow",shape:"dot",text:""+converted});
                     }
                 } catch(err) {
-                    var errorMessage = err.toString();
+
+                    var line = 0;
+                    var errorMessage;
                     var stack = err.stack.split(/\r?\n/);
                     if (stack.length > 0) {
-                        var m = /at undefined:(\d+):(\d+)$/.exec(stack[1]);
-                        if (m) {
-                            var line = Number(m[1])-1;
-                            var cha = m[2];
-                            errorMessage += " (line "+line+", col "+cha+")";
+                        while(line < stack.length && stack[line].indexOf("ReferenceError") !== 0) {
+                            line++;
                         }
+
+                        if (line < stack.length) {
+                            errorMessage = stack[line];
+                            var m = /:(\d+):(\d+)$/.exec(stack[line+1]);
+                            if (m) {
+                                var line = Number(m[1])-1;
+                                var cha = m[2];
+                                errorMessage += " (line "+line+", col "+cha+")";
+                            }
+                        }
+                    }
+                    if (!errorMessage) {
+                        errorMessage = err.toString();
                     }
                     this.error(errorMessage, msg);
                 }
@@ -126,7 +137,6 @@ module.exports = function(RED) {
             this.error(err);
         }
     }
-
     RED.nodes.registerType("function",FunctionNode);
     RED.library.register("functions");
 }

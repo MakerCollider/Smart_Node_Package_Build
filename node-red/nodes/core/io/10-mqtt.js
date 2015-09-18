@@ -42,7 +42,7 @@ module.exports = function(RED) {
         this.broker = n.broker;
         this.brokerConfig = RED.nodes.getNode(this.broker);
         if (this.brokerConfig) {
-            this.status({fill:"red",shape:"ring",text:"disconnected"});
+            this.status({fill:"red",shape:"ring",text:"common.status.disconnected"});
             this.client = connectionPool.get(this.brokerConfig.broker,this.brokerConfig.port,this.brokerConfig.clientid,this.brokerConfig.username,this.brokerConfig.password);
             var node = this;
             if (this.topic) {
@@ -53,23 +53,28 @@ module.exports = function(RED) {
                         msg._topic = topic;
                     }
                     node.send(msg);
-                });
+                }, this.id);
                 this.client.on("connectionlost",function() {
-                    node.status({fill:"red",shape:"ring",text:"disconnected"});
+                    node.status({fill:"red",shape:"ring",text:"common.status.disconnected"});
                 });
                 this.client.on("connect",function() {
-                    node.status({fill:"green",shape:"dot",text:"connected"});
+                    node.status({fill:"green",shape:"dot",text:"common.status.connected"});
                 });
-                this.client.connect();
+                if (this.client.isConnected()) {
+                    node.status({fill:"green",shape:"dot",text:"common.status.connected"});
+                } else {
+                    this.client.connect();
+                }
             }
             else {
-                this.error("topic not defined");
+                this.error(RED._("mqtt.errors.not-defined"));
             }
         } else {
-            this.error("missing broker configuration");
+            this.error(RED._("mqtt.errors.missing-config"));
         }
         this.on('close', function() {
             if (this.client) {
+                this.client.unsubscribe(this.topic,this.id);
                 this.client.disconnect();
             }
         });
@@ -85,7 +90,7 @@ module.exports = function(RED) {
         this.brokerConfig = RED.nodes.getNode(this.broker);
 
         if (this.brokerConfig) {
-            this.status({fill:"red",shape:"ring",text:"disconnected"});
+            this.status({fill:"red",shape:"ring",text:"common.status.disconnected"});
             this.client = connectionPool.get(this.brokerConfig.broker,this.brokerConfig.port,this.brokerConfig.clientid,this.brokerConfig.username,this.brokerConfig.password);
             var node = this;
             this.on("input",function(msg) {
@@ -101,20 +106,26 @@ module.exports = function(RED) {
                 if (node.topic) {
                     msg.topic = node.topic;
                 }
-                if ((msg.hasOwnProperty("topic")) && (typeof msg.topic === "string") && (msg.topic !== "")) { // topic must exist
-                    this.client.publish(msg);  // send the message
+                if ( msg.hasOwnProperty("payload")) {
+                    if (msg.hasOwnProperty("topic") && (typeof msg.topic === "string") && (msg.topic !== "")) { // topic must exist
+                        this.client.publish(msg);  // send the message
+                    }
+                    else { node.warn(RED._("mqtt.errors.invalid-topic")); }
                 }
-                else { node.warn("Invalid topic specified"); }
             });
             this.client.on("connectionlost",function() {
-                node.status({fill:"red",shape:"ring",text:"disconnected"});
+                node.status({fill:"red",shape:"ring",text:"common.status.disconnected"});
             });
             this.client.on("connect",function() {
-                node.status({fill:"green",shape:"dot",text:"connected"});
+                node.status({fill:"green",shape:"dot",text:"common.status.connected"});
             });
-            this.client.connect();
+            if (this.client.isConnected()) {
+                node.status({fill:"green",shape:"dot",text:"common.status.connected"});
+            } else {
+                this.client.connect();
+            }
         } else {
-            this.error("missing broker configuration");
+            this.error(RED._("mqtt.errors.missing-config"));
         }
         this.on('close', function() {
             if (this.client) {

@@ -2,7 +2,7 @@
  "nodes": {
   "node-red": {
    "name": "node-red",
-   "version": "0.10.6",
+   "version": "0.11.1",
    "nodes": {
     "add-strings": {
      "name": "add-strings",
@@ -57,6 +57,33 @@
      "enabled": true,
      "module": "node-red",
      "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/cv/img2Base64.js"
+    },
+    "screen": {
+     "name": "screen",
+     "types": [
+      "screen"
+     ],
+     "enabled": true,
+     "module": "node-red",
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot/screen.js"
+    },
+    "driving": {
+     "name": "driving",
+     "types": [
+      "Driving"
+     ],
+     "enabled": true,
+     "module": "node-red",
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot_js/Driving/driving.js"
+    },
+    "motor": {
+     "name": "motor",
+     "types": [
+      "Motor"
+     ],
+     "enabled": true,
+     "module": "node-red",
+     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot_js/Motor/motor.js"
     },
     "fakeCamera": {
      "name": "fakeCamera",
@@ -357,17 +384,6 @@
      "module": "node-red",
      "file": "/home/root/SmartNode/node-red/nodes/core/core/98-unknown.js"
     },
-    "arduino": {
-     "name": "arduino",
-     "types": [
-      "arduino in",
-      "arduino out",
-      "arduino-board"
-     ],
-     "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/core/hardware/35-arduino.js"
-    },
     "rpi-gpio": {
      "name": "rpi-gpio",
      "types": [
@@ -421,17 +437,6 @@
      "enabled": true,
      "module": "node-red",
      "file": "/home/root/SmartNode/node-red/nodes/core/io/23-watch.js"
-    },
-    "serial": {
-     "name": "serial",
-     "types": [
-      "serial in",
-      "serial out",
-      "serial-port"
-     ],
-     "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/core/io/25-serial.js"
     },
     "tcpin": {
      "name": "tcpin",
@@ -517,47 +522,6 @@
      "module": "node-red",
      "file": "/home/root/SmartNode/node-red/nodes/core/parsers/70-XML.js"
     },
-    "twitter": {
-     "name": "twitter",
-     "types": [
-      "twitter-credentials",
-      "twitter in",
-      "twitter out"
-     ],
-     "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/core/social/27-twitter.js"
-    },
-    "feedparse": {
-     "name": "feedparse",
-     "types": [
-      "feedparse"
-     ],
-     "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/core/social/32-feedparse.js"
-    },
-    "email": {
-     "name": "email",
-     "types": [
-      "e-mail",
-      "e-mail in"
-     ],
-     "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/core/social/61-email.js"
-    },
-    "irc": {
-     "name": "irc",
-     "types": [
-      "irc in",
-      "irc out",
-      "irc-server"
-     ],
-     "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/core/social/91-irc.js"
-    },
     "tail": {
      "name": "tail",
      "types": [
@@ -576,53 +540,86 @@
      "enabled": true,
      "module": "node-red",
      "file": "/home/root/SmartNode/node-red/nodes/core/storage/50-file.js"
-    },
-    "redisout": {
-     "name": "redisout",
+    }
+   }
+  },
+  "node-red-node-email": {
+   "name": "node-red-node-email",
+   "version": "0.1.0",
+   "nodes": {
+    "email": {
+     "name": "email",
      "types": [
-      "redis out"
+      "e-mail",
+      "e-mail in"
      ],
      "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/core/storage/65-redisout.js"
-    },
-    "mongodb": {
-     "name": "mongodb",
+     "module": "node-red-node-email",
+     "file": "/home/root/SmartNode/node-red/node_modules/node-red-node-email/61-email.js"
+    }
+   }
+  },
+  "node-red-node-feedparser": {
+   "name": "node-red-node-feedparser",
+   "version": "0.1.2",
+   "nodes": {
+    "feedparse": {
+     "name": "feedparse",
      "types": [
-      "mongodb",
-      "mongodb out",
-      "mongodb in"
+      "feedparse"
      ],
      "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/core/storage/66-mongodb.js"
-    },
-    "driving": {
-     "name": "driving",
+     "module": "node-red-node-feedparser",
+     "file": "/home/root/SmartNode/node-red/node_modules/node-red-node-feedparser/32-feedparse.js"
+    }
+   }
+  },
+  "node-red-node-rbe": {
+   "name": "node-red-node-rbe",
+   "version": "0.1.0",
+   "nodes": {
+    "rbe": {
+     "name": "rbe",
      "types": [
-      "Driving"
+      "rbe"
      ],
      "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot_js/Driving/driving.js"
-    },
-    "motor": {
-     "name": "motor",
+     "module": "node-red-node-rbe",
+     "file": "/home/root/SmartNode/node-red/node_modules/node-red-node-rbe/rbe.js"
+    }
+   }
+  },
+  "node-red-node-serialport": {
+   "name": "node-red-node-serialport",
+   "version": "0.0.3",
+   "nodes": {
+    "serialport": {
+     "name": "serialport",
      "types": [
-      "Motor"
+      "serial in",
+      "serial out",
+      "serial-port"
      ],
      "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot_js/Motor/motor.js"
-    },
-    "screen": {
-     "name": "screen",
+     "module": "node-red-node-serialport",
+     "file": "/home/root/SmartNode/node-red/node_modules/node-red-node-serialport/25-serial.js"
+    }
+   }
+  },
+  "node-red-node-twitter": {
+   "name": "node-red-node-twitter",
+   "version": "0.1.1",
+   "nodes": {
+    "twitter": {
+     "name": "twitter",
      "types": [
-      "screen"
+      "twitter-credentials",
+      "twitter in",
+      "twitter out"
      ],
      "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot/screen.js"
+     "module": "node-red-node-twitter",
+     "file": "/home/root/SmartNode/node-red/node_modules/node-red-node-twitter/27-twitter.js"
     }
    }
   },

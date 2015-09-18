@@ -20,6 +20,7 @@ var library = require("./api/library");
 var comms = require("./comms");
 var log = require("./log");
 var util = require("./util");
+var i18n = require("./i18n");
 var fs = require("fs");
 var settings = require("./settings");
 var credentials = require("./nodes/credentials");
@@ -29,8 +30,20 @@ var events = require("events");
 
 process.env.NODE_RED_HOME = process.env.NODE_RED_HOME || path.resolve(__dirname+"/..");
 
+function checkBuild() {
+    var editorFile = path.resolve(path.join(__dirname,"..","public","red","red.min.js"));
+    try {
+        var stats = fs.statSync(editorFile);
+    } catch(err) {
+        var e = new Error("Node-RED not built");
+        e.code = "not_built";
+        throw e;
+    }
+}
+
 var RED = {
     init: function(httpServer,userSettings) {
+        checkBuild();
         userSettings.version = this.version();
         log.init(userSettings);
         settings.init(userSettings);
@@ -54,7 +67,7 @@ var RED = {
         var p = require(path.join(process.env.NODE_RED_HOME,"package.json")).version;
         /* istanbul ignore else */
         if (fs.existsSync(path.join(process.env.NODE_RED_HOME,".git"))) {
-            p += ".git";
+            p += "-git";
         }
         return p;
     },
@@ -63,4 +76,5 @@ var RED = {
     get httpNode() { return server.nodeApp },
     get server() { return server.server }
 };
+
 module.exports = RED;

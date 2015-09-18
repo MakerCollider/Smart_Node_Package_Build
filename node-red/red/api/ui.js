@@ -17,8 +17,12 @@ var express = require('express');
 var fs = require("fs");
 var path = require("path");
 
+var theme = require("./theme");
+
+var Mustache = require("mustache");
+
 var events = require("../events");
-var settings = require("../settings");
+var settings;
 
 var icon_paths = [path.resolve(__dirname + '/../../public/icons')];
 var iconCache = {};
@@ -29,7 +33,16 @@ events.on("node-icon-dir",function(dir) {
     icon_paths.push(path.resolve(dir));
 });
 
+var templateDir = path.resolve(__dirname+"/../../editor/templates");
+var editorTemplate;
+
 module.exports = {
+    init: function(_settings) {
+        settings = _settings;
+        editorTemplate = fs.readFileSync(path.join(templateDir,"index.mst"),"utf8");
+        Mustache.parse(editorTemplate);
+    },
+    
     ensureSlash: function(req,res,next) {
         var parts = req.originalUrl.split("?");
         if (parts[0].slice(-1) != "/") {
@@ -55,5 +68,8 @@ module.exports = {
             res.sendfile(defaultIcon);
         }
     },
-    editor: express.static(__dirname + '/../../public')
+    editor: function(req,res) {
+        res.send(Mustache.render(editorTemplate,theme.context()));
+    },
+    editorResources: express.static(__dirname + '/../../public')
 };

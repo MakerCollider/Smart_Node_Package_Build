@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 IBM Corp.
+ * Copyright 2014, 2015 IBM Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,7 +73,7 @@ module.exports = function(RED) {
                         },node.duration);
                     }
                 }
-                else if ((node.extend == "true") && (node.duration > 0)) {
+                else if ((node.extend === "true" || node.extend === true) && (node.duration > 0)) {
                     clearTimeout(tout);
                     tout = setTimeout(function() {
                         msg.payload = m2;

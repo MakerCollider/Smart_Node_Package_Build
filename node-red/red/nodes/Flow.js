@@ -43,7 +43,7 @@ function createNode(type,config) {
             });
         }
     } else {
-        Log.error("Unknown type: "+type);
+        Log.error(Log._("nodes.flow.unknown-type", {type:type}));
     }
     return nn;
 }
@@ -368,7 +368,7 @@ Flow.prototype.start = function(configDiff) {
     
     this.started = true;
     if (this.missingTypes.length > 0) {
-        throw new Error("missing types");
+        throw new Error(Log._("nodes.flow.missing-types"));
     }
     events.emit("nodes-starting");
     
@@ -537,6 +537,7 @@ function diffFlow(flow,config) {
     var flowNodes = {};
     var changedNodes = {};
     var deletedNodes = {};
+    var deletedSubflows = {};
     var deletedTabs = {};
     var linkChangedNodes = {};
     
@@ -591,10 +592,12 @@ function diffFlow(flow,config) {
     
     flow.config.forEach(function(node) {
         if (!flowNodes[node.id]) {
-            if (node.type != "tab") {
-                deletedNodes[node.id] = node;
-            } else {
+            if (node.type === "tab") {
                 deletedTabs[node.id] = node;
+            } else if (node.type === "subflow") {
+                deletedSubflows[node.id] = node;
+            } else {
+                deletedNodes[node.id] = node;
             }
         }
         buildNodeLinks(activeLinks,node,flow.allNodes);
@@ -720,9 +723,8 @@ function diffFlow(flow,config) {
     //     var n = flow.allNodes[id];
     //     console.log("[ ] [ ] [D]",n.id,n.type);
     // });
-    
     var diff = {
-        deleted: Object.keys(deletedNodes).filter(function(id) { return deletedNodes[id].type != "subflow" && (!deletedNodes[id].z || deletedTabs[deletedNodes[id].z] || flowNodes[deletedNodes[id].z].type != "subflow")}),
+        deleted: Object.keys(deletedNodes).filter(function(id) { return deletedNodes[id].type != "subflow" && (!deletedNodes[id].z || deletedTabs[deletedNodes[id].z] || !(deletedSubflows[deletedNodes[id].z] || flowNodes[deletedNodes[id].z].type == "subflow"))}),
         changed: Object.keys(changedNodes).filter(function(id) { return changedNodes[id].type != "subflow" && (!changedNodes[id].z || flowNodes[changedNodes[id].z].type != "subflow")}),
         linked: Object.keys(linkChangedNodes).filter(function(id) { return linkChangedNodes[id].type != "subflow" && (!linkChangedNodes[id].z || flowNodes[linkChangedNodes[id].z].type != "subflow")}),
         wiringChanged: []
@@ -742,28 +744,45 @@ function diffFlow(flow,config) {
 
 
 Flow.prototype.handleError = function(node,logMessage,msg) {
-    var errorMessage;
-    if (msg) {
-        errorMessage = redUtil.cloneMessage(msg);
-    } else {
-        errorMessage = {};
-    }
-    if (errorMessage.hasOwnProperty("error")) {
-        errorMessage._error = errorMessage.error;
-    }
-    errorMessage.error = {
-        message: logMessage.toString(),
-        source: {
-            id: node.id,
-            type: node.type
-        }
-    };
+    var targetCatchNode = null; 
     if (this.catchNodeMap[node.z]) {
-        this.catchNodeMap[node.z].receive(errorMessage);
-    } else {
-        if (this.activeNodes[node.z] && this.catchNodeMap[this.activeNodes[node.z].z]) {
-            this.catchNodeMap[this.activeNodes[node.z].z].receive(errorMessage);
+        targetCatchNode = this.catchNodeMap[node.z];
+    } else if (this.activeNodes[node.z] && this.catchNodeMap[this.activeNodes[node.z].z]) {
+        targetCatchNode = this.catchNodeMap[this.activeNodes[node.z].z];
+    }
+    
+    if (targetCatchNode) {
+        var count = 1;
+        if (msg && msg.hasOwnProperty("error")) {
+            if (msg.error.hasOwnProperty("source")) {
+                if (msg.error.source.id === node.id) {
+                    count = msg.error.source.count+1;
+                    if (count === 10) {
+                        node.warn(Log._("nodes.flow.error-loop")); 
+                        return;
+                    }
+                }
+            }
         }
+        
+        var errorMessage;
+        if (msg) {
+            errorMessage = redUtil.cloneMessage(msg);
+        } else {
+            errorMessage = {};
+        }
+        if (errorMessage.hasOwnProperty("error")) { 
+            errorMessage._error = errorMessage.error;
+        }
+        errorMessage.error = {
+            message: logMessage.toString(),
+            source: {
+                id: node.id,
+                type: node.type,
+                count: count
+            }
+        };
+        targetCatchNode.receive(errorMessage);
     }
 }
 
