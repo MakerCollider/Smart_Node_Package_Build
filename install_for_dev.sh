@@ -24,8 +24,8 @@ echo "install libv4l..."
 tar -xzvf $CURR/lib/libv4l.tgz &>> $LOG
 echo "done"
 
-echo "hacking upm library..."
-tar -xzvf $CURR/lib/ojl298.tgz &>> $LOG
+echo "hacking upm-diy library..."
+tar -xzvf $CURR/lib/upm-diy.tgz &>> $LOG
 echo "done"
 
 echo "install mqtt package..."
@@ -64,6 +64,9 @@ echo "RestartSec=1" >> $SERVICE
 echo "[Install]" >> $SERVICE
 echo "WantedBy=multi-user.target" >> $SERVICE
 
+npm config set registry http://registry.cnpmjs.org
+npm install -g node-gyp
+
 sleep 2
 echo "Disable Smart Node Service"
 systemctl disable nodered
@@ -77,7 +80,3 @@ echo "Start Smart Node Service"
 systemctl restart nodered > /dev/null 2>&1
 
 echo "log saved to $LOG"
-
-npm config set registry http://registry.cnpmjs.org
-npm install -g node-gyp
-

@@ -24,8 +24,8 @@ echo "install libv4l..."
 tar -xzvf $CURR/lib/libv4l.tgz &>> $LOG
 echo "done"
 
-echo "hacking upm library..."
-tar -xzvf $CURR/lib/ojl298.tgz &>> $LOG
+echo "hacking upm-diy library..."
+tar -xzvf $CURR/lib/upm-diy.tgz &>> $LOG
 echo "done"
 
 echo "install mqtt package..."
