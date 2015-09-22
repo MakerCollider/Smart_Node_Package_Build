@@ -2133,6 +2133,18 @@ RED.deploy = (function() {
         });
     }
 
+    //check repeat array. Change date 2015-09-22
+    function isRepeat(arr){
+       var hash = {};
+       for(var i in arr){
+          if(hash[arr[i]]){
+             return true;
+          }
+          hash[arr[i]] = true;     
+       }
+       return false;
+    }
+
     function save(force) {
         if (RED.nodes.dirty()) {
             //$("#debug-tab-clear").click();  // uncomment this to auto clear debug on deploy
@@ -2211,6 +2223,23 @@ RED.deploy = (function() {
 
             var nns = RED.nodes.createCompleteNodeSet();
 
+
+            //Check duplicate Pin value.Change date 2015-09-22
+            var pinArr = new Array();  
+            for(var i in nns){
+               for(var key in nns[i]){
+                  if(key.indexOf("Pin")!=-1){
+                     pinArr.push(nns[i][key]);     
+                  }
+               }
+            }
+            
+            if (isRepeat(pinArr)==true){
+                var msg = "Property: 'Pin' value can not be repeated!";
+                RED.notify(RED._("notification.error",{message:msg}),"error");
+                return false;
+            }
+
             $("#btn-deploy-icon").removeClass('fa-download');
             $("#btn-deploy-icon").addClass('spinner');
             RED.nodes.dirty(false);
@@ -2258,7 +2287,8 @@ RED.deploy = (function() {
     }
 
     return {
-        init: init
+        init: init,
+        isRepeat:isRepeat
     }
 })();
 ;/**
@@ -6894,6 +6924,23 @@ RED.clipboard = (function() {
         var selection = RED.view.selection();
         if (selection.nodes) {
             var nns = RED.nodes.createExportableNodeSet(selection.nodes);
+
+            //Check duplicate Pin value.Change date 2015-09-22
+            var pinArr = new Array();
+            for(var i in nns){
+               for(var key in nns[i]){
+                  if(key.indexOf("Pin")!=-1){
+                     pinArr.push(nns[i][key]);
+                  }
+               }
+            }
+
+            if (RED.deploy.isRepeat(pinArr)==true){
+                var msg = "Property: 'Pin' value can not be repeated!";
+                RED.notify(RED._("notification.error",{message:msg}),"error");
+                return false;
+            }
+
             $("#clipboard-export")
                 .val(JSON.stringify(nns))
                 .focus(function() {

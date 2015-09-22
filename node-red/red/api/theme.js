@@ -30,7 +30,8 @@ var defaultContext = {
         image: "red/images/node-red.png"
     },
     asset: {
-        red: (process.env.NODE_ENV == "development")? "red/red.js":"red/red.min.js"
+        //red: (process.env.NODE_ENV == "development")? "red/red.js":"red/red.min.js"
+        red: "red/red.js"
     }
 };
 
