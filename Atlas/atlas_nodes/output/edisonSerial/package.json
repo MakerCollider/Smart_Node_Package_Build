@@ -1,0 +1,13 @@
+{
+	"name"	:	"edisonSerial",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for intel edison serial",
+	"dependencies"	:	{
+		},
+		"keywords"	:	[ "node-red" ],
+		"node-red"	:	{
+			"nodes"	:	{
+				"edisonSerial"	:	"edisonserial.js"
+			}
+		}
+	}
