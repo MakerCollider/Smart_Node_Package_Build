@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 TAR_NAME=smart_node.tgz
 echo $TAR_NAME
 echo "make release package..."

@@ -20,19 +20,19 @@ cd ../
 echo "done"
 
 echo "install libuv..."
-tar -xzvf $CURR/lib/libuv.bin.tgz &>> $LOG
+tar -xzvf $CURR/lib/libuv.bin.tgz >> $LOG
 echo "done"
 
 echo "install opencv..."
-tar -xzvf $CURR/lib/OpenCV-3.0.0-rc1.tgz &>> $LOG
+tar -xzvf $CURR/lib/OpenCV-3.0.0-rc1.tgz >> $LOG
 echo "done"
 
 echo "install libv4l..."
-tar -xzvf $CURR/lib/libv4l.tgz &>> $LOG
+tar -xzvf $CURR/lib/libv4l.tgz >> $LOG
 echo "done"
 
 echo "hacking upm-diy library..."
-tar -xzvf $CURR/lib/upm-diy.tgz &>> $LOG
+tar -xzvf $CURR/lib/upm-diy.tgz >> $LOG
 echo "done"
 
 echo "install mqtt package..."
@@ -47,7 +47,7 @@ echo "cd /opt"
 cd /opt
 
 echo "install festival..."
-tar -xzvf $CURR/lib/festival_prebuild.tar.gz &>> $LOG
+tar -xzvf $CURR/lib/festival_prebuild.tar.gz >> $LOG
 cd /opt/festival/festival/bin
 cp festival /usr/bin
 echo "done"
