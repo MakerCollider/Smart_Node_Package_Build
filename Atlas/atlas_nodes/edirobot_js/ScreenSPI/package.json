@@ -1,0 +1,13 @@
+{
+	"name"	:	"ScreenSPI",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-red node for ILI9225 SPI Screen.",
+	"dependencies"	:	{
+		},
+		"keywords"	:	[ "node-red" ],
+		"node-red"	:	{
+			"nodes"	:	{
+				"ScreenSPI"	:	"screenSPI.js"
+			}
+		}
+}
