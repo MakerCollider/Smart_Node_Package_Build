@@ -1,2 +1,0 @@
-/usr/bin/ar cr ../bin/libedirobot.a  CMakeFiles/edirobot.dir/screen.cpp.o CMakeFiles/edirobot.dir/LED_16_16.cpp.o
-/usr/bin/ranlib ../bin/libedirobot.a

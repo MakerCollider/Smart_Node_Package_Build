@@ -1,1 +1,0 @@
-/home/root/SmartNode/Atlas/cpp/edirobot/build/CMakeFiles/edirobot.dir
