@@ -6,7 +6,7 @@ opkg install $CURR/lib/libmraa0_0.7.3_i586.ipk
 echo "done"
 
 echo "updating upm..."
-opkg install $CURR/lib/upm_0.3.2_i586.ipk
+opkg install $CURR/lib/upm_0.4.0_i586.ipk
 echo "done"
 
 echo "cd /usr"

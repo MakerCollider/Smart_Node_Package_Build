@@ -76,15 +76,6 @@
      "module": "node-red",
      "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/edirobot/ScreenSPI/screenSPI.js"
     },
-    "fakeCamera": {
-     "name": "fakeCamera",
-     "types": [
-      "fakeCamera"
-     ],
-     "enabled": true,
-     "module": "node-red",
-     "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/fakeCamera/fakeCamera.js"
-    },
     "button": {
      "name": "button",
      "types": [
