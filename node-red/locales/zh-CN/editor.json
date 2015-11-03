@@ -54,7 +54,8 @@
         "errors": {
             "lostConnection": "失去连接",
             "cannotAddSubflowToItself": "无法为子工作流添加子工作流",
-            "cannotAddCircularReference": "无法添加子工作流 - 检测到循环引用"
+            "cannotAddCircularReference": "无法添加子工作流 - 检测到循环引用",
+            "repeatPin": "无法部署 - 存在重复的管脚号"
         }
     },
     "clipboard": {

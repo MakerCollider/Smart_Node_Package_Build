@@ -68,398 +68,398 @@
         }
     },
     "catch": {
-        "catch": "catch"
+        "catch": "捕获"
     },
     "debug": {
-        "output": "Output",
-        "msgprop": "message property",
-        "msgobj": "complete msg object",
-        "to": "to",
-        "debtab": "debug tab",
-        "tabcon": "debug tab and console",
+        "output": "输出",
+        "msgprop": "消息属性",
+        "msgobj": "完整的消息对象",
+        "to": "输出到...",
+        "debtab": "调试标签页",
+        "tabcon": "调试标签页和控制台",
         "notification": {
-            "activated": "Successfully activated: __label__",
-            "deactivated": "Successfully deactivated: __label__"
+            "activated": "激活标签 __label__ 成功",
+            "deactivated": "去激活标签 __label__ 成功"
         },
         "sidebar": {
-            "label": "debug",
-            "name": "Debug messages"
+            "label": "调试",
+            "name": "调试消息"
         }
     },
     "exec": {
-        "spawnerr": "Spawn command must be just the command - no spaces or extra parameters",
-        "badstdout": "Bad STDOUT",
+        "spawnerr": "的命令必须是个命令 - 不能含有空格和其他参数",
+        "badstdout": "错误的标准输出",
         "label": {
-            "command": "Command",
-            "append": "Append"
+            "command": "命令",
+            "append": "附加"
         },
         "placeholder": {
-            "extraparams": "extra input parameters"
+            "extraparams": "额外的输入参数"
         },
-        "spawn": "Use spawn() instead of exec()?",
-        "tip": "Tip: <i>spawn</i> expects only one command word - and appended args to be comma separated."
+        "spawn": "使用 spawn() 代替 exec()?",
+        "tip": "Tip: <i>派生</i> 仅期望一个命令 - 并且附加的参数需要用逗号分隔."
     },
     "function": {
         "label": {
-            "function": "Function",
-            "outputs": "Outputs"
+            "function": "函数",
+            "outputs": "输出"
         },
-        "tip": "See the Info tab for help writing functions."
+        "tip": "如何写函数，请参考信息标签页."
     },
     "template": {
         "label": {
-            "template": "Template",
-            "property": "Property"
+            "template": "模板",
+            "property": "属性"
         },
-        "templatevalue": "This is the payload: {{payload}} !"
+        "templatevalue": "有效载荷是: {{payload}} !"
     },
     "delay": {
-        "action": "Action",
-        "for": "For",
-        "delaymsg": "Delay message",
-        "ramdomdelay": "Random delay",
-        "limitrate": "Limit rate to",
-        "fairqueue": "Topic based fair queue",
-        "milisecs": "Miliseconds",
-        "secs": "Seconds",
-        "sec": "Second",
-        "mins": "Minutes",
-        "min": "Minute",
-        "hours": "Hours",
-        "hour": "Hour",
-        "days": "Days",
-        "day": "Day",
-        "between": "Between",
-        "rate": "Rate",
-        "msgper": "msg(s) per",
-        "dropmsg": "drop intermediate messages",
+        "action": "行为",
+        "for": "对于...",
+        "delaymsg": "延迟消息",
+        "ramdomdelay": "随机延迟",
+        "limitrate": "限制范围",
+        "fairqueue": "基于主题的公平队列",
+        "milisecs": "毫秒",
+        "secs": "秒",
+        "sec": "秒",
+        "mins": "分钟",
+        "min": "分钟",
+        "hours": "小时",
+        "hour": "小时",
+        "days": "天",
+        "day": "天",
+        "between": "在...之间",
+        "rate": "比率",
+        "msgper": "消息/每",
+        "dropmsg": "丢弃多余的消息",
         "label": {
-            "delay": "delay",
-            "limit": "limit",
-            "random": "ramdom",
-            "queue": "queue"
+            "delay": "延迟",
+            "limit": "限制",
+            "random": "随机",
+            "queue": "队列"
         },
         "error": {
-            "buffer": "buffer exceeded 1000 messages"
+            "buffer": "缓冲超过1000条消息"
         }
     },
     "trigger": {
-        "send": "Send",
-        "then": "then",
-        "then-send": "then send",
+        "send": "发送",
+        "then": "当...",
+        "then-send": "当...发送",
         "output": {
-            "string": "the string payload",
-            "existing": "the existing message",
-            "nothing": "nothing"
+            "string": "字符串有效载荷",
+            "existing": "存在的消息",
+            "nothing": "无"
         },
-        "wait-reset": "wait to be reset",
-        "wait-for": "wait for",
+        "wait-reset": "等待直到复位",
+        "wait-for": "等待...",
         "duration": {
-            "ms": "Milliseconds",
-            "s": "Seconds",
-            "m": "Minutes",
-            "h": "Hours"
+            "ms": "毫秒",
+            "s": "秒",
+            "m": "分钟",
+            "h": "小时"
         },
-        "extend": "extend delay if new message arrives",
-        "tip": "The node can be reset by sending a message with the <b>msg.reset</b> property set",
+        "extend": "当新的消息到来时扩展延时",
+        "tip": "本节点的延时时间可以被含有 <b>msg.reset</b> 属性的消息复位",
         "label": {
-            "trigger": "trigger",
-            "trigger-block": "trigger & block"
+            "trigger": "触发",
+            "trigger-block": "触发并且阻塞"
         }
     },
     "comment": {
         "label": {
-            "title": "Title",
-            "body": "Body"
+            "title": "标题",
+            "body": "注释"
         },
-        "tip": "Tip: The text can be styled as <a href=\"https://help.github.com/articles/markdown-basics/\" target=\"_new\">Github flavoured Markdown</a>"
+        "tip": "提示: 文本的样式可以是如下的样式 <a href=\"https://help.github.com/articles/markdown-basics/\" target=\"_new\">Github flavoured Markdown</a>"
     },
     "unknown": {
         "label": {
-            "unknown": "unknown"
+            "unknown": "未知"
         },
-        "tip": "<p>This node is a type unknown to your installation of Node-RED.</p><p><i>If you deploy with the node in this state, it's configuration will be preserved, but the flow will not start until the missing type is installed.</i></p><p>See the Info side bar for more help</p>"
+        "tip": "<p>这个节点在您安装的SmartNode中，是一个未知的类型</p><p><i>如果您在当前状态下部署了这个节点, 他的配置将被保留, 但是工作流将不会开始，知道这个未知的类型被重新安装.</i></p><p>详见信息栏</p>"
     },
     "mqtt": {
         "label": {
             "broker": "Broker",
             "qos": "QoS",
-            "clientid": "Client ID",
-            "port": "Port"
+            "clientid": "客户端ID",
+            "port": "端口"
         },
         "placeholder": {
-            "clientid": "Leave blank for auto generated"
+            "clientid": "如果留空，则自动生成"
         },
         "retain": "Retain",
         "true": "true",
         "false": "false",
-        "tip": "Tip: Leave topic, qos or retain blank if you want to set them via msg properties.",
+        "tip": "提示: 如果您想通过消息属性来设置topic, qos 或者 retain，则留空.",
         "errors": {
-            "not-defined": "topic not defined",
-            "missing-config": "missing broker configuration",
-            "invalid-topic": "Invalid topic specified"
+            "not-defined": "topic未定义",
+            "missing-config": "broker未配置",
+            "invalid-topic": "无效的topic"
         }
     },
     "httpin": {
         "label": {
-            "method": "Method",
+            "method": "方法",
             "url": "URL",
-            "doc": "Docs",
-            "return": "Return"
+            "doc": "文档",
+            "return": "返回"
         },
-        "setby": "- set by msg.method -",
-        "basicauth": "Use basic authentication?",
-        "utf8": "a UTF-8 string",
-        "binary": "a binary buffer",
-        "json": "a parsed JSON object",
+        "setby": "- 通过msg.method设置 -",
+        "basicauth": "使用基本的认证机制?",
+        "utf8": "UTF-8 字符串",
+        "binary": "二进制缓冲区",
+        "json": "解析过的JSON对象",
         "tip": {
-            "in": "The url will be relative to ",
-            "res": "The messages sent to this node <b>must</b> originate from an <i>http input</i> node",
-            "req": "Tip: If the JSON parse fails the fetched string is returned as-is."
+            "in": "URL与...有关 ",
+            "res": "发送到改节点的消息 <b>必须</b> 来自一个 <i>http input</i> 节点",
+            "req": "提示: 如果JSON解析失败的话，就会返回字符串as-is."
         },
-        "httpreq": "http request",
+        "httpreq": "http请求",
         "errors": {
-            "not-created": "Cannot create http-in node when httpNodeRoot set to false",
-            "no-response": "No response object",
-            "json-error": "JSON parse error",
-            "no-url": "No url specified"
+            "not-created": "当httpNodeRoot属性被设置为false的时候，无法创建 http-in节点",
+            "no-response": "无响应对象",
+            "json-error": "JSON解析错误",
+            "no-url": "未指定url"
         },
         "status": {
-            "requesting": "requesting"
+            "requesting": "请求中"
         }
     },
     "websocket": {
         "label": {
-            "type": "Type",
-            "path": "Path",
+            "type": "类型",
+            "path": "路径",
             "url": "URL"
         },
-        "listenon": "Listen on",
-        "connectto": "Connect to",
-        "payload": "Send/Receive payload",
-        "message": "Send/Receive entire message",
+        "listenon": "监听...",
+        "connectto": "连接到...",
+        "payload": "发送接收有效载荷",
+        "message": "发送接收整个消息",
         "tip": {
-            "path1": "By default, <code>payload</code> will contain the data to be sent over, or received from a websocket. The listener can be configured to send or receive the entire message object as a JSON formatted string.",
-            "path2": "This path will be relative to ",
-            "url1": "URL should use ws:&#47;&#47; or wss:&#47;&#47; scheme and point to an existing websocket listener.",
-            "url2": "By default, <code>payload</code> will contain the data to be sent over, or received from a websocket. The client can be configured to send or receive the entire message object as a JSON formatted string."
+            "path1": "<code>有效载荷</code>默认包含要发送接收的数据. Listener可以被配置为发送或者接收JSON格式的整个消息.",
+            "path2": "该路径与...有关 ",
+            "url1": "URL 应该使用 ws:&#47;&#47; 或者 wss:&#47;&#47; scheme 并且要指向一个存在的webSocket Listener.",
+            "url2": "<code>有效载荷</code>默认包含要发送接收的数据. CLient可以被配置为发送或者接收JSON格式的整个消息."
         },
         "errors": {
-            "connect-error": "An error occured on the ws connection: ",
-            "send-error": "An error occurred while sending: ",
-            "missing-conf": "Missing server configuration"
+            "connect-error": "webSocket出现错误: ",
+            "send-error": "发送中出现错误: ",
+            "missing-conf": "服务器配置丢失"
         }
     },
     "watch": {
         "label": {
-            "files": "File(s)"
+            "files": "文件"
         },
         "placeholder": {
-            "files": "Comma-separated list of files and/or directories"
+            "files": "逗号分隔的文件或目录列表"
         },
-        "tip": "On Windows you must use double back-slashes \\\\ in any directory names."
+        "tip": "如果是windows操作系统，您必须使用 \\\\ 来描述文件夹路径."
     },
     "tcpin": {
         "label": {
-            "type": "Type",
-            "output": "Output",
-            "port": "port",
-            "host": "at host",
-            "payload": "payload(s)",
-            "delimited": "delimited by",
-            "close-connection": "Close connection after each message is sent?",
-            "decode-base64": "Decode Base64 message?",
-            "server": "Server",
-            "return": "Return"
+            "type": "类型",
+            "output": "输出",
+            "port": "端口",
+            "host": "主机",
+            "payload": "有效载荷",
+            "delimited": "受限于",
+            "close-connection": "所有消息发送完成后，断开连接?",
+            "decode-base64": "解码Base64编码信息?",
+            "server": "服务器",
+            "return": "返回"
         },
         "type": {
-            "listen": "Listen on",
-            "connect": "Connect to",
-            "reply": "Reply to TCP"
+            "listen": "监听",
+            "connect": "连接到",
+            "reply": "TCP应答"
         },
         "output": {
-            "stream": "stream of",
-            "single": "single",
-            "buffer": "Buffer",
-            "string": "String",
-            "base64": "Base64 String"
+            "stream": "流",
+            "single": "单个",
+            "buffer": "缓冲区",
+            "string": "字符串",
+            "base64": "Base64字符串"
         },
         "return": {
-            "timeout": "after a fixed timeout of",
-            "character": "when character received is",
-            "number": "a fixed number of chars",
-            "never": "never - keep connection open"
+            "timeout": "在固定的超时时间之后返回",
+            "character": "当收到字符串...之后返回",
+            "number": "当收到固定数量的字符串之后返回",
+            "never": "不返回 - 保持连接"
         },
         "status": {
-            "connecting": "connecting to __host__:__port__",
-            "connected": "connected to __host__:__port__",
-            "listening-port": "listening on port __port__",
-            "stopped-listening": "stopped listening on port",
-            "connection-from": "connection from __host__:__port__",
-            "connection-closed": "connection closed from __host__:__port__",
-            "connections": "__count__ connection",
-            "connections_plural": "__count__ connections"
+            "connecting": "连接到 __host__:__port__ 中",
+            "connected": "已连接到 __host__:__port__",
+            "listening-port": "监听端口 __port__ 中",
+            "stopped-listening": "停止监听端口",
+            "connection-from": "从 __host__:__port__ 连接",
+            "connection-closed": "从 __host__:__port__ 连接关闭",
+            "connections": "__count__ 个连接",
+            "connections_plural": "__count__ 个连接"
 
         },
         "errors": {
-            "connection-lost": "connection lost to __host__:__port__",
-            "timeout": "timeout closed socket port __port__",
-            "cannot-listen": "unable to listen on port __port__, error: __error__",
-            "error": "error: __error__",
+            "connection-lost": "到 __host__:__port__得连接中断",
+            "timeout": "超时关闭端口 __port__",
+            "cannot-listen": "无法监听端口 __port__, 错误: __error__",
+            "error": "错误: __error__",
 
-            "socket-error": "socket error from __host__:__port__",
-            "no-host": "Host and/or port not set",
-            "connect-timeout": "connect timeout",
-            "connect-fail": "connect failed"
+            "socket-error": "从 __host__:__port__ 的socket错误",
+            "no-host": "主机名和/或端口未配置",
+            "connect-timeout": "连接超时",
+            "connect-fail": "连接失败"
         }
     },
     "udp": {
         "label": {
-            "listen": "Listen for",
-            "onport": "on Port",
-            "using": "using",
-            "output": "Output",
-            "group": "Group",
-            "interface": "Interface",
-            "send": "Send a",
-            "toport": "to port",
-            "address": "Address",
-            "decode-base64": "Decode Base64 encoded payload?"
+            "listen": "监听",
+            "onport": "端口",
+            "using": "使用",
+            "output": "输出",
+            "group": "组",
+            "interface": "接口",
+            "send": "发送",
+            "toport": "到端口",
+            "address": "地址",
+            "decode-base64": "解码Base64编码信息?"
         },
         "placeholder": {
-            "interface": "(optional) ip address of eth0",
-            "address": "destination ip"
+            "interface": "(可选的) eth0的IP地址",
+            "address": "目的IP地址"
         },
-        "udpmsgs": "udp messages",
-        "mcmsgs": "multicast messages",
-        "udpmsg": "udp message",
-        "bcmsg": "broadcast message",
-        "mcmsg": "multicast message",
+        "udpmsgs": "udp 消息",
+        "mcmsgs": "多播消息",
+        "udpmsg": "udp 消息",
+        "bcmsg": "广播消息",
+        "mcmsg": "多播消息",
         "output": {
-            "buffer": "a Buffer",
-            "string": "a String",
-            "base64": "a Base64 encoded string"
+            "buffer": "缓冲区",
+            "string": "字符串",
+            "base64": "Base64编码的字符串"
         },
         "bind": {
-            "random": "bind to random local port",
-            "local": "bind to local port",
-            "target": "bind to target port"
+            "random": "绑定随机的本地端口",
+            "local": "绑定本地端口",
+            "target": "绑定目标端口"
         },
         "tip": {
-            "in": "Tip: Make sure your firewall will allow the data in.",
-            "out": "Tip: leave address and port blank if you want to set using <b>msg.ip</b> and <b>msg.port</b>."
+            "in": "提示: 确保您的防火墙允许数据进入.",
+            "out": "提示: 如果您想用<b>msg.ip</b> and <b>msg.port</b>来设置Ip地址和端口的话，那么请留空."
         },
         "status": {
-            "listener-at": "udp listener at __host__:__port__",
-            "mc-group": "udp multicast group __group__",
-            "listener-stopped": "udp listener stopped",
-            "output-stopped": "udp output stopped",
-            "mc-ready": "udp multicast ready: __outport__ -> __host__:__port__",
-            "bc-ready": "udp broadcast ready: __outport__ -> __host__:__port__",
-            "ready": "udp ready: __outport__ -> __host__:__port__",
-            "ready-nolocal": "udp ready: __host__:__port__"
+            "listener-at": "UDP监听 __host__:__port__ 中",
+            "mc-group": "UDP多播组 __group__",
+            "listener-stopped": "停止UDP监听",
+            "output-stopped": "停止UDP输出",
+            "mc-ready": "UDP多播就绪: __outport__ -> __host__:__port__",
+            "bc-ready": "UDP广播就绪: __outport__ -> __host__:__port__",
+            "ready": "UDP就绪: __outport__ -> __host__:__port__",
+            "ready-nolocal": "UDP就绪: __host__:__port__"
         },
         "errors": {
-            "access-error": "UDP access error, you may need root access for ports below 1024",
-            "error": "error: __error_",
-            "bad-mcaddress": "Bad Multicast Address",
-            "interface": "Must be ip address of the required interface",
-            "ip-notset": "udp: ip address not set",
-            "port-notset": "udp: port not set",
-            "port-invalid": "udp: port number not valid"
+            "access-error": "UDP访问错误, 您可能需要访问小于1024的端口",
+            "error": "错误: __error_",
+            "bad-mcaddress": "错误的多播地址",
+            "interface": "请求的接口必须是一个IP地址",
+            "ip-notset": "UDP：IP地址未设置",
+            "port-notset": "UDP：端口未设置",
+            "port-invalid": "UDP：端口号不可用"
         }
     },
     "switch": {
         "label": {
-            "property": "Property",
-            "rule": "rule"
+            "property": "属性",
+            "rule": "规则"
         },
-        "checkall": "checking all rules",
-        "stopfirst": "stopping after first match",
+        "checkall": "检查所有的规则",
+        "stopfirst": "第一次匹配后停止匹配",
         "rules": {
-            "btwn":"is between",
-            "cont":"contains",
-            "regex":"matches regex",
-            "true":"is true",
-            "false":"is false",
-            "null":"is null",
-            "nnull":"is not null",
-            "else":"otherwise"
+            "btwn":"在...之间",
+            "cont":"包含",
+            "regex":"匹配正则表达式",
+            "true":"为真",
+            "false":"为假",
+            "null":"为空",
+            "nnull":"不为空",
+            "else":"否则"
         }
     },
     "change": {
         "label": {
-            "rules": "Rules",
-            "rule": "rule",
-            "set": "set __property__",
-            "change": "change __property__",
-            "delete": "delete __property__",
-            "changeCount": "change: __count__ rules",
-            "regex": "Use regular expressions"
+            "rules": "规则",
+            "rule": "规则",
+            "set": "设置 __property__",
+            "change": "改变 __property__",
+            "delete": "删除 __property__",
+            "changeCount": "改变 __count__ 条规则",
+            "regex": "使用正则表达式"
         },
         "action": {
-            "set": "Set",
-            "change": "Change",
-            "delete": "Delete",
-            "to": "to",
-            "search": "Search for",
-            "replace": "Replace with"
+            "set": "设置",
+            "change": "改变",
+            "delete": "删除",
+            "to": "...到...",
+            "search": "查找",
+            "replace": "替换"
         },
         "errors": {
-            "invalid-from": "Invalid 'from' property: __error__"
+            "invalid-from": "非法的 'from' 属性: __error__"
         }
     },
     "range": {
         "label": {
-            "action": "Action",
-            "inputrange": "Map the input range",
-            "resultrange": "to the result range",
-            "from": "from",
-            "to": "to",
-            "roundresult": "Round result to the nearest integer?"
+            "action": "行为",
+            "inputrange": "映射输入范围",
+            "resultrange": "到输出范围",
+            "from": "从",
+            "to": "到",
+            "roundresult": "取整?"
         },
         "placeholder": {
-            "min": "e.g. 0",
-            "maxin": "e.g. 99",
-            "maxout": "e.g. 255"
+            "min": "例如 0",
+            "maxin": "例如 99",
+            "maxout": "例如 255"
         },
         "scale": {
-            "payload": "Scale msg.payload",
-            "limit": "Scale and limit to the target range",
-            "wrap": "Scale and wrap within the target range"
+            "payload": "按比例缩放 msg.payload",
+            "limit": "缩放并且限制到目标范围",
+            "wrap": "缩放并且封装到目标范围"
         },
-        "tip": "Tip: This node ONLY works with numbers.",
+        "tip": "提示: 本节点只能处理数字.",
         "errors": {
-            "notnumber": "Not a number"
+            "notnumber": "非数字"
         }
     },
     "csv": {
         "label": {
-            "columns": "Columns",
-            "separator": "Separator",
-            "c2o": "CSV-to-Object options",
-            "o2c": "Object-to-CSV options",
-            "input": "Input",
-            "firstrow": "first row contains column names",
-            "output": "Output",
-            "includerow": "include column name row",
-            "newline": "Newline"
+            "columns": "列",
+            "separator": "分隔符",
+            "c2o": "CSV-to-Object 选项",
+            "o2c": "Object-to-CSV 选项",
+            "input": "输入",
+            "firstrow": "第一行包含列名",
+            "output": "输出",
+            "includerow": "包含列名行",
+            "newline": "新行"
         },
         "placeholder": {
-            "columns": "comma-separated column names"
+            "columns": "列名用逗号分隔"
         },
         "separator": {
-            "comma": "comma",
-            "tab": "tab",
-            "space": "space",
-            "semicolon": "semicolon",
-            "colon": "colon",
-            "hashtag": "hashtag",
-            "other": "other..."
+            "comma": "逗号",
+            "tab": "tab键",
+            "space": "空格",
+            "semicolon": "分号",
+            "colon": "冒号",
+            "hashtag": "#号",
+            "other": "其他..."
         },
         "output": {
-            "row": "a message per row",
-            "array": "a single message [array]"
+            "row": "每行一个消息",
+            "array": "一个单独的消息数组"
         },
         "newline": {
             "linux": "Linux (\\n)",
@@ -467,37 +467,37 @@
             "windows": "Windows (\\r\\n)"
         },
         "errors": {
-            "csv_js": "This node only handles csv strings or js objects."
+            "csv_js": "本节点只能处理 csv 字符串或者 js 对象."
         }
     },
     "html": {
         "label": {
-            "select": "Select",
-            "output": "Output"
+            "select": "选择",
+            "output": "输出"
         },
         "output": {
-            "html": "the html content of the elements",
-            "text": "only the text content of the elements"
+            "html": "元素的HTML内容",
+            "text": "仅元素的文本内容"
         },
         "format": {
-            "single": "as a single message containing an array",
-            "multi": "as multiple messages, one for each element"
+            "single": "作为一个包含数组的独立消息",
+            "multi": "每一个元素作为一个消息"
         },
-        "tip": "Tip: The <b>Select</b> value is a <a href=\"https://github.com/fb55/CSSselect#user-content-supported-selectors\" target=\"_new\"><i><u>CSS Selector</u></i></a>, similar to a jQuery selector."
+        "tip": "提示: <b>Select</b> 值是一个<a href=\"https://github.com/fb55/CSSselect#user-content-supported-selectors\" target=\"_new\"><i><u>CSS Selector</u></i></a>, 类似一个 jQuery selector."
     },
     "json": {
         "errors": {
-            "dropped-object": "Ignored non-object payload",
-            "dropped": "Ignored unsupported payload type"
+            "dropped-object": "忽略非对象的有效载荷",
+            "dropped": "忽略不支持的有效载荷类型"
         }
     },
     "xml": {
         "label": {
-            "represent": "Represent XML tag attributes as a property named",
-            "prefix": "Prefix to access character content",
-            "advanced": "Advanced options"
+            "represent": "将XML标签属性表示为属性名",
+            "prefix": "访问字符内容的前缀",
+            "advanced": "高级选项"
         },
-        "tip": "There is no simple way to convert XML attributes to JSON so the approach taken here is to add a property, named $ by default, to the JSON structure.",
+        "提示": "转换XML到JSON非常复杂，所以需要添加一个$属性来转换到JSON.",
         "errors": {
             "xml_js": "This node only handles xml strings or js objects."
         }
@@ -568,44 +568,44 @@
     },
     "tail": {
         "label": {
-            "filename": "Filename",
-            "splitlines": "Split lines on \\n?"
+            "filename": "文件名",
+            "splitlines": "用\\n来分隔行?"
         },
         "errors": {
-            "windowsnotsupport": "Not currently supported on Windows."
+            "windowsnotsupport": "目前不支持windows操作系统."
         }
     },
     "file": {
         "label": {
-            "filename": "Filename",
-            "action": "Action",
-            "addnewline": "Add newline (\\n) to each payload?",
-            "createdir": "Create directory if it doesn't exist?",
-            "outputas": "Output as",
-            "filelabel": "file",
-            "deletelabel": "delete __file__"
+            "filename": "文件名",
+            "action": "行为",
+            "addnewline": "为每个有效载荷添加换行 (\\n) ?",
+            "createdir": "如果文件夹不存在，则创建它?",
+            "outputas": "作为...输出",
+            "filelabel": "文件",
+            "deletelabel": "删除 __file__"
         },
         "action": {
-            "append": "append to file",
-            "overwrite": "overwrite file",
-            "delete": "delete file"
+            "append": "附加到文件",
+            "overwrite": "覆盖文件",
+            "delete": "删除文件"
         },
         "output": {
-            "utf8": "a utf8 string",
-            "buffer": "a Buffer"
+            "utf8": "UTF-8 字符串",
+            "buffer": "缓冲区"
         },
         "status": {
-            "wrotefile": "wrote to file: __file__",
-            "deletedfile": "deleted file: __file__",
-            "appendedfile": "appended to file: __file__"
+            "wrotefile": "写入文件: __file__",
+            "deletedfile": "删除文件: __file__",
+            "appendedfile": "添加到: __file__"
         },
         "errors": {
-            "nofilename": "No filename specified",
-            "invaliddelete": "Warning: Invalid delete. Please use specific delete option in config dialog.",
-            "deletefail": "failed to delete file: __error__",
-            "writefail": "failed to write to file: __error__",
-            "appendfail": "failed to append to file: __error__",
-            "createfail": "failed to create file: __error__"
+            "nofilename": "未指定文件名",
+            "invaliddelete": "警告: 无效的删除. 请在配置对话框中使用确定的删除选项。",
+            "deletefail": "f删除文件失败: __error__",
+            "writefail": "写入文件失败: __error__",
+            "appendfail": "附加到文件失败: __error__",
+            "createfail": "创建文件失败: __error__"
         }
     }
 }
