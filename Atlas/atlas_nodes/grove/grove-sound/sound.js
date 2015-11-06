@@ -1,5 +1,5 @@
 module.exports = function(RED){ 
-    var groveSensor = require("jsupm_groveloudness");
+    var groveSensor = require("jsupm_loudness");
     function GroveSound(config) {
         RED.nodes.createNode(this, config);
         this.analogPin = config.analogPin;
@@ -8,7 +8,7 @@ module.exports = function(RED){
         node.analogPin = node.analogPin>>>0;
         var is_on = false;
         var waiting;
-        var sound = new groveSensor.GroveLoudness(node.analogPin);
+        var sound = new groveSensor.Loudness(node.analogPin, 5.0);
 	    this.on('input', function(msg) {
             //use 'injector' node and pass string to control virtual node
             if ((msg.payload === "toggle") || (msg.payload == 1)) {
@@ -31,7 +31,7 @@ module.exports = function(RED){
         });
     	function readsoundvalue()
     	{
-    		var celSound = sound.value();
+    		var celSound = sound.loudness();
     		var msg = { payload:celSound };
                 node.status({fill: "red", shape: "dot", text: "Sound value is " + celSound});
     		node.send(msg);
