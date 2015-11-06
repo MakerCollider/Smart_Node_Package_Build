@@ -2,7 +2,7 @@
  "nodes": {
   "node-red": {
    "name": "node-red",
-   "version": "0.11.1",
+   "version": "0.12.0",
    "nodes": {
     "add-strings": {
      "name": "add-strings",
@@ -558,6 +558,15 @@
      "enabled": true,
      "module": "node-red",
      "file": "/home/root/SmartNode/node-red/nodes/atlas_nodes/imgProc/Img2Base64/img2base64.js"
+    },
+    "status": {
+     "name": "status",
+     "types": [
+      "status"
+     ],
+     "enabled": true,
+     "module": "node-red",
+     "file": "/home/root/SmartNode/node-red/nodes/core/core/25-status.js"
     }
    }
   },
@@ -594,7 +603,7 @@
   },
   "node-red-node-feedparser": {
    "name": "node-red-node-feedparser",
-   "version": "0.1.2",
+   "version": "0.1.3",
    "nodes": {
     "feedparse": {
      "name": "feedparse",
@@ -624,7 +633,7 @@
   },
   "node-red-node-serialport": {
    "name": "node-red-node-serialport",
-   "version": "0.0.3",
+   "version": "0.0.4",
    "nodes": {
     "serialport": {
      "name": "serialport",
@@ -641,7 +650,7 @@
   },
   "node-red-node-twitter": {
    "name": "node-red-node-twitter",
-   "version": "0.1.1",
+   "version": "0.1.2",
    "nodes": {
     "twitter": {
      "name": "twitter",

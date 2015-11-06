@@ -22,6 +22,7 @@
                 "show": "切换侧边栏"
             },
             "displayStatus": "显示节点状态",
+            "displayConfig": "配置节点 ",
             "import": "导入",
             "export": "导出",
             "clipboard": "剪贴板",
@@ -29,7 +30,7 @@
             "subflows": "子工作流",
             "createSubflow": "创建子工作流",
             "selectionToSubflow": "选择到子工作流",
-            "workspaces": "工作区",
+            "flows": "标签",
             "add": "添加",
             "rename": "重命名",
             "delete": "删除",
@@ -95,7 +96,6 @@
         }
     },
     "subflow": {
-        "tabLabel": "子工作流: __name__",
         "editSubflow": "编辑子工作流 __name__",
         "edit": "编辑子工作流",
         "subflowInstances": "子工作流中包含 __count__ 个实体",
@@ -104,6 +104,8 @@
         "input": "输入",
         "output": "输出",
         "deleteSubflow": "删除子工作流",
+        "info": "描述",
+        "format":"markdown 格式",
         "errors": {
             "noNodesSelected": "<strong>无法创建子工作流</strong>: 未选中任何节点",
             "multipleInputsToSelection": "<strong>无法创建子工作流</strong>: 选择了多个输入"
@@ -117,7 +119,10 @@
         "nodesUse_plural": "__count__ 个节点使用了这个配置",
         "addNewConfig": "添加了新的 __type__ 类型节点",
         "editConfig": "编辑了新的 __type__ 类型节点",
-        "addNewType": "添加了新的类型：__type__..."
+        "addNewType": "添加了新的类型：__type__...",
+        "errors": {
+            "scopeChange": "改变作用域会使这个节点在包含该节点的其他工作流中无法使用"
+        }
     },
     "keyboard": {
         "selectAll": "选择所有节点",
@@ -192,7 +197,12 @@
         },
         "config": {
             "name": "配置节点",
-            "label": "配置"
+            "label": "配置",
+            "local": "在当前工作流中",
+            "global": "在所有工作流中",
+            "none": "无",
+            "subflows": "子工作流",
+            "flows": "工作流"
         }
     }
 }

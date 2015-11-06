@@ -15,6 +15,7 @@
  **/
 
 var express = require("express");
+var bodyParser = require("body-parser");
 var util = require('util');
 var path = require('path');
 var passport = require('passport');
@@ -26,6 +27,9 @@ var library = require("./library");
 var info = require("./info");
 var theme = require("./theme");
 var locales = require("./locales");
+var credentials = require("./credentials");
+
+var log = require("../log");
 
 var auth = require("./auth");
 var needsPermission = auth.needsPermission;
@@ -33,14 +37,18 @@ var needsPermission = auth.needsPermission;
 var settings = require("../settings");
 
 var errorHandler = function(err,req,res,next) {
-    console.log(err.stack);
-    res.json(400,{error:"unexpected_error", message:err.toString()});
+    if (err.message === "request entity too large") {
+        log.error(err);
+    } else {
+        console.log(err.stack);
+    }
+    log.audit({event: "api.error",error:err.code||"unexpected_error",message:err.toString()},req);
+    res.status(400).json({error:"unexpected_error", message:err.toString()});
 };
 
 function init(adminApp,storage) {
 
     auth.init(settings,storage);
-
     // Editor
     if (!settings.disableEditor) {
         ui.init(settings);
@@ -53,9 +61,9 @@ function init(adminApp,storage) {
         editorApp.use("/",ui.editorResources);
         adminApp.use(editorApp);
     }
-
-    adminApp.use(express.json());
-    adminApp.use(express.urlencoded());
+    var maxApiRequestSize = settings.apiMaxLength || '1mb';
+    adminApp.use(bodyParser.json({limit:maxApiRequestSize}));
+    adminApp.use(bodyParser.urlencoded({limit:maxApiRequestSize,extended:true}));
 
     adminApp.get("/auth/login",auth.login);
 
@@ -85,6 +93,8 @@ function init(adminApp,storage) {
 
     adminApp.get("/nodes/:mod/:set",needsPermission("nodes.read"),nodes.getSet);
     adminApp.put("/nodes/:mod/:set",needsPermission("nodes.write"),nodes.putSet);
+
+    adminApp.get('/credentials/:type/:id', needsPermission("credentials.read"),credentials.get);
 
     adminApp.get(/locales\/(.+)\/?$/,locales.get);
 

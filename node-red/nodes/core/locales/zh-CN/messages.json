@@ -68,7 +68,36 @@
         }
     },
     "catch": {
-        "catch": "捕获"
+        "catch": "捕获",
+        "catchNodes": "捕获 (__number__)",
+        "label": {
+            "source": "从...捕获错误信息",
+            "node": "节点",
+            "type": "类型",
+            "selectAll": "选择所有",
+            "sortByLabel": "按标签排序",
+            "sortByType": "按类型排序"
+        },
+        "scope": {
+            "all": "所有节点",
+            "selected": "选择的节点"
+        }
+    },
+    "status": {
+        "status": "状态 (所有)",
+        "statusNodes": "状态 (__number__)",
+        "label": {
+            "source": "从...上报状态",
+            "node": "节点",
+            "type": "类型",
+            "selectAll": "选择所有",
+            "sortByLabel": "按标签排序",
+            "sortByType": "按类型排序"
+        },
+        "scope": {
+            "all": "所有节点",
+            "selected": "选择的节点"
+        }
     },
     "debug": {
         "output": "输出",
@@ -185,10 +214,29 @@
             "broker": "Broker",
             "qos": "QoS",
             "clientid": "客户端ID",
-            "port": "端口"
+            "port": "端口",
+            "keepalive": "存活时间 (秒)",
+            "cleansession": "使用干净的会话",
+            "use-tls": "使能安全连接 (SSL/TLS)",
+            "verify-server-cert":"验证服务器证书",
+            "compatmode": "使用 legacy MQTT 3.1 支持"
+        },
+        "tabs-label": {
+            "connection": "连接",
+            "security": "安全",
+            "will": "Will Message",
+            "birth": "Birth Message"
         },
         "placeholder": {
-            "clientid": "如果留空，则自动生成"
+            "clientid": "自动生成请留空",
+            "clientid-nonclean":"必须被设置为非干净会话",
+            "will-topic": "留空的话，则禁止will message",
+            "birth-topic": "留空的话，则禁止 birth message"
+        },
+        "state": {
+            "connected": "连接到broker: __broker__",
+            "disconnected": "断开到broker的链接: __broker__",
+            "connect-failed": "连接到broker失败: __broker__"
         },
         "retain": "Retain",
         "true": "true",
@@ -197,7 +245,8 @@
         "errors": {
             "not-defined": "topic未定义",
             "missing-config": "broker未配置",
-            "invalid-topic": "无效的topic"
+            "invalid-topic": "无效的topic",
+            "nonclean-missingclientid": "未设置客户端ID，将会使用干净的会话"
         }
     },
     "httpin": {
@@ -220,9 +269,11 @@
         "httpreq": "http请求",
         "errors": {
             "not-created": "当httpNodeRoot属性被设置为false的时候，无法创建 http-in节点",
-            "no-response": "无响应对象",
+            "missing-path": "missing path",
+            "no-response": "No response object",
             "json-error": "JSON解析错误",
-            "no-url": "未指定url"
+            "no-url": "未指定url",
+            "deprecated-call":"废弃的调用 __method__"
         },
         "status": {
             "requesting": "请求中"
@@ -374,8 +425,10 @@
             "property": "属性",
             "rule": "规则"
         },
-        "checkall": "检查所有的规则",
-        "stopfirst": "第一次匹配后停止匹配",
+        "and": "与",
+        "checkall": "检查所有规则",
+        "stopfirst": "第一次匹配后停止检查",
+        "ignorecase": "忽略大小写",
         "rules": {
             "btwn":"在...之间",
             "cont":"包含",
@@ -467,7 +520,8 @@
             "windows": "Windows (\\r\\n)"
         },
         "errors": {
-            "csv_js": "本节点只能处理 csv 字符串或者 js 对象."
+            "csv_js": "本节点只能处理 csv 字符串或者 js 对象.",
+            "obj_csv": "object 到csv的转换，未指定列模板."
         }
     },
     "html": {
@@ -488,7 +542,8 @@
     "json": {
         "errors": {
             "dropped-object": "忽略非对象的有效载荷",
-            "dropped": "忽略不支持的有效载荷类型"
+            "dropped": "忽略不支持的有效载荷类型",
+            "dropped-error": "转换有效载荷失败"
         }
     },
     "xml": {
@@ -497,9 +552,9 @@
             "prefix": "访问字符内容的前缀",
             "advanced": "高级选项"
         },
-        "提示": "转换XML到JSON非常复杂，所以需要添加一个$属性来转换到JSON.",
+        "tip": "转换XML到JSON非常复杂，所以需要添加一个$属性来转换到JSON.",
         "errors": {
-            "xml_js": "This node only handles xml strings or js objects."
+            "xml_js": "本node只处理xml字符串或者js对象."
         }
     },
     "rpi-gpio": {

@@ -17,7 +17,7 @@
 module.exports = function(RED) {
     "use strict";
     var ws = require("ws");
-    var inspect = require("sys").inspect;
+    var inspect = require("util").inspect;
 
     // A node red node that sets up a local websocket server
     function WebSocketListenerNode(n) {
@@ -48,7 +48,7 @@ module.exports = function(RED) {
                 if (!node.isServer) { node.emit('opened',''); }
             });
             socket.on('close',function() {
-                if (node.isServer) { delete node._clients[id]; node.emit('opened',Object.keys(node._clients).length); }
+                if (node.isServer) { delete node._clients[id]; node.emit('closed',Object.keys(node._clients).length); }
                 else { node.emit('closed'); }
                 if (!node.closing && !node.isServer) {
                     node.tout = setTimeout(function(){ startconn(); }, 3000); // try to reconnect every 3 secs... bit fast ?
@@ -115,7 +115,7 @@ module.exports = function(RED) {
             else {
                 node.closing = true;
                 node.server.close();
-                if (node.tout) { clearTimeout(tout); }
+                if (node.tout) { clearTimeout(node.tout); }
             }
         });
     }
@@ -124,6 +124,14 @@ module.exports = function(RED) {
 
     WebSocketListenerNode.prototype.registerInputNode = function(/*Node*/handler) {
         this._inputNodes.push(handler);
+    }
+
+    WebSocketListenerNode.prototype.removeInputNode = function(/*Node*/handler) {
+        this._inputNodes.forEach(function(node, i, inputNodes) {
+            if (node === handler) {
+                inputNodes.splice(i, 1);
+            }
+        });
     }
 
     WebSocketListenerNode.prototype.handleEvent = function(id,/*socket*/socket,/*String*/event,/*Object*/data,/*Object*/flags){
@@ -187,6 +195,11 @@ module.exports = function(RED) {
         } else {
             this.error(RED._("websocket.errors.missing-conf"));
         }
+
+        this.on('close', function() {
+            node.serverConfig.removeInputNode(node);
+        });
+
     }
     RED.nodes.registerType("websocket in",WebSocketInNode);
 

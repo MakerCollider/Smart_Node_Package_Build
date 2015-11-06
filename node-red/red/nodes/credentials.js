@@ -23,52 +23,12 @@ var needsPermission = require("../api/auth").needsPermission;
 var credentialCache = {};
 var storage = null;
 var credentialsDef = {};
-var redApp = null;
-
-/**
- * Adds an HTTP endpoint to allow look up of credentials for a given node id.
- */
-function registerEndpoint(type) {
-    redApp.get('/credentials/' + type + '/:id', needsPermission(type+".read"), function (req, res) {
-        // TODO: This could be a generic endpoint with the type value
-        //       parameterised.
-        //
-        // TODO: It should verify the given node id is of the type specified -
-        //       but that would add a dependency from this module to the
-        //       registry module that knows about node types.
-        var nodeType = type;
-        var nodeID = req.params.id;
-
-        var credentials = credentialCache[nodeID];
-        if (credentials === undefined) {
-            res.json({});
-            return;
-        }
-        var definition = credentialsDef[nodeType];
-
-        var sendCredentials = {};
-        for (var cred in definition) {
-            if (definition.hasOwnProperty(cred)) {
-                if (definition[cred].type == "password") {
-                    var key = 'has_' + cred;
-                    sendCredentials[key] = credentials[cred] != null && credentials[cred] !== '';
-                    continue;
-                }
-                sendCredentials[cred] = credentials[cred] || '';
-            }
-        }
-        res.json(sendCredentials);
-
-    });
-}
-
 
 module.exports = {
-    init: function (_storage,_app) {
+    init: function (_storage) {
         storage = _storage;
-        redApp = _app;
     },
-    
+
     /**
      * Loads the credentials from storage.
      */
@@ -79,7 +39,7 @@ module.exports = {
             log.warn(log._("nodes.credentials.error",{message: err}));
         });
     },
-    
+
     /**
      * Adds a set of credentials for the given node id.
      * @param id the node id for the credentials
@@ -118,7 +78,7 @@ module.exports = {
     clean: function (config) {
         var existingIds = {};
         config.forEach(function(n) {
-            existingIds[n.id] = true;     
+            existingIds[n.id] = true;
         });
         var deletedCredentials = false;
         for (var c in credentialCache) {
@@ -135,7 +95,7 @@ module.exports = {
             return when.resolve();
         }
     },
-    
+
     /**
      * Registers a node credential definition.
      * @param type the node type
@@ -144,16 +104,15 @@ module.exports = {
     register: function (type, definition) {
         var dashedType = type.replace(/\s+/g, '-');
         credentialsDef[dashedType] = definition;
-        registerEndpoint(dashedType);
     },
-    
+
     /**
      * Extracts and stores any credential updates in the provided node.
      * The provided node may have a .credentials property that contains
      * new credentials for the node.
      * This function loops through the credentials in the definition for
      * the node-type and applies any of the updates provided in the node.
-     * 
+     *
      * This function does not save the credentials to disk as it is expected
      * to be called multiple times when a new flow is deployed.
      *
@@ -171,7 +130,7 @@ module.exports = {
                 log.warn(log._("nodes.credentials.not-registered",{type:nodeType}));
                 return;
             }
-            
+
             for (var cred in definition) {
                 if (definition.hasOwnProperty(cred)) {
                     if (newCreds[cred] === undefined) {
@@ -191,7 +150,7 @@ module.exports = {
             delete node.credentials;
         }
     },
-    
+
     /**
      * Saves the credentials to storage
      * @return a promise for the saving of credentials to storage
@@ -199,7 +158,7 @@ module.exports = {
     save: function () {
         return storage.saveCredentials(credentialCache);
     },
-    
+
     /**
      * Gets the credential definition for the given node type
      * @param type the node type

@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
- 
+
 var i18n = require("i18next");
 var when = require("when");
 var path = require("path");
 var fs = require("fs");
 
 var defaultLang = "en-US";
-var supportedLangs = null;
+var supportedLangs = [];
 
 var resourceMap = {
     "runtime":  {
@@ -56,6 +56,18 @@ var initSupportedLangs = function() {
     });
 }
 
+function mergeCatalog(fallback,catalog) {
+    for (var k in fallback) {
+        if (fallback.hasOwnProperty(k)) {
+            if (!catalog[k]) {
+                catalog[k] = fallback[k];
+            } else if (typeof fallback[k] === 'object') {
+                mergeCatalog(fallback[k],catalog[k]);
+            }
+        }
+    }
+}
+
 var MessageFileLoader = {
     fetchOne: function(lng, ns, callback) {
         if (resourceMap[ns]) {
@@ -66,10 +78,12 @@ var MessageFileLoader = {
                     callback(err);
                 } else {
                     try {
-                        //console.log(">>",ns,file,lng);
                         resourceCache[ns] = resourceCache[ns]||{};
                         resourceCache[ns][lng] = JSON.parse(content.replace(/^\uFEFF/, ''));
                         //console.log(resourceCache[ns][lng]);
+                        if (lng !== defaultLang) {
+                            mergeCatalog(resourceCache[ns][defaultLang],resourceCache[ns][lng]);
+                        }
                         callback(null, resourceCache[ns][lng]);
                     } catch(e) {
                         callback(e);
@@ -80,7 +94,7 @@ var MessageFileLoader = {
             callback(new Error("Unrecognised namespace"));
         }
     }
-    
+
 }
 
 function init() {
@@ -109,7 +123,10 @@ function getCatalog(namespace,lang) {
         if (!result) {
             var langParts = lang.split("-");
             if (langParts.length == 2) {
-                result = getCatalog(namespace,langParts[0]);
+                result = resourceCache[namespace][langParts[0]];
+            }
+            if (!result) {
+                return resourceCache[namespace][defaultLang];
             }
         }
     }
@@ -119,7 +136,7 @@ function getCatalog(namespace,lang) {
 
 function determineLangFromHeaders(acceptedLanguages){
     var lang = "en-US";
-    
+    acceptedLanguages = acceptedLanguages || [];
     for (var i=0;i<acceptedLanguages.length;i++){
         if (supportedLangs.indexOf(acceptedLanguages[i]) !== -1){
             lang = acceptedLanguages[i];

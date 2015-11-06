@@ -33,12 +33,16 @@ function Node(n) {
     if (n.name) {
         this.name = n.name;
     }
+    if (n._alias) {
+        this._alias = n._alias;
+    }
     this.updateWires(n.wires);
 }
 
 util.inherits(Node, EventEmitter);
 
 Node.prototype.updateWires = function(wires) {
+    //console.log("UPDATE",this.id);
     this.wires = wires || [];
     delete this._wire;
 
@@ -189,7 +193,7 @@ Node.prototype.receive = function(msg) {
         msg._msgid = redUtil.generateId();
     }
     this.metric("receive",msg);
-    try { 
+    try {
         this.emit("input", msg);
     } catch(err) {
         this.error(err,msg);
@@ -247,5 +251,6 @@ Node.prototype.metric = function(eventname, msg, metricValue) {
  */
 Node.prototype.status = function(status) {
     comms.publish("status/" + this.id, status, true);
+    flows.handleStatus(this,status);
 };
 module.exports = Node;

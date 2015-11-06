@@ -176,7 +176,7 @@ var RED = (function() {
                     {id:"menu-item-subflow-convert",label:RED._("menu.label.selectionToSubflow"),disabled:true,onselect:RED.subflow.convertToSubflow},
                 ]},
                 null,
-                {id:"menu-item-workspace",label:RED._("menu.label.workspaces"),options:[
+                {id:"menu-item-workspace",label:RED._("menu.label.flows"),options:[
                     {id:"menu-item-workspace-add",label:RED._("menu.label.add"),onselect:RED.workspaces.add},
                     {id:"menu-item-workspace-edit",label:RED._("menu.label.rename"),onselect:RED.workspaces.edit},
                     {id:"menu-item-workspace-delete",label:RED._("menu.label.delete"),onselect:RED.workspaces.remove},
@@ -293,9 +293,9 @@ var RED = (function() {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
- 
+
 RED.i18n = (function() {
-    
+
     return {
         init: function(done) {
             i18n.init({
@@ -306,7 +306,8 @@ RED.i18n = (function() {
                     namespaces: ["editor","node-red"],
                     defaultNs: "editor"
                 },
-                fallbackLng: ['en-US']
+                fallbackLng: ['en-US'],
+                useCookie: false
             },function() {
                 done();
             });
@@ -320,9 +321,6 @@ RED.i18n = (function() {
         }
     }
 })();
-
-
-
 ;/**
  * Copyright 2014 IBM, Antoine Aflalo
  *
@@ -684,6 +682,7 @@ RED.comms = (function() {
     var subscriptions = {};
     var ws;
     var pendingAuth = false;
+    var reconnectAttempts = 0;
 
     function connectWS() {
         var path = location.hostname;
@@ -708,6 +707,7 @@ RED.comms = (function() {
 
         ws = new WebSocket(path);
         ws.onopen = function() {
+            reconnectAttempts = 0;
             if (errornotification) {
                 clearErrorTimer = setTimeout(function() {
                     errornotification.close();
@@ -742,12 +742,13 @@ RED.comms = (function() {
             }
         };
         ws.onclose = function() {
-            if (errornotification == null) {
+            if (reconnectAttempts > 5 && errornotification == null) {
                 errornotification = RED.notify(RED._("notification.error",{message:RED._("notification.errors.lostConnection")}),"error",true);
             } else if (clearErrorTimer) {
                 clearTimeout(clearErrorTimer);
                 clearErrorTimer = null;
             }
+            reconnectAttempts++;
             setTimeout(connectWS,1000);
         }
     }
@@ -966,7 +967,6 @@ RED.nodes = (function() {
         }
         if (n._def.category == "config") {
             configNodes[n.id] = n;
-            RED.sidebar.config.refresh();
         } else {
             n.dirty = true;
             var updatedConfigNode = false;
@@ -986,7 +986,7 @@ RED.nodes = (function() {
                 }
             }
             if (updatedConfigNode) {
-                RED.sidebar.config.refresh();
+                // TODO: refresh config tab?
             }
             if (n._def.category == "subflows" && typeof n.i === "undefined") {
                 var nextId = 0;
@@ -1025,7 +1025,7 @@ RED.nodes = (function() {
         if (id in configNodes) {
             node = configNodes[id];
             delete configNodes[id];
-            RED.sidebar.config.refresh();
+            RED.workspaces.refresh();
         } else {
             node = getNode(id);
             if (node) {
@@ -1055,11 +1055,11 @@ RED.nodes = (function() {
                     }
                 }
                 if (updatedConfigNode) {
-                    RED.sidebar.config.refresh();
+                    RED.workspaces.refresh();
                 }
             }
         }
-        if (node._def.onremove) {
+        if (node && node._def.onremove) {
             node._def.onremove.call(n);
         }
         return {links:removedLinks,nodes:removedNodes};
@@ -1083,15 +1083,24 @@ RED.nodes = (function() {
         var removedNodes = [];
         var removedLinks = [];
         var n;
+        var node;
         for (n=0;n<nodes.length;n++) {
-            var node = nodes[n];
+            node = nodes[n];
             if (node.z == id) {
                 removedNodes.push(node);
             }
         }
+        for(n in configNodes) {
+            if (configNodes.hasOwnProperty(n)) {
+                node = configNodes[n];
+                if (node.z == id) {
+                    removedNodes.push(node);
+                }
+            }
+        }
         for (n=0;n<removedNodes.length;n++) {
-            var rmlinks = removeNode(removedNodes[n].id);
-            removedLinks = removedLinks.concat(rmlinks);
+            var result = removeNode(removedNodes[n].id);
+            removedLinks = removedLinks.concat(result.links);
         }
         return {nodes:removedNodes,links:removedLinks};
     }
@@ -1117,6 +1126,7 @@ RED.nodes = (function() {
         subflows[sf.id] = sf;
         RED.nodes.registerType("subflow:"+sf.id, {
             defaults:{name:{value:""}},
+            info: sf.info,
             icon:"subflow.png",
             category: "subflows",
             inputs: sf.in.length,
@@ -1192,6 +1202,7 @@ RED.nodes = (function() {
         var node = {};
         node.id = n.id;
         node.type = n.type;
+        node.z = n.z;
         if (node.type == "unknown") {
             for (var p in n._orig) {
                 if (n._orig.hasOwnProperty(p)) {
@@ -1227,7 +1238,6 @@ RED.nodes = (function() {
         if (n._def.category != "config") {
             node.x = n.x;
             node.y = n.y;
-            node.z = n.z;
             node.wires = [];
             for(var i=0;i<n.outputs;i++) {
                 node.wires.push([]);
@@ -1248,6 +1258,7 @@ RED.nodes = (function() {
         node.id = n.id;
         node.type = n.type;
         node.name = n.name;
+        node.info = n.info;
         node.in = [];
         node.out = [];
 
@@ -1355,8 +1366,11 @@ RED.nodes = (function() {
         return nns;
     }
 
-    function compareNodes(nodeA,nodeB) {
-        if (nodeA.id != nodeB.id || nodeA.type != nodeB.type) {
+    function compareNodes(nodeA,nodeB,idMustMatch) {
+        if (idMustMatch && nodeA.id != nodeB.id) {
+            return false;
+        }
+        if (nodeA.type != nodeB.type) {
             return false;
         }
         var def = nodeA._def;
@@ -1495,26 +1509,6 @@ RED.nodes = (function() {
                 });
                 new_subflows.push(n);
                 addSubflow(n,createNewIds);
-            } else {
-                def = registry.getNodeType(n.type);
-                if (def && def.category == "config") {
-                    var existingConfigNode = RED.nodes.node(n.id);
-                    if (!existingConfigNode || !compareNodes(existingConfigNode,n) || existingConfigNode._def.exclusive) {
-                        var configNode = {id:n.id,type:n.type,users:[]};
-                        for (var d in def.defaults) {
-                            if (def.defaults.hasOwnProperty(d)) {
-                                configNode[d] = n[d];
-                            }
-                        }
-                        configNode.label = def.label;
-                        configNode._def = def;
-                        if (existingConfigNode || createNewIds) {
-                            configNode.id = getID();
-                        }
-                        node_map[n.id] = configNode;
-                        RED.nodes.add(configNode);
-                    }
-                }
             }
         }
         if (defaultWorkspace == null) {
@@ -1523,6 +1517,60 @@ RED.nodes = (function() {
             RED.workspaces.add(defaultWorkspace);
             new_workspaces.push(defaultWorkspace);
             activeWorkspace = RED.workspaces.active();
+        }
+
+        for (i=0;i<newNodes.length;i++) {
+            n = newNodes[i];
+            def = registry.getNodeType(n.type);
+            if (def && def.category == "config") {
+                var existingConfigNode = null;
+                if (createNewIds) {
+                    if (n.z) {
+                        if (subflow_map[n.z]) {
+                            n.z = subflow_map[n.z].id;
+                        } else {
+                            n.z = workspace_map[n.z];
+                            if (!workspaces[n.z]) {
+                                n.z = activeWorkspace;
+                            }
+                        }
+                    }
+                    existingConfigNode = RED.nodes.node(n.id);
+                    if (existingConfigNode) {
+                        if (n.z && existingConfigNode.z !== n.z) {
+                            existingConfigNode = null;
+                            // Check the config nodes on n.z
+                            for (var cn in configNodes) {
+                                if (configNodes.hasOwnProperty(cn)) {
+                                    if (configNodes[cn].z === n.z && compareNodes(configNodes[cn],n,false)) {
+                                        existingConfigNode = configNodes[cn];
+                                        node_map[n.id] = configNodes[cn];
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                if (!existingConfigNode) { //} || !compareNodes(existingConfigNode,n,true) || existingConfigNode._def.exclusive || existingConfigNode.z !== n.z) {
+                    var configNode = {id:n.id, z:n.z, type:n.type, users:[]};
+                    for (var d in def.defaults) {
+                        if (def.defaults.hasOwnProperty(d)) {
+                            configNode[d] = n[d];
+                        }
+                    }
+                    configNode.label = def.label;
+                    configNode._def = def;
+                    if (createNewIds) {
+                        configNode.id = getID();
+                    }
+                    node_map[n.id] = configNode;
+                    new_nodes.push(configNode);
+                    RED.nodes.add(configNode);
+                }
+            }
         }
 
         for (i=0;i<newNodes.length;i++) {
@@ -1619,17 +1667,19 @@ RED.nodes = (function() {
         }
         for (i=0;i<new_nodes.length;i++) {
             n = new_nodes[i];
-            for (var w1=0;w1<n.wires.length;w1++) {
-                var wires = (n.wires[w1] instanceof Array)?n.wires[w1]:[n.wires[w1]];
-                for (var w2=0;w2<wires.length;w2++) {
-                    if (wires[w2] in node_map) {
-                        var link = {source:n,sourcePort:w1,target:node_map[wires[w2]]};
-                        addLink(link);
-                        new_links.push(link);
+            if (n.wires) {
+                for (var w1=0;w1<n.wires.length;w1++) {
+                    var wires = (n.wires[w1] instanceof Array)?n.wires[w1]:[n.wires[w1]];
+                    for (var w2=0;w2<wires.length;w2++) {
+                        if (wires[w2] in node_map) {
+                            var link = {source:n,sourcePort:w1,target:node_map[wires[w2]]};
+                            addLink(link);
+                            new_links.push(link);
+                        }
                     }
                 }
+                delete n.wires;
             }
-            delete n.wires;
         }
         for (i=0;i<new_subflows.length;i++) {
             n = new_subflows[i];
@@ -1656,6 +1706,7 @@ RED.nodes = (function() {
             });
         }
 
+        RED.workspaces.refresh();
         return [new_nodes,new_links,new_workspaces,new_subflows];
     }
 
@@ -1757,6 +1808,13 @@ RED.nodes = (function() {
                 }
             }
         },
+        eachWorkspace: function(cb) {
+            for (var id in workspaces) {
+                if (workspaces.hasOwnProperty(id)) {
+                    cb(workspaces[id]);
+                }
+            }
+        },
 
         node: getNode,
 
@@ -1795,7 +1853,7 @@ RED.nodes = (function() {
  **/
 RED.history = (function() {
     var undo_history = [];
-    
+
     return {
         //TODO: this function is a placeholder until there is a 'save' event that can be listened to
         markAllDirty: function() {
@@ -1813,6 +1871,7 @@ RED.history = (function() {
             var ev = undo_history.pop();
             var i;
             var node;
+            var subflow;
             var modifiedTabs = {};
             if (ev) {
                 if (ev.t == 'add') {
@@ -1842,6 +1901,23 @@ RED.history = (function() {
                             RED.workspaces.remove(ev.subflows[i]);
                         }
                     }
+                    if (ev.subflow) {
+                        if (ev.subflow.instances) {
+                            ev.subflow.instances.forEach(function(n) {
+                                var node = RED.nodes.node(n.id);
+                                if (node) {
+                                    node.changed = n.changed;
+                                    node.dirty = true;
+                                }
+                            });
+                        }
+                        if (ev.subflow.hasOwnProperty('changed')) {
+                            subflow = RED.nodes.subflow(ev.subflow.id);
+                            if (subflow) {
+                                subflow.changed = ev.subflow.changed;
+                            }
+                        }
+                    }
                 } else if (ev.t == "delete") {
                     if (ev.workspaces) {
                         for (i=0;i<ev.workspaces.length;i++) {
@@ -1849,10 +1925,9 @@ RED.history = (function() {
                             RED.workspaces.add(ev.workspaces[i]);
                         }
                     }
-                    if (ev.subflow) {
-                        RED.nodes.addSubflow(ev.subflow);
+                    if (ev.subflow && ev.subflow.subflow) {
+                        RED.nodes.addSubflow(ev.subflow.subflow);
                     }
-                    var subflow;
                     if (ev.subflowInputs && ev.subflowInputs.length > 0) {
                         subflow = RED.nodes.subflow(ev.subflowInputs[0].z);
                         subflow.in.push(ev.subflowInputs[0]);
@@ -1877,9 +1952,17 @@ RED.history = (function() {
                             });
                         }
                     }
+                    if (ev.subflow && ev.subflow.hasOwnProperty('instances')) {
+                        ev.subflow.instances.forEach(function(n) {
+                            var node = RED.nodes.node(n.id);
+                            if (node) {
+                                node.changed = n.changed;
+                                node.dirty = true;
+                            }
+                        });
+                    }
                     if (subflow) {
                         RED.nodes.filterNodes({type:"subflow:"+subflow.id}).forEach(function(n) {
-                            n.changed = true;
                             n.inputs = subflow.in.length;
                             n.outputs = subflow.out.length;
                             while (n.outputs > n.ports.length) {
@@ -1900,6 +1983,22 @@ RED.history = (function() {
                             RED.nodes.addLink(ev.links[i]);
                         }
                     }
+                    if (ev.changes) {
+                        for (i in ev.changes) {
+                            if (ev.changes.hasOwnProperty(i)) {
+                                node = RED.nodes.node(i);
+                                if (node) {
+                                    for (var d in ev.changes[i]) {
+                                        if (ev.changes[i].hasOwnProperty(d)) {
+                                            node[d] = ev.changes[i][d];
+                                        }
+                                    }
+                                    node.dirty = true;
+                                }
+                            }
+                        }
+
+                    }
                 } else if (ev.t == "move") {
                     for (i=0;i<ev.nodes.length;i++) {
                         var n = ev.nodes[i];
@@ -1910,6 +2009,17 @@ RED.history = (function() {
                 } else if (ev.t == "edit") {
                     for (i in ev.changes) {
                         if (ev.changes.hasOwnProperty(i)) {
+                            if (ev.node._def.defaults[i].type) {
+                                // This is a config node property
+                                var currentConfigNode = RED.nodes.node(ev.node[i]);
+                                if (currentConfigNode) {
+                                    currentConfigNode.users.splice(currentConfigNode.users.indexOf(ev.node),1);
+                                }
+                                var newConfigNode = RED.nodes.node(ev.changes[i]);
+                                if (newConfigNode) {
+                                    newConfigNode.users.push(ev.node);
+                                }
+                            }
                             ev.node[i] = ev.changes[i];
                         }
                     }
@@ -1928,14 +2038,24 @@ RED.history = (function() {
                                 ev.node.out = ev.node.out.concat(ev.subflow.outputs);
                             }
                         }
+                        if (ev.subflow.hasOwnProperty('instances')) {
+                            ev.subflow.instances.forEach(function(n) {
+                                var node = RED.nodes.node(n.id);
+                                if (node) {
+                                    node.changed = n.changed;
+                                    node.dirty = true;
+                                }
+                            });
+                        }
                         RED.nodes.filterNodes({type:"subflow:"+ev.node.id}).forEach(function(n) {
-                            n.changed = ev.changed;
                             n.inputs = ev.node.in.length;
                             n.outputs = ev.node.out.length;
                             RED.editor.updateNodeProperties(n);
                         });
-                        
-                        RED.palette.refresh();
+
+                        if (ev.node.type === 'subflow') {
+                            $("#menu-item-workspace-menu-"+ev.node.id.replace(".","-")).text(ev.node.name);
+                        }
                     } else {
                         RED.editor.updateNodeProperties(ev.node);
                         RED.editor.validateNode(ev.node);
@@ -1949,7 +2069,7 @@ RED.history = (function() {
                     ev.node.changed = ev.changed;
                 } else if (ev.t == "createSubflow") {
                     if (ev.nodes) {
-                        RED.nodes.filterNodes({z:ev.subflow.id}).forEach(function(n) {
+                        RED.nodes.filterNodes({z:ev.subflow.subflow.id}).forEach(function(n) {
                             n.z = ev.activeWorkspace;
                             n.dirty = true;
                         });
@@ -1962,10 +2082,10 @@ RED.history = (function() {
                             RED.nodes.removeLink(ev.links[i]);
                         }
                     }
-                    
-                    RED.nodes.removeSubflow(ev.subflow);
-                    RED.workspaces.remove(ev.subflow);
-                    
+
+                    RED.nodes.removeSubflow(ev.subflow.subflow);
+                    RED.workspaces.remove(ev.subflow.subflow);
+
                     if (ev.removedLinks) {
                         for (i=0;i<ev.removedLinks.length;i++) {
                             RED.nodes.addLink(ev.removedLinks[i]);
@@ -1979,10 +2099,10 @@ RED.history = (function() {
                     }
                 });
 
-                
                 RED.nodes.dirty(ev.dirty);
                 RED.view.redraw(true);
                 RED.palette.refresh();
+                RED.workspaces.refresh();
             }
         }
     }
@@ -2112,7 +2232,7 @@ RED.deploy = (function() {
                 ],
                 create: function() {
                     $("#node-dialog-confirm-deploy").parent().find("div.ui-dialog-buttonpane")
-                        .append('<div style="height:0; vertical-align: middle; display:inline-block;">'+
+                        .prepend('<div style="height:0; vertical-align: middle; display:inline-block; margin-top: 13px; float:left;">'+
                                    '<input style="vertical-align:top;" type="checkbox" id="node-dialog-confirm-deploy-hide">'+
                                    '<label style="display:inline;" for="node-dialog-confirm-deploy-hide"> do not warn about this again</label>'+
                                    '<input type="hidden" id="node-dialog-confirm-deploy-type">'+
@@ -2133,16 +2253,34 @@ RED.deploy = (function() {
         });
     }
 
-    //check repeat array. Change date 2015-09-22
-    function isRepeat(arr){
-       var hash = {};
-       for(var i in arr){
-          if(hash[arr[i]]){
-             return true;
-          }
-          hash[arr[i]] = true;     
-       }
-       return false;
+    function getNodeInfo(node) {
+        var tabLabel = "";
+        if (node.z) {
+            var tab = RED.nodes.workspace(node.z);
+            if (!tab) {
+                tab = RED.nodes.subflow(node.z);
+                tabLabel = tab.name;
+            } else {
+                tabLabel = tab.label;
+            }
+        }
+        var label = "";
+        if (typeof node._def.label == "function") {
+            label = node._def.label.call(node);
+        } else {
+            label = node._def.label;
+        }
+        label = label || node.id;
+        return {tab:tabLabel,type:node.type,label:label};
+    }
+    function sortNodeInfo(A,B) {
+        if (A.tab < B.tab) { return -1;}
+        if (A.tab > B.tab) { return 1;}
+        if (A.type < B.type) { return -1;}
+        if (A.type > B.type) { return 1;}
+        if (A.name < B.name) { return -1;}
+        if (A.name > B.name) { return 1;}
+        return 0;
     }
 
     function save(force) {
@@ -2155,8 +2293,13 @@ RED.deploy = (function() {
                 var hasUnusedConfig = false;
 
                 var unknownNodes = [];
+                var invalidNodes = [];
+
                 RED.nodes.eachNode(function(node) {
                     hasInvalid = hasInvalid || !node.valid;
+                    if (!node.valid) {
+                        invalidNodes.push(getNodeInfo(node));
+                    }
                     if (node.type === "unknown") {
                         if (unknownNodes.indexOf(node.name) == -1) {
                             unknownNodes.push(node.name);
@@ -2165,18 +2308,10 @@ RED.deploy = (function() {
                 });
                 hasUnknown = unknownNodes.length > 0;
 
-                var unusedConfigNodes = {};
+                var unusedConfigNodes = [];
                 RED.nodes.eachConfig(function(node) {
                     if (node.users.length === 0) {
-                        var label = "";
-                        if (typeof node._def.label == "function") {
-                            label = node._def.label.call(node);
-                        } else {
-                            label = node._def.label;
-                        }
-                        label = label || node.id;
-                        unusedConfigNodes[node.type] = unusedConfigNodes[node.type]  || [];
-                        unusedConfigNodes[node.type].push(label);
+                        unusedConfigNodes.push(getNodeInfo(node));
                         hasUnusedConfig = true;
                     }
                 });
@@ -2197,19 +2332,18 @@ RED.deploy = (function() {
                     showWarning = true;
                     $( "#node-dialog-confirm-deploy-type" ).val("invalid");
                     $( "#node-dialog-confirm-deploy-config" ).show();
+                    invalidNodes.sort(sortNodeInfo);
+                    $( "#node-dialog-confirm-deploy-invalid-list" )
+                        .html("<li>"+invalidNodes.map(function(A) { return (A.tab?"["+A.tab+"] ":"")+A.label+" ("+A.type+")"}).join("</li><li>")+"</li>");
+
                 } else if (hasUnusedConfig && !ignoreDeployWarnings.unusedConfig) {
                     showWarning = true;
                     $( "#node-dialog-confirm-deploy-type" ).val("unusedConfig");
                     $( "#node-dialog-confirm-deploy-unused" ).show();
-                    var unusedNodeLabels = [];
-                    var unusedTypes = Object.keys(unusedConfigNodes).sort();
-                    unusedTypes.forEach(function(type) {
-                        unusedConfigNodes[type].forEach(function(label) {
-                                unusedNodeLabels.push(type+": "+label);
-                        });
-                    });
+
+                    unusedConfigNodes.sort(sortNodeInfo);
                     $( "#node-dialog-confirm-deploy-unused-list" )
-                        .html("<li>"+unusedNodeLabels.join("</li><li>")+"</li>");
+                        .html("<li>"+unusedConfigNodes.map(function(A) { return (A.tab?"["+A.tab+"] ":"")+A.label+" ("+A.type+")"}).join("</li><li>")+"</li>");
                 }
                 if (showWarning) {
                     $( "#node-dialog-confirm-deploy-hide" ).prop("checked",false);
@@ -2222,23 +2356,6 @@ RED.deploy = (function() {
 
 
             var nns = RED.nodes.createCompleteNodeSet();
-
-
-            //Check duplicate Pin value.Change date 2015-09-22
-            var pinArr = new Array();  
-            for(var i in nns){
-               for(var key in nns[i]){
-                  if(key.indexOf("Pin")!=-1){
-                     pinArr.push(nns[i][key]);     
-                  }
-               }
-            }
-            
-            if (isRepeat(pinArr)==true){
-                var msg = "Property: 'Pin' value can not be repeated!";
-                RED.notify(RED._("notification.error",{message:msg}),"error");
-                return false;
-            }
 
             $("#btn-deploy-icon").removeClass('fa-download');
             $("#btn-deploy-icon").addClass('spinner');
@@ -2287,8 +2404,7 @@ RED.deploy = (function() {
     }
 
     return {
-        init: init,
-        isRepeat:isRepeat
+        init: init
     }
 })();
 ;/**
@@ -2426,17 +2542,6 @@ RED.menu = (function() {
             if (opt.disabled) {
                 item.addClass("disabled");
             }
-            if (opt.tip) {
-                item.popover({
-                    placement:"left",
-                    trigger: "hover",
-                    delay: { show: 350, hide: 20 },
-                    html: true,
-                    container:'body',
-                    content: opt.tip
-                });
-            }
-
         }
 
 
@@ -2681,7 +2786,7 @@ RED.keyboard = (function() {
 
 })();
 ;/**
- * Copyright 2013 IBM Corp.
+ * Copyright 2013, 2015 IBM Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2762,12 +2867,15 @@ RED.tabs = (function() {
             tabs.css({width:currentTabWidth+"%"});
             if (tabWidth < 50) {
                 ul.find(".red-ui-tab-close").hide();
+                ul.find(".red-ui-tab-icon").hide();
             } else {
                 ul.find(".red-ui-tab-close").show();
+                ul.find(".red-ui-tab-icon").show();
             }
             if (currentActiveTabWidth !== 0) {
                 ul.find("li.red-ui-tab.active").css({"width":options.minimumActiveTabWidth});
                 ul.find("li.red-ui-tab.active .red-ui-tab-close").show();
+                ul.find("li.red-ui-tab.active .red-ui-tab-icon").show();
             }
 
         }
@@ -2798,13 +2906,16 @@ RED.tabs = (function() {
                 tabs[tab.id] = tab;
                 var li = $("<li/>",{class:"red-ui-tab"}).appendTo(ul);
                 var link = $("<a/>",{href:"#"+tab.id, class:"red-ui-tab-label"}).appendTo(li);
-                link.html(tab.label);
+                if (tab.icon) {
+                    $('<img src="'+tab.icon+'" class="red-ui-tab-icon"/>').appendTo(link);
+                }
+                $('<span/>').text(tab.label).appendTo(link);
 
                 link.on("click",onTabClick);
                 link.on("dblclick",onTabDblClick);
                 if (tab.closeable) {
                     var closeLink = $("<a/>",{href:"#",class:"red-ui-tab-close"}).appendTo(li);
-                    closeLink.html('<i class="fa fa-times" />');
+                    closeLink.append('<i class="fa fa-times" />');
 
                     closeLink.on("click",function(event) {
                         removeTab(tab.id);
@@ -2832,7 +2943,7 @@ RED.tabs = (function() {
                 tabs[id].label = label;
                 var tab = ul.find("a[href='#"+id+"']");
                 tab.attr("title",label);
-                tab.text(label);
+                tab.find("span").text(label);
                 updateTabWidths();
             }
 
@@ -2842,6 +2953,85 @@ RED.tabs = (function() {
     return {
         create: createTabs
     }
+})();
+;/**
+ * Copyright 2015 IBM Corp.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **/
+
+RED.popover = (function() {
+
+
+    function createPopover(options) {
+        var target = options.target;
+
+        var content = options.content;
+        var delay = options.delay;
+        var timer = null;
+        var active;
+        var div;
+
+        var openPopup = function() {
+            if (active) {
+                div = $('<div class="red-ui-popover"></div>').html(content).appendTo("body");
+                var targetPos = target.offset();
+                var targetWidth = target.width();
+                var targetHeight = target.height();
+
+                var divHeight = div.height();
+                div.css({top: targetPos.top+targetHeight/2-divHeight/2-10,left:targetPos.left+targetWidth+17});
+
+                div.fadeIn("fast");
+            }
+        }
+        var closePopup = function() {
+            if (!active) {
+                if (div) {
+                    div.fadeOut("fast",function() {
+                        $(this).remove();
+                    });
+                    div = null;
+                }
+            }
+        }
+
+        target.on('mouseenter',function(e) {
+            clearTimeout(timer);
+            active = true;
+            timer = setTimeout(openPopup,delay.show);
+        });
+        target.on('mouseleave', function(e) {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            active = false;
+            setTimeout(closePopup,delay.hide);
+        });
+        var res = {
+            setContent: function(_content) {
+                content = _content;
+            }
+        }
+        target.data('popover',res);
+        return res;
+
+    }
+
+    return {
+        create: createPopover
+    }
+
 })();
 ;/**
  * Copyright 2015 IBM Corp.
@@ -2929,19 +3119,13 @@ RED.workspaces = (function() {
         workspace_tabs = RED.tabs.create({
             id: "workspace-tabs",
             onchange: function(tab) {
-                if (tab.type == "subflow") {
-                    $("#chart").css({"margin-top": "40px"});
-                    $("#workspace-toolbar").show();
-                } else {
-                    $("#workspace-toolbar").hide();
-                    $("#chart").css({"margin-top": "0"});
-                }
                 var event = {
                     old: activeWorkspace
                 }
                 activeWorkspace = tab.id;
                 event.workspace = activeWorkspace;
                 RED.events.emit("workspace:change",event);
+                RED.sidebar.config.refresh();
             },
             ondblclick: function(tab) {
                 if (tab.type != "subflow") {
@@ -3066,6 +3250,7 @@ RED.workspaces = (function() {
             }
         }
     }
+
     return {
         init: init,
         add: addWorkspace,
@@ -3087,7 +3272,7 @@ RED.workspaces = (function() {
             if (!workspace_tabs.contains(id)) {
                 var sf = RED.nodes.subflow(id);
                 if (sf) {
-                    addWorkspace({type:"subflow",id:id,label:RED._("subflow.tabLabel",{name:sf.name}), closeable: true});
+                    addWorkspace({type:"subflow",id:id,icon:"red/images/subflow_tab.png",label:sf.name, closeable: true});
                 }
             }
             workspace_tabs.activateTab(id);
@@ -3095,9 +3280,10 @@ RED.workspaces = (function() {
         refresh: function() {
             RED.nodes.eachSubflow(function(sf) {
                 if (workspace_tabs.contains(sf.id)) {
-                    workspace_tabs.renameTab(sf.id,RED._("subflow.tabLabel",{name:sf.name}));
+                    workspace_tabs.renameTab(sf.id,sf.name);
                 }
             });
+            RED.sidebar.config.refresh();
         },
         resize: function() {
             workspace_tabs.resize();
@@ -3361,9 +3547,6 @@ RED.view = (function() {
             var scrollStartTop = chart.scrollTop();
 
             activeSubflow = RED.nodes.subflow(event.workspace);
-            if (activeSubflow) {
-                $("#workspace-subflow-add-input").toggleClass("disabled",activeSubflow.in.length > 0);
-            }
 
             RED.menu.setDisabled("menu-item-workspace-edit", activeSubflow);
             RED.menu.setDisabled("menu-item-workspace-delete",RED.workspaces.count() == 1 || activeSubflow);
@@ -3457,7 +3640,23 @@ RED.view = (function() {
 
                 nn.changed = true;
                 nn.h = Math.max(node_height,(nn.outputs||0) * 15);
-                RED.history.push({t:'add',nodes:[nn.id],dirty:RED.nodes.dirty()});
+                var historyEvent = {
+                    t:'add',
+                    nodes:[nn.id],
+                    dirty:RED.nodes.dirty()
+                }
+                if (activeSubflow) {
+                    var subflowRefresh = RED.subflow.refresh(true);
+                    if (subflowRefresh) {
+                        historyEvent.subflow = {
+                            id:activeSubflow.id,
+                            changed: activeSubflow.changed,
+                            instances: subflowRefresh.instances
+                        }
+                    }
+                }
+
+                RED.history.push(historyEvent);
                 RED.nodes.add(nn);
                 RED.editor.validateNode(nn);
                 RED.nodes.dirty(true);
@@ -3500,8 +3699,8 @@ RED.view = (function() {
                 lasso = vis.append('rect')
                     .attr("ox",point[0])
                     .attr("oy",point[1])
-                    .attr("rx",2)
-                    .attr("ry",2)
+                    .attr("rx",1)
+                    .attr("ry",1)
                     .attr("x",point[0])
                     .attr("y",point[1])
                     .attr("width",0)
@@ -3847,12 +4046,15 @@ RED.view = (function() {
         redraw();
     }
     function deleteSelection() {
+        var result;
         var removedNodes = [];
         var removedLinks = [];
         var removedSubflowOutputs = [];
         var removedSubflowInputs = [];
+        var subflowInstances = [];
 
         var startDirty = RED.nodes.dirty();
+        var startChanged = false;
         if (moving_set.length > 0) {
             for (var i=0;i<moving_set.length;i++) {
                 var node = moving_set[i].n;
@@ -3875,65 +4077,22 @@ RED.view = (function() {
                 }
             }
             if (removedSubflowOutputs.length > 0) {
-                removedSubflowOutputs.sort(function(a,b) { return b.i-a.i});
-                for (i=0;i<removedSubflowOutputs.length;i++) {
-                    var output = removedSubflowOutputs[i];
-                    activeSubflow.out.splice(output.i,1);
-                    var subflowRemovedLinks = [];
-                    var subflowMovedLinks = [];
-                    RED.nodes.eachLink(function(l) {
-                        if (l.target.type == "subflow" && l.target.z == activeSubflow.id && l.target.i == output.i) {
-                            subflowRemovedLinks.push(l);
-                        }
-                        if (l.source.type == "subflow:"+activeSubflow.id) {
-                            if (l.sourcePort == output.i) {
-                                subflowRemovedLinks.push(l);
-                            } else if (l.sourcePort > output.i) {
-                                subflowMovedLinks.push(l);
-                            }
-                        }
-                    });
-                    subflowRemovedLinks.forEach(function(l) { RED.nodes.removeLink(l)});
-                    subflowMovedLinks.forEach(function(l) { l.sourcePort--; });
-
-                    removedLinks = removedLinks.concat(subflowRemovedLinks);
-                    for (var j=output.i;j<activeSubflow.out.length;j++) {
-                        activeSubflow.out[j].i--;
-                        activeSubflow.out[j].dirty = true;
-                    }
+                result = RED.subflow.removeOutput(removedSubflowOutputs);
+                if (result) {
+                    removedLinks = removedLinks.concat(result.links);
                 }
             }
             // Assume 0/1 inputs
             if (removedSubflowInputs.length == 1) {
-                var input = removedSubflowInputs[0];
-                var subflowRemovedInputLinks = [];
-                RED.nodes.eachLink(function(l) {
-                    if (l.source.type == "subflow" && l.source.z == activeSubflow.id && l.source.i == input.i) {
-                        subflowRemovedInputLinks.push(l);
-                    } else if (l.target.type == "subflow:"+activeSubflow.id) {
-                        subflowRemovedInputLinks.push(l);
-                    }
-                });
-                subflowRemovedInputLinks.forEach(function(l) { RED.nodes.removeLink(l)});
-                removedLinks = removedLinks.concat(subflowRemovedInputLinks);
-                activeSubflow.in = [];
-                $("#workspace-subflow-add-input").toggleClass("disabled",false);
+                result = RED.subflow.removeInput();
+                if (result) {
+                    removedLinks = removedLinks.concat(result.links);
+                }
             }
-
-            if (activeSubflow) {
-                RED.nodes.filterNodes({type:"subflow:"+activeSubflow.id}).forEach(function(n) {
-                    n.changed = true;
-                    n.inputs = activeSubflow.in.length;
-                    n.outputs = activeSubflow.out.length;
-                    while (n.outputs < n.ports.length) {
-                        n.ports.pop();
-                    }
-                    n.resize = true;
-                    n.dirty = true;
-                });
-                RED.editor.validateNode(activeSubflow);
+            var instances = RED.subflow.refresh(true);
+            if (instances) {
+                subflowInstances = instances.instances;
             }
-
             moving_set = [];
             if (removedNodes.length > 0 || removedSubflowOutputs.length > 0 || removedSubflowInputs.length > 0) {
                 RED.nodes.dirty(true);
@@ -3944,7 +4103,18 @@ RED.view = (function() {
             removedLinks.push(selected_link);
             RED.nodes.dirty(true);
         }
-        RED.history.push({t:'delete',nodes:removedNodes,links:removedLinks,subflowOutputs:removedSubflowOutputs,subflowInputs:removedSubflowInputs,dirty:startDirty});
+        var historyEvent = {
+            t:'delete',
+            nodes:removedNodes,
+            links:removedLinks,
+            subflowOutputs:removedSubflowOutputs,
+            subflowInputs:removedSubflowInputs,
+            subflow: {
+                instances: subflowInstances
+            },
+            dirty:startDirty
+        };
+        RED.history.push(historyEvent);
 
         selected_link = null;
         updateActiveNodes();
@@ -4051,7 +4221,22 @@ RED.view = (function() {
             if (!existingLink) {
                 var link = {source: src, sourcePort:src_port, target: dst};
                 RED.nodes.addLink(link);
-                RED.history.push({t:'add',links:[link],dirty:RED.nodes.dirty()});
+                var historyEvent = {
+                    t:'add',
+                    links:[link],
+                    dirty:RED.nodes.dirty()
+                };
+                if (activeSubflow) {
+                    var subflowRefresh = RED.subflow.refresh(true);
+                    if (subflowRefresh) {
+                        historyEvent.subflow = {
+                            id:activeSubflow.id,
+                            changed: activeSubflow.changed,
+                            instances: subflowRefresh.instances
+                        }
+                    }
+                }
+                RED.history.push(historyEvent);
                 updateActiveNodes();
                 RED.nodes.dirty(true);
             } else {
@@ -4466,7 +4651,9 @@ RED.view = (function() {
                     var text = node.append('svg:text').attr('class','node_label').attr('x', 38).attr('dy', '.35em').attr('text-anchor','start');
                     if (d._def.align) {
                         text.attr('class','node_label node_label_'+d._def.align);
-                        text.attr('text-anchor','end');
+                        if (d._def.align === "right") {
+                            text.attr('text-anchor','end');
+                        }
                     }
 
                     var status = node.append("svg:g").attr("class","node_status_group").style("display","none");
@@ -4477,14 +4664,7 @@ RED.view = (function() {
 
                     var statusLabel = status.append("svg:text")
                         .attr("class","node_status_label")
-                        .attr('x',20).attr('y',9)
-                        .style({
-                                'stroke-width': 0,
-                                'fill': '#888',
-                                'font-size':'9pt',
-                                'stroke':'#000',
-                                'text-anchor':'start'
-                        });
+                        .attr('x',20).attr('y',9);
 
                     //node.append("circle").attr({"class":"centerDot","cx":0,"cy":0,"r":5});
 
@@ -4801,6 +4981,10 @@ RED.view = (function() {
      */
     function importNodes(newNodesStr,touchImport) {
         try {
+            var activeSubflowChanged;
+            if (activeSubflow) {
+                activeSubflowChanged = activeSubflow.changed;
+            }
             var result = RED.nodes.import(newNodesStr,true);
             if (result) {
                 var new_nodes = result[0];
@@ -4808,7 +4992,7 @@ RED.view = (function() {
                 var new_workspaces = result[2];
                 var new_subflows = result[3];
 
-                var new_ms = new_nodes.filter(function(n) { return n.z == RED.workspaces.active() }).map(function(n) { return {n:n};});
+                var new_ms = new_nodes.filter(function(n) { return n.hasOwnProperty('x') && n.hasOwnProperty('y') && n.z == RED.workspaces.active() }).map(function(n) { return {n:n};});
                 var new_node_ids = new_nodes.map(function(n){ return n.id; });
 
                 // TODO: pick a more sensible root node
@@ -4858,14 +5042,25 @@ RED.view = (function() {
                     moving_set = new_ms;
                 }
 
-                RED.history.push({
+                var historyEvent = {
                     t:'add',
                     nodes:new_node_ids,
                     links:new_links,
                     workspaces:new_workspaces,
                     subflows:new_subflows,
                     dirty:RED.nodes.dirty()
-                });
+                };
+                if (activeSubflow) {
+                    var subflowRefresh = RED.subflow.refresh(true);
+                    if (subflowRefresh) {
+                        historyEvent.subflow = {
+                            id:activeSubflow.id,
+                            changed: activeSubflowChanged,
+                            instances: subflowRefresh.instances
+                        }
+                    }
+                }
+                RED.history.push(historyEvent);
 
                 updateActiveNodes();
                 redraw();
@@ -4894,7 +5089,6 @@ RED.view = (function() {
             if (updateActive) {
                 updateActiveNodes();
             }
-            RED.workspaces.refresh();
             redraw();
         },
         focus: focusView,
@@ -5161,7 +5355,7 @@ RED.sidebar = (function() {
 RED.palette = (function() {
 
     var exclusion = ['config','unknown','deprecated'];
-    var core = ['subflows', 'input', 'output', 'function', 'social', 'storage', 'analysis', 'advanced'];
+    var core = ['subflows', 'input', 'output', 'function', 'social', 'mobile', 'storage', 'analysis', 'advanced'];
 
     var categoryContainers = {};
 
@@ -5204,8 +5398,8 @@ RED.palette = (function() {
         });
     }
 
-    function setLabel(type, el,label) {
-        var nodeWidth = 80;
+    function setLabel(type, el,label, info) {
+        var nodeWidth = 82;
         var nodeHeight = 25;
         var lineHeight = 20;
         var portHeight = 10;
@@ -5245,10 +5439,9 @@ RED.palette = (function() {
             if (label != type) {
                 l = "<p><b>"+label+"</b><br/><i>"+type+"</i></p>";
             }
-
-            popOverContent = $(l+($("script[data-help-name|='"+type+"']").html()||"<p>"+RED._("palette.noInfo")+"</p>").trim())
+            popOverContent = $(l+(info?info:$("script[data-help-name|='"+type+"']").html()||"<p>"+RED._("palette.noInfo")+"</p>").trim())
                                 .filter(function(n) {
-                                    return this.nodeType == 1 || (this.nodeType == 3 && this.textContent.trim().length > 0)
+                                    return (this.nodeType == 1 && this.nodeName == "P") || (this.nodeType == 3 && this.textContent.trim().length > 0)
                                 }).slice(0,2);
         } catch(err) {
             // Malformed HTML may cause errors. TODO: need to understand what can break
@@ -5258,8 +5451,7 @@ RED.palette = (function() {
             popOverContent = "<p><b>"+label+"</b></p><p>"+RED._("palette.noInfo")+"</p>";
         }
 
-
-        el.data('popover').options.content = popOverContent;
+        el.data('popover').setContent(popOverContent);
     }
 
     function escapeNodeType(nt) {
@@ -5271,7 +5463,6 @@ RED.palette = (function() {
         if ($("#palette_node_"+nodeTypeId).length) {
             return;
         }
-
         if (exclusion.indexOf(def.category)===-1) {
 
             var category = def.category.replace(" ","_");
@@ -5332,18 +5523,30 @@ RED.palette = (function() {
             $("#palette-"+category).append(d);
             d.onmousedown = function(e) { e.preventDefault(); };
 
-            $(d).popover({
-                title:d.type,
-                placement:"right",
-                trigger: "hover",
-                delay: { show: 750, hide: 50 },
-                html: true,
-                container:'body'
+            RED.popover.create({
+                target:$(d),
+                content: "hi",
+                delay: { show: 750, hide: 50 }
             });
+
+            // $(d).popover({
+            //     title:d.type,
+            //     placement:"right",
+            //     trigger: "hover",
+            //     delay: { show: 750, hide: 50 },
+            //     html: true,
+            //     container:'body'
+            // });
             $(d).click(function() {
                 RED.view.focus();
-                var help = '<div class="node-help">'+($("script[data-help-name|='"+d.type+"']").html()||"")+"</div>";
-                $("#tab-info").html(help);
+                var helpText;
+                if (nt.indexOf("subflow:") === 0) {
+                    helpText = marked(RED.nodes.subflow(nt.substring(8)).info||"");
+                } else {
+                    helpText = $("script[data-help-name|='"+d.type+"']").html()||"";
+                }
+                var help = '<div class="node-help">'+helpText+"</div>";
+                RED.sidebar.info.set(help);
             });
             $(d).draggable({
                 helper: 'clone',
@@ -5353,14 +5556,15 @@ RED.palette = (function() {
                 start: function() {RED.view.focus();}
             });
 
+            var nodeInfo = null;
             if (def.category == "subflows") {
                 $(d).dblclick(function(e) {
                     RED.workspaces.show(nt.substring(8));
                     e.preventDefault();
                 });
+                nodeInfo = marked(def.info||"");
             }
-
-            setLabel(nt,$(d),label);
+            setLabel(nt,$(d),label,nodeInfo);
 
             var categoryNode = $("#palette-container-"+category);
             if (categoryNode.find(".palette_node").length === 1) {
@@ -5413,7 +5617,7 @@ RED.palette = (function() {
             } else if (portOutput.length !== 0 && sf.out.length === 0) {
                 portOutput.remove();
             }
-            setLabel(sf.type+":"+sf.id,paletteNode,sf.name);
+            setLabel(sf.type+":"+sf.id,paletteNode,sf.name,marked(sf.info||""));
         });
     }
 
@@ -5589,8 +5793,8 @@ RED.sidebar.info = (function() {
         table += "<tr><td>"+RED._("sidebar.info.id")+"</td><td>&nbsp;"+node.id+"</td></tr>";
 
         var m = /^subflow(:(.+))?$/.exec(node.type);
+        var subflowNode;
         if (m) {
-            var subflowNode;
             if (m[2]) {
                 subflowNode = RED.nodes.subflow(m[2]);
             } else {
@@ -5649,12 +5853,13 @@ RED.sidebar.info = (function() {
             }
         }
         table += "</tbody></table><hr/>";
-        if (node.type != "comment") {
+        if (!subflowNode && node.type != "comment") {
             var helpText = $("script[data-help-name|='"+node.type+"']").html()||"";
             table  += '<div class="node-help">'+helpText+"</div>";
         }
-
-        if (node._def && node._def.info) {
+        if (subflowNode) {
+            table += '<div class="node-help">'+marked(subflowNode.info||"")+'</div>';
+        } else if (node._def && node._def.info) {
             var info = node._def.info;
             table += '<div class="node-help">'+marked(typeof info === "function" ? info.call(node) : info)+'</div>';
             //table += '<div class="node-help">'+(typeof info === "function" ? info.call(node) : info)+'</div>';
@@ -5681,7 +5886,11 @@ RED.sidebar.info = (function() {
     }
 
     function clear() {
-        $("#tab-info").html("");
+        $(content).html("");
+    }
+
+    function set(html) {
+        $(content).html(html);
     }
 
     RED.events.on("view:selection-changed",function(selection) {
@@ -5708,11 +5917,12 @@ RED.sidebar.info = (function() {
         init: init,
         show: show,
         refresh:refresh,
-        clear: clear
+        clear: clear,
+        set: set
     }
 })();
 ;/**
- * Copyright 2013 IBM Corp.
+ * Copyright 2013, 2015 IBM Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5728,12 +5938,95 @@ RED.sidebar.info = (function() {
  **/
 RED.sidebar.config = (function() {
 
-    var content = document.createElement("div");
-    content.style.paddingTop = "4px";
-    content.style.paddingLeft = "4px";
-    content.style.paddingRight = "4px";
 
-    var list = $("<ul>",{class:"tab-config-list"}).appendTo(content);
+    var content = document.createElement("div");
+    content.className = "sidebar-node-config"
+
+    $('<div class="palette-category">'+
+      '<div class="workspace-config-node-tray-header palette-header"><i class="fa fa-angle-down expanded"></i><span data-i18n="sidebar.config.local"></span></div>'+
+    '<ul id="workspace-config-node-tray-locals" class="palette-content config-node-list"></ul>'+
+    '</div>'+
+    '<div class="palette-category">'+
+        '<div class="workspace-config-node-tray-header palette-header"><i class="fa fa-angle-down expanded"></i><span data-i18n="sidebar.config.global"></span></div>'+
+        '<ul id="workspace-config-node-tray-globals" class="palette-content config-node-list"></ul>'+
+    '</div>').appendTo(content);
+
+    function createConfigNodeList(nodes,list) {
+        nodes.sort(function(A,B) {
+            if (A.type < B.type) { return -1;}
+            if (A.type > B.type) { return 1;}
+            return 0;
+        });
+        list.empty();
+        if (nodes.length === 0) {
+            $('<li class="config_node_none" data-i18n="sidebar.config.none">NONE</li>').i18n().appendTo(list);
+        } else {
+            var currentType = "";
+            nodes.forEach(function(node) {
+                var label = "";
+                if (typeof node._def.label == "function") {
+                    label = node._def.label.call(node);
+                } else {
+                    label = node._def.label;
+                }
+                label = label || node.id;
+                if (node.type != currentType) {
+                    $('<li class="config_node_type">'+node.type+'</li>').appendTo(list);
+                    currentType = node.type;
+                }
+
+                var entry = $('<li class="palette_node config_node"></li>').appendTo(list);
+                $('<div class="palette_label"></div>').text(label).appendTo(entry);
+
+                var iconContainer = $('<div/>',{class:"palette_icon_container  palette_icon_container_right"}).text(node.users.length).appendTo(entry);
+                if (node.users.length === 0) {
+                    entry.addClass("config_node_unused");
+                }
+                entry.on('click',function(e) {
+                    RED.sidebar.info.refresh(node);
+                });
+                entry.on('dblclick',function(e) {
+                    RED.editor.editConfig("", node.type, node.id);
+                });
+                var userArray = node.users.map(function(n) { return n.id });
+                entry.on('mouseover',function(e) {
+                    RED.nodes.eachNode(function(node) {
+                        if( userArray.indexOf(node.id) != -1) {
+                            node.highlighted = true;
+                            node.dirty = true;
+                        }
+                    });
+                    RED.view.redraw();
+                });
+
+                entry.on('mouseout',function(e) {
+                    RED.nodes.eachNode(function(node) {
+                        if(node.highlighted) {
+                            node.highlighted = false;
+                            node.dirty = true;
+                        }
+                    });
+                    RED.view.redraw();
+                });
+            });
+        }
+    }
+
+    function refreshConfigNodeList() {
+
+        var localConfigNodes = [];
+        var globalConfigNodes = [];
+
+        RED.nodes.eachConfig(function(cn) {
+            if (cn.z == RED.workspaces.active()) {
+                localConfigNodes.push(cn);
+            } else if (!cn.z) {
+                globalConfigNodes.push(cn);
+            }
+        });
+        createConfigNodeList(localConfigNodes,$("#workspace-config-node-tray-locals"));
+        createConfigNodeList(globalConfigNodes,$("#workspace-config-node-tray-globals"));
+    }
 
     function init() {
         RED.sidebar.addTab({
@@ -5743,64 +6036,30 @@ RED.sidebar.config = (function() {
             content: content,
             closeable: true,
             visible: false,
-            onchange: function() { refresh(); }
+            onchange: function() { refreshConfigNodeList(); }
         });
+
+        $(".workspace-config-node-tray-header").on('click', function(e) {
+            var icon = $(this).find("i");
+            if (icon.hasClass("expanded")) {
+                icon.removeClass("expanded");
+                $(this).next().slideUp();
+            } else {
+                icon.addClass("expanded");
+                $(this).next().slideDown();
+            }
+
+        });
+
     }
     function show() {
-        refresh();
+        refreshConfigNodeList();
         RED.sidebar.show("config");
-    }
-
-    function refresh() {
-        list.empty();
-        RED.nodes.eachConfig(function(node) {
-            var li = list.find("#tab-config-list-type-"+node.type);
-            if (li.length === 0) {
-                li = $("<li>",{id:"tab-config-list-type-"+node.type}).appendTo(list);
-                $('<div class="tab-config-list-type">'+node.type+'</div>').appendTo(li);
-            }
-            var label = "";
-            if (typeof node._def.label == "function") {
-                label = node._def.label.call(node);
-            } else {
-                label = node._def.label;
-            }
-            label = label || "&nbsp;";
-
-            var entry = $('<div class="tab-config-list-entry"></div>').appendTo(li);
-            entry.on('dblclick',function(e) {
-                RED.editor.editConfig("", node.type, node.id);
-            });
-
-            var userArray = node.users.map(function(n) { return n.id });
-            entry.on('mouseover',function(e) {
-                RED.nodes.eachNode(function(node) {
-                    if( userArray.indexOf(node.id) != -1) {
-                        node.highlighted = true;
-                        node.dirty = true;
-                    }
-                });
-                RED.view.redraw();
-            });
-
-            entry.on('mouseout',function(e) {
-                RED.nodes.eachNode(function(node) {
-                    if(node.highlighted) {
-                        node.highlighted = false;
-                        node.dirty = true;
-                    }
-                });
-                RED.view.redraw();
-            });
-
-            $('<div class="tab-config-list-label">'+label+'</div>').appendTo(entry);
-            $('<div class="tab-config-list-users">'+node.users.length+'</div>').appendTo(entry);
-        });
     }
     return {
         init:init,
         show:show,
-        refresh:refresh
+        refresh:refreshConfigNodeList
     }
 })();
 ;/**
@@ -5820,6 +6079,8 @@ RED.sidebar.config = (function() {
  **/
 RED.editor = (function() {
     var editing_node = null;
+    var editing_config_node = null;
+    var subflowEditor;
 
     function getCredentialsURL(nodeType, nodeID) {
         var dashedType = nodeType.replace(/\s+/g, '-');
@@ -5838,7 +6099,6 @@ RED.editor = (function() {
         var subflow;
         var isValid;
         var hasChanged;
-
         if (node.type.indexOf("subflow:")===0) {
             subflow = RED.nodes.subflow(node.type.substring(8));
             isValid = subflow.valid;
@@ -5848,7 +6108,7 @@ RED.editor = (function() {
                 hasChanged = subflow.changed;
             }
             node.valid = isValid;
-            node.changed = hasChanged;
+            node.changed = node.changed || hasChanged;
         } else if (node._def) {
             node.valid = validateNodeProperties(node, node._def.defaults, node);
             if (node._def._creds) {
@@ -5870,7 +6130,7 @@ RED.editor = (function() {
             var modifiedTabs = {};
             for (i=0;i<subflowInstances.length;i++) {
                 subflowInstances[i].valid = node.valid;
-                subflowInstances[i].changed = node.changed;
+                subflowInstances[i].changed = subflowInstances[i].changed || node.changed;
                 subflowInstances[i].dirty = true;
                 modifiedTabs[subflowInstances[i].z] = true;
             }
@@ -6075,7 +6335,37 @@ RED.editor = (function() {
                                     var wasChanged = editing_node.changed;
                                     editing_node.changed = true;
                                     RED.nodes.dirty(true);
-                                    RED.history.push({t:'edit',node:editing_node,changes:changes,links:removedLinks,dirty:wasDirty,changed:wasChanged});
+
+                                    var activeSubflow = RED.nodes.subflow(RED.workspaces.active());
+                                    var subflowInstances = null;
+                                    if (activeSubflow) {
+                                        subflowInstances = [];
+                                        RED.nodes.eachNode(function(n) {
+                                            if (n.type == "subflow:"+RED.workspaces.active()) {
+                                                subflowInstances.push({
+                                                    id:n.id,
+                                                    changed:n.changed
+                                                });
+                                                n.changed = true;
+                                                n.dirty = true;
+                                                updateNodeProperties(n);
+                                            }
+                                        });
+                                    }
+                                    var historyEvent = {
+                                        t:'edit',
+                                        node:editing_node,
+                                        changes:changes,
+                                        links:removedLinks,
+                                        dirty:wasDirty,
+                                        changed:wasChanged
+                                    };
+                                    if (subflowInstances) {
+                                        historyEvent.subflow = {
+                                            instances:subflowInstances
+                                        }
+                                    }
+                                    RED.history.push(historyEvent);
                                 }
                                 editing_node.dirty = true;
                                 validateNode(editing_node);
@@ -6108,6 +6398,28 @@ RED.editor = (function() {
                                 if (editing_node._def.oneditcancel) {
                                     editing_node._def.oneditcancel.call(editing_node);
                                 }
+
+                                for (var d in editing_node._def.defaults) {
+                                    if (editing_node._def.defaults.hasOwnProperty(d)) {
+                                        var def = editing_node._def.defaults[d];
+                                        if (def.type) {
+                                            var configTypeDef = RED.nodes.getType(def.type);
+                                            if (configTypeDef && configTypeDef.exclusive) {
+                                                var input = $("#node-input-"+d).val()||"";
+                                                if (input !== "" && !editing_node[d]) {
+                                                    // This node has an exclusive config node that
+                                                    // has just been added. As the user is cancelling
+                                                    // the edit, need to delete the just-added config
+                                                    // node so that it doesn't get orphaned.
+                                                    RED.nodes.remove(input);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
+
+
                             }
                             $( this ).dialog( "close" );
                         }
@@ -6145,7 +6457,7 @@ RED.editor = (function() {
                     if (editing_node) {
                         RED.sidebar.info.refresh(editing_node);
                     }
-                    RED.sidebar.config.refresh();
+                    RED.workspaces.refresh();
 
                     var buttons = $( this ).dialog("option","buttons");
                     if (buttons.length == 3) {
@@ -6326,10 +6638,15 @@ RED.editor = (function() {
             if (definition.defaults.hasOwnProperty(d)) {
                 if (definition.defaults[d].type) {
                     var configTypeDef = RED.nodes.getType(definition.defaults[d].type);
-                    if (configTypeDef && configTypeDef.exclusive) {
-                        prepareConfigNodeButton(node,d,definition.defaults[d].type);
+                    if (configTypeDef) {
+                        if (configTypeDef.exclusive) {
+                            prepareConfigNodeButton(node,d,definition.defaults[d].type);
+                        } else {
+                            prepareConfigNodeSelect(node,d,definition.defaults[d].type);
+                        }
                     } else {
-                        prepareConfigNodeSelect(node,d,definition.defaults[d].type);
+                        console.log("Unknown type:", definition.defaults[d].type);
+                        preparePropertyEditor(node,d,prefix);
                     }
                 } else {
                     preparePropertyEditor(node,d,prefix);
@@ -6392,16 +6709,20 @@ RED.editor = (function() {
         }
         $("#dialog-form").find('[data-i18n]').each(function() {
             var current = $(this).attr("data-i18n");
-            if (current.indexOf(":") === -1) {
-                var prefix = "";
-                if (current.indexOf("[")===0) {
-                    var parts = current.split("]");
-                    prefix = parts[0]+"]";
-                    current = parts[1];
+            var keys = current.split(";");
+            for (var i=0;i<keys.length;i++) {
+                var key = keys[i];
+                if (key.indexOf(":") === -1) {
+                    var prefix = "";
+                    if (key.indexOf("[")===0) {
+                        var parts = key.split("]");
+                        prefix = parts[0]+"]";
+                        key = parts[1];
+                    }
+                    keys[i] = prefix+ns+":"+key;
                 }
-
-                $(this).attr("data-i18n",prefix+ns+":"+current);
             }
+            $(this).attr("data-i18n",keys.join(";"));
         });
         $('<input type="text" style="display: none;" />').appendTo("#dialog-form");
         prepareEditDialog(node,node._def,"node-input");
@@ -6412,7 +6733,7 @@ RED.editor = (function() {
     function showEditConfigNodeDialog(name,type,id) {
         var adding = (id == "_ADD_");
         var node_def = RED.nodes.getType(type);
-        var configNode = RED.nodes.node(id);
+        editing_config_node = RED.nodes.node(id);
 
         var ns;
         if (node_def.set.module === "node-red") {
@@ -6421,22 +6742,28 @@ RED.editor = (function() {
             ns = node_def.set.id;
         }
 
+        var activeWorkspace = RED.nodes.workspace(RED.workspaces.active());
+        if (!activeWorkspace) {
+            activeWorkspace = RED.nodes.subflow(RED.workspaces.active());
+        }
 
-        if (configNode == null) {
-            configNode = {
+        if (editing_config_node == null) {
+            editing_config_node = {
                 id: (1+Math.random()*4294967295).toString(16),
                 _def: node_def,
-                type: type
+                type: type,
+                z: activeWorkspace.id,
+                users: []
             }
             for (var d in node_def.defaults) {
                 if (node_def.defaults[d].value) {
-                    configNode[d] = node_def.defaults[d].value;
+                    editing_config_node[d] = node_def.defaults[d].value;
                 }
             }
-            configNode["_"] = node_def._;
+            editing_config_node["_"] = node_def._;
         }
 
-        $("#dialog-config-form").html($("script[data-template-name='"+type+"']").html());
+        $("#node-config-dialog-edit-form").html($("script[data-template-name='"+type+"']").html());
 
         $("#dialog-config-form").find('[data-i18n]').each(function() {
             var current = $(this).attr("data-i18n");
@@ -6452,7 +6779,7 @@ RED.editor = (function() {
         });
 
 
-        prepareEditDialog(configNode,node_def,"node-config-input");
+        prepareEditDialog(editing_config_node,node_def,"node-config-input");
 
         var buttons = $( "#node-config-dialog" ).dialog("option","buttons");
         if (adding) {
@@ -6460,7 +6787,7 @@ RED.editor = (function() {
                 buttons = buttons.splice(1);
             }
             buttons[0].text = "Add";
-            $("#node-config-dialog-user-count").html("").hide();
+            $("#node-config-dialog-user-count").find("span").html("").parent().hide();
         } else {
             if (buttons.length == 2) {
                 buttons.unshift({
@@ -6470,21 +6797,34 @@ RED.editor = (function() {
                             var configProperty = $(this).dialog('option','node-property');
                             var configId = $(this).dialog('option','node-id');
                             var configType = $(this).dialog('option','node-type');
-                            var configNode = RED.nodes.node(configId);
+
                             var configTypeDef = RED.nodes.getType(configType);
 
                             if (configTypeDef.ondelete) {
-                                configTypeDef.ondelete.call(RED.nodes.node(configId));
+                                configTypeDef.ondelete.call(editing_config_node);
                             }
                             if (configTypeDef.oneditdelete) {
-                                configTypeDef.oneditdelete.call(RED.nodes.node(configId));
+                                configTypeDef.oneditdelete.call(editing_config_node);
+                            }
+                            var historyEvent = {
+                                t:'delete',
+                                nodes:[editing_config_node],
+                                changes: {},
+                                dirty: RED.nodes.dirty()
                             }
                             RED.nodes.remove(configId);
-                            for (var i=0;i<configNode.users.length;i++) {
-                                var user = configNode.users[i];
+                            for (var i=0;i<editing_config_node.users.length;i++) {
+                                var user = editing_config_node.users[i];
+                                historyEvent.changes[user.id] = {
+                                    changed: user.changed,
+                                    valid: user.valid
+                                };
                                 for (var d in user._def.defaults) {
                                     if (user._def.defaults.hasOwnProperty(d) && user[d] == configId) {
+                                        historyEvent.changes[user.id][d] = configId
                                         user[d] = "";
+                                        user.changed = true;
+                                        user.dirty = true;
                                     }
                                 }
                                 validateNode(user);
@@ -6493,12 +6833,65 @@ RED.editor = (function() {
                             RED.nodes.dirty(true);
                             $( this ).dialog( "close" );
                             RED.view.redraw();
+                            RED.history.push(historyEvent);
                         }
                 });
             }
             buttons[1].text = "Update";
-            $("#node-config-dialog-user-count").html(RED._("editor.nodesUse", {count:configNode.users.length})).show();
+            $("#node-config-dialog-user-count").find("span").html(RED._("editor.nodesUse", {count:editing_config_node.users.length})).parent().show();
         }
+
+        if (editing_config_node._def.exclusive) {
+            $("#node-config-dialog-scope").hide();
+        } else {
+            $("#node-config-dialog-scope").show();
+        }
+        $("#node-config-dialog-scope-warning").hide();
+
+
+        var nodeUserFlows = {};
+        editing_config_node.users.forEach(function(n) {
+            nodeUserFlows[n.z] = true;
+        });
+        var flowCount = Object.keys(nodeUserFlows).length;
+
+        var tabSelect = $("#node-config-dialog-scope").empty();
+        tabSelect.off("change");
+        tabSelect.append('<option value=""'+(!editing_config_node.z?" selected":"")+' data-i18n="sidebar.config.global"></option>');
+        tabSelect.append('<option disabled data-i18n="sidebar.config.flows"></option>');
+        RED.nodes.eachWorkspace(function(ws) {
+            var workspaceLabel = ws.label;
+            if (nodeUserFlows[ws.id]) {
+                workspaceLabel = "* "+workspaceLabel;
+            }
+            tabSelect.append('<option value="'+ws.id+'"'+(ws.id==editing_config_node.z?" selected":"")+'>'+workspaceLabel+'</option>');
+        });
+        tabSelect.append('<option disabled data-i18n="sidebar.config.subflows"></option>');
+        RED.nodes.eachSubflow(function(ws) {
+            var workspaceLabel = ws.name;
+            if (nodeUserFlows[ws.id]) {
+                workspaceLabel = "* "+workspaceLabel;
+            }
+            tabSelect.append('<option value="'+ws.id+'"'+(ws.id==editing_config_node.z?" selected":"")+'>'+workspaceLabel+'</option>');
+        });
+        if (flowCount > 0) {
+            tabSelect.on('change',function() {
+                var newScope = $(this).val();
+                if (newScope === '') {
+                    // global scope - everyone can use it
+                    $("#node-config-dialog-scope-warning").hide();
+                } else if (!nodeUserFlows[newScope] || flowCount > 1) {
+                    // a user will loose access to it
+                    $("#node-config-dialog-scope-warning").show();
+                } else {
+                    $("#node-config-dialog-scope-warning").hide();
+                }
+            });
+        }
+
+        //tabSelect.append('<option value="'+activeWorkspace.id+'"'+(activeWorkspace.id==configNode.z?" selected":"")+'>'+workspaceLabel+'</option>');
+        tabSelect.i18n();
+
         $( "#node-config-dialog" ).dialog("option","buttons",buttons);
 
         $("#node-config-dialog").i18n();
@@ -6506,7 +6899,7 @@ RED.editor = (function() {
         $( "#node-config-dialog" )
             .dialog("option","node-adding",adding)
             .dialog("option","node-property",name)
-            .dialog("option","node-id",configNode.id)
+            .dialog("option","node-id",editing_config_node.id)
             .dialog("option","node-type",type)
             .dialog("option","title",(adding?RED._("editor.addNewConfig", {type:type}):RED._("editor.editConfig", {type:type})))
             .dialog( "open" );
@@ -6526,17 +6919,39 @@ RED.editor = (function() {
             var select = $("#node-input-"+name);
             var node_def = RED.nodes.getType(type);
             select.children().remove();
+
+            var activeWorkspace = RED.nodes.workspace(RED.workspaces.active());
+            if (!activeWorkspace) {
+                activeWorkspace = RED.nodes.subflow(RED.workspaces.active());
+            }
+
+            var configNodes = [];
+
             RED.nodes.eachConfig(function(config) {
-                if (config.type == type) {
+                if (config.type == type && (!config.z || config.z === activeWorkspace.id)) {
                     var label = "";
                     if (typeof node_def.label == "function") {
                         label = node_def.label.call(config);
                     } else {
                         label = node_def.label;
                     }
-                    select.append('<option value="'+config.id+'"'+(value==config.id?" selected":"")+'>'+label+'</option>');
+                    configNodes.push({id:config.id,label:label});
                 }
             });
+
+            configNodes.sort(function(A,B) {
+                if (A.label < B.label) {
+                    return -1;
+                } else if (A.label > B.label) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            configNodes.forEach(function(cn) {
+                select.append('<option value="'+cn.id+'"'+(value==cn.id?" selected":"")+'>'+cn.label+'</option>');
+            });
+
             select.append('<option value="_ADD_"'+(value===""?" selected":"")+'>'+RED._("editor.addNewType", {type:type})+'</option>');
             window.setTimeout(function() { select.change();},50);
         }
@@ -6560,53 +6975,62 @@ RED.editor = (function() {
                             var configType = $(this).dialog('option','node-type');
                             var configAdding = $(this).dialog('option','node-adding');
                             var configTypeDef = RED.nodes.getType(configType);
-                            var configNode;
                             var d;
                             var input;
+                            var scope = $("#node-config-dialog-scope").val();
+                            for (d in configTypeDef.defaults) {
+                                if (configTypeDef.defaults.hasOwnProperty(d)) {
+                                    input = $("#node-config-input-"+d);
+                                    if (input.attr('type') === "checkbox") {
+                                      editing_config_node[d] = input.prop('checked');
+                                    } else {
+                                      editing_config_node[d] = input.val();
+                                    }
+                                }
+                            }
+                            editing_config_node.label = configTypeDef.label;
+                            editing_config_node.z = scope;
+
+                            if (scope) {
+                                editing_config_node.users = editing_config_node.users.filter(function(n) {
+                                    var keep = true;
+                                    for (var d in n._def.defaults) {
+                                        if (n._def.defaults.hasOwnProperty(d)) {
+                                            if (n._def.defaults[d].type === editing_config_node.type &&
+                                                n[d] === editing_config_node.id &&
+                                                n.z !== scope) {
+                                                    keep = false;
+                                                    n[d] = null;
+                                                    n.dirty = true;
+                                                    n.changed = true;
+                                                    validateNode(n);
+                                            }
+                                        }
+                                    }
+                                    return keep;
+                                });
+                            }
 
                             if (configAdding) {
-                                configNode = {type:configType,id:configId,users:[]};
-                                for (d in configTypeDef.defaults) {
-                                    if (configTypeDef.defaults.hasOwnProperty(d)) {
-                                        input = $("#node-config-input-"+d);
-                                        if (input.attr('type') === "checkbox") {
-                                          configNode[d] = input.prop('checked');
-                                        } else {
-                                          configNode[d] = input.val();
-                                        }
-                                    }
-                                }
-                                configNode.label = configTypeDef.label;
-                                configNode._def = configTypeDef;
-                                RED.nodes.add(configNode);
-                                updateConfigNodeSelect(configProperty,configType,configNode.id);
-                            } else {
-                                configNode = RED.nodes.node(configId);
-                                for (d in configTypeDef.defaults) {
-                                    if (configTypeDef.defaults.hasOwnProperty(d)) {
-                                        input = $("#node-config-input-"+d);
-                                        if (input.attr('type') === "checkbox") {
-                                          configNode[d] = input.prop('checked');
-                                        } else {
-                                          configNode[d] = input.val();
-                                        }
-                                    }
-                                }
-                                updateConfigNodeSelect(configProperty,configType,configId);
+                                RED.nodes.add(editing_config_node);
                             }
+
+                            updateConfigNodeSelect(configProperty,configType,editing_config_node.id);
+
                             if (configTypeDef.credentials) {
-                                updateNodeCredentials(configNode,configTypeDef.credentials,"node-config-input");
+                                updateNodeCredentials(editing_config_node,configTypeDef.credentials,"node-config-input");
                             }
                             if (configTypeDef.oneditsave) {
-                                configTypeDef.oneditsave.call(RED.nodes.node(configId));
+                                configTypeDef.oneditsave.call(editing_config_node);
                             }
-                            validateNode(configNode);
-                            for (var i=0;i<configNode.users.length;i++) {
-                                var user = configNode.users[i];
+                            validateNode(editing_config_node);
+                            for (var i=0;i<editing_config_node.users.length;i++) {
+                                var user = editing_config_node.users[i];
                                 validateNode(user);
                             }
 
                             RED.nodes.dirty(true);
+                            RED.view.redraw(true);
                             $(this).dialog("close");
 
                         }
@@ -6649,11 +7073,20 @@ RED.editor = (function() {
                 close: function(e) {
                     $(this).dialog('option','width','auto');
                     $(this).dialog('option','height','auto');
-                    $("#dialog-config-form").html("");
+                    $("#node-config-dialog-edit-form").html("");
                     if (RED.view.state() != RED.state.EDITING) {
                         RED.keyboard.enable();
                     }
-                    RED.sidebar.config.refresh();
+                    RED.workspaces.refresh();
+                },
+                create: function() {
+                    $("#node-config-dialog").parent().find("div.ui-dialog-buttonpane")
+                        .prepend('<div id="node-config-dialog-user-count"><i class="fa fa-info-circle"></i> <span></span></div>');
+
+                    $("#node-config-dialog").parent().find('.ui-dialog-titlebar').append('<span id="node-config-dialog-scope-container"><span id="node-config-dialog-scope-warning" data-i18n="[title]editor.errors.scopeChange"><i class="fa fa-warning"></i></span><select id="node-config-dialog-scope"></select></span>');
+                    $("#node-config-dialog").parent().draggable({
+                        cancel: '.ui-dialog-content, .ui-dialog-titlebar-close, #node-config-dialog-scope-container'
+                    });
                 }
         });
     }
@@ -6683,15 +7116,29 @@ RED.editor = (function() {
                                 changes['name'] = editing_node.name;
                                 editing_node.name = newName;
                                 changed = true;
-                                $("#menu-item-workspace-menu-"+editing_node.id.replace(".","-")).text(RED._("subflow.tabLabel",{name:newName}));
+                                $("#menu-item-workspace-menu-"+editing_node.id.replace(".","-")).text(newName);
+                            }
+
+                            var newDescription = subflowEditor.getValue();
+
+                            if (newDescription != editing_node.info) {
+                                changes['info'] = editing_node.info;
+                                editing_node.info = newDescription;
+                                changed = true;
                             }
 
                             RED.palette.refresh();
 
                             if (changed) {
+                                var subflowInstances = [];
                                 RED.nodes.eachNode(function(n) {
                                     if (n.type == "subflow:"+editing_node.id) {
+                                        subflowInstances.push({
+                                            id:n.id,
+                                            changed:n.changed
+                                        })
                                         n.changed = true;
+                                        n.dirty = true;
                                         updateNodeProperties(n);
                                     }
                                 });
@@ -6703,7 +7150,10 @@ RED.editor = (function() {
                                     node:editing_node,
                                     changes:changes,
                                     dirty:wasDirty,
-                                    changed:wasChanged
+                                    changed:wasChanged,
+                                    subflow: {
+                                        instances:subflowInstances
+                                    }
                                 };
 
                                 RED.history.push(historyEvent);
@@ -6723,6 +7173,14 @@ RED.editor = (function() {
                     }
                 }
             ],
+            create: function(e) {
+                $("#subflow-dialog form" ).submit(function(e) { e.preventDefault();});
+                subflowEditor = RED.editor.createEditor({
+                    id: 'subflow-input-info-editor',
+                    mode: 'ace/mode/markdown',
+                    value: ""
+                });
+            },
             open: function(e) {
                 RED.keyboard.disable();
                 var minWidth = $(this).dialog('option','minWidth');
@@ -6737,17 +7195,30 @@ RED.editor = (function() {
                     RED.view.state(RED.state.DEFAULT);
                 }
                 RED.sidebar.info.refresh(editing_node);
+                RED.workspaces.refresh();
                 editing_node = null;
+            },
+            resize: function(e) {
+                var rows = $("#subflow-dialog>form>div:not(.node-text-editor-row)");
+                var editorRow = $("#subflow-dialog>form>div.node-text-editor-row");
+                var height = $("#subflow-dialog").height();
+                for (var i=0;i<rows.size();i++) {
+                    height -= $(rows[i]).outerHeight(true);
+                }
+                height -= (parseInt($("#subflow-dialog>form").css("marginTop"))+parseInt($("#subflow-dialog>form").css("marginBottom")));
+                $(".node-text-editor").css("height",height+"px");
+                subflowEditor.resize();
             }
         });
-        $("#subflow-dialog form" ).submit(function(e) { e.preventDefault();});
     }
 
 
     function showEditSubflowDialog(subflow) {
         editing_node = subflow;
         RED.view.state(RED.state.EDITING);
+
         $("#subflow-input-name").val(subflow.name);
+        subflowEditor.getSession().setValue(subflow.info,-1);
         var userCount = 0;
         var subflowType = "subflow:"+editing_node.id;
 
@@ -6924,23 +7395,6 @@ RED.clipboard = (function() {
         var selection = RED.view.selection();
         if (selection.nodes) {
             var nns = RED.nodes.createExportableNodeSet(selection.nodes);
-
-            //Check duplicate Pin value.Change date 2015-09-22
-            var pinArr = new Array();
-            for(var i in nns){
-               for(var key in nns[i]){
-                  if(key.indexOf("Pin")!=-1){
-                     pinArr.push(nns[i][key]);
-                  }
-               }
-            }
-
-            if (RED.deploy.isRepeat(pinArr)==true){
-                var msg = "Property: 'Pin' value can not be repeated!";
-                RED.notify(RED._("notification.error",{message:msg}),"error");
-                return false;
-            }
-
             $("#clipboard-export")
                 .val(JSON.stringify(nns))
                 .focus(function() {
@@ -7507,8 +7961,11 @@ RED.subflow = (function() {
         return RED.nodes.subflow(RED.workspaces.active());
     }
 
-    function findAvailableSubflowIOPosition(subflow) {
-        var pos = {x:70,y:70};
+    function findAvailableSubflowIOPosition(subflow,isInput) {
+        var pos = {x:50,y:30};
+        if (!isInput) {
+            pos.x += 110;
+        }
         for (var i=0;i<subflow.out.length+subflow.in.length;i++) {
             var port;
             if (i < subflow.out.length) {
@@ -7526,7 +7983,10 @@ RED.subflow = (function() {
 
     function addSubflowInput() {
         var subflow = RED.nodes.subflow(RED.workspaces.active());
-        var position = findAvailableSubflowIOPosition(subflow);
+        if (subflow.in.length === 1) {
+            return;
+        }
+        var position = findAvailableSubflowIOPosition(subflow,true);
         var newInput = {
             type:"subflow",
             direction:"in",
@@ -7542,31 +8002,50 @@ RED.subflow = (function() {
         var wasDirty = RED.nodes.dirty();
         var wasChanged = subflow.changed;
         subflow.changed = true;
-
-        RED.nodes.eachNode(function(n) {
-            if (n.type == "subflow:"+subflow.id) {
-                n.changed = true;
-                n.inputs = subflow.in.length;
-                RED.editor.updateNodeProperties(n);
-            }
-        });
+        var result = refresh(true);
         var historyEvent = {
             t:'edit',
             node:subflow,
             dirty:wasDirty,
             changed:wasChanged,
             subflow: {
-                inputCount: oldInCount
+                inputCount: oldInCount,
+                instances: result.instances
             }
         };
         RED.history.push(historyEvent);
-        $("#workspace-subflow-add-input").toggleClass("disabled",true);
         RED.view.select();
+        RED.nodes.dirty(true);
+        RED.view.redraw();
+        $("#workspace-subflow-input-add").addClass("active");
+        $("#workspace-subflow-input-remove").removeClass("active");
+    }
+
+    function removeSubflowInput() {
+        var activeSubflow = RED.nodes.subflow(RED.workspaces.active());
+        if (activeSubflow.in.length === 0) {
+            return;
+        }
+        var removedInput = activeSubflow.in[0];
+        var removedInputLinks = [];
+        RED.nodes.eachLink(function(l) {
+            if (l.source.type == "subflow" && l.source.z == activeSubflow.id && l.source.i == removedInput.i) {
+                removedInputLinks.push(l);
+            } else if (l.target.type == "subflow:"+activeSubflow.id) {
+                removedInputLinks.push(l);
+            }
+        });
+        removedInputLinks.forEach(function(l) { RED.nodes.removeLink(l)});
+        activeSubflow.in = [];
+        $("#workspace-subflow-input-add").removeClass("active");
+        $("#workspace-subflow-input-remove").addClass("active");
+        activeSubflow.changed = true;
+        return {subflowInputs: [ removedInput ], links:removedInputLinks};
     }
 
     function addSubflowOutput(id) {
         var subflow = RED.nodes.subflow(RED.workspaces.active());
-        var position = findAvailableSubflowIOPosition(subflow);
+        var position = findAvailableSubflowIOPosition(subflow,false);
 
         var newOutput = {
             type:"subflow",
@@ -7584,44 +8063,185 @@ RED.subflow = (function() {
         var wasChanged = subflow.changed;
         subflow.changed = true;
 
-        RED.nodes.eachNode(function(n) {
-            if (n.type == "subflow:"+subflow.id) {
-                n.changed = true;
-                n.outputs = subflow.out.length;
-                RED.editor.updateNodeProperties(n);
-            }
-        });
+        var result = refresh(true);
+
         var historyEvent = {
             t:'edit',
             node:subflow,
             dirty:wasDirty,
             changed:wasChanged,
             subflow: {
-                outputCount: oldOutCount
+                outputCount: oldOutCount,
+                instances: result.instances
             }
         };
         RED.history.push(historyEvent);
         RED.view.select();
+        RED.nodes.dirty(true);
+        RED.view.redraw();
+        $("#workspace-subflow-output .spinner-value").html(subflow.out.length);
     }
 
-    function init() {
+    function removeSubflowOutput(removedSubflowOutputs) {
+        var activeSubflow = RED.nodes.subflow(RED.workspaces.active());
+        if (activeSubflow.out.length === 0) {
+            return;
+        }
+        if (typeof removedSubflowOutputs === "undefined") {
+            removedSubflowOutputs = [activeSubflow.out[activeSubflow.out.length-1]];
+        }
+        var removedLinks = [];
+        removedSubflowOutputs.sort(function(a,b) { return b.i-a.i});
+        for (i=0;i<removedSubflowOutputs.length;i++) {
+            var output = removedSubflowOutputs[i];
+            activeSubflow.out.splice(output.i,1);
+            var subflowRemovedLinks = [];
+            var subflowMovedLinks = [];
+            RED.nodes.eachLink(function(l) {
+                if (l.target.type == "subflow" && l.target.z == activeSubflow.id && l.target.i == output.i) {
+                    subflowRemovedLinks.push(l);
+                }
+                if (l.source.type == "subflow:"+activeSubflow.id) {
+                    if (l.sourcePort == output.i) {
+                        subflowRemovedLinks.push(l);
+                    } else if (l.sourcePort > output.i) {
+                        subflowMovedLinks.push(l);
+                    }
+                }
+            });
+            subflowRemovedLinks.forEach(function(l) { RED.nodes.removeLink(l)});
+            subflowMovedLinks.forEach(function(l) { l.sourcePort--; });
+
+            removedLinks = removedLinks.concat(subflowRemovedLinks);
+            for (var j=output.i;j<activeSubflow.out.length;j++) {
+                activeSubflow.out[j].i--;
+                activeSubflow.out[j].dirty = true;
+            }
+        }
+        activeSubflow.changed = true;
+
+        return {subflowOutputs: removedSubflowOutputs, links: removedLinks}
+    }
+
+    function refresh(markChange) {
+        var activeSubflow = RED.nodes.subflow(RED.workspaces.active());
+        refreshToolbar(activeSubflow);
+        var subflowInstances = [];
+        if (activeSubflow) {
+            RED.nodes.filterNodes({type:"subflow:"+activeSubflow.id}).forEach(function(n) {
+                subflowInstances.push({
+                    id: n.id,
+                    changed: n.changed
+                });
+                if (markChange) {
+                    n.changed = true;
+                }
+                n.inputs = activeSubflow.in.length;
+                n.outputs = activeSubflow.out.length;
+                while (n.outputs < n.ports.length) {
+                    n.ports.pop();
+                }
+                n.resize = true;
+                n.dirty = true;
+                RED.editor.updateNodeProperties(n);
+            });
+            RED.editor.validateNode(activeSubflow);
+            return {
+                instances: subflowInstances
+            }
+        }
+    }
+    function refreshToolbar(activeSubflow) {
+        if (activeSubflow) {
+            $("#workspace-subflow-input-add").toggleClass("active", activeSubflow.in.length !== 0);
+            $("#workspace-subflow-input-remove").toggleClass("active",activeSubflow.in.length === 0);
+
+            $("#workspace-subflow-output .spinner-value").html(activeSubflow.out.length);
+        }
+    }
+
+    function showWorkspaceToolbar(activeSubflow) {
+        var toolbar = $("#workspace-toolbar");
+        toolbar.empty();
+
+        $('<a class="button" id="workspace-subflow-edit" href="#" data-i18n="[append]subflow.editSubflowProperties"><i class="fa fa-pencil"></i> </a>').appendTo(toolbar);
+        $('<span style="margin-left: 5px;" data-i18n="subflow.input"></span> '+
+            '<div style="display: inline-block;" class="button-group">'+
+            '<a id="workspace-subflow-input-remove" class="button active" href="#">0</a>'+
+            '<a id="workspace-subflow-input-add" class="button" href="#">1</a>'+
+            '</div>').appendTo(toolbar);
+
+        $('<span style="margin-left: 5px;" data-i18n="subflow.output"></span> <div id="workspace-subflow-output" style="display: inline-block;" class="button-group spinner-group">'+
+            '<a id="workspace-subflow-output-remove" class="button" href="#"><i class="fa fa-minus"></i></a>'+
+            '<div class="spinner-value">3</div>'+
+            '<a id="workspace-subflow-output-add" class="button" href="#"><i class="fa fa-plus"></i></a>'+
+            '</div>').appendTo(toolbar);
+
+        // $('<a class="button disabled" id="workspace-subflow-add-input" href="#" data-i18n="[append]subflow.input"><i class="fa fa-plus"></i> </a>').appendTo(toolbar);
+        // $('<a class="button" id="workspace-subflow-add-output" href="#" data-i18n="[append]subflow.output"><i class="fa fa-plus"></i> </a>').appendTo(toolbar);
+        $('<a class="button" id="workspace-subflow-delete" href="#" data-i18n="[append]subflow.deleteSubflow"><i class="fa fa-trash"></i> </a>').appendTo(toolbar);
+        toolbar.i18n();
+
+
+        $("#workspace-subflow-output-remove").click(function(event) {
+            event.preventDefault();
+            var wasDirty = RED.nodes.dirty();
+            var wasChanged = activeSubflow.changed;
+            var result = removeSubflowOutput();
+            if (result) {
+                var inst = refresh(true);
+                RED.history.push({
+                    t:'delete',
+                    links:result.links,
+                    subflowOutputs: result.subflowOutputs,
+                    changed: wasChanged,
+                    dirty:wasDirty,
+                    subflow: {
+                        instances: inst.instances
+                    }
+                });
+
+                RED.view.select();
+                RED.nodes.dirty(true);
+                RED.view.redraw(true);
+            }
+        });
+        $("#workspace-subflow-output-add").click(function(event) {
+            event.preventDefault();
+            addSubflowOutput();
+        });
+
+        $("#workspace-subflow-input-add").click(function(event) {
+            event.preventDefault();
+            addSubflowInput();
+        });
+        $("#workspace-subflow-input-remove").click(function(event) {
+            event.preventDefault();
+            var wasDirty = RED.nodes.dirty();
+            var wasChanged = activeSubflow.changed;
+            activeSubflow.changed = true;
+            var result = removeSubflowInput();
+            if (result) {
+                var inst = refresh(true);
+                RED.history.push({
+                    t:'delete',
+                    links:result.links,
+                    changed: wasChanged,
+                    subflowInputs: result.subflowInputs,
+                    dirty:wasDirty,
+                    subflow: {
+                        instances: inst.instances
+                    }
+                });
+                RED.view.select();
+                RED.nodes.dirty(true);
+                RED.view.redraw(true);
+            }
+        });
+
         $("#workspace-subflow-edit").click(function(event) {
             RED.editor.editSubflow(RED.nodes.subflow(RED.workspaces.active()));
             event.preventDefault();
-        });
-        $("#workspace-subflow-add-input").click(function(event) {
-            event.preventDefault();
-            if ($(this).hasClass("disabled")) {
-                return;
-            }
-            addSubflowInput();
-        });
-        $("#workspace-subflow-add-output").click(function(event) {
-            event.preventDefault();
-            if ($(this).hasClass("disabled")) {
-                return;
-            }
-            addSubflowOutput();
         });
 
         $("#workspace-subflow-delete").click(function(event) {
@@ -7630,11 +8250,18 @@ RED.subflow = (function() {
             var removedLinks = [];
             var startDirty = RED.nodes.dirty();
 
+            var activeSubflow = getSubflow();
+
             RED.nodes.eachNode(function(n) {
-                if (n.type == "subflow:"+getSubflow().id) {
+                if (n.type == "subflow:"+activeSubflow.id) {
                     removedNodes.push(n);
                 }
-                if (n.z == getSubflow().id) {
+                if (n.z == activeSubflow.id) {
+                    removedNodes.push(n);
+                }
+            });
+            RED.nodes.eachConfig(function(n) {
+                if (n.z == activeSubflow.id) {
                     removedNodes.push(n);
                 }
             });
@@ -7648,15 +8275,15 @@ RED.subflow = (function() {
             // TODO: this whole delete logic should be in RED.nodes.removeSubflow..
             removedNodes = removedNodes.concat(removedConfigNodes);
 
-            var activeSubflow = getSubflow();
-
             RED.nodes.removeSubflow(activeSubflow);
 
             RED.history.push({
                     t:'delete',
                     nodes:removedNodes,
                     links:removedLinks,
-                    subflow: activeSubflow,
+                    subflow: {
+                        subflow: activeSubflow
+                    },
                     dirty:startDirty
             });
 
@@ -7665,6 +8292,26 @@ RED.subflow = (function() {
             RED.view.redraw();
         });
 
+        refreshToolbar(activeSubflow);
+
+        $("#chart").css({"margin-top": "40px"});
+        $("#workspace-toolbar").show();
+    }
+    function hideWorkspaceToolbar() {
+        $("#workspace-toolbar").hide().empty();
+        $("#chart").css({"margin-top": "0"});
+    }
+
+
+    function init() {
+        RED.events.on("workspace:change",function(event) {
+            var activeSubflow = RED.nodes.subflow(event.workspace);
+            if (activeSubflow) {
+                showWorkspaceToolbar(activeSubflow);
+            } else {
+                hideWorkspaceToolbar();
+            }
+        });
         RED.events.on("view:selection-changed",function(selection) {
             if (!selection.nodes) {
                 RED.menu.setDisabled("menu-item-subflow-convert",true);
@@ -7691,16 +8338,20 @@ RED.subflow = (function() {
             type:"subflow",
             id:subflowId,
             name:name,
+            info:"",
             in: [],
             out: []
         };
         RED.nodes.addSubflow(subflow);
         RED.history.push({
             t:'createSubflow',
-            subflow: subflow,
+            subflow: {
+                subflow:subflow
+            },
             dirty:RED.nodes.dirty()
         });
         RED.workspaces.show(subflowId);
+        RED.nodes.dirty(true);
     }
 
     function convertToSubflow() {
@@ -7716,6 +8367,8 @@ RED.subflow = (function() {
 
         var candidateInputs = [];
         var candidateOutputs = [];
+        var candidateInputNodes = {};
+
 
         var boundingBox = [selection.nodes[0].x,
             selection.nodes[0].y,
@@ -7748,6 +8401,7 @@ RED.subflow = (function() {
             if (!nodes[link.source.id] && nodes[link.target.id]) {
                 // An inbound link
                 candidateInputs.push(link);
+                candidateInputNodes[link.target.id] = link.target;
                 removedLinks.push(link);
             }
         });
@@ -7765,15 +8419,10 @@ RED.subflow = (function() {
         });
         candidateOutputs.sort(function(a,b) { return a.source.y-b.source.y});
 
-        if (candidateInputs.length > 1) {
+        if (Object.keys(candidateInputNodes).length > 1) {
              RED.notify(RED._("subflow.errors.multipleInputsToSelection"),"error");
              return;
         }
-        //if (candidateInputs.length == 0) {
-        //     RED.notify("<strong>Cannot create subflow</strong>: no input to selection","error");
-        //     return;
-        //}
-
 
         var lastIndex = 0;
         RED.nodes.eachSubflow(function(sf) {
@@ -7790,15 +8439,16 @@ RED.subflow = (function() {
             type:"subflow",
             id:subflowId,
             name:name,
-            in: candidateInputs.map(function(v,i) { var index = i; return {
+            info:"",
+            in: Object.keys(candidateInputNodes).map(function(v,i) { var index = i; return {
                 type:"subflow",
                 direction:"in",
-                x:v.target.x-(v.target.w/2)-80,
-                y:v.target.y,
+                x:candidateInputNodes[v].x-(candidateInputNodes[v].w/2)-80,
+                y:candidateInputNodes[v].y,
                 z:subflowId,
                 i:index,
                 id:RED.nodes.id(),
-                wires:[{id:v.target.id}]
+                wires:[{id:candidateInputNodes[v].id}]
             }}),
             out: candidateOutputs.map(function(v,i) { var index = i; return {
                 type:"subflow",
@@ -7811,6 +8461,7 @@ RED.subflow = (function() {
                 wires:[{id:v.source.id,port:v.sourcePort}]
             }})
         };
+
         RED.nodes.addSubflow(subflow);
 
         var subflowInstance = {
@@ -7869,7 +8520,9 @@ RED.subflow = (function() {
             t:'createSubflow',
             nodes:[subflowInstance.id],
             links:new_links,
-            subflow: subflow,
+            subflow: {
+                subflow: subflow
+            },
 
             activeWorkspace: RED.workspaces.active(),
             removedLinks: removedLinks,
@@ -7887,7 +8540,10 @@ RED.subflow = (function() {
     return {
         init: init,
         createSubflow: createSubflow,
-        convertToSubflow: convertToSubflow
+        convertToSubflow: convertToSubflow,
+        refresh: refresh,
+        removeInput: removeSubflowInput,
+        removeOutput: removeSubflowOutput
     }
 })();
 ;/**

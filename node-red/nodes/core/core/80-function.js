@@ -57,11 +57,14 @@ module.exports = function(RED) {
                                  "error:__node__.error,"+
                                  "warn:__node__.warn,"+
                                  "on:__node__.on,"+
+                                 "status:__node__.status,"+
                                  "send:function(msgs){ __node__.send(__msgid__,msgs);}"+
                               "};\n"+
                               this.func+"\n"+
                            "})(msg);";
         this.topic = n.topic;
+        this.outstandingTimers = [];
+        this.outstandingIntervals = [];
         var sandbox = {
             console:console,
             util:util,
@@ -70,24 +73,50 @@ module.exports = function(RED) {
                 log: function() {
                     node.log.apply(node, arguments);
                 },
-                error: function(){
+                error: function() {
                     node.error.apply(node, arguments);
                 },
                 warn: function() {
                     node.warn.apply(node, arguments);
                 },
-                send: function(id,msgs) {
-                    sendResults(node,id,msgs);
+                send: function(id, msgs) {
+                    sendResults(node, id, msgs);
                 },
                 on: function() {
-                    node.on.apply(node,arguments);
+                    node.on.apply(node, arguments);
+                },
+                status: function() {
+                    node.status.apply(node, arguments);
                 }
             },
             context: {
                 global:RED.settings.functionGlobalContext || {}
             },
-            setTimeout: setTimeout,
-            clearTimeout: clearTimeout
+            setTimeout: function (func,delay) {
+                var timerId = setTimeout(function() {
+                    sandbox.clearTimeout(timerId);
+                    func();
+                },delay);
+                node.outstandingTimers.push(timerId);
+            },
+            clearTimeout: function(id) {
+                clearTimeout(id);
+                var index = node.outstandingTimers.indexOf(id);
+                if (index > -1) {
+                    node.outstandingTimers.splice(index,1);
+                }
+            },
+            setInterval: function(func,delay) {
+                var timerId = setInterval(func,delay);
+                node.outstandingIntervals.push(timerId);
+            },
+            clearInterval: function(id) {
+                clearInterval(id);
+                var index = node.outstandingIntervals.indexOf(id);
+                if (index > -1) {
+                    node.outstandingIntervals.splice(index,1);
+                }
+            }
         };
         var context = vm.createContext(sandbox);
         try {
@@ -100,7 +129,7 @@ module.exports = function(RED) {
                     sendResults(this,msg._msgid,context.results);
 
                     var duration = process.hrtime(start);
-                    var converted = Math.floor((duration[0]* 1e9 +  duration[1])/10000)/100;
+                    var converted = Math.floor((duration[0] * 1e9 + duration[1])/10000)/100;
                     this.metric("duration", msg, converted);
                     if (process.env.NODE_RED_FUNCTION_TIME) {
                         this.status({fill:"yellow",shape:"dot",text:""+converted});
@@ -111,7 +140,7 @@ module.exports = function(RED) {
                     var errorMessage;
                     var stack = err.stack.split(/\r?\n/);
                     if (stack.length > 0) {
-                        while(line < stack.length && stack[line].indexOf("ReferenceError") !== 0) {
+                        while (line < stack.length && stack[line].indexOf("ReferenceError") !== 0) {
                             line++;
                         }
 
@@ -119,9 +148,9 @@ module.exports = function(RED) {
                             errorMessage = stack[line];
                             var m = /:(\d+):(\d+)$/.exec(stack[line+1]);
                             if (m) {
-                                var line = Number(m[1])-1;
+                                var lineno = Number(m[1])-1;
                                 var cha = m[2];
-                                errorMessage += " (line "+line+", col "+cha+")";
+                                errorMessage += " (line "+lineno+", col "+cha+")";
                             }
                         }
                     }
@@ -131,6 +160,14 @@ module.exports = function(RED) {
                     this.error(errorMessage, msg);
                 }
             });
+            this.on("close", function() {
+                while(node.outstandingTimers.length > 0) {
+                    clearTimeout(node.outstandingTimers.pop())
+                }
+                while(node.outstandingIntervals.length > 0) {
+                    clearInterval(node.outstandingIntervals.pop())
+                }
+            })
         } catch(err) {
             // eg SyntaxError - which v8 doesn't include line number information
             // so we can't do better than this
