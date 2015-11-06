@@ -53,7 +53,7 @@ cp festival /usr/bin
 echo "done"
 
 echo "import asound.conf..."                         
-echo "pcm.!default sysdefault:Set" > /etc/asound.conf
+echo "pcm.!default sysdefault:Device" > /etc/asound.conf
 echo "done"
 
 cd $CURR
