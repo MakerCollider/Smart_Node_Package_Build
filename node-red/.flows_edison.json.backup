@@ -1,1 +1,0 @@
-[{"type":"tab","id":"43fc1bb1.bc03e4","label":"工作表 1"},{"id":"b752a8c7.48ad58","type":"SoundSensor","name":"SoundSensor","analogPin":"0","interval":"1000","x":382,"y":337,"z":"43fc1bb1.bc03e4","wires":[[]]}]
